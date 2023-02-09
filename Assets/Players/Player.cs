@@ -13,12 +13,9 @@ namespace Players
         private string _name;
         private  int _heal;
         private int _speed;
-
-        public Player()
-        {
         
-        }
-        public Player(string name, int health = 1, int damage = 1, int heal = 5, int speed = 1)
+        public Player(string name = "", int health = 1, int damage = 1,
+            int speed = 1, int heal = 5)
         {
             _health = health;
             _damage = damage;

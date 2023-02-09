@@ -9,9 +9,8 @@ public abstract class Item : MonoBehaviour
     protected int _durability { get; set; }
 
     public Item() { }
-    
-    private void Update()
-    {
-        throw new NotImplementedException();
-    }
+
+    public delegate void Update();
+
+    protected abstract void UpdateMe(int a);
 }

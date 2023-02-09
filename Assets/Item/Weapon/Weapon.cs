@@ -17,4 +17,16 @@ class Weapon : Item
         _damage += 5;
         _durability += 5;
     }
+
+    protected override void UpdateMe(int i)
+    {
+        if (i < 0)
+        {
+            _durability -= 1;
+        }
+        else
+        {
+            _durability += 1;
+        }
+    }
 }

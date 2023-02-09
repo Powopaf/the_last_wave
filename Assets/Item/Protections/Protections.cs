@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,5 +18,17 @@ public class Protections : Item
     {
         _durability += 5;
         _shield += 5;
+    }
+
+    protected override void UpdateMe(int i)
+    {
+        if (i < 0)
+        {
+            _durability -= 1;
+        }
+        else
+        {
+            _durability += 1;
+        }
     }
 }

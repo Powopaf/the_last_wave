@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public class Zombie3 : MonoBehaviour
+namespace Monsters
 {
-    // Start is called before the first frame update
-    void Start()
+    public partial class Zombie3 : Zombie
     {
-        
-    }
+        public Zombie3() :
+            base("Zombie3", 
+                new []{"Building", "Core"},
+                200, 15, 10) {}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private static void Movement()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

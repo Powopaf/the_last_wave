@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public abstract class Zombie
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int _health;
+    private int _damage;
+    private string _name;
+    //private Item[] _loot;
+    private string[] _target;
+    private (int, int) _coordinate;
+    private int _speed;
 
-    // Update is called once per frame
-    void Update()
+    protected Zombie(string name = "", string[] target = null,
+        int health = 1, int damage = 1, int speed = 1)
     {
-        
+        _name = name;
+        _target = target;
+        _health = health;
+        _damage = damage;
     }
 }

@@ -1,18 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Zombie1 : MonoBehaviour
+public class Zombie1 : Zombie
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Zombie1() :
+        base("Zombie1", 
+            new []{"Player", "Core"},
+            100, 20, 30) {}
 
-    // Update is called once per frame
-    void Update()
+    private static void Movement()
     {
-        
+        throw new NotImplementedException();
     }
 }

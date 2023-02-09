@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public class Zombie4 : MonoBehaviour
+public class Zombie4 : Zombie
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Zombie4() :
+        base("Zombie4", 
+            new []{"Player", "Core"},
+            100, 85, 70) {}
 
-    // Update is called once per frame
-    void Update()
+    private static void Movement()
     {
-        
+        throw new NotImplementedException();
     }
 }

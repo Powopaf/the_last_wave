@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Potions : MonoBehaviour
+public class Potions : Item
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int _buff;
 
-    // Update is called once per frame
-    void Update()
+    public Potions(int durability = 1, int buff = 1)
     {
-        
+        _durability = durability;
+        _buff = buff;
     }
 }

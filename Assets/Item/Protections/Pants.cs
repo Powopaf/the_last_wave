@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class Sword : Weapon
+public class Pants : Protections
 {
-    public Sword(): base(5, 5)
-    { }
+    public Pants() : base(5,5) {}
 }

@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
-public class Protections : MonoBehaviour
+public class Protections : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    private int _shield;
+
+    public Protections(int durability = 1, int shield = 1)
     {
-        
+        _durability = durability;
+        _shield = shield;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateProtection()
     {
-        
+        _durability += 5;
+        _shield += 5;
     }
 }

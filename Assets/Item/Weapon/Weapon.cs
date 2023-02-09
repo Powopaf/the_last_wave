@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+class Weapon : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    private int _damage;
+
+    public Weapon(int durability, int damage = 1)
     {
-        
+        _damage = damage;
+        _durability = durability;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateWeapon()
     {
-        
+        _damage += 5;
+        _durability += 5;
     }
 }

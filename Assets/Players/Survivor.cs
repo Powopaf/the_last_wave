@@ -4,7 +4,7 @@ namespace Players
     {
         private Survivor()
         {
-            new Player("Survivor", 125, 25, 1, 30);
+            new Player("Survivor", 125, 25, 30);
         }
     }
 }

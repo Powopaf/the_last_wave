@@ -6,9 +6,6 @@ namespace Players
 {
     class Worker : Player
     {
-        public Worker()
-        {
-            new Player("Worker", 175, 35, 25);
-        }
+        public Worker() : base(175,35,25) { }
     }
 }

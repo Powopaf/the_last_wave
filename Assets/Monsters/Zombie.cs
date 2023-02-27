@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Players;
 using UnityEngine;
 
 public abstract class Zombie
@@ -20,4 +22,13 @@ public abstract class Zombie
         _health = health;
         _damage = damage;
     }
+
+    public Transform Player;
+    protected void Target()
+    {
+    }
+    protected void Update()
+    {
+    }
+    
 }

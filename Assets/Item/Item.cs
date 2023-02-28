@@ -9,8 +9,7 @@ public abstract class Item : MonoBehaviour
     protected int _durability { get; set; }
 
     public Item() { }
-
-    public delegate void Update();
+    
 
     protected abstract void UpdateMe(int a);
 }

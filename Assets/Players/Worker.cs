@@ -12,7 +12,7 @@ namespace Players
             throw new System.NotImplementedException();
         }
 
-        protected override void MovePlayer(float h)
+        protected override void MovePlayer() 
         {
             throw new System.NotImplementedException();
         }

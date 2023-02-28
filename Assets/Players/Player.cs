@@ -16,7 +16,8 @@ namespace Players
         private  int _heal;
         public float _speed;
         public Rigidbody2D rb;
-        protected Vector3 velocity = Vector3.zero;
+        protected Vector2 dir;
+        protected int move = -1;
 
         public Player(int health = 1, int damage = 1,
             int speed = 1, int heal = 1, string name = "")
@@ -32,7 +33,7 @@ namespace Players
         }
 
         protected abstract void FixedUpdate();
-        protected abstract void MovePlayer(float h);
+        protected abstract void MovePlayer();
         
         private void Looting(Item[] loot)
         {

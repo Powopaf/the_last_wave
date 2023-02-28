@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Players
 {
-    public class Player : MonoBehaviour
+    public abstract class Player : MonoBehaviour
     {
         private int Health { get; set; }
         private int Damage { get; set; }
@@ -15,7 +16,7 @@ namespace Players
         private  int _heal;
         public float _speed;
         public Rigidbody2D rb;
-        private Vector3 velo = Vector3.zero;
+        protected Vector3 velocity = Vector3.zero;
 
         public Player(int health = 1, int damage = 1,
             int speed = 1, int heal = 1, string name = "")
@@ -30,25 +31,8 @@ namespace Players
             _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
         }
 
-        private void FixedUpdate()
-        {
-            float horizontalMovement = Input.GetAxis("Horizontal") * _speed * Time.deltaTime;
-            float verticalMOvement = Input.GetAxis("Vertical") * _speed * Time.deltaTime;
-
-
-        }
-
-        private void MovePLayer(float horizontalMovement, float verticalMovement)
-        {
-            Vector3 targetVelocityY = new Vector2(horizontalMovement, rb.velocity.y);
-            //rb.velocity = Vector3.SmoothDamp(rb.velocity, 
-            //    targetVelocityY, ref targetVelocityY, .05f);
-            Vector3 targetVelocityX = new Vector2(verticalMovement, rb.velocity.x);
-            /*rb.velocity = Vector3.SmoothDamp(rb.velocity,
-                targetVelocityX, ref targetVelocityX, .05f);
-        */
-            rb.AddForce(targetVelocityX);
-        }
+        protected abstract void FixedUpdate();
+        protected abstract void MovePlayer(float h);
         
         private void Looting(Item[] loot)
         {

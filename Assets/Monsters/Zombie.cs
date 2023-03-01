@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Players;
 using UnityEngine;
 
-public abstract class Zombie
+public abstract class Zombie: MonoBehaviour
 {
     private int _health;
     private int _damage;
@@ -12,23 +12,47 @@ public abstract class Zombie
     //private Item[] _loot;
     private string[] _target;
     private (int, int) _coordinate;
-    private int _speed;
+    public float _speed;
+    public Transform Player; //On doit pouvoir changer l'objet avec la fonction TargetZombie()
+    protected Rigidbody2D rb;
+    protected Vector2 movement;
 
     protected Zombie(string name = "", string[] target = null,
-        int health = 1, int damage = 1, int speed = 1)
+        int health = 1, int damage = 1, float speed = 1f)
     {
         _name = name;
         _target = target;
         _health = health;
         _damage = damage;
+        _speed = speed;
     }
 
-    public Transform Player;
-    protected void Target()
+    protected string TargetZombie()
     {
+        Vector3 closertargetPosition = GameObject.Find(_target[0]).transform.position;
+        string result = _target[0];
+        Vector3 firstcomparison;
+        Vector3 secondcomparison;
+        for (int i = 1; i < _target.Length; i++)
+        {
+            Vector3 newtargetPosition = GameObject.Find(_target[i]).transform.position;
+            firstcomparison = transform.position - closertargetPosition;
+            secondcomparison = transform.position - newtargetPosition;
+            if (secondcomparison.magnitude < firstcomparison.magnitude)
+            {
+                closertargetPosition = newtargetPosition;
+                result = _target[i];
+            }
+        }
+
+        return result;
     }
-    protected void Update()
-    {
-    }
+
+    protected abstract void Update();
     
+
+    protected abstract void Start();
+
+    protected abstract void FixedUpdate();
+    protected abstract void ZombieMovement(Vector2 direction);
 }

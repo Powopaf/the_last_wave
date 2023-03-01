@@ -15,7 +15,7 @@ public class Zombie1 : Zombie
     }
     protected  override void ZombieMovement(Vector2 direction)
     {
-        rb.MovePosition((Vector2) transform.position +(direction *_speed));
+        rb.MovePosition((Vector2) transform.position +direction * (_speed * Time.deltaTime));
     }
 
     protected override void Update()

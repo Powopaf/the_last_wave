@@ -14,7 +14,7 @@ public abstract class Zombie: MonoBehaviour
     private (int, int) _coordinate;
     public float _speed;
     public Transform Player; //On doit pouvoir changer l'objet avec la fonction TargetZombie()
-    protected Rigidbody2D rb;
+    public Rigidbody2D rb;
     protected Vector2 movement;
 
     protected Zombie(string name = "", string[] target = null,

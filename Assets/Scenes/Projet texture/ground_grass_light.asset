@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: base map tileset_3
+  m_Name: ground_grass_light
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 265349688, guid: 5f4b567b071419f489897c36125a6e31, type: 3}
+  m_Sprite: {fileID: 1216125712, guid: 5f4b567b071419f489897c36125a6e31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

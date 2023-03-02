@@ -1,36 +1,29 @@
+using System;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 
 public class Map : MonoBehaviour
 {
-    private Tile[,] map;
-    private int Height;
-    private int Width;
-
+    public Tile[] tiles;
+    private MapDefinition _mapDefinition;
+    
     void Start()
     {
-        //Set up map
+        _mapDefinition = new MapDefinition();
+        SetUpTile();
     }
 
-    void SetUpTile(string file)
+    void SetUpTile()
     {
-        
-    }
-    
-    void SetUpMap()
-    {
-        map = new Tile[0,0];
-        Height = map.GetLength(0);
-        Width = map.GetLength(1);
-    }
-
-    void RenderMap()
-    {
-        for (int i = 0; i < Height; i++)
+        for (int i = 0; i < _mapDefinition.Height; i++)
         {
-            for (int j = 0; j < Width; j++)
+            for (int j = 0; j < _mapDefinition.Width; j++)
             {
-                
+                Tile t = tiles[_mapDefinition.Map[i, j]];
+                Instantiate(t.visual, 
+                    new Vector3(i, j, 0),
+                    Quaternion.identity);
             }
         }
     }

@@ -1,5 +1,15 @@
-﻿
+﻿using UnityEngine;
+
+[System.Serializable]
 public class Tile
 {
-    private TileType type;
+    /*public TileType Type { get; }
+
+    public Tile(TileType type)
+    {
+        Type = type;
+    }*/
+    
+    public string name;
+    public GameObject visual;
 }

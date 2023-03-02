@@ -7,7 +7,17 @@ namespace Players
 {
     public abstract class Player : MonoBehaviour
     {
-        private int Health { get; set; }
+        private int Health
+        {
+            get
+            {
+                return Health;
+            }
+            set
+            {
+                Health = value;
+            }
+        }
         private int Damage { get; set; }
         private (int X, int Y) _coordinate;
         private List<Item> _item_inv;

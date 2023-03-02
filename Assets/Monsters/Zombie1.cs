@@ -9,6 +9,7 @@ public class Zombie1 : Zombie
         base("Zombie1", new []{"Player", "Core"}, 
         100, 20, 30) {}
 
+    
     protected override void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,6 +18,7 @@ public class Zombie1 : Zombie
     {
         rb.MovePosition((Vector2) transform.position +direction * (_speed * Time.deltaTime));
     }
+    
 
     protected override void Update()
     {

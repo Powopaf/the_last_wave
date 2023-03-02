@@ -23,6 +23,7 @@ public abstract class Zombie: MonoBehaviour
         _speed = speed;
     }
 
+    public abstract int Attack();
     protected string TargetZombie()
     {
         Vector3 closertargetPosition = GameObject.Find(_target[0]).transform.position;

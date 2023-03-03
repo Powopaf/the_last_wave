@@ -57,5 +57,18 @@ namespace Players
         {
             Health += life * _heal;
         }
+
+        public void ZombieDamageOnPlayer(int damage)
+        {
+            if (Health - damage > 0)
+            {
+                Health -= damage;
+                Debug.Log("Aie!!!!!");
+            }
+            else
+            {
+                Debug.Log("the player died!!!"); // To see the effect pf the Zombie Attack
+            }
+        }
     }
 }

@@ -22,10 +22,11 @@ namespace Monsters
         {
             throw new NotImplementedException();
         }
-
-       
-
         protected override void ZombieMovement(Vector2 direction)
+        {
+            throw new NotImplementedException();
+        }
+        protected override void OnCollisionEnter2D(Collision2D col)
         {
             throw new NotImplementedException();
         }

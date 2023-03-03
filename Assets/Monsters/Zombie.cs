@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 public abstract class Zombie: MonoBehaviour
 {
     private int _health;
-    private int _damage;
+    protected int _damage;
     private string _name;
     //private Item[] _loot;
     private string[] _target;
@@ -51,4 +52,8 @@ public abstract class Zombie: MonoBehaviour
 
     protected abstract void FixedUpdate();
     protected abstract void ZombieMovement(Vector2 direction);
+
+    protected abstract void OnCollisionEnter2D(Collision2D col);
+
+
 }

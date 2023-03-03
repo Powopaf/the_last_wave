@@ -1,15 +1,16 @@
+using System;
 using UnityEngine;
 
 public abstract class Zombie: MonoBehaviour
 {
-    private int _health;
-    private int _damage;
+    protected int _health;
+    protected int _damage;
     private string _name;
     //private Item[] _loot;
     private string[] _target;
     private (int, int) _coordinate;
     public float _speed;
-    public Transform Player; //On doit pouvoir changer l'objet avec la fonction TargetZombie()
+    public Transform playerobject; //On doit pouvoir changer l'objet avec la fonction TargetZombie()
     public Rigidbody2D rb;
     protected Vector2 movement;
 
@@ -23,7 +24,8 @@ public abstract class Zombie: MonoBehaviour
         _speed = speed;
     }
 
-    public abstract int Attack();
+   
+    
     protected string TargetZombie()
     {
         Vector3 closertargetPosition = GameObject.Find(_target[0]).transform.position;

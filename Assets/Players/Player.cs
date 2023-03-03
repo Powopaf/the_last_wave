@@ -7,17 +7,7 @@ namespace Players
 {
     public abstract class Player : MonoBehaviour
     {
-        private int Health
-        {
-            get
-            {
-                return Health;
-            }
-            set
-            {
-                Health = value;
-            }
-        }
+        public int Health;
         private int Damage { get; set; }
         private (int X, int Y) _coordinate;
         private List<Item> _item_inv;
@@ -41,7 +31,7 @@ namespace Players
             _item_inv = new List<Item>();
             _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
         }
-
+        
         protected abstract void FixedUpdate();
         protected abstract void MovePlayer();
         
@@ -66,6 +56,18 @@ namespace Players
         private void Heal(int life)
         {
             Health += life * _heal;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            if (Health - damage > 0)
+            {
+                Health -= damage;
+            }
+            else
+            {
+                Health = 0; // The player need to die !
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ public class Zombie4 : Zombie
             new []{"Player", "Core"},
             100, 85, 70) {}
 
+   
     protected override void Start()
     {
         throw new NotImplementedException();

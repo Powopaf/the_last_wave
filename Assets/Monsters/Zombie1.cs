@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Zombie1 : Zombie
@@ -9,7 +11,16 @@ public class Zombie1 : Zombie
         base("Zombie1", new []{"Player", "Core"}, 
         100, 20, 30) {}
 
-    
+    protected void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            Players.Player survivor = GetComponent<Players.Survivor>();
+            survivor.TakeDamage(_damage);
+            
+        }
+    }
+
     protected override void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,7 +33,7 @@ public class Zombie1 : Zombie
 
     protected override void Update()
     {
-        Vector3 direction = Player.position - transform.position;
+        Vector3 direction = playerobject.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
         rb.rotation = angle;
         direction.Normalize();

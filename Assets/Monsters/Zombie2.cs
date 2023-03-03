@@ -11,6 +11,8 @@ namespace Monsters
                 50, 15, 100)
         {}
 
+       
+
         protected override void Start()
         {
             throw new NotImplementedException();

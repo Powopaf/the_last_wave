@@ -6,7 +6,8 @@ namespace Monsters
     public class Zombie2 : Zombie
     {
         public float playerdistance;
-
+        public Zombie2projectile zombie2Projectile;
+        public Transform launchOffset;
         public Zombie2(float distance=3) :
             base("Zombie2",
                 new[] { "Core" },
@@ -27,6 +28,10 @@ namespace Monsters
             rb.rotation = angle;
             direction.Normalize();
             movement = direction;
+            if ((Player.position-transform.position).magnitude<_distanceplayer+2)
+            {
+                Instantiate(zombie2Projectile, launchOffset.position, transform.rotation);
+            }
         }
 
         protected override void FixedUpdate()

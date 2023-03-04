@@ -14,7 +14,7 @@ public class Zombie2projectile : MonoBehaviour
     }
     void  Update()
      {
-         transform.position += -transform.right * (Time.deltaTime * bulletspeed);
+         transform.position += transform.right * (Time.deltaTime * bulletspeed);
      }
 
      void OnCollisionEnter2D(Collision2D col)

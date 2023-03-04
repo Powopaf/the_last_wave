@@ -8,13 +8,14 @@ namespace Monsters
         public float playerdistance;
         public Zombie2projectile zombie2Projectile;
         public Transform launchOffset;
-        private float ZombieWeaponRecharging = 0;
-        public Zombie2(float distance=3) :
+        private float _zombieWeaponRecharging =1 ;
+        public Zombie2(float distance=3,Zombie2projectile zP=null) :
             base("Zombie2",
                 new[] { "Core" },
                 50, 15, 100)
         {
             playerdistance = distance;
+            zombie2Projectile = zP;
         }
 
         protected override void Start()
@@ -29,17 +30,17 @@ namespace Monsters
             rb.rotation = angle;
             direction.Normalize();
             movement = direction;
-            if (ZombieWeaponRecharging <= 0)
+            if (_zombieWeaponRecharging <= 0)
             {
-                if ((Player.position-transform.position).magnitude<_distanceplayer+2)
+                if ((Player.position-transform.position).magnitude<distanceplayer+2)
                 {
                     Instantiate(zombie2Projectile, launchOffset.position, transform.rotation);
-                    ZombieWeaponRecharging = 1;
+                    _zombieWeaponRecharging = 1;
                 }
             }
             else
             {
-                ZombieWeaponRecharging -= Time.deltaTime;
+                _zombieWeaponRecharging -= Time.deltaTime;
             }
             
         }

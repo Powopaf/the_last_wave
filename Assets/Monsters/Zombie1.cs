@@ -12,6 +12,7 @@ public class Zombie1 : Zombie
     protected override void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Playertarget = GameObject.FindWithTag("Player").transform;
     }
     protected  override void ZombieMovement(Vector2 direction)
     {
@@ -20,7 +21,7 @@ public class Zombie1 : Zombie
 
     protected override void Update()
     {
-        Vector3 direction = Player.position - transform.position;
+        Vector3 direction = Playertarget.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
         rb.rotation = angle;
         direction.Normalize();
@@ -34,7 +35,7 @@ public class Zombie1 : Zombie
     {
         if (col.transform.CompareTag("Player"))   //Need to change  the tag
         {
-            Players.Survivor survivor = Player.transform.GetComponent<Players.Survivor>(); //Zombie Attack
+            Players.Survivor survivor = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
             survivor.ZombieDamageOnPlayer(_damage); // Zombie Attack
         }
         

@@ -10,7 +10,7 @@ public abstract class Zombie: MonoBehaviour
     private string[] _target;
     private (int, int) _coordinate;
     public float _speed;
-    public Transform Player; //On doit pouvoir changer l'objet avec la fonction TargetZombie()
+    protected Transform Playertarget; //On doit pouvoir changer l'objet avec la fonction TargetZombie()
     public Rigidbody2D rb;
     protected Vector2 movement;
 

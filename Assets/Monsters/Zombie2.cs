@@ -6,33 +6,37 @@ namespace Monsters
     public class Zombie2 : Zombie
     {
         public float playerdistance;
-        public Zombie2projectile zombie2Projectile;
+        public GameObject zombie2Projectile;
         public Transform launchOffset;
         private float _zombieWeaponRecharging =1 ;
-        public Zombie2(float distance=3,Zombie2projectile zP=null) :
+        private float _bulletspeed;
+        public Zombie2(float distance=3,float bulletspeed=1) :
             base("Zombie2",
                 new[] { "Core" },
                 50, 15, 100)
         {
             playerdistance = distance;
-            zombie2Projectile = zP;
+            _bulletspeed = bulletspeed;
+
         }
 
         protected override void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            Playertarget = GameObject.FindWithTag("Player").transform;
+            launchOffset = GameObject.FindWithTag("Zombie2LaunchOffset").transform;
         }
 
         protected override void Update()
         {
-            Vector3 direction = Player.position - transform.position;
+            Vector3 direction = Playertarget.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
             rb.rotation = angle;
             direction.Normalize();
             movement = direction;
             if (_zombieWeaponRecharging <= 0)
             {
-                if ((Player.position-transform.position).magnitude<distanceplayer+2)
+                if ((Playertarget.position-transform.position).magnitude<playerdistance+2)
                 {
                     Instantiate(zombie2Projectile, launchOffset.position, transform.rotation);
                     _zombieWeaponRecharging = 1;
@@ -51,7 +55,7 @@ namespace Monsters
         }
         protected override void ZombieMovement(Vector2 direction)
         {
-            if ((Player.position-transform.position).magnitude > playerdistance)
+            if ((Playertarget.position-transform.position).magnitude > playerdistance)
             {
                 rb.MovePosition((Vector2)transform.position + direction * (_speed * Time.deltaTime));
             }

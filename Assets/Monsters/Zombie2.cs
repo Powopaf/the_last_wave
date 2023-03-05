@@ -32,7 +32,7 @@ namespace Monsters
             movement = direction;
             if (_zombieWeaponRecharging <= 0)
             {
-                if ((Player.position-transform.position).magnitude<distanceplayer+2)
+                if ((Player.position-transform.position).magnitude<playerdistance+2)
                 {
                     Instantiate(zombie2Projectile, launchOffset.position, transform.rotation);
                     _zombieWeaponRecharging = 1;

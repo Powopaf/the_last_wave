@@ -22,7 +22,7 @@ Membres de l'équipe Steeve diff:
 - Nous avons eu des problèmes avec GitHub.
 - problèmes sur la rotations des IA qui doivent regardé le joueur.
 - Problèmes pour faire apparaitre des GameObject.
-- >Difficultés a générer une map avec une matrice
+- Difficultés a générer une map avec une matrice
 
 ## Liens
 - 

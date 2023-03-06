@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Changelog | the_last_wave</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Changelog" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="S2 Projet EPITA" />
+<meta property="og:description" content="S2 Projet EPITA" />
+<link rel="canonical" href="http://localhost:4000/Library/PackageCache/com.unity.mathematics@1.2.6/CHANGELOG.html" />
+<meta property="og:url" content="http://localhost:4000/Library/PackageCache/com.unity.mathematics@1.2.6/CHANGELOG.html" />
+<meta property="og:site_name" content="the_last_wave" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Changelog" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"S2 Projet EPITA","headline":"Changelog","url":"http://localhost:4000/Library/PackageCache/com.unity.mathematics@1.2.6/CHANGELOG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=c6a186477ce810766b84babe63e6b618eef8c008">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">the_last_wave</a></h1>
+      
+
+      <h1 id="changelog">Changelog</h1>
+
+<h2 id="126---2022-02-11">[1.2.6] - 2022-02-11</h2>
+<h3 id="added">Added</h3>
+<h3 id="changed">Changed</h3>
+<ul>
+  <li>Made <code class="language-plaintext highlighter-rouge">Il2CppEagerStaticClassConstructionAttribute</code> internal to avoid conflicts with other definitions outside of the package.
+    <h3 id="deprecated">Deprecated</h3>
+    <h3 id="removed">Removed</h3>
+    <h3 id="fixed">Fixed</h3>
+  </li>
+</ul>
+
+<h2 id="125---2021-11-01">[1.2.5] - 2021-11-01</h2>
+<h3 id="added-1">Added</h3>
+<h3 id="changed-1">Changed</h3>
+<h3 id="deprecated-1">Deprecated</h3>
+<h3 id="removed-1">Removed</h3>
+<h3 id="fixed-1">Fixed</h3>
+<ul>
+  <li>Fixed property drawing when manually drawing a property that was hidden with [HideInInspector].</li>
+</ul>
+
+<h2 id="124---2021-09-22">[1.2.4] - 2021-09-22</h2>
+<h3 id="added-2">Added</h3>
+<ul>
+  <li>Added <code class="language-plaintext highlighter-rouge">[Il2CppEagerStaticClassConstruction]</code> to Unity.Mathematics types to run static constructors at startup. This improves IL2CPP performance slightly for types that have static constructors.
+    <h3 id="changed-2">Changed</h3>
+  </li>
+  <li>License file updated to satisfy Unity’s package validation tests.</li>
+  <li>Changed noise documentation in comments to xmldoc comments.
+    <h3 id="deprecated-2">Deprecated</h3>
+    <h3 id="removed-2">Removed</h3>
+    <h3 id="fixed-2">Fixed</h3>
+  </li>
+  <li>Fixed Equals(object) override which did not check type before casting. This could cause exceptions to be thrown when the object did not match the expected type.</li>
+  <li>Fixed incorrect <code class="language-plaintext highlighter-rouge">math.tzcnt</code> documentation which mentioned leading zero counts instead of trailing zero counts.</li>
+  <li>Fixed <code class="language-plaintext highlighter-rouge">float2x2.Rotate</code> documentation to mention radians instead of degrees.</li>
+  <li>Fixed documentation for methods and properties that were previously undocumented.</li>
+</ul>
+
+<h2 id="121---2020-08-06">[1.2.1] - 2020-08-06</h2>
+
+<h3 id="added-3">Added</h3>
+<h3 id="changed-3">Changed</h3>
+<h3 id="deprecated-3">Deprecated</h3>
+<h3 id="removed-3">Removed</h3>
+<h3 id="fixed-3">Fixed</h3>
+<ul>
+  <li>Fixed warnings for meta files existing even though the files they represent did not exist.</li>
+</ul>
+
+<h3 id="internal-not-ready-for-production">Internal (Not ready for production)</h3>
+
+<h2 id="120---2020-08-03">[1.2.0] - 2020-08-03</h2>
+
+<h3 id="added-4">Added</h3>
+<ul>
+  <li>Added <code class="language-plaintext highlighter-rouge">[MethodImpl(MethodImplOptions.AggressiveInlining)]</code> to many static functions to improve IL2CPP performance.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">compress()</code> that accepts a <code class="language-plaintext highlighter-rouge">float4</code> and <code class="language-plaintext highlighter-rouge">uint4</code>.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">math.project()</code> and <code class="language-plaintext highlighter-rouge">math.projectsafe()</code> for vector projection.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">math.EPSILON</code>, <code class="language-plaintext highlighter-rouge">math.INFINITY</code>, <code class="language-plaintext highlighter-rouge">math.NAN</code> and their double counterparts.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">[Serializable]</code> to <code class="language-plaintext highlighter-rouge">RigidTransform</code>.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">math.ceillog2()</code>.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">math.floorlog2()</code>.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">math.down()</code>, <code class="language-plaintext highlighter-rouge">math.forward()</code>, etc for Cartesian coordinate axes that match UnityEngine Vector3 equivalents.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">math.ispow2()</code>.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">half.MinValueAsHalf</code> and <code class="language-plaintext highlighter-rouge">half.MaxValueAsHalf</code> to avoid having to explicitly convert from float.</li>
+  <li>Added a <code class="language-plaintext highlighter-rouge">float3x3</code> constructor which takes a <code class="language-plaintext highlighter-rouge">float4x4</code> as input.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">[Serializable]</code> to half types.</li>
+  <li>Added some performance tests which can be run from the Unity test project.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">Random.CreateFromIndex()</code> to assist in creating Random instances from loop indices.</li>
+</ul>
+
+<h3 id="changed-4">Changed</h3>
+<h3 id="deprecated-4">Deprecated</h3>
+<h3 id="removed-4">Removed</h3>
+<h3 id="fixed-4">Fixed</h3>
+<ul>
+  <li>Fixed documentation bug where <code class="language-plaintext highlighter-rouge">quaternion.RotateX/Y/Z</code> referred to a <code class="language-plaintext highlighter-rouge">float4x4</code> instead of quaternion.</li>
+  <li>Fixed code generation bugs which could cause Windows and Mac to generate different test code.</li>
+  <li>Fixed some test asserts which used NaNs and signed zeros which failed in IL2CPP builds.</li>
+  <li>Updated documentation for <code class="language-plaintext highlighter-rouge">math.countbits()</code> to include equivalent names on Intel and ARM architectures to aid in discoverability.</li>
+</ul>
+
+<h3 id="internal-not-ready-for-production-1">Internal (Not ready for production)</h3>
+<ul>
+  <li>Added <code class="language-plaintext highlighter-rouge">Unity.Mathematics.Geometry.Plane</code> to represent planes in 3D space.</li>
+  <li>Added more <code class="language-plaintext highlighter-rouge">MinMaxAABB</code> functionality from <code class="language-plaintext highlighter-rouge">Unity.Physics.Aabb</code>.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">Unity.Mathematics.Geometry.Math</code> to hold static functions like AABB transformations.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">MinMaxAABB</code>.</li>
+</ul>
+
+<h2 id="110---2019-07-08">[1.1.0] - 2019-07-08</h2>
+
+<ul>
+  <li>Release stable version</li>
+</ul>
+
+<h2 id="110-preview1---2019-06-27">[1.1.0-preview.1] - 2019-06-27</h2>
+
+<ul>
+  <li>Add new math.bitmask to return a bit mask from a bool4</li>
+</ul>
+
+<h2 id="101---2019-04-15">[1.0.1] - 2019-04-15</h2>
+
+<ul>
+  <li>Release stable version</li>
+  <li>Modify all math constants (e.g <code class="language-plaintext highlighter-rouge">math.PI</code>) to provide float constant by default instead of double. Use for example <code class="language-plaintext highlighter-rouge">math.PI_DBL</code> to get the previous double constant.</li>
+</ul>
+
+<h2 id="100-preview1---2019-02-28">[1.0.0-preview.1] - 2019-02-28</h2>
+
+<ul>
+  <li>Fixed bug where modifications on prefabs could not be reverted for vector properties when using context menu in Inspector.</li>
+  <li>Fixed structure of the package for internal validation</li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Code Editor Package for Visual Studio Code | the_last_wave</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Code Editor Package for Visual Studio Code" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="S2 Projet EPITA" />
+<meta property="og:description" content="S2 Projet EPITA" />
+<link rel="canonical" href="http://localhost:4000/Library/PackageCache/com.unity.ide.vscode@1.2.5/CHANGELOG.html" />
+<meta property="og:url" content="http://localhost:4000/Library/PackageCache/com.unity.ide.vscode@1.2.5/CHANGELOG.html" />
+<meta property="og:site_name" content="the_last_wave" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Code Editor Package for Visual Studio Code" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"S2 Projet EPITA","headline":"Code Editor Package for Visual Studio Code","url":"http://localhost:4000/Library/PackageCache/com.unity.ide.vscode@1.2.5/CHANGELOG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=c6a186477ce810766b84babe63e6b618eef8c008">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">the_last_wave</a></h1>
+      
+
+      <h1 id="code-editor-package-for-visual-studio-code">Code Editor Package for Visual Studio Code</h1>
+
+<h2 id="125---2022-02-07">[1.2.5] - 2022-02-07</h2>
+
+<ul>
+  <li>Introduce OnGeneratedCSProjectFiles, OnGeneratedCSProject and OnGeneratedSlnSolution callbacks.</li>
+  <li>Always use forward slash in source paths</li>
+  <li>Analyzers use absolute paths</li>
+  <li>Ruleset files for roslyn analyzers</li>
+  <li>Extra snap search paths on Ubuntu</li>
+  <li>Specific c# language version for specific unity versions</li>
+  <li>No longer hide .gitignore in VSCode file explorer</li>
+</ul>
+
+<h2 id="123---2020-10-23">[1.2.3] - 2020-10-23</h2>
+
+<p>Remove workaround for VSCode omnisharp (as of https://github.com/OmniSharp/omnisharp-vscode/issues/4113 we no longer need to disable the referenceoutputassemblies).</p>
+
+<h2 id="122---2020-09-04">[1.2.2] - 2020-09-04</h2>
+
+<p>VSC-14 - synchronize solution file when adding new assembly</p>
+
+<h2 id="121---2020-05-15">[1.2.1] - 2020-05-15</h2>
+
+<p>Source filtering adds support for asmref</p>
+
+<h2 id="120---2020-03-04">[1.2.0] - 2020-03-04</h2>
+
+<p>Do not reference projects that has not been generated (case 1211057)
+Only open files that exists (case 1188394)
+Add individual toggle buttons for generating csprojects for packages
+Add support for Roslyn analyzers in project generation through csc.rsp and compiled assembly references
+Remove Release build target from csproj and sln</p>
+
+<h2 id="114---2020-01-02">[1.1.4] - 2020-01-02</h2>
+
+<p>Delta project generation, only recompute the csproj files whose script modified.</p>
+
+<h2 id="113---2019-10-22">[1.1.3] - 2019-10-22</h2>
+
+<p>Exe version of vscode will use Normal ProcessWindowStyle while cmd will use Hidden</p>
+
+<h2 id="112---2019-08-30">[1.1.2] - 2019-08-30</h2>
+
+<p>Fixing OSX open command arguments</p>
+
+<h2 id="111---2019-08-19">[1.1.1] - 2019-08-19</h2>
+
+<p>Support for Player Project. Generates specific csproj files containing files, reference, defines,
+etc. that will show how the assembly will be compiled for a target platform.</p>
+
+<h2 id="110---2019-08-07">[1.1.0] - 2019-08-07</h2>
+
+<p>Adds support for choosing extensions to be opened with VSCode. This can be done through the GUI in Preferences.
+Avoids opening all extensions after the change in core unity.</p>
+
+<h2 id="107---2019-05-15">[1.0.7] - 2019-05-15</h2>
+
+<p>Fix various OSX specific issues.
+Generate project on load if they are not generated.
+Fix path recognition.</p>
+
+<h2 id="106---2019-04-30">[1.0.6] - 2019-04-30</h2>
+
+<p>Ensure asset database is refreshed when generating csproj and solution files.</p>
+
+<h2 id="105---2019-04-27">[1.0.5] - 2019-04-27</h2>
+
+<p>Add support for generating all csproj files.</p>
+
+<h2 id="104---2019-04-18">[1.0.4] - 2019-04-18</h2>
+
+<p>Fix relative package paths.
+Fix opening editor on mac.
+Add %LOCALAPPDATA%/Programs to the path of install paths.</p>
+
+<h2 id="103---2019-01-01">[1.0.3] - 2019-01-01</h2>
+
+<h3 id="this-is-the-first-release-of-unity-package-vscode_editor">This is the first release of <em>Unity Package vscode_editor</em>.</h3>
+
+<p>Using the newly created api to integrate Visual Studio Code with Unity.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Resources | the_last_wave</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Resources" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="S2 Projet EPITA" />
+<meta property="og:description" content="S2 Projet EPITA" />
+<link rel="canonical" href="http://localhost:4000/Library/PackageCache/com.unity.collab-proxy@1.17.7/Editor/Collaborate/Components/" />
+<meta property="og:url" content="http://localhost:4000/Library/PackageCache/com.unity.collab-proxy@1.17.7/Editor/Collaborate/Components/" />
+<meta property="og:site_name" content="the_last_wave" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Resources" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"S2 Projet EPITA","headline":"Resources","url":"http://localhost:4000/Library/PackageCache/com.unity.collab-proxy@1.17.7/Editor/Collaborate/Components/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=c6a186477ce810766b84babe63e6b618eef8c008">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">the_last_wave</a></h1>
+      
+
+      <h1 id="resources">Resources</h1>
+<p>This directory contains the UIElements-based user interface components.</p>
+
+<h2 id="overview">Overview</h2>
+<p>Each component is defined as its own class and file in this directory.</p>
+
+<h2 id="adding-a-new-component">Adding a New Component</h2>
+<p>Each component is a C# class that extends the UiElements’ VisualElement class and provides a UXML factory. If no UXML
+parameters are required/desired, a simple factory like this (taken from AlertBar) works:</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">new</span> <span class="k">class</span> <span class="nc">UxmlFactory</span> <span class="p">:</span> <span class="n">UxmlFactory</span><span class="p">&lt;</span><span class="n">AlertBar</span><span class="p">&gt;</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+<p>Just adding this line to the bottom of the component class with the <code class="language-plaintext highlighter-rouge">&lt;AlertBar&gt;</code> replaced with the name of the class.
+Adding UXML parameters used to be covered in the official docs. Until it is returned: look at the source code for
+any UiElements class such as TextElement.</p>
+
+<p>To use the component in UXML (with editor inspections) the xml schema needs to be updated within the Unity Editor.
+Instructions on how to do that is contained in <code class="language-plaintext highlighter-rouge">../Assets/</code>.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

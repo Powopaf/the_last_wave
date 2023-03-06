@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>2d-extras | the_last_wave</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="2d-extras" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="S2 Projet EPITA" />
+<meta property="og:description" content="S2 Projet EPITA" />
+<link rel="canonical" href="http://localhost:4000/Library/PackageCache/com.unity.2d.tilemap.extras@2.2.3/" />
+<meta property="og:url" content="http://localhost:4000/Library/PackageCache/com.unity.2d.tilemap.extras@2.2.3/" />
+<meta property="og:site_name" content="the_last_wave" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="2d-extras" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"S2 Projet EPITA","headline":"2d-extras","url":"http://localhost:4000/Library/PackageCache/com.unity.2d.tilemap.extras@2.2.3/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=c6a186477ce810766b84babe63e6b618eef8c008">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">the_last_wave</a></h1>
+      
+
+      <h1 id="2d-extras">2d-extras</h1>
+
+<p>2d-extras is a repository containing helpful reusable scripts which you can use to make your games, with a slant towards 2D. Feel free to customise the behavior of the scripts to create new tools for your use case!</p>
+
+<p>Implemented examples using these scripts can be found in the sister repository <a href="https://github.com/Unity-Technologies/2d-techdemos" title="2d-techdemos: Examples for 2d features">2d-techdemos</a>.</p>
+
+<p>All items in the repository are grouped by use for a feature and are listed below.</p>
+
+<h2 id="how-to-use-this">How to use this</h2>
+
+<p>You can use this in two different ways: downloading this repository or adding it to your project’s Package Manager manifest.</p>
+
+<p>Alternatively, you can pick and choose the scripts that you want by placing only these scripts in your project’s <code class="language-plaintext highlighter-rouge">Assets</code> folder.</p>
+
+<h3 id="download">Download</h3>
+
+<h4 id="setup">Setup</h4>
+<p>Download or clone this repository into your project in the folder <code class="language-plaintext highlighter-rouge">Packages/com.unity.2d.tilemap.extras</code>.</p>
+
+<h3 id="package-manager-manifest">Package Manager Manifest</h3>
+
+<h4 id="requirements">Requirements</h4>
+<p><a href="https://git-scm.com/">Git</a> must be installed and added to your path.</p>
+
+<h4 id="setup-1">Setup</h4>
+<p>The following line needs to be added to your <code class="language-plaintext highlighter-rouge">Packages/manifest.json</code> file in your Unity Project under the <code class="language-plaintext highlighter-rouge">dependencies</code> section:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"com.unity.2d.tilemap.extras"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/Unity-Technologies/2d-extras.git#master"</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="tilemap">Tilemap</h3>
+
+<p>For use with Unity <code class="language-plaintext highlighter-rouge">2021.1.0f1</code> onwards.</p>
+
+<p>Please use the <code class="language-plaintext highlighter-rouge">2020.3</code> branch for Unity 2020.1-2020.3 versions.</p>
+
+<p>Please use the <code class="language-plaintext highlighter-rouge">1.5.0-preview</code> tag for Unity 2019.2-2019.4 versions.</p>
+
+<p>Please use the <code class="language-plaintext highlighter-rouge">2019.1</code> tag for Unity 2019.1 versions.</p>
+
+<p>Please use the <code class="language-plaintext highlighter-rouge">2018.3</code> branch or the <code class="language-plaintext highlighter-rouge">2018.3</code> tag for Unity 2018.3-2018.4 versions.</p>
+
+<p>Please use the <code class="language-plaintext highlighter-rouge">2018.2</code> branch or the <code class="language-plaintext highlighter-rouge">2018.2</code> tag for Unity 2018.2 versions.</p>
+
+<p>Please use the <code class="language-plaintext highlighter-rouge">2017</code> branch or the <code class="language-plaintext highlighter-rouge">2017</code> tag for earlier versions of Unity (from 2017.2 and up).</p>
+
+<h5 id="brushes">Brushes</h5>
+
+<ul>
+  <li><strong>Coordinate</strong>: This Brush displays the cell coordinates it is targeting in the SceneView. Use this as an example to create brushes which have extra visualization features when painting onto a Tilemap.</li>
+  <li><strong>Line</strong>: This Brush helps draw lines of Tiles onto a Tilemap. The first click of the mouse sets the starting point of the line and the second click sets the ending point of the line and draws the lines of Tiles. Use this as an example to modify brush painting behaviour to making painting quicker with less actions.</li>
+  <li><strong>Random</strong>: This Brush helps to place random Tiles onto a Tilemap. Use this as an example to create brushes which store specific data per brush and to make brushes which randomize behaviour.</li>
+  <li><strong>Prefab</strong>: This Brush instances and places the containing Prefab onto the targeted location and parents the instanced object to the paint target. Use this as an example to quickly place an assorted type of GameObjects onto structured locations.</li>
+  <li><strong>PrefabRandom</strong>: This Brush instances and places a randomly selected Prefabs onto the targeted location and parents the instanced object to the paint target. Use this as an example to quickly place an assorted type of GameObjects onto structured locations.</li>
+  <li><strong>GameObject</strong>: This Brush instances, places and manipulates GameObjects onto the scene. Use this as an example to create brushes which targets objects other than tiles for manipulation.</li>
+  <li><strong>TintBrush</strong>: Brush to edit Tilemap per-cell tint colors.</li>
+  <li><strong>TintBrushSmooth</strong>: Advanced tint brush for interpolated tint color per-cell. Requires the use of custom shader (see TintedTilemap.shader) and helper component TileTextureGenerator.</li>
+  <li><strong>Group</strong>: This Brush helps to pick Tiles which are grouped together by position. Gaps can be set to identify if Tiles belong to a Group. Limits can be set to ensure that an over-sized Group will not be picked. Use this as an example to create brushes that have the ability to choose and pick whichever Tiles it is interested in.</li>
+</ul>
+
+<h5 id="tiles">Tiles</h5>
+
+<ul>
+  <li><strong>Animated</strong>: Animated Tiles are tiles which run through and display a list of sprites in sequence.</li>
+  <li><strong>Pipeline</strong>: Pipeline Tiles are tiles which take into consideration its orthogonal neighboring tiles and displays a sprite depending on whether the neighboring tile is the same tile.</li>
+  <li><strong>Random</strong>: Random Tiles are tiles which pseudo-randomly pick a sprite from a given list of sprites and a target location, and displays that sprite.</li>
+  <li><strong>Terrain</strong>: Terrain Tiles, similar to Pipeline Tiles, are tiles which take into consideration its orthogonal and diagonal neighboring tiles and displays a sprite depending on whether the neighboring tile is the same tile.</li>
+  <li><strong>RuleTile</strong>: Generic visual tile for creating different tilesets like terrain, pipeline, random or animated tiles.</li>
+  <li><strong>Hexagonal Rule Tile</strong>: A Rule Tile for use with Hexagonal Grids. Enable Flat Top for Flat Top Hexagonal Grids and disable for Pointed Top Hexagonal Grids.</li>
+  <li><strong>Isometric Rule Tile</strong>: A Rule Tile for use with Isometric Grids.</li>
+  <li><strong>RuleOverrideTile</strong>: Rule Override Tiles are Tiles which can override a subset of Rules for a given Rule Tile to provide specialised behaviour while keeping most of the Rules originally set in the Rule Tile.</li>
+  <li><strong>Weighted Random</strong>: Weighted Random Tiles are tiles which randomly pick a sprite from a given list of sprites and a target location, and displays that sprite. The sprites can be weighted with a value to change its probability of appearing.</li>
+</ul>
+
+<h5 id="other">Other</h5>
+
+<ul>
+  <li><strong>GridInformation</strong>: A simple MonoBehaviour that stores and provides information based on Grid positions and keywords.</li>
+  <li><strong>Custom Rules for RuleTile</strong>: This helps to create new custom Rules for the Rule Tile. Check the <a href="https://github.com/Unity-Technologies/2d-extras/wiki">Wiki</a> or this great <a href="https://youtu.be/FwOxLkJTXag">video</a> for more information on how to use this!</li>
+</ul>
+
+<p><a href="http://www.youtube.com/watch?v=FwOxLkJTXag" title="How to make Custom Rule Tiles in Unity"><img src="http://img.youtube.com/vi/FwOxLkJTXag/0.jpg" alt="How to make Custom Rule Tiles in Unity Video" /></a></p>
+
+<h3 id="contribution-notice">Contribution Notice</h3>
+<p>From 7 January 2019 until 12 February 2020, all contributions are licensed under the Unity Companion License for Unity-dependent projects (see https://unity3d.com/legal/licenses/unity_companion_license).</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

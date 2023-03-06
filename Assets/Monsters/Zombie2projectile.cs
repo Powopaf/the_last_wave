@@ -22,8 +22,8 @@ public class Zombie2projectile : Zombie2
      {
          if (col.transform.CompareTag("Player"))
          {
-             Players.Survivor survivor = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
-             survivor.ZombieDamageOnPlayer(_damage); // Zombie Attack 
+             Players.Player player = Playertarget.transform.GetComponent<Players.Player>(); //Zombie Attack
+             player.ZombieDamageOnPlayer(_damage); // Zombie Attack 
          }
          Destroy(gameObject);
      }

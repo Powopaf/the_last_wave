@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Assets | the_last_wave</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Assets" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="S2 Projet EPITA" />
+<meta property="og:description" content="S2 Projet EPITA" />
+<link rel="canonical" href="http://localhost:4000/Library/PackageCache/com.unity.collab-proxy@1.17.7/Editor/Collaborate/Assets/" />
+<meta property="og:url" content="http://localhost:4000/Library/PackageCache/com.unity.collab-proxy@1.17.7/Editor/Collaborate/Assets/" />
+<meta property="og:site_name" content="the_last_wave" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Assets" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"S2 Projet EPITA","headline":"Assets","url":"http://localhost:4000/Library/PackageCache/com.unity.collab-proxy@1.17.7/Editor/Collaborate/Assets/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=c6a186477ce810766b84babe63e6b618eef8c008">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">the_last_wave</a></h1>
+      
+
+      <h1 id="assets">Assets</h1>
+<p>This directory contains the non-code assets for the Collaborate UI.</p>
+
+<h2 id="overview">Overview</h2>
+
+<pre><code class="language-none">&lt;root&gt;
+  ├── Icons/
+  ├── Layouts/
+  ├── Styles/
+  ├── StringAssets.cs
+  └── UiConstants.cs
+</code></pre>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">StringAssets.cs</code> contains all the static string resources for the package.</li>
+  <li><code class="language-plaintext highlighter-rouge">UiConstants.cs</code> conatins a number of static values used to control the UI.</li>
+</ul>
+
+<h2 id="editing">Editing</h2>
+<p>USS and UXML files are inspired by the respective CSS and XML files. USS is a non-struct subset of CSS and each View and
+Component has the option of having its own USS and/or UXML file. For USS, to specifiy dark vs light style, prepend a <code class="language-plaintext highlighter-rouge">.dark</code>
+or <code class="language-plaintext highlighter-rouge">.light</code> to the line. For example:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.dark</span> <span class="nc">.divider-vertical</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--divider-dark</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nc">.light</span> <span class="nc">.divider-vertical</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--divider-light</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Documentation about the two file types is provided within the Unity documentation for UiElements:
+https://docs.unity3d.com/2020.1/Documentation/Manual/UIElements.html</p>
+
+<p>In general each Component and View will have its own layout file. When adding new components with their uxml factories
+the UIElements schema will need to updated within the editor if you want auto completion in your editor. Click
+<code class="language-plaintext highlighter-rouge">Assets/Update UIElements Schema</code> in the Editor to update the definitions.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

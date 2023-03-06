@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Changelog | the_last_wave</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Changelog" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="S2 Projet EPITA" />
+<meta property="og:description" content="S2 Projet EPITA" />
+<link rel="canonical" href="http://localhost:4000/Library/PackageCache/com.unity.services.core@1.6.0/CHANGELOG.html" />
+<meta property="og:url" content="http://localhost:4000/Library/PackageCache/com.unity.services.core@1.6.0/CHANGELOG.html" />
+<meta property="og:site_name" content="the_last_wave" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Changelog" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"S2 Projet EPITA","headline":"Changelog","url":"http://localhost:4000/Library/PackageCache/com.unity.services.core@1.6.0/CHANGELOG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=c6a186477ce810766b84babe63e6b618eef8c008">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">the_last_wave</a></h1>
+      
+
+      <h1 id="changelog">Changelog</h1>
+
+<p>All notable changes to this package will be documented in this file.</p>
+
+<p>The format is based on <a href="http://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
+and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+
+<h2 id="160---2022-10-31">[1.6.0] - 2022-10-31</h2>
+
+<h3 id="changed">Changed</h3>
+
+<ul>
+  <li>Services configuration file isn’t temporarily added to the StreamingAssets folder during builds on Unity 2021.3 and up.</li>
+  <li>Services initialization without a linked project id will fail (throw <code class="language-plaintext highlighter-rouge">UnityProjectNotLinkedException</code>).</li>
+</ul>
+
+<h3 id="fixed">Fixed</h3>
+
+<ul>
+  <li>Persisting telemetry no longer logs errors, unless <code class="language-plaintext highlighter-rouge">ENABLE_UNITY_SERVICES_CORE_TELEMETRY_LOGGING</code> is enabled as scripting define. Diagnostics are sent when persisting telemetry produces an error.</li>
+</ul>
+
+<h2 id="152---2022-10-17">[1.5.2] - 2022-10-17</h2>
+
+<h3 id="fixed-1">Fixed</h3>
+
+<ul>
+  <li>Core will no longer fail initialization when it fails to find a stripped service package.</li>
+</ul>
+
+<h2 id="151---2022-10-06">[1.5.1] - 2022-10-06</h2>
+
+<h3 id="added">Added</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">UnityServices.ExternalUserId</code> which can be used to pass a user identifier from a third party provider to Unity Gaming Services</li>
+</ul>
+
+<h3 id="fixed-2">Fixed</h3>
+
+<ul>
+  <li>Services Core failing to find all <code class="language-plaintext highlighter-rouge">IInitializablePackage</code> if an unity package implements it multiple times.</li>
+</ul>
+
+<h2 id="150---2022-10-03">[1.5.0] - 2022-10-03</h2>
+
+<h3 id="added-1">Added</h3>
+
+<ul>
+  <li>All <code class="language-plaintext highlighter-rouge">IInitializablePackage</code> initialization time is now measured by Services Core.</li>
+</ul>
+
+<h3 id="changed-1">Changed</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CoreRegistryInitializer</code> now throws a <code class="language-plaintext highlighter-rouge">ServicesInitializationException</code> instead of an explicit <code class="language-plaintext highlighter-rouge">NullReferenceException</code> when the dependency tree is null.</li>
+  <li>ActionScheduler updated to be thread safe</li>
+</ul>
+
+<h3 id="fixed-3">Fixed</h3>
+
+<ul>
+  <li>A case where null configuration values were causing serialization issues</li>
+  <li>Issue with stripping when authentication APIs are not used.</li>
+</ul>
+
+<h2 id="143---2022-07-28">[1.4.3] - 2022-07-28</h2>
+
+<h3 id="fixed-4">Fixed</h3>
+
+<ul>
+  <li>Added diagnostic message length limit and telemetry count limit, so telemetry payload will not be rejected by telemetry service.</li>
+</ul>
+
+<h3 id="changed-2">Changed</h3>
+
+<ul>
+  <li>Telemetry logs now use the <code class="language-plaintext highlighter-rouge">ENABLE_UNITY_SERVICES_CORE_TELEMETRY_LOGGING</code> define instead
+of <code class="language-plaintext highlighter-rouge">ENABLE_UNITY_SERVICES_CORE_VERBOSE_LOGGING</code>.</li>
+</ul>
+
+<h2 id="142---2022-06-16">[1.4.2] - 2022-06-16</h2>
+
+<h3 id="changed-3">Changed</h3>
+
+<ul>
+  <li>Log error instead of warning when core initialize with no cloud project id</li>
+</ul>
+
+<h3 id="added-2">Added</h3>
+
+<ul>
+  <li>Log a JSON containing the common configuration shared among all services for debugging purposes when
+using <code class="language-plaintext highlighter-rouge">ENABLE_UNITY_SERVICES_CORE_VERBOSE_LOGGING</code> as a scripting define.</li>
+  <li>Log warning when building a project with core package included and without linking the project in project settings.</li>
+</ul>
+
+<h3 id="fixed-5">Fixed</h3>
+
+<ul>
+  <li>NullReferenceException while telemetry was provided an empty file, fixed by introducing a null check</li>
+  <li>DirectoryNotFoundException happened inconsistently on Switch, fixed by resolving racing condition issue</li>
+</ul>
+
+<h2 id="142-pre2---2022-05-27">[1.4.2-pre.2] - 2022-05-27</h2>
+
+<h3 id="fixed-6">Fixed</h3>
+
+<ul>
+  <li>NSUserDefaults handling null values</li>
+</ul>
+
+<h2 id="141---2022-05-20">[1.4.1] - 2022-05-20</h2>
+
+<h3 id="added-3">Added</h3>
+
+<ul>
+  <li>Log warning when core initialize with no cloud project id</li>
+  <li>Add a message in “Link your unity project” popup to inform the user has to sign-up</li>
+</ul>
+
+<h2 id="140---2022-04-29">[1.4.0] - 2022-04-29</h2>
+
+<h3 id="added-4">Added</h3>
+
+<ul>
+  <li>Add Vivox public interfaces: <code class="language-plaintext highlighter-rouge">IVivox</code>, <code class="language-plaintext highlighter-rouge">IVivoxTokenProviderInternal</code>, to enable interactions with the Vivox service.</li>
+</ul>
+
+<h2 id="132---2022-04-14">[1.3.2] - 2022-04-14</h2>
+
+<h3 id="fixed-7">Fixed</h3>
+
+<ul>
+  <li>Crash on Switch when initializing telemetry persistence. Now telemetry won’t persist anything on Switch.</li>
+  <li>NullReferenceException while linking the project</li>
+  <li>Issue with user roles and service flags</li>
+</ul>
+
+<h2 id="131---2022-03-29">[1.3.1] - 2022-03-29</h2>
+
+<h3 id="changed-4">Changed</h3>
+
+<ul>
+  <li>Newtonsoft package dependency update to 3.0.2.</li>
+</ul>
+
+<h2 id="130---2022-03-21">[1.3.0] - 2022-03-21</h2>
+
+<h3 id="added-5">Added</h3>
+
+<ul>
+  <li>Add QoS public interface: <code class="language-plaintext highlighter-rouge">IQosResults</code> and return type <code class="language-plaintext highlighter-rouge">QosResult</code>, to provide QoS functionality to other packages</li>
+</ul>
+
+<h3 id="fixed-8">Fixed</h3>
+
+<ul>
+  <li>Code stripping when core package is not used</li>
+  <li>Retrying to initialize all services after a first attempt failed.</li>
+</ul>
+
+<h2 id="120---2022-02-23">[1.2.0] - 2022-02-23</h2>
+
+<h3 id="added-6">Added</h3>
+
+<ul>
+  <li>Add Wire public interfaces: <code class="language-plaintext highlighter-rouge">IWire</code>, <code class="language-plaintext highlighter-rouge">IChannel</code>, <code class="language-plaintext highlighter-rouge">IChannelTokenProvider</code>, and their dependencies, to enable
+interactions with the Wire service.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">IUnityThreadUtils</code> component to simplify working with the Unity thread.</li>
+</ul>
+
+<h3 id="changed-5">Changed</h3>
+
+<ul>
+  <li>Newtonsoft dependency to use the latest major Newtonsoft version, 13.0.1.</li>
+</ul>
+
+<h2 id="110-pre69---2022-02-17">[1.1.0-pre.69] - 2022-02-17</h2>
+
+<h3 id="added-7">Added</h3>
+
+<ul>
+  <li>Add <code class="language-plaintext highlighter-rouge">IEnvironmentId</code> component to provide the environment ID from the Access Token to other packages</li>
+  <li><code class="language-plaintext highlighter-rouge">OrganizationProvider</code> &amp; <code class="language-plaintext highlighter-rouge">IOrganizationHandler</code> to enable package developers to access Organization Key.</li>
+</ul>
+
+<h2 id="110-pre41---2021-12-08">[1.1.0-pre.41] - 2021-12-08</h2>
+
+<h3 id="added-8">Added</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">IDiagnosticsFactory</code> component &amp; <code class="language-plaintext highlighter-rouge">IDiagnostics</code> to enable package developers to send diagnostics for their package.</li>
+  <li>Add <code class="language-plaintext highlighter-rouge">AnalyticsOptionsExtensions</code> with <code class="language-plaintext highlighter-rouge">SetAnalyticsUserId(string identifier)</code> to set a custom analytics user id.</li>
+  <li><code class="language-plaintext highlighter-rouge">IMetricsFactory</code> component &amp; <code class="language-plaintext highlighter-rouge">IMetrics</code> to enable package developers to send metrics for their package.</li>
+</ul>
+
+<h3 id="fixed-9">Fixed</h3>
+
+<ul>
+  <li>Calling <code class="language-plaintext highlighter-rouge">UnityServices.InitializeAsync(null)</code> throwing a null reference exception.</li>
+</ul>
+
+<h2 id="110-pre11---2021-10-25">[1.1.0-pre.11] - 2021-10-25</h2>
+
+<h3 id="added-9">Added</h3>
+
+<ul>
+  <li>Getter methods for <code class="language-plaintext highlighter-rouge">ConfigurationBuilder</code>.</li>
+</ul>
+
+<h3 id="fixed-10">Fixed</h3>
+
+<ul>
+  <li>Fix layout for Project Bind Redirect Popup for Light theme</li>
+</ul>
+
+<h2 id="110-pre10---2021-10-08">[1.1.0-pre.10] - 2021-10-08</h2>
+
+<h3 id="added-10">Added</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">IActionScheduler</code> component to schedule actions at runtime.</li>
+  <li><code class="language-plaintext highlighter-rouge">ICloudProjectId</code> component to access cloudProjectId.</li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+
+<ul>
+  <li>Removed the Service Activation Popup</li>
+</ul>
+
+<h3 id="fixed-11">Fixed</h3>
+
+<ul>
+  <li>Fix define check bug on Android and WebGL</li>
+</ul>
+
+<h2 id="110-pre9---2021-09-24">[1.1.0-pre.9] - 2021-09-24</h2>
+
+<h3 id="added-11">Added</h3>
+
+<ul>
+  <li>New common error codes: <code class="language-plaintext highlighter-rouge">ApiMissing</code>, <code class="language-plaintext highlighter-rouge">RequestRejected</code>, <code class="language-plaintext highlighter-rouge">NotFound</code>, <code class="language-plaintext highlighter-rouge">InvalidRequest</code>.</li>
+  <li>Link project pop-up dialog</li>
+</ul>
+
+<h3 id="fixed-12">Fixed</h3>
+
+<ul>
+  <li>Core registry throwing exceptions when domain reloads are disabled</li>
+</ul>
+
+<h2 id="110-pre8---2021-08-06">[1.1.0-pre.8] - 2021-08-06</h2>
+
+<h3 id="added-12">Added</h3>
+
+<ul>
+  <li>Added base exception type for other Operate SDKs to derive from. Consistent error handling experience.</li>
+</ul>
+
+<h2 id="110-pre7---2021-08-06">[1.1.0-pre.7] - 2021-08-06</h2>
+
+<h3 id="added-13">Added</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">UnityServices</code> class at runtime. It is the entry point to initialize unity services with <code class="language-plaintext highlighter-rouge">InitializeAsync()</code>
+or <code class="language-plaintext highlighter-rouge">InitializeAsync(InitializationOptions)</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">InitializationOptions</code> to enable services initialization customization through code.</li>
+  <li><code class="language-plaintext highlighter-rouge">IInstallationId</code> component to access the Unity Installation Identifier.</li>
+  <li><code class="language-plaintext highlighter-rouge">IEnvironments</code> component to get the environment currently used by services.</li>
+  <li><code class="language-plaintext highlighter-rouge">SetEnvironmentName</code> initialization option to set the environment services should use.</li>
+  <li>MiniJson.</li>
+  <li><code class="language-plaintext highlighter-rouge">IProjectConfiguration</code> component to access services settings at runtime.</li>
+  <li><code class="language-plaintext highlighter-rouge">IConfigurationProvider</code> to provide configuration values that need to be available at runtime.</li>
+</ul>
+
+<h2 id="101---2021-06-28">[1.0.1] - 2021-06-28</h2>
+
+<h3 id="added-14">Added</h3>
+
+<ul>
+  <li>DevEx integration into the editor.</li>
+  <li>Service Activation popup.</li>
+</ul>
+
+<h3 id="this-is-the-first-release-of-comunityservicescore">This is the first release of <em>com.unity.services.core</em>.</h3>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -9,7 +9,7 @@ namespace Players
     {
         private int Health { get; set; }
         private int Damage { get; set; }
-        private (int X, int Y) _coordinate;
+        //private (int X, int Y) _coordinate;
         private List<Item> _item_inv;
         private (string,int)[] _ressource_inv;
         private string _name;
@@ -24,7 +24,7 @@ namespace Players
         {
             Health = health;
             Damage = damage;
-            _coordinate = (0,0);
+            //_coordinate = (0,0);
             _name = name;
             _heal = heal;
             _speed = speed;

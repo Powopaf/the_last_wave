@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Monsters;
 using UnityEngine;
 
-public class Zombie2projectile : MonoBehaviour
+public class Zombie2projectile : Zombie2
 {
     public float bulletspeed;
 
@@ -12,14 +12,19 @@ public class Zombie2projectile : MonoBehaviour
     {
         bulletspeed = speed;
     }
-    void  Update()
+    new void  Update()
      {
          transform.position += transform.right * (Time.deltaTime * bulletspeed);
          
      }
 
-     void OnCollisionEnter2D(Collision2D col)
+     new void OnCollisionEnter2D(Collision2D col)
      {
+         if (col.transform.CompareTag("Player"))
+         {
+             Players.Survivor survivor = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
+             survivor.ZombieDamageOnPlayer(_damage); // 
+         }
          Destroy(gameObject);
      }
 }

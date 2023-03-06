@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 
@@ -21,9 +20,11 @@ public class Map : MonoBehaviour
             for (int j = 0; j < _mapDefinition.Width; j++)
             {
                 Tile t = tiles[_mapDefinition.Map[i, j]];
-                Instantiate(t.visual, 
-                    new Vector3(i, j, 0),
-                    Quaternion.identity);
+                GameObject go = Instantiate(t.visual, new Vector3(i, j, 0), Quaternion.identity);
+                if (!t.iswalkable)
+                {
+                    go.AddComponent<BoxCollider2D>();
+                }
             }
         }
     }

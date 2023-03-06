@@ -26,4 +26,8 @@ public class Zombie4 : Zombie
     {
         throw new NotImplementedException();
     }
+    protected override void OnCollisionEnter2D(Collision2D col)
+    {
+        throw new NotImplementedException();
+    }
 }

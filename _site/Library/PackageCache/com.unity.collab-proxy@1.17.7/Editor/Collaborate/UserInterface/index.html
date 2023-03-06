@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Collaborate User Interface | the_last_wave</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Collaborate User Interface" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="S2 Projet EPITA" />
+<meta property="og:description" content="S2 Projet EPITA" />
+<link rel="canonical" href="http://localhost:4000/Library/PackageCache/com.unity.collab-proxy@1.17.7/Editor/Collaborate/UserInterface/" />
+<meta property="og:url" content="http://localhost:4000/Library/PackageCache/com.unity.collab-proxy@1.17.7/Editor/Collaborate/UserInterface/" />
+<meta property="og:site_name" content="the_last_wave" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Collaborate User Interface" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"S2 Projet EPITA","headline":"Collaborate User Interface","url":"http://localhost:4000/Library/PackageCache/com.unity.collab-proxy@1.17.7/Editor/Collaborate/UserInterface/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=c6a186477ce810766b84babe63e6b618eef8c008">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">the_last_wave</a></h1>
+      
+
+      <h1 id="collaborate-user-interface">Collaborate User Interface</h1>
+<p>This directory contains the logic to present the collaborate UI.</p>
+
+<h2 id="overview">Overview</h2>
+<p>This is the structure of the directory:</p>
+<pre><code class="language-none">&lt;root&gt;
+  ├── TestWindows/
+  ├── Bootstrap.cs
+  ├── CollaborateWindow.cs
+  ├── ToolbarButton.cs
+  └── WindowCache.cs
+</code></pre>
+<p>The <code class="language-plaintext highlighter-rouge">TestWindows/</code> directory contains testing windows and is not present in release builds.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Bootstrap.cs</code> provides the code to initialize the toolbar button on start up.</p>
+
+<p><code class="language-plaintext highlighter-rouge">CollaborateWindow.cs</code> is the entry point for the user interface. It spawns a EditorWindow and sets up the UI.</p>
+
+<p><code class="language-plaintext highlighter-rouge">ToolbarButton.cs</code> contains the code to create, update, and handle the collaborate button in the toolbar.</p>
+
+<p><code class="language-plaintext highlighter-rouge">WindowCache.cs</code> provides a collection of fields that are preserved during domain reload and editor restart. Some
+examples are the the current commit message and the currently selected items for the simple UI/UX. Any data that would
+impact UX if lost during reload or exit, should be saved in here.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

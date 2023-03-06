@@ -13,6 +13,7 @@ public class Zombie1 : Zombie
     {
         rb = GetComponent<Rigidbody2D>();
         Playertarget = GameObject.FindWithTag("Player").transform;
+        
     }
     protected  override void ZombieMovement(Vector2 direction)
     {
@@ -40,4 +41,5 @@ public class Zombie1 : Zombie
         }
         
     }
+    
 }

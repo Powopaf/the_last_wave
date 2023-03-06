@@ -38,7 +38,8 @@ namespace Monsters
             {
                 if ((Playertarget.position-transform.position).magnitude<playerdistance+2)
                 {
-                    Instantiate(zombie2Projectile, launchOffset.position, transform.rotation);
+                     GameObject t = Instantiate(zombie2Projectile, launchOffset.position, transform.rotation);
+                    t.tag = "Zombie2Projectile";
                     _zombieWeaponRecharging = 1;
                 }
             }

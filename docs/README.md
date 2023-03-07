@@ -12,7 +12,6 @@ Membres de l'équipe Steeve diff:
 
 ### 26/01/23 --> création du repo git
 ### 28/02/23 --> déplacement du joueur 
-### 28/03/23 --> disparition d'un membre
 ### 01/03/23 --> création du premier zombie
 ### 02/03/23 --> création de la map (via une matrice)
 ### 03/03/23 --> ajout de la caméra joueur

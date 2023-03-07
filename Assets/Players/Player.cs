@@ -20,6 +20,7 @@ namespace Players
         protected int move = -1;
         public Rigidbody2D rb;
         [SerializeField] private Camera camera;
+        public Animator _animator;
         
         public Player(int health = 1, int damage = 1,
             int speed = 1, int heal = 1, string name = "")
@@ -47,6 +48,7 @@ namespace Players
 
         protected void Update()
         {
+            _animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));
             Vector3 mousepos = Input.mousePosition;  
             mousepos.z = camera.nearClipPlane;
             Vector3 worldpmousepos = camera.ScreenToWorldPoint(mousepos);

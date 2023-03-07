@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 
@@ -15,10 +16,11 @@ namespace Players
         private string _name;
         private  int _heal;
         public float _speed;
-        public Rigidbody2D rb;
         protected Vector2 dir;
         protected int move = -1;
-
+        public Rigidbody2D rb;
+        [SerializeField] private Camera camera;
+        
         public Player(int health = 1, int damage = 1,
             int speed = 1, int heal = 1, string name = "")
         {
@@ -32,8 +34,35 @@ namespace Players
             _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
         }
 
-        protected abstract void FixedUpdate();
-        protected abstract void MovePlayer();
+        protected void Start()
+        {
+            rb = GetComponent<Rigidbody2D>();
+            camera=Camera.main;
+        }
+
+        protected void MovePlayer()
+        {
+            rb.MovePosition(rb.position + dir * (_speed * Time.deltaTime));
+        }
+
+        protected void Update()
+        {
+            Vector3 mousepos = Input.mousePosition;  
+            mousepos.z = camera.nearClipPlane;
+            Vector3 worldpmousepos = camera.ScreenToWorldPoint(mousepos);
+            Vector3 direction = worldpmousepos - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
+            rb.rotation = angle;
+        }
+        
+
+        protected void FixedUpdate()
+        {
+            dir.x = Input.GetAxis("Horizontal");
+            dir.y = Input.GetAxis("Vertical");
+            MovePlayer();
+        }
+        
         
         private void Looting(Item[] loot)
         {

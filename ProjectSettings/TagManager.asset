@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Zombie2LaunchOffset
   - Zombie2Projectile
+  - PlayerLaunchOffset
   layers:
   - Default
   - TransparentFX

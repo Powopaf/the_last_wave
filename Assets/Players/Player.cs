@@ -7,7 +7,8 @@ namespace Players
 {
     public abstract class Player : MonoBehaviour
     {
-        private int Health { get; set; }
+        public int Health { get; set; }
+        public int MaxHealth { get; }
         private int Damage { get; set; }
         //private (int X, int Y) _coordinate;
         private List<Item> _item_inv;
@@ -19,9 +20,12 @@ namespace Players
         protected Vector2 dir;
         protected int move = -1;
 
+        [SerializeField] HealthBar _healthBar;
+
         public Player(int health = 1, int damage = 1,
-            int speed = 1, int heal = 1, string name = "")
+            int speed = 1, int heal = 1, string name = "", int maxHealth = 1)
         {
+            MaxHealth = maxHealth;
             Health = health;
             Damage = damage;
             //_coordinate = (0,0);
@@ -55,7 +59,14 @@ namespace Players
 
         private void Heal(int life)
         {
-            Health += life * _heal;
+            if (life * _heal >= MaxHealth)
+            {
+                Health = MaxHealth;
+            }
+            else
+            {
+                Health += life * _heal;
+            }
         }
 
         public void ZombieDamageOnPlayer(int damage)
@@ -69,6 +80,17 @@ namespace Players
             {
                 Debug.Log("the player died!!!"); // To see the effect pf the Zombie Attack
             }
+        }
+
+        void Start()
+        {
+            _healthBar.SetMaxHealth(MaxHealth);
+            _healthBar.SetHealth(MaxHealth);
+        }
+
+        void Update()
+        {
+            _healthBar.SetHealth(Health);
         }
     }
 }

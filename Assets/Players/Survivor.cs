@@ -4,7 +4,7 @@ namespace Players
 {
     public class Survivor : Player
     {
-        public Survivor() : base(125, 25, 30) { }
+        public Survivor() : base(125, 25, 30, 1 , "", 125) { }
         
         protected override void FixedUpdate()
         {

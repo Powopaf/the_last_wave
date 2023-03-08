@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 
@@ -16,12 +17,14 @@ namespace Players
         private string _name;
         private  int _heal;
         public float _speed;
-        public Rigidbody2D rb;
         protected Vector2 dir;
         protected int move = -1;
-
         [SerializeField] HealthBar _healthBar;
-
+        public Rigidbody2D rb;
+        [SerializeField] protected Camera camera;
+        public Animator _animator;
+        protected GameObject LaunchOffsetPlayer;
+        protected Rigidbody2D RblaunchOffsetPLayer;
         public Player(int health = 1, int damage = 1,
             int speed = 1, int heal = 1, string name = "", int maxHealth = 1)
         {
@@ -36,8 +39,40 @@ namespace Players
             _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
         }
 
-        protected abstract void FixedUpdate();
-        protected abstract void MovePlayer();
+        protected void Start()
+        {
+            rb = GetComponent<Rigidbody2D>();
+            camera=Camera.main;
+            LaunchOffsetPlayer = GameObject.FindWithTag("PlayerLaunchOffset");
+            RblaunchOffsetPLayer = LaunchOffsetPlayer.GetComponent<Rigidbody2D>();
+        }
+
+        protected void MovePlayer()
+        {
+            rb.MovePosition(rb.position + dir * (_speed * Time.deltaTime));
+        }
+
+        protected void Update()
+        {
+            Vector3 mousepos = Input.mousePosition;  
+            mousepos.z = camera.nearClipPlane;
+            Vector3 worldpmousepos = camera.ScreenToWorldPoint(mousepos);
+            Vector3 direction = worldpmousepos - LaunchOffsetPlayer.transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
+            RblaunchOffsetPLayer.rotation = angle;
+            _animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));
+           _animator.SetFloat("Vertical",Input.GetAxis("Vertical"));
+        }
+        
+
+        protected void FixedUpdate()
+        {
+            dir.x = Input.GetAxis("Horizontal");
+            dir.y = Input.GetAxis("Vertical");
+            MovePlayer();
+            
+        }
+        
         
         private void Looting(Item[] loot)
         {

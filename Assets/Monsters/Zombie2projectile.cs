@@ -8,7 +8,7 @@ public class Zombie2projectile : Zombie2
 {
     public float bulletspeed;
 
-    public Zombie2projectile(float speed)
+    public Zombie2projectile(float speed=10)
     {
         bulletspeed = speed;
     }
@@ -22,8 +22,8 @@ public class Zombie2projectile : Zombie2
      {
          if (col.transform.CompareTag("Player"))
          {
-             Players.Player player = Playertarget.transform.GetComponent<Players.Player>(); //Zombie Attack
-             player.ZombieDamageOnPlayer(_damage); // Zombie Attack 
+             Players.Survivor player = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
+             player.ZombieDamageOnPlayer(20); // Zombie Attack 
          }
          Destroy(gameObject);
      }

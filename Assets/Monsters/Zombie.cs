@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class Zombie: MonoBehaviour
 {
     private int _health;
-    protected int _damage;
+    public int _damage;
     private string _name;
     //private Item[] _loot;
     private string[] _target;

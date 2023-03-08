@@ -1,34 +1,31 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.PlayerLoop;
-
-public class Protections : Item
+namespace Item.Protections
 {
-    private int _shield;
-
-    public Protections(int durability = 1, int shield = 1)
+    public class Protections : Item
     {
-        _durability = durability;
-        _shield = shield;
-    }
+        private int _shield;
 
-    private void UpdateProtection()
-    {
-        _durability += 5;
-        _shield += 5;
-    }
-
-    protected override void UpdateMe(int i)
-    {
-        if (i < 0)
+        public Protections(int durability = 1, int shield = 1)
         {
-            _durability -= 1;
+            _durability = durability;
+            _shield = shield;
         }
-        else
+
+        private void UpdateProtection()
         {
-            _durability += 1;
+            _durability += 5;
+            _shield += 5;
+        }
+
+        protected override void UpdateMe(int i)
+        {
+            if (i < 0)
+            {
+                _durability -= 1;
+            }
+            else
+            {
+                _durability += 1;
+            }
         }
     }
 }

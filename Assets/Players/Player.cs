@@ -2,30 +2,31 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
+using Scenes.ATH;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace Players
 {
     public abstract class Player : MonoBehaviour
     {
-        public int Health { get; set; }
-        public int MaxHealth { get; }
+        private int Health { get; set; }
+        private int MaxHealth { get; }
         private int Damage { get; set; }
         //private (int X, int Y) _coordinate;
-        private List<Item> _item_inv;
+        private List<Item.Item> _item_inv;
         private (string,int)[] _ressource_inv;
         private string _name;
         private  int _heal;
-        public float _speed;
-        protected Vector2 dir;
-        protected int move = -1;
-        [SerializeField] HealthBar _healthBar;
+        public float speed;
+        private Vector2 dir;
+        [SerializeField] private HealthBar healthBar;
         public Rigidbody2D rb;
-        [SerializeField] protected Camera camera;
-        public Animator _animator;
-        protected GameObject LaunchOffsetPlayer;
-        protected Rigidbody2D RblaunchOffsetPLayer;
+        [SerializeField] protected new Camera camera;
+        public Animator animator;
+        private GameObject LaunchOffsetPlayer;
+        private Rigidbody2D RblaunchOffsetPLayer;
         
         public Player(int health = 1, int damage = 1,
             int speed = 1, int maxHealth = 1, int heal = 1, string name = "")
@@ -36,35 +37,35 @@ namespace Players
             //_coordinate = (0,0);
             _name = name;
             _heal = heal;
-            _speed = speed;
-            _item_inv = new List<Item>();
+            this.speed = speed;
+            _item_inv = new List<Item.Item>();
             _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
         }
 
         protected void Start()
         {
-            _healthBar.SetMaxHealth(MaxHealth);
-            _healthBar.SetHealth(MaxHealth);
+            healthBar.SetMaxHealth(MaxHealth);
+            healthBar.SetHealth(MaxHealth);
             rb = GetComponent<Rigidbody2D>();
             camera=Camera.main;
             LaunchOffsetPlayer = GameObject.FindWithTag("PlayerLaunchOffset");
             RblaunchOffsetPLayer = LaunchOffsetPlayer.GetComponent<Rigidbody2D>();
-            _healthBar.SetMaxHealth(MaxHealth);
-            _healthBar.SetHealth(MaxHealth);
+            healthBar.SetMaxHealth(MaxHealth);
+            healthBar.SetHealth(MaxHealth);
 
         }
 
-        protected void MovePlayer()
+        private void MovePlayer()
         {
-            rb.MovePosition(rb.position + dir * (_speed * Time.deltaTime));
+            rb.MovePosition(rb.position + dir * (speed * Time.deltaTime));
         }
 
         protected void Update()
         {
             Vector3 mousepos = Input.mousePosition; 
-            _animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));;
-            _animator.SetFloat("Vertical",Input.GetAxis("Vertical"));
-            _healthBar.SetHealth(Health);
+            animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));;
+            animator.SetFloat("Vertical",Input.GetAxis("Vertical"));
+            healthBar.SetHealth(Health);
             mousepos.z = camera.nearClipPlane;
             Vector3 worldpmousepos = camera.ScreenToWorldPoint(mousepos);
             Vector3 direction = worldpmousepos - LaunchOffsetPlayer.transform.position;
@@ -78,10 +79,10 @@ namespace Players
             dir.x = Input.GetAxis("Horizontal");
             dir.y = Input.GetAxis("Vertical");
             MovePlayer();
-            _healthBar.SetHealth(Health);
+            healthBar.SetHealth(Health);
         }
         
-        private void Looting(Item[] loot)
+        private void Looting(Item.Item[] loot)
         {
             int i = 0;
             while (_item_inv.Count <= 9 && i < loot.Length)
@@ -90,7 +91,7 @@ namespace Players
             }
         }
 
-        private void Looting(Item item)
+        private void Looting(Item.Item item)
         {
             if (_item_inv.Count == 9)
             {

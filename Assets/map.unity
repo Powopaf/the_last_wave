@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &181075033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 181075034}
+  m_Layer: 0
+  m_Name: LauchOffset
+  m_TagString: Zombie2LaunchOffset
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &181075034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181075033}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2024744003}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +165,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -200,13 +232,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.53, z: -10}
+  m_LocalPosition: {x: 11.52, y: 10.22, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145fc8c7ddba4ce47b30f654595f7403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1165020766}
 --- !u!1 &1165020761
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +267,7 @@ GameObject:
   - component: {fileID: 1165020762}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,8 +331,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3436648e41804b34482fa6e61d56b6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 20
   rb: {fileID: 1165020762}
+  camera: {fileID: 519420031}
+  _animator: {fileID: 0}
 --- !u!212 &1165020765
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -348,7 +395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165020761}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.92, y: 3.73, z: 0}
+  m_LocalPosition: {x: 11.69, y: 10.73, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -387,9 +434,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  Player: {fileID: 1165020766}
   rb: {fileID: 2024744000}
   playerdistance: 3
+  zombie2Projectile: {fileID: 8064333646727624643, guid: 1b6f7bb9ed31f2d4aa73280e008df737, type: 3}
+  launchOffset: {fileID: 181075034}
 --- !u!50 &2024744000
 Rigidbody2D:
   serializedVersion: 4
@@ -471,10 +519,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2024743998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.43, y: 5.37, z: 0}
+  m_LocalPosition: {x: 9.53, y: 11.85, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 181075034}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -510,8 +559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a5359c38954444ba2567f25c598a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.1
-  Player: {fileID: 1165020766}
+  _speed: 1
   rb: {fileID: 2117824388}
 --- !u!61 &2117824387
 BoxCollider2D:
@@ -620,7 +668,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117824385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0853, y: 3.19, z: 0}
+  m_LocalPosition: {x: 9.29, y: 10.19, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -656,7 +704,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7943fca9d8db3f84db54fc562feaf1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles: []
+  tiles:
+  - name: Dirt
+    visual: {fileID: 2644174443421826580, guid: c762dc5d291c41f40b4f57edf30844eb, type: 3}
+    iswalkable: 1
+  - name: GrassLIght
+    visual: {fileID: 7802283356284804837, guid: a85a4d4f15ac5a0469abb23c9aff49a4, type: 3}
+    iswalkable: 1
+  - name: WaterDeep
+    visual: {fileID: 7592516516951336233, guid: 3239d287dd21dd84baf915a2ba8c236a, type: 3}
+    iswalkable: 1
+  - name: DarkGray
+    visual: {fileID: 15485126560260806, guid: e36275222e3b4b54287a473c59e70e66, type: 3}
+    iswalkable: 1
+  - name: GroundBlack
+    visual: {fileID: 1306129047680836346, guid: 756799e9fd458a54593f1419722cf557, type: 3}
+    iswalkable: 1
+  - name: Forest
+    visual: {fileID: 4156352671800055470, guid: caa7526958b912a40b21080803149a6b, type: 3}
+    iswalkable: 1
+  - name: GrassDark
+    visual: {fileID: 4972324069754571532, guid: 09bf12779c8cbbf4e830579941e86a92, type: 3}
+    iswalkable: 1
+  - name: GrassMedium
+    visual: {fileID: 8153849447081998422, guid: 1f4b5429ad796b44fa36c469043abb45, type: 3}
+    iswalkable: 1
+  - name: LightGray
+    visual: {fileID: 1762529818851301861, guid: 0ec21f5a3272e7f48ab8d688aa545f7b, type: 3}
+    iswalkable: 1
+  - name: Sand
+    visual: {fileID: 3371779844997911624, guid: 974cb4e3309bc1a44bb8add36b873170, type: 3}
+    iswalkable: 1
+  - name: SandOrange
+    visual: {fileID: 8448036804715281601, guid: 31064d313dde5f640be2ca46b185d2f2, type: 3}
+    iswalkable: 1
+  - name: WaterShore
+    visual: {fileID: 6697265952107269733, guid: 166a72bee5259a4429262f38ff01adc8, type: 3}
+    iswalkable: 1
+  - name: DirtLight
+    visual: {fileID: 6492938503397834573, guid: ed4e29e41a265784ba4e2b53ad3366ac, type: 3}
+    iswalkable: 1
+  - name: GroundWhite
+    visual: {fileID: 5765160841382723573, guid: 3a2cba3324fbb714e87b8e6801c75b9c, type: 3}
+    iswalkable: 0
 --- !u!4 &2136036381
 Transform:
   m_ObjectHideFlags: 0

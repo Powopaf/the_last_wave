@@ -22,7 +22,7 @@ public class MapDefinition
         {
             for (int j = 1; j < Width - 1; j++)
             {
-                Map[i, j] = rd.Next(0,13);
+                Map[i, j] = rd.Next(0,2);
             }
         }
     }

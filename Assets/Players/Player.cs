@@ -26,7 +26,7 @@ namespace Players
         protected GameObject LaunchOffsetPlayer;
         protected Rigidbody2D RblaunchOffsetPLayer;
         public Player(int health = 1, int damage = 1,
-            int speed = 1, int heal = 1, string name = "", int maxHealth = 1)
+            int speed = 1, int maxHealth = 1, int heal = 1, string name = "")
         {
             MaxHealth = maxHealth;
             Health = health;
@@ -41,6 +41,8 @@ namespace Players
 
         protected void Start()
         {
+            _healthBar.SetMaxHealth(MaxHealth);
+            _healthBar.SetHealth(MaxHealth);
             rb = GetComponent<Rigidbody2D>();
             camera=Camera.main;
             LaunchOffsetPlayer = GameObject.FindWithTag("PlayerLaunchOffset");
@@ -56,6 +58,7 @@ namespace Players
 
         protected void Update()
         {
+            _healthBar.SetHealth(Health);
             Vector3 mousepos = Input.mousePosition;  
             mousepos.z = camera.nearClipPlane;
             Vector3 worldpmousepos = camera.ScreenToWorldPoint(mousepos);

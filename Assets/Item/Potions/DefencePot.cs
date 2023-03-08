@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class DefencePot : Potions
+namespace Item.Potions
 {
-    public DefencePot() : base(5,5) {}
+    public class DefencePot : Potions
+    {
+        public DefencePot() : base(5,5) {}
+    }
 }

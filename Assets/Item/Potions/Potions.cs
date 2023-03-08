@@ -1,21 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Potions : Item
+namespace Item.Potions
 {
-    private int _buff;
-    private Item _itemImplementation;
-
-    public Potions(int durability = 1, int buff = 1)
+    public class Potions : Item
     {
-        _durability = durability;
-        _buff = buff;
-    }
+        private int _buff;
 
-    protected override void UpdateMe(int i)
-    {
-        _durability -= 1;
+        public Potions(int durability = 1, int buff = 1)
+        {
+            _durability = durability;
+            _buff = buff;
+        }
+
+        protected override void UpdateMe(int i)
+        {
+            _durability -= 1;
+        }
     }
 }

@@ -1,22 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Monsters;
 using UnityEngine;
 
-public class Zombie2projectile : Zombie2
+namespace Monsters
 {
-    public float bulletspeed;
-
-    public Zombie2projectile(float speed=10)
+    public class Zombie2projectile : Zombie2
     {
-        bulletspeed = speed;
-    }
-    new void  Update()
-     {
-         transform.position += transform.right * (Time.deltaTime * bulletspeed);
+        public float bulletspeed;
+
+        public Zombie2projectile(float speed=10)
+        {
+            bulletspeed = speed;
+        }
+        new void  Update()
+        {
+            transform.position += transform.right * (Time.deltaTime * bulletspeed);
          
-     }
+        }
 
      new void OnCollisionEnter2D(Collision2D col)
      {
@@ -27,4 +25,5 @@ public class Zombie2projectile : Zombie2
          }
          Destroy(gameObject);
      }
+
 }

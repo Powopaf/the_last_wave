@@ -1,15 +1,14 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public abstract class Item : MonoBehaviour
+namespace Item
 {
-    protected int _durability { get; set; }
+    public abstract class Item : MonoBehaviour
+    {
+        protected int _durability { get; set; }
 
-    public Item() { }
+        protected Item() { }
     
 
-    protected abstract void UpdateMe(int a);
+        protected abstract void UpdateMe(int a);
+    }
 }

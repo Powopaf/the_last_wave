@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+
     private float CamFollowSpeed = 2100f;
     private Transform _target;
+
     
     // Update is called once per frame
 

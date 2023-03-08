@@ -9,7 +9,8 @@ namespace Players
 {
     public abstract class Player : MonoBehaviour
     {
-        private int Health { get; set; }
+        public int Health { get; set; }
+        public int MaxHealth { get; }
         private int Damage { get; set; }
         //private (int X, int Y) _coordinate;
         private List<Item> _item_inv;
@@ -19,16 +20,17 @@ namespace Players
         public float _speed;
         protected Vector2 dir;
         protected int move = -1;
+        [SerializeField] HealthBar _healthBar;
         public Rigidbody2D rb;
         [SerializeField] protected Camera camera;
         public Animator _animator;
         protected GameObject LaunchOffsetPlayer;
         protected Rigidbody2D RblaunchOffsetPLayer;
         
-        
         public Player(int health = 1, int damage = 1,
-            int speed = 1, int heal = 1, string name = "")
+            int speed = 1, int maxHealth = 1, int heal = 1, string name = "")
         {
+            MaxHealth = maxHealth;
             Health = health;
             Damage = damage;
             //_coordinate = (0,0);
@@ -41,10 +43,14 @@ namespace Players
 
         protected void Start()
         {
+            _healthBar.SetMaxHealth(MaxHealth);
+            _healthBar.SetHealth(MaxHealth);
             rb = GetComponent<Rigidbody2D>();
             camera=Camera.main;
             LaunchOffsetPlayer = GameObject.FindWithTag("PlayerLaunchOffset");
             RblaunchOffsetPLayer = LaunchOffsetPlayer.GetComponent<Rigidbody2D>();
+            _healthBar.SetMaxHealth(MaxHealth);
+            _healthBar.SetHealth(MaxHealth);
 
         }
 
@@ -58,6 +64,7 @@ namespace Players
             Vector3 mousepos = Input.mousePosition; 
             _animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));;
             _animator.SetFloat("Vertical",Input.GetAxis("Vertical"));
+            _healthBar.SetHealth(Health);
             mousepos.z = camera.nearClipPlane;
             Vector3 worldpmousepos = camera.ScreenToWorldPoint(mousepos);
             Vector3 direction = worldpmousepos - LaunchOffsetPlayer.transform.position;
@@ -71,7 +78,7 @@ namespace Players
             dir.x = Input.GetAxis("Horizontal");
             dir.y = Input.GetAxis("Vertical");
             MovePlayer();
-            
+            _healthBar.SetHealth(Health);
         }
         
         private void Looting(Item[] loot)
@@ -94,7 +101,14 @@ namespace Players
 
         private void Heal(int life)
         {
-            Health += life * _heal;
+            if (life * _heal >= MaxHealth)
+            {
+                Health = MaxHealth;
+            }
+            else
+            {
+                Health += life * _heal;
+            }
         }
 
         public void ZombieDamageOnPlayer(int damage)

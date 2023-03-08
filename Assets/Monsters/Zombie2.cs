@@ -33,7 +33,7 @@ namespace Monsters
             float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
             rb.rotation = angle;
             direction.Normalize();
-            movement = direction;
+            Movement = direction;
             if (_zombieWeaponRecharging <= 0)
             {
                 if ((Playertarget.position-transform.position).magnitude<playerdistance+2)
@@ -52,13 +52,13 @@ namespace Monsters
 
         protected override void FixedUpdate()
         {
-            ZombieMovement(movement);
+            ZombieMovement(Movement);
         }
         protected override void ZombieMovement(Vector2 direction)
         {
             if ((Playertarget.position-transform.position).magnitude > playerdistance)
             {
-                rb.MovePosition((Vector2)transform.position + direction * (_speed * Time.deltaTime));
+                rb.MovePosition((Vector2)transform.position + direction * (speed * Time.deltaTime));
             }
         }
 

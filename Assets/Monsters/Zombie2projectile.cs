@@ -21,7 +21,7 @@ namespace Monsters
             if (col.transform.CompareTag("Player"))
             {
                 Players.Player player = Playertarget.transform.GetComponent<Players.Player>(); //Zombie Attack
-                player.ZombieDamageOnPlayer(_damage); // Zombie Attack 
+                player.ZombieDamageOnPlayer(Damage); // Zombie Attack 
             }
             Destroy(gameObject);
         }

@@ -6,7 +6,7 @@ namespace Item
     {
         protected int _durability { get; set; }
 
-        public Item() { }
+        protected Item() { }
     
 
         protected abstract void UpdateMe(int a);

@@ -16,7 +16,7 @@ namespace Monsters
         }
         protected  override void ZombieMovement(Vector2 direction)
         {
-            rb.MovePosition((Vector2) transform.position +direction * (_speed * Time.deltaTime));
+            rb.MovePosition((Vector2) transform.position +direction * (speed * Time.deltaTime));
         }
 
         protected override void Update()
@@ -25,18 +25,18 @@ namespace Monsters
             float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
             rb.rotation = angle;
             direction.Normalize();
-            movement = direction;
+            Movement = direction;
         }
         protected override void FixedUpdate()
         {
-            ZombieMovement(movement);
+            ZombieMovement(Movement);
         }
         protected override void OnCollisionEnter2D(Collision2D col)
         {
             if (col.transform.CompareTag("Player"))   //Need to change  the tag
             {
                 Players.Survivor survivor = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
-                survivor.ZombieDamageOnPlayer(_damage); // Zombie Attack
+                survivor.ZombieDamageOnPlayer(Damage); // Zombie Attack
             }
         
         }

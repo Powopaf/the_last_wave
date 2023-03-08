@@ -5,15 +5,15 @@ namespace Monsters
     public abstract class Zombie: MonoBehaviour
     {
         private int _health;
-        protected int _damage;
+        protected int Damage;
         private string _name;
         //private Item[] _loot;
         private string[] _target;
         private (int, int) _coordinate;
-        public float _speed;
+        public float speed;
         protected Transform Playertarget; //On doit pouvoir changer l'objet avec la fonction TargetZombie()
         public Rigidbody2D rb;
-        protected Vector2 movement;
+        protected Vector2 Movement;
 
         protected Zombie(string name = "", string[] target = null,
             int health = 1, int damage = 1, float speed = 1f)
@@ -21,21 +21,19 @@ namespace Monsters
             _name = name;
             _target = target;
             _health = health;
-            _damage = damage;
-            _speed = speed;
+            Damage = damage;
         }
 
         protected string TargetZombie()
         {
             Vector3 closertargetPosition = GameObject.Find(_target[0]).transform.position;
             string result = _target[0];
-            Vector3 firstcomparison;
-            Vector3 secondcomparison;
             for (int i = 1; i < _target.Length; i++)
             {
                 Vector3 newtargetPosition = GameObject.Find(_target[i]).transform.position;
-                firstcomparison = transform.position - closertargetPosition;
-                secondcomparison = transform.position - newtargetPosition;
+                Vector3 position = transform.position;
+                Vector3 firstcomparison = position - closertargetPosition;
+                Vector3 secondcomparison = position - newtargetPosition;
                 if (secondcomparison.magnitude < firstcomparison.magnitude)
                 {
                     closertargetPosition = newtargetPosition;
@@ -47,15 +45,12 @@ namespace Monsters
         }
 
         protected abstract void Update();
-    
-
+        
         protected abstract void Start();
 
         protected abstract void FixedUpdate();
         protected abstract void ZombieMovement(Vector2 direction);
 
         protected abstract void OnCollisionEnter2D(Collision2D col);
-
-
     }
 }

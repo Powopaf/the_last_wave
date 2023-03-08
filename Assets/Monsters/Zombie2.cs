@@ -5,19 +5,18 @@ namespace Monsters
 {
     public class Zombie2 : Zombie
     {
-        public float playerdistance;
+        public float playerdistance = 10;
         public GameObject zombie2Projectile;
         public Transform launchOffset;
         private float _zombieWeaponRecharging =1 ;
-        private float _bulletspeed;
-        public Zombie2(float distance=3,float bulletspeed=1) :
+        protected float _bulletspeed;
+        public Zombie2(float bulletspeed=1) :
             base("Zombie2",
                 new[] { "Core" },
                 50, 15, 100)
         {
-            playerdistance = distance;
             _bulletspeed = bulletspeed;
-
+            
         }
 
         protected override void Start()

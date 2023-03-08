@@ -28,8 +28,8 @@ namespace Players
         private GameObject LaunchOffsetPlayer;
         private Rigidbody2D RblaunchOffsetPLayer;
         
-        public Player(int health = 1, int damage = 1,
-            int speed = 1, int maxHealth = 1, int heal = 1, string name = "")
+        public Player(int health = 100, int damage = 1,
+            int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
         {
             MaxHealth = maxHealth;
             Health = health;

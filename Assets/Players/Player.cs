@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Threading;
 using UnityEngine;
 
 
@@ -23,6 +24,10 @@ namespace Players
         public Animator _animator;
         protected GameObject LaunchOffsetPlayer;
         protected Rigidbody2D RblaunchOffsetPLayer;
+        protected Thread ThreadVisee;
+        protected Thread ThreadAnimation;
+        protected float X;
+        protected float Y;
         
         public Player(int health = 1, int damage = 1,
             int speed = 1, int heal = 1, string name = "")
@@ -43,6 +48,10 @@ namespace Players
             camera=Camera.main;
             LaunchOffsetPlayer = GameObject.FindWithTag("PlayerLaunchOffset");
             RblaunchOffsetPLayer = LaunchOffsetPlayer.GetComponent<Rigidbody2D>();
+            ThreadVisee = new Thread(Visee);
+            ThreadAnimation = new Thread(Animation);
+         
+            
         }
 
         protected void MovePlayer()
@@ -52,23 +61,36 @@ namespace Players
 
         protected void Update()
         {
+            X = Input.GetAxis("Horizontal");
+            Y=Input.GetAxis("Vertical");
+            Visee();
+            Animation();
+        }
+        
+
+        protected void FixedUpdate()
+        {
+            dir.x = X;
+            dir.y = Y;
+            MovePlayer();
+            
+        }
+
+        protected void Animation()
+        {
+            _animator.SetFloat("Horizontal",X);
+            _animator.SetFloat("Vertical",Y);
+        }
+        protected void Visee()
+        {
             Vector3 mousepos = Input.mousePosition;  
             mousepos.z = camera.nearClipPlane;
             Vector3 worldpmousepos = camera.ScreenToWorldPoint(mousepos);
             Vector3 direction = worldpmousepos - LaunchOffsetPlayer.transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
             RblaunchOffsetPLayer.rotation = angle;
-            _animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));
-           _animator.SetFloat("Vertical",Input.GetAxis("Vertical"));
-        }
-        
-
-        protected void FixedUpdate()
-        {
-            dir.x = Input.GetAxis("Horizontal");
-            dir.y = Input.GetAxis("Vertical");
-            MovePlayer();
             
+           
         }
         
         

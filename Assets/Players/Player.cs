@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
+using Scenes.ATH;
 using UnityEngine;
 
 
@@ -13,7 +14,7 @@ namespace Players
         public int MaxHealth { get; }
         private int Damage { get; set; }
         //private (int X, int Y) _coordinate;
-        private List<Item> _item_inv;
+        private List<Item.Item> _item_inv;
         private (string,int)[] _ressource_inv;
         private string _name;
         private  int _heal;
@@ -37,7 +38,7 @@ namespace Players
             _name = name;
             _heal = heal;
             _speed = speed;
-            _item_inv = new List<Item>();
+            _item_inv = new List<Item.Item>();
             _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
         }
 
@@ -81,7 +82,7 @@ namespace Players
             _healthBar.SetHealth(Health);
         }
         
-        private void Looting(Item[] loot)
+        private void Looting(Item.Item[] loot)
         {
             int i = 0;
             while (_item_inv.Count <= 9 && i < loot.Length)
@@ -90,7 +91,7 @@ namespace Players
             }
         }
 
-        private void Looting(Item item)
+        private void Looting(Item.Item item)
         {
             if (_item_inv.Count == 9)
             {

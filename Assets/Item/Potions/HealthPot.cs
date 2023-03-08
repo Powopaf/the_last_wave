@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class HealthPot : Potions
+namespace Item.Potions
 {
-    public HealthPot() : base(5,5) {}
+    public class HealthPot : Potions
+    {
+        public HealthPot() : base(5,5) {}
+    }
 }

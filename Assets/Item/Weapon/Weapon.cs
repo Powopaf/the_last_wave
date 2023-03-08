@@ -1,32 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-class Weapon : Item
+namespace Item.Weapon
 {
-    private int _damage;
-
-    public Weapon(int durability, int damage = 1)
+    public class Weapon : Item
     {
-        _damage = damage;
-        _durability = durability;
-    }
+        private int _damage;
 
-    private void UpdateWeapon()
-    {
-        _damage += 5;
-        _durability += 5;
-    }
-
-    protected override void UpdateMe(int i)
-    {
-        if (i < 0)
+        public Weapon(int durability, int damage = 1)
         {
-            _durability -= 1;
+            _damage = damage;
+            _durability = durability;
         }
-        else
+
+        private void UpdateWeapon()
         {
-            _durability += 1;
+            _damage += 5;
+            _durability += 5;
+        }
+
+        protected override void UpdateMe(int i)
+        {
+            if (i < 0)
+            {
+                _durability -= 1;
+            }
+            else
+            {
+                _durability += 1;
+            }
         }
     }
 }

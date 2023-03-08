@@ -5,7 +5,6 @@ namespace Monsters
     public class Zombie2projectile : Zombie2
     {
         public float bulletspeed;
-
         public Zombie2projectile(float speed=10)
         {
             bulletspeed = speed;
@@ -15,7 +14,6 @@ namespace Monsters
             transform.position += transform.right * (Time.deltaTime * bulletspeed);
          
         }
-
      new void OnCollisionEnter2D(Collision2D col)
      {
          if (col.transform.CompareTag("Player"))
@@ -25,5 +23,4 @@ namespace Monsters
          }
          Destroy(gameObject);
      }
-
 }

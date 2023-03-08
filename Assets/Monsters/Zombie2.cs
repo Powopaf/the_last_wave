@@ -29,16 +29,16 @@ namespace Monsters
         protected override void Update()
         {
             Vector3 direction = Playertarget.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             rb.rotation = angle;
             direction.Normalize();
             Movement = direction;
             if (_zombieWeaponRecharging <= 0)
             {
-                if ((Playertarget.position-transform.position).magnitude<playerdistance+2)
+                if ((Playertarget.position - transform.position).magnitude < playerdistance + 2)
                 {
                      GameObject t = Instantiate(zombie2Projectile, launchOffset.position, transform.rotation);
-                    t.tag = "Zombie2Projectile";
+                     t.tag = "Zombie2Projectile";
                     _zombieWeaponRecharging = 1;
                 }
             }

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7812268159022241877}
   - component: {fileID: 7812268159022241876}
   - component: {fileID: 7812268159022241883}
+  - component: {fileID: 1965160847961141811}
   m_Layer: 0
   m_Name: Zombie2
   m_TagString: Untagged
@@ -156,3 +157,29 @@ MonoBehaviour:
   playerdistance: 0
   zombie2Projectile: {fileID: 8064333646727624643, guid: 1b6f7bb9ed31f2d4aa73280e008df737, type: 3}
   launchOffset: {fileID: 0}
+--- !u!61 &1965160847961141811
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812268159022241882}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

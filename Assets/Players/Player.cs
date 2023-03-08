@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Threading;
 using UnityEngine;
 
 
@@ -25,6 +26,7 @@ namespace Players
         public Animator _animator;
         protected GameObject LaunchOffsetPlayer;
         protected Rigidbody2D RblaunchOffsetPLayer;
+        
         public Player(int health = 1, int damage = 1,
             int speed = 1, int maxHealth = 1, int heal = 1, string name = "")
         {
@@ -49,6 +51,7 @@ namespace Players
             RblaunchOffsetPLayer = LaunchOffsetPlayer.GetComponent<Rigidbody2D>();
             _healthBar.SetMaxHealth(MaxHealth);
             _healthBar.SetHealth(MaxHealth);
+
         }
 
         protected void MovePlayer()
@@ -58,15 +61,15 @@ namespace Players
 
         protected void Update()
         {
+            Vector3 mousepos = Input.mousePosition; 
+            _animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));;
+            _animator.SetFloat("Vertical",Input.GetAxis("Vertical"));
             _healthBar.SetHealth(Health);
-            Vector3 mousepos = Input.mousePosition;  
             mousepos.z = camera.nearClipPlane;
             Vector3 worldpmousepos = camera.ScreenToWorldPoint(mousepos);
             Vector3 direction = worldpmousepos - LaunchOffsetPlayer.transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
             RblaunchOffsetPLayer.rotation = angle;
-            _animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));
-           _animator.SetFloat("Vertical",Input.GetAxis("Vertical"));
         }
         
 
@@ -77,7 +80,6 @@ namespace Players
             MovePlayer();
             _healthBar.SetHealth(Health);
         }
-        
         
         private void Looting(Item[] loot)
         {

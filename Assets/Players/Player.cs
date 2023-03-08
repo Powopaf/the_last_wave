@@ -45,6 +45,8 @@ namespace Players
             camera=Camera.main;
             LaunchOffsetPlayer = GameObject.FindWithTag("PlayerLaunchOffset");
             RblaunchOffsetPLayer = LaunchOffsetPlayer.GetComponent<Rigidbody2D>();
+            _healthBar.SetMaxHealth(MaxHealth);
+            _healthBar.SetHealth(MaxHealth);
         }
 
         protected void MovePlayer()
@@ -70,7 +72,7 @@ namespace Players
             dir.x = Input.GetAxis("Horizontal");
             dir.y = Input.GetAxis("Vertical");
             MovePlayer();
-            
+            _healthBar.SetHealth(Health);
         }
         
         
@@ -115,17 +117,6 @@ namespace Players
             {
                 Debug.Log("the player died!!!"); // To see the effect pf the Zombie Attack
             }
-        }
-
-        void Start()
-        {
-            _healthBar.SetMaxHealth(MaxHealth);
-            _healthBar.SetHealth(MaxHealth);
-        }
-
-        void Update()
-        {
-            _healthBar.SetHealth(Health);
         }
     }
 }

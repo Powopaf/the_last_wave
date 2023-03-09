@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class TileSpriteMapping : MonoBehaviour
+namespace World
 {
-    public Tile[] tiles;
-    public IDictionary<TileType, int> Sprites { get; } = new Dictionary<TileType, int>
+    public class TileSpriteMapping : MonoBehaviour
     {
-        { TileType.GroundBlack, 0 },
-        { TileType.GroundDirt, 1 },
-        { TileType.GroundGrassLight, 2 }
-    };
+        public Tile[] tiles;
+        public IDictionary<TileType, int> Sprites { get; } = new Dictionary<TileType, int>
+        {
+            { TileType.GroundBlack, 0 },
+            { TileType.GroundDirt, 1 },
+            { TileType.GroundGrassLight, 2 }
+        };
+    }
 }

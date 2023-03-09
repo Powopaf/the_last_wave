@@ -136,4 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c2bbac29612ea40b6c74909469a2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 0
+  rb: {fileID: 0}
+  playerdistance: 0
+  zombie2Projectile: {fileID: 0}
+  launchOffset: {fileID: 0}
   bulletspeed: 5

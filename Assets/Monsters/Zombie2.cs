@@ -5,19 +5,18 @@ namespace Monsters
 {
     public class Zombie2 : Zombie
     {
-        public float playerdistance;
+        public float playerdistance = 10;
         public GameObject zombie2Projectile;
         public Transform launchOffset;
         private float _zombieWeaponRecharging =1 ;
-        private float _bulletspeed;
-        public Zombie2(float distance=3,float bulletspeed=1) :
+        protected float _bulletspeed;
+        public Zombie2(float bulletspeed=1) :
             base("Zombie2",
                 new[] { "Core" },
                 50, 15, 100)
         {
-            playerdistance = distance;
             _bulletspeed = bulletspeed;
-
+            
         }
 
         protected override void Start()
@@ -30,16 +29,16 @@ namespace Monsters
         protected override void Update()
         {
             Vector3 direction = Playertarget.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             rb.rotation = angle;
             direction.Normalize();
-            movement = direction;
+            Movement = direction;
             if (_zombieWeaponRecharging <= 0)
             {
-                if ((Playertarget.position-transform.position).magnitude<playerdistance+2)
+                if ((Playertarget.position - transform.position).magnitude < playerdistance + 2)
                 {
                      GameObject t = Instantiate(zombie2Projectile, launchOffset.position, transform.rotation);
-                    t.tag = "Zombie2Projectile";
+                     t.tag = "Zombie2Projectile";
                     _zombieWeaponRecharging = 1;
                 }
             }
@@ -52,13 +51,13 @@ namespace Monsters
 
         protected override void FixedUpdate()
         {
-            ZombieMovement(movement);
+            ZombieMovement(Movement);
         }
         protected override void ZombieMovement(Vector2 direction)
         {
             if ((Playertarget.position-transform.position).magnitude > playerdistance)
             {
-                rb.MovePosition((Vector2)transform.position + direction * (_speed * Time.deltaTime));
+                rb.MovePosition((Vector2)transform.position + direction * (speed * Time.deltaTime));
             }
         }
 

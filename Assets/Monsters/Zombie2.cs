@@ -5,9 +5,10 @@ namespace Monsters
 {
     public class Zombie2 : Zombie
     {
-        public float playerdistance = 10;
+        public float playerdistance;
         public GameObject zombie2Projectile;
-        public Transform launchOffset;
+        public GameObject launchOffset;
+        private Rigidbody2D _launchOffsetRigidbody2D;
         private float _zombieWeaponRecharging =1 ;
         protected float _bulletspeed;
         public Zombie2(float bulletspeed=1) :
@@ -16,28 +17,33 @@ namespace Monsters
                 50, 15, 100)
         {
             _bulletspeed = bulletspeed;
-            
+            playerdistance = 10;
+
         }
 
         protected override void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             Playertarget = GameObject.FindWithTag("Player").transform;
-            launchOffset = GameObject.FindWithTag("Zombie2LaunchOffset").transform;
+            launchOffset = GameObject.FindWithTag("Zombie2LaunchOffset");
+            animator = GetComponent<Animator>();
+            _launchOffsetRigidbody2D = launchOffset.GetComponent<Rigidbody2D>();
         }
 
         protected override void Update()
         {
             Vector3 direction = Playertarget.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            rb.rotation = angle;
+            _launchOffsetRigidbody2D.rotation = angle;
             direction.Normalize();
             Movement = direction;
+            animator.SetFloat("X", Movement.x);
+            animator.SetFloat("Y", Movement.y);
             if (_zombieWeaponRecharging <= 0)
             {
                 if ((Playertarget.position - transform.position).magnitude < playerdistance + 2)
                 {
-                     GameObject t = Instantiate(zombie2Projectile, launchOffset.position, transform.rotation);
+                     GameObject t = Instantiate(zombie2Projectile, launchOffset.transform.position, launchOffset.transform.rotation);
                      t.tag = "Zombie2Projectile";
                     _zombieWeaponRecharging = 1;
                 }

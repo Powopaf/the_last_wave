@@ -14,6 +14,7 @@ namespace Monsters
         protected Transform Playertarget; //On doit pouvoir changer l'objet avec la fonction TargetZombie()
         public Rigidbody2D rb;
         protected Vector2 Movement;
+        public Animator animator;
 
         protected Zombie(string name = "", string[] target = null,
             int health = 1, int damage = 1, float speed = 1f)

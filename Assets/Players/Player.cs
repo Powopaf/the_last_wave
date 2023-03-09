@@ -62,10 +62,11 @@ namespace Players
 
         protected void Update()
         {
-            Vector3 mousepos = Input.mousePosition;
+            
             animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
             animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
             healthBar.SetHealth(Health);
+            Vector3 mousepos = Input.mousePosition;
             mousepos.z = camera.nearClipPlane;
             Vector3 worldpmousepos = camera.ScreenToWorldPoint(mousepos);
             Vector3 direction = worldpmousepos - LaunchOffsetPlayer.transform.position;

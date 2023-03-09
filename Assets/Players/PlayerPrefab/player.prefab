@@ -239,10 +239,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3436648e41804b34482fa6e61d56b6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  speed: 30
+  healthBar: {fileID: 0}
   rb: {fileID: 8868531940546770354}
   camera: {fileID: 0}
-  _animator: {fileID: 1091208178846075580}
+  animator: {fileID: 1091208178846075580}
 --- !u!61 &8868531940546770355
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -300,7 +301,7 @@ Animator:
   m_GameObject: {fileID: 8868531940546770353}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 33257f3135465c543b5e636850a76dbd, type: 2}
+  m_Controller: {fileID: 9100000, guid: f8c953251db352947934b89fb61e45e0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -29,6 +29,7 @@ AnimationClip:
     path: 
     classID: 212
     script: {fileID: 0}
+
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -47,6 +48,7 @@ AnimationClip:
     - {fileID: -1370368264, guid: b84e40e37dc5f9b4f9ae5e44fb3720dc, type: 3}
     - {fileID: -370806293, guid: b84e40e37dc5f9b4f9ae5e44fb3720dc, type: 3}
     - {fileID: -1875601503, guid: b84e40e37dc5f9b4f9ae5e44fb3720dc, type: 3}
+
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

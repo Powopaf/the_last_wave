@@ -29,12 +29,14 @@ AnimationClip:
     path: 
     classID: 212
     script: {fileID: 0}
+
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
+
     genericBindings:
     - serializedVersion: 2
       path: 0
@@ -47,12 +49,14 @@ AnimationClip:
     - {fileID: -395399365, guid: 430252391018c68428b5ab458a8cf9c3, type: 3}
     - {fileID: -235384276, guid: 430252391018c68428b5ab458a8cf9c3, type: 3}
     - {fileID: 1963415179, guid: 430252391018c68428b5ab458a8cf9c3, type: 3}
+
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
     m_StopTime: 0.35000002
+
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

@@ -143,6 +143,7 @@ AnimationClip:
     path: 
     classID: 212
     script: {fileID: 0}
+
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -250,3 +251,4 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+

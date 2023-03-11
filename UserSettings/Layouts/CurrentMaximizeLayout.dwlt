@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 17340
+  controlID: 18685
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -185,7 +185,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Animation/Animation player
+    - Assets/Players/PlayerPrefab
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -224,8 +224,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 96.20001}
-    m_SelectedIDs: 2253f8ff
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 70a9ffff
     m_LastClickedID: 0
     m_ExpandedIDs: ffffffff00000000bab60000eeb60000f2b60000f4b60000f6b6000060ba000044be0000aec500006cca0000
     m_RenameOverlay:
@@ -252,8 +252,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 2253f8ff
-    m_LastClickedInstanceID: -503006
+    m_SelectedInstanceIDs: 70a9ffff
+    m_LastClickedInstanceID: -22160
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 17341
+  controlID: 18686
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -727,7 +727,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -22148
+  m_LastSelectedObjectID: 54776
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1022,7 +1022,7 @@ MonoBehaviour:
     m_CachedPref: 189
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -503006
+  m_LastInspectedObjectInstanceID: -22160
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0

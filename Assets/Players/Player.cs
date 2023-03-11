@@ -66,12 +66,12 @@ namespace Players
             animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
            animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
             healthBar.SetHealth(Health);
-            Vector3 mousepos = Input.mousePosition;
-            mousepos.z = camera.nearClipPlane;
-            Vector3 worldpmousepos = camera.ScreenToWorldPoint(mousepos);
-            Vector3 direction = worldpmousepos - LaunchOffsetPlayer.transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            RblaunchOffsetPLayer.rotation = angle;
+          //  Vector3 mousepos = Input.mousePosition;
+           // mousepos.z = camera.nearClipPlane;
+          //  Vector3 worldpmousepos = camera.ScreenToWorldPoint(mousepos);
+            //Vector3 direction = worldpmousepos - LaunchOffsetPlayer.transform.position;
+           // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+           // RblaunchOffsetPLayer.rotation = angle;
            
         }
         

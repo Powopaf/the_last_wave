@@ -8,7 +8,7 @@ namespace World
         public Tile[] tiles;
         public IDictionary<TileType, int> Sprites { get; } = new Dictionary<TileType, int>
         {
-            { TileType.GroundBlack, 0 },
+            { TileType.GroundWhite, 0 },
             { TileType.GroundDirt, 1 },
             { TileType.GroundGrassLight, 2 }
         };

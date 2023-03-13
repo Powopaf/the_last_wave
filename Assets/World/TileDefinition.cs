@@ -3,9 +3,8 @@
     public class TileDefinition
     {
         public int TileType { get; }
-        public bool HasLoot = false;
-        public bool GetHasLoot => HasLoot;
-    
+        public bool GetHasLoot { get; } = false;
+
         public TileDefinition(int a)
         {
             TileType = a;

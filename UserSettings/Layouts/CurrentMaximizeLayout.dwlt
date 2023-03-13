@@ -192,7 +192,7 @@ MonoBehaviour:
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\matte\OneDrive\Documents\GitHub\the_last_wave
+  m_LastProjectPath: C:\Users\paffo\OneDrive\Documents\GitHub\the_last_wave
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
@@ -617,9 +617,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 11.52, y: 10.220001, z: -10}
+    m_Target: {x: 12.779069, y: 10.782748, z: 0.5250265}
     speed: 2
-    m_Value: {x: 11.52, y: 10.220001, z: -10}
+    m_Value: {x: 12.779069, y: 10.782748, z: 0.5250265}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -670,9 +670,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 12.124356
+    m_Target: 7.175885
     speed: 2
-    m_Value: 12.124356
+    m_Value: 7.175885
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -758,6 +758,7 @@ MonoBehaviour:
     m_SaveData: []
   m_ViewTransforms:
     m_KeySerializationHelper:
+
     - {fileID: 5074837741338633264, guid: 8170db09378e0b94784fc801e9665b2e, type: 2}
     - {fileID: 7093332274891124415, guid: f8c953251db352947934b89fb61e45e0, type: 2}
     - {fileID: 5213772305991681344, guid: dbe174fe8063ce343846e6e1fa866fb3, type: 2}
@@ -952,7 +953,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
+        m_ClientGUIView: {fileID: 10}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0

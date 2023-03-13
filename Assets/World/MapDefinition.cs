@@ -1,4 +1,5 @@
-﻿using Random = System.Random;
+﻿using DefaultNamespace;
+using Random = System.Random;
 
 namespace World
 {
@@ -14,19 +15,19 @@ namespace World
             Map = new TileDefinition[100, 100];
             for (int i = 0; i < Width; i++)
             {
-                Map[0,i] = new TileDefinition(0);
-                Map[Width-1, i] = new TileDefinition(0);
-                Map[i, 0] = new TileDefinition(0);
-                Map[i, Width - 1] = new TileDefinition(0);
+                Map[0,i] = new TileDefinition(EnumTile.GroundWhite);
+                Map[Width-1, i] = new TileDefinition(EnumTile.GroundWhite);
+                Map[i, 0] = new TileDefinition(EnumTile.GroundWhite);
+                Map[i, Width - 1] = new TileDefinition(EnumTile.GroundWhite);
             }
 
-            for (int i = 1; i < Height - 1; i++)
+            /*for (int i = 1; i < Height - 1; i++)
             {
                 for (int j = 1; j < Width - 1; j++)
                 {
                     Map[i, j] = new TileDefinition(rd.Next(1, 3));
                 }
-            }
+            }*/
         }
     }
 }

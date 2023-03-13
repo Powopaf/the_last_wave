@@ -1,13 +1,16 @@
-﻿namespace World
+﻿using DefaultNamespace;
+
+namespace World
 {
     public class TileDefinition
     {
         public int TileType { get; }
         public bool GetHasLoot { get; } = false;
 
-        public TileDefinition(int a)
+        public TileDefinition(EnumTile tile)
         {
-            TileType = a;
+            var tileSprite = new TileSprite();
+            TileType = tileSprite.Sprite[tile];
         }
     }
 }

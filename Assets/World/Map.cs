@@ -6,6 +6,7 @@ namespace World
     {
         public Tile[] tiles;
         private MapDefinition _mapDefinition;
+        private TileSprite _tileSprite = new TileSprite();
     
         void Start()
         {
@@ -19,7 +20,7 @@ namespace World
             {
                 for (int j = 0; j < _mapDefinition.Width; j++)
                 {
-                    var tile = tiles[_mapDefinition.Map[i,j].TileType];
+                    var tile = tiles[_tileSprite.Sprite[_mapDefinition.Map[i, j].TileType]];
                     GameObject go = Instantiate(tile.visual, new Vector3(i, j, 0), Quaternion.identity);
                     if (!tile.iswalkable)
                     {

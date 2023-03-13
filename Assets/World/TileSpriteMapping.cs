@@ -5,7 +5,6 @@ namespace World
 {
     public class TileSpriteMapping : MonoBehaviour
     {
-        public Tile[] tiles;
         public IDictionary<TileType, int> Sprites { get; } = new Dictionary<TileType, int>
         {
             { TileType.GroundWhite, 0 },

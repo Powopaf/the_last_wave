@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5812756145346022671}
   - component: {fileID: 3807847367967910157}
+  - component: {fileID: 7622347188908229668}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: PlayerLaunchOffset
@@ -138,6 +139,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7622347188908229668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997125855697659507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0c170bc9c3e1e4b9ca478a78817cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!1 &8868531940546770353
 GameObject:
   m_ObjectHideFlags: 0

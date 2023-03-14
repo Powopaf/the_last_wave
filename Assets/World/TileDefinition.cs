@@ -2,7 +2,12 @@
 {
     public class TileDefinition
     {
-        public int TileType { get; }
-        public bool HasLoot { get; }
+        public EnumTile TileType { get; }
+        public bool GetHasLoot { get; } = false;
+
+        public TileDefinition(EnumTile tile)
+        {
+            TileType = tile;
+        }
     }
 }

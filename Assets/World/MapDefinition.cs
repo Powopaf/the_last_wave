@@ -8,7 +8,7 @@
 
         public MapDefinition()
         {
-            Map = new TileDefinition[50, 25];
+            Map = new TileDefinition[5, 10];
             for (int i = 0; i < Width; i++)
             {
                 Map[0, i] = new TileDefinition(EnumTile.GroundWhite);
@@ -19,7 +19,7 @@
                 Map[j, 0] = new TileDefinition(EnumTile.GroundWhite);
                 Map[j, Width - 1] = new TileDefinition(EnumTile.GroundWhite);
             }
-            //SeedMap();
+            SeedMap();
         }
 
         private void DefaultMap()

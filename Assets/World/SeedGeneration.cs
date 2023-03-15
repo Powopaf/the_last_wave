@@ -21,8 +21,8 @@ namespace World
             List<(int, int)> postaken = new List<(int, int)>();
             for (int i = 0; i < n; i++)
             {
-                int x = _rd.Next(0, Height);
-                int y = _rd.Next(0, Width);
+                int x = _rd.Next(0, Height-1);
+                int y = _rd.Next(0, Width-1);
                 if (!postaken.Contains((x,y)))
                 {
                     postaken.Add((x,y));

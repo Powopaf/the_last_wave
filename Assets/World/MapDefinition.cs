@@ -8,7 +8,7 @@
 
         public MapDefinition()
         {
-            Map = new TileDefinition[5, 10];
+            Map = new TileDefinition[50, 25];
             for (int i = 0; i < Width; i++)
             {
                 Map[0, i] = new TileDefinition(EnumTile.GroundWhite);

@@ -16,7 +16,7 @@ namespace World
             return _rd.NextDouble() * maxValue;
         }
 
-        private void GenerateSeeds(int n = 1)
+        public void GenerateSeeds(int n)
         {
             List<(int, int)> postaken = new List<(int, int)>();
             for (int i = 0; i < n; i++)
@@ -33,11 +33,11 @@ namespace World
             }
         }
 
-        private (EnumTile, double, int, int) Distance(int i, int j)
+        public EnumTile Distance(int i, int j)
         {
             double dismin = Math.Sqrt((i - Seeds[0].Item3) * (i - Seeds[0].Item3)
                                       + (j - Seeds[0].Item4) * (j - Seeds[0].Item4));
-            (EnumTile, double, int, int) seed = Seeds[0];
+            EnumTile seed = Seeds[0].Item1;
             foreach (var s in Seeds)
             {
                 int x = s.Item3;
@@ -46,7 +46,7 @@ namespace World
                 if (dis < dismin)
                 {
                     dismin = dis;
-                    seed = s;
+                    seed = s.Item1;
                 }
             }
             return seed;

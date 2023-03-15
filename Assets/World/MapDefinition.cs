@@ -19,7 +19,7 @@
                 Map[j, 0] = new TileDefinition(EnumTile.GroundWhite);
                 Map[j, Width - 1] = new TileDefinition(EnumTile.GroundWhite);
             }
-            DefaultMap();
+            //SeedMap();
         }
 
         private void DefaultMap()
@@ -32,6 +32,19 @@
                     int a = rd.Next(1, 3);
                     var tile = a == 1 ? EnumTile.GroundDirt : EnumTile.GroundGrassMedium;
                     Map[i, j] = new TileDefinition(tile);
+                }
+            }
+        }
+
+        private void SeedMap(int n = 1)
+        {
+            SeedGeneration seed = new SeedGeneration();
+            seed.GenerateSeeds(n);
+            for (int i = 0; i < Height - 1; i++)
+            {
+                for (int j = 0; j < Width - 1; j++)
+                {
+                    Map[i, j] = new TileDefinition(seed.Distance(i, j));
                 }
             }
         }

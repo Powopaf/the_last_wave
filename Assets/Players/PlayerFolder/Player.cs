@@ -5,6 +5,7 @@ using System.Threading;
 using Scenes.ATH;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.InputSystem;
 
 
 namespace Players
@@ -20,14 +21,17 @@ namespace Players
         private string _name;
         private  int _heal;
         public float speed;
-        private Vector2 dir;
+        private Vector2 dir=Vector2.zero;
         [SerializeField] private HealthBar healthBar;
         public Rigidbody2D rb;
         [SerializeField] protected new Camera camera;
         public Animator animator;
         private GameObject LaunchOffsetPlayer;
         private Rigidbody2D RblaunchOffsetPLayer;
-        
+        private PlayerInputAction _playerControl;
+        private InputAction _move;
+        private InputAction _fire;
+
         public Player(int health = 100, int damage = 1,
             int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
         {
@@ -42,35 +46,50 @@ namespace Players
             _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
         }
 
+        protected void Awake()
+        {
+            rb = GetComponent<Rigidbody2D>();
+            _playerControl = new PlayerInputAction();
+        }
+
         protected void Start()
         {
             healthBar.SetMaxHealth(MaxHealth);
             healthBar.SetHealth(MaxHealth);
-            rb = GetComponent<Rigidbody2D>();
-            healthBar.SetMaxHealth(MaxHealth);
-            healthBar.SetHealth(MaxHealth);
 
+        }
+
+        protected void OnEnable()
+        {
+            _move = _playerControl.Player.Move;
+            _move.Enable();
+        }
+        protected void OnDisable()
+        {
+            _move.Disable();
         }
 
         private void MovePlayer()
         {
-            rb.MovePosition(rb.position + dir * (speed * Time.deltaTime));
+            //rb.MovePosition(rb.position + dir * (speed * Time.deltaTime));
+            //rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
+
         }
 
         protected void Update()
         {
-            
             animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
            animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
            healthBar.SetHealth(Health);
+           dir = _move.ReadValue<Vector2>();
         }
         
 
         protected void FixedUpdate()
         {
-            dir.x = Input.GetAxis("Horizontal");
-            dir.y = Input.GetAxis("Vertical");
-            MovePlayer();
+            //dir.x = Input.GetAxis("Horizontal");
+            //dir.y = Input.GetAxis("Vertical");
+            rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
             healthBar.SetHealth(Health);
         }
         

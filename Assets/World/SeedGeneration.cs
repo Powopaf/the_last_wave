@@ -1,33 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 
 namespace World
 {
-    public class SeedGeneration : MapDefinition
+    public class SeedGeneration
     {
-        private List<(EnumTile, double, int, int)> Seeds { get; } = new();
-        private readonly Random _rd = new(0);
-        private TileSprite _tileSprite;
-        
-        private double NextDouble()
-        {
-            double maxValue = 2;
-            return _rd.NextDouble() * maxValue;
-        }
+        public List<(EnumTile, double, int, int)> Seeds { get; } = new();
+        private readonly Random _rd = new(2013);
+        private TileSprite _tileSprite = new ();
+        private int Height;
+        private int Width;
 
+        public SeedGeneration(int height, int width)
+        {
+            Height = height;
+            Width = width;
+        }
         public void GenerateSeeds(int n)
         {
             List<(int, int)> postaken = new List<(int, int)>();
             for (int i = 0; i < n; i++)
             {
-                int x = _rd.Next(0, Height-1);
-                int y = _rd.Next(0, Width-1);
+                int x = _rd.Next(1, Height-2);
+                int y = _rd.Next(1, Width-2);
                 if (!postaken.Contains((x,y)))
                 {
                     postaken.Add((x,y));
-                    EnumTile tile = _tileSprite.EnumTiles[_rd.Next(0, _tileSprite.Sprite.Count)];
-                    double intensity = NextDouble();
+                    EnumTile tile = _tileSprite.EnumTiles[_rd.Next(1, _tileSprite.Sprite.Count)];
+                    double intensity = _rd.NextDouble();
+                    if (intensity == 0)
+                    {
+                        intensity = 0.1;
+                    }
                     Seeds.Add((tile, intensity, x, y));
                 }
             }
@@ -42,7 +46,7 @@ namespace World
             {
                 int x = s.Item3;
                 int y = s.Item4;
-                double dis = Math.Sqrt((i - x) * (i - x) + (j - y) * (j - y));
+                double dis = Math.Sqrt((i - x) * (i - x) + (j - y) * (j - y)) * s.Item2;
                 if (dis < dismin)
                 {
                     dismin = dis;

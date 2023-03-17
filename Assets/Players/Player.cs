@@ -59,8 +59,7 @@ namespace Players
 
         protected void Update()
         {
-            
-            animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+           animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
            animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
            healthBar.SetHealth(Health);
         }

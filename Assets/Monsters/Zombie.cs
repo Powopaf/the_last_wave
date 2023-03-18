@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Monsters
@@ -44,6 +45,8 @@ namespace Monsters
 
             return result;
         }
+
+        protected abstract void Awake();
 
         protected abstract void Update();
         

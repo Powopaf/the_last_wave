@@ -8,12 +8,15 @@ namespace Monsters
             base("Zombie1", new []{"Player", "Core"}, 
                 100, 20, 30) {}
 
-        protected override void Start()
+        protected override void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             Playertarget = GameObject.FindWithTag("Player").transform;
             animator = GetComponent<Animator>();
+        }
 
+        protected override void Start()
+        {
         }
         protected  override void ZombieMovement(Vector2 direction)
         {

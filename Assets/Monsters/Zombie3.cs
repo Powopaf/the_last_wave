@@ -10,6 +10,10 @@ namespace Monsters
                 new []{"Building", "Core"},
                 200, 15, 10) {}
 
+        protected override void Awake()
+        {
+            throw new NotImplementedException();
+        }
         protected override void Start()
         {
             throw new NotImplementedException();

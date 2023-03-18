@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
+using Players.PlayerFolder;
 using Scenes.ATH;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -35,6 +36,7 @@ namespace Players
         private Vector2 pointerInput;
         private Vector3 mousepos;
         private Playersight _playersight;
+        private PlayerWeaponAttack _playerWeaponAttack;
 
         public Player(int health = 100, int damage = 1,
             int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
@@ -54,6 +56,7 @@ namespace Players
             rb = GetComponent<Rigidbody2D>();
             _playerControl = new PlayerInputAction();
             _playersight = GetComponentInChildren<Playersight>();
+            _playerWeaponAttack = GetComponentInChildren<PlayerWeaponAttack>();
             camera=Camera.main;
             animator = GetComponent<Animator>();
         }
@@ -98,14 +101,17 @@ namespace Players
             rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
             healthBar.SetHealth(Health);
             _playersight.PointerPosition = pointerInput;
-            
+            _playerWeaponAttack.PointerPosition = pointerInput;
+
         }
         private Vector2 GetPointerInput()
         {
             mousepos = _sight.ReadValue<Vector2>();
             mousepos.z = camera.nearClipPlane;
             return camera.ScreenToWorldPoint(mousepos);  
-          //  Vector3 direction = worldpmousepos - LaunchOffsetPlayer.transform.position; 
+          
+            
+            //  Vector3 direction = worldpmousepos - LaunchOffsetPlayer.transform.position; 
           //  float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
            // RblaunchOffsetPLayer.rotation = angle;
         }

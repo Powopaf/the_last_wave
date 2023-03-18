@@ -26,7 +26,7 @@ namespace World
                 if (!postaken.Contains((x,y)))
                 {
                     postaken.Add((x,y));
-                    EnumTile tile = _tileSprite.EnumTiles[_rd.Next(1, _tileSprite.Sprite.Count)];
+                    EnumTile tile = _tileSprite.Tiles[_rd.Next(1, _tileSprite.Sprite.Count)];
                     double intensity = _rd.NextDouble();
                     if (intensity == 0)
                     {

@@ -21,7 +21,7 @@ namespace World
                 Map[j, 0] = new TileDefinition(EnumTile.GroundWhite);
                 Map[j, Width - 1] = new TileDefinition(EnumTile.GroundWhite);
             }
-            SeedMap(100);
+            SeedMap(200);
         }
 
         private void DefaultMap()

@@ -5,6 +5,7 @@ using System.Threading;
 using Scenes.ATH;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.InputSystem;
 
 
 namespace Players
@@ -14,13 +15,12 @@ namespace Players
         private int Health { get; set; }
         private int MaxHealth { get; }
         private int Damage { get; set; }
-        //private (int X, int Y) _coordinate;
         private List<Item.Item> _item_inv;
         private (string,int)[] _ressource_inv;
         private string _name;
         private  int _heal;
         public float speed;
-        private Vector2 dir;
+        private Vector2 dir=Vector2.zero;
         [SerializeField] private HealthBar healthBar;
         public Rigidbody2D rb;
         [SerializeField] protected new Camera camera;
@@ -28,13 +28,20 @@ namespace Players
         private GameObject LaunchOffsetPlayer;
         private Rigidbody2D RblaunchOffsetPLayer;
         
+        
+        private PlayerInputAction _playerControl;
+        private InputAction _move;
+        private InputAction _sight;
+        private Vector2 pointerInput;
+        private Vector3 mousepos;
+        private Playersight _playersight;
+
         public Player(int health = 100, int damage = 1,
             int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
         {
             MaxHealth = maxHealth;
             Health = health;
             Damage = damage;
-            //_coordinate = (0,0);
             _name = name;
             _heal = heal;
             this.speed = speed;
@@ -42,38 +49,66 @@ namespace Players
             _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
         }
 
+        protected void Awake()
+        {
+            rb = GetComponent<Rigidbody2D>();
+            _playerControl = new PlayerInputAction();
+            _playersight = GetComponentInChildren<Playersight>();
+            camera=Camera.main;
+            animator = GetComponent<Animator>();
+        }
+
         protected void Start()
         {
             healthBar.SetMaxHealth(MaxHealth);
             healthBar.SetHealth(MaxHealth);
-            rb = GetComponent<Rigidbody2D>();
-            healthBar.SetMaxHealth(MaxHealth);
-            healthBar.SetHealth(MaxHealth);
 
         }
 
-        private void MovePlayer()
+        protected void OnEnable()
         {
-            rb.MovePosition(rb.position + dir * (speed * Time.deltaTime));
+            _move = _playerControl.Player.Move;
+            _move.Enable();
+
+            _sight = _playerControl.Player.PointerPosition;
+            _sight.Enable();
+
+
         }
+        protected void OnDisable()
+        {
+            _move.Disable();
+            _sight.Disable();
+        }
+        
 
         protected void Update()
-        {
-            
+        { 
             animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
            animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
            healthBar.SetHealth(Health);
+           dir = _move.ReadValue<Vector2>();
+           pointerInput = GetPointerInput();
+
         }
         
 
         protected void FixedUpdate()
         {
-            dir.x = Input.GetAxis("Horizontal");
-            dir.y = Input.GetAxis("Vertical");
-            MovePlayer();
+            rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
             healthBar.SetHealth(Health);
+            _playersight.PointerPosition = pointerInput;
+            
         }
-        
+        private Vector2 GetPointerInput()
+        {
+            mousepos = _sight.ReadValue<Vector2>();
+            mousepos.z = camera.nearClipPlane;
+            return camera.ScreenToWorldPoint(mousepos);  
+          //  Vector3 direction = worldpmousepos - LaunchOffsetPlayer.transform.position; 
+          //  float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+           // RblaunchOffsetPLayer.rotation = angle;
+        }
         private void Looting(Item.Item[] loot)
         {
             int i = 0;

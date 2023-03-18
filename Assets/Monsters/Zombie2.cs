@@ -21,13 +21,17 @@ namespace Monsters
 
         }
 
-        protected override void Start()
+        protected override void Awake()
         {
+            playerdistance = 10;
             rb = GetComponent<Rigidbody2D>();
             Playertarget = GameObject.FindWithTag("Player").transform;
             launchOffset = GameObject.FindWithTag("Zombie2LaunchOffset");
             animator = GetComponent<Animator>();
             _launchOffsetRigidbody2D = launchOffset.GetComponent<Rigidbody2D>();
+        }
+        protected override void Start()
+        {
         }
 
         protected override void Update()

@@ -5,24 +5,24 @@ namespace World
 {
     public class SeedGeneration
     {
-        public List<(EnumTile, double, int, int)> Seeds { get; } = new();
-        private readonly Random _rd = new(2013);
+        private List<(EnumTile, double, int, int)> Seeds { get; } = new(); 
+        private readonly Random _rd = new();
         private TileSprite _tileSprite = new ();
-        private int Height;
-        private int Width;
+        private readonly int _height;
+        private readonly int _width;
 
         public SeedGeneration(int height, int width)
         {
-            Height = height;
-            Width = width;
+            _height = height;
+            _width = width;
         }
         public void GenerateSeeds(int n)
         {
             List<(int, int)> postaken = new List<(int, int)>();
             for (int i = 0; i < n; i++)
             {
-                int x = _rd.Next(1, Height-2);
-                int y = _rd.Next(1, Width-2);
+                int x = _rd.Next(1, _height-2);
+                int y = _rd.Next(1, _width-2);
                 if (!postaken.Contains((x,y)))
                 {
                     postaken.Add((x,y));

@@ -8,7 +8,7 @@
 
         public MapDefinition()
         {
-            Map = new TileDefinition[200, 200];
+            Map = new TileDefinition[10, 15];
             for (int i = 0; i < Width; i++)
             {
                 Map[0, i] = new TileDefinition(EnumTile.WallBorderMap);

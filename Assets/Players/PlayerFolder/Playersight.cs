@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,7 +19,8 @@ public class Playersight : MonoBehaviour
 
     void Update()
     {
-        transform.right = (PointerPosition - (Vector2)transform.position).normalized;
+        var transform1 = transform;
+        transform1.right = (PointerPosition - (Vector2)transform1.position).normalized;
     }
 
    

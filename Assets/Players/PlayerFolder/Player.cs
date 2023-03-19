@@ -1,14 +1,10 @@
-using System;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Threading;
 using Scenes.ATH;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.InputSystem;
 
 
-namespace Players
+namespace Players.PlayerFolder
 {
     public abstract class Player : MonoBehaviour
     {

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace World
+﻿namespace World
 {
     public class MapDefinition
     {

@@ -1,3 +1,5 @@
+using Players.PlayerFolder;
+
 namespace Players
 {
     class Assassin : Player

@@ -7,6 +7,10 @@
         Grass1,
         Sand1,
         Snow1,
-        Water1
+        Water1,
+        GrassSideLeft,
+        GrassSideRight,
+        GrassSideTop,
+        GrassSideBot
     }
 }

@@ -11,19 +11,15 @@
             Map = new TileDefinition[200, 200];
             for (int i = 0; i < Width; i++)
             {
-                Map[0, i] = new TileDefinition(EnumTile.GroundWhite);
-                Map[Height - 1, i] = new TileDefinition(EnumTile.GroundWhite);
-                //count += 2;
+                Map[0, i] = new TileDefinition(EnumTile.WallBorderMap);
+                Map[Height - 1, i] = new TileDefinition(EnumTile.WallBorderMap);
             }
             for (int j = 0; j < Height; j++)
             {
-                Map[j, 0] = new TileDefinition(EnumTile.GroundWhite);
-                Map[j, Width - 1] = new TileDefinition(EnumTile.GroundWhite);
-                //count += 2;
+                Map[j, 0] = new TileDefinition(EnumTile.WallBorderMap);
+                Map[j, Width - 1] = new TileDefinition(EnumTile.WallBorderMap);
             }
-            SeedMap(200);
-            //Debug.Log(count);
-            SeedMap(5);
+            SeedMap(100);
         }
 
         private void DefaultMap()
@@ -34,7 +30,7 @@
                 for (int j = 1; j < Width - 1; j++)
                 {
                     int a = rd.Next(1, 3);
-                    var tile = a == 1 ? EnumTile.GroundDirt : EnumTile.GroundGrassMedium;
+                    var tile = a == 1 ? EnumTile.Dirt1 : EnumTile.Grass1;
                     Map[i, j] = new TileDefinition(tile);
                 }
             }

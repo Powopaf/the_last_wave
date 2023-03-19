@@ -1,6 +1,5 @@
 ﻿using System;
 using static World.PerlinNoise.PerlinNoise;
-
 namespace World
 {
     public class MapDefinition

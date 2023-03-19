@@ -7,7 +7,7 @@ namespace World
     {
         private List<(EnumTile, double, int, int)> Seeds { get; } = new(); 
         private readonly Random _rd = new();
-        private TileSprite _tileSprite = new ();
+        private readonly TileSprite _tileSprite = new ();
         private readonly int _height;
         private readonly int _width;
 
@@ -27,7 +27,7 @@ namespace World
                 {
                     postaken.Add((x,y));
                     EnumTile tile = _tileSprite.Tiles[_rd.Next(1, _tileSprite.Sprite.Count)];
-                    double intensity = _rd.NextDouble();
+                    double intensity = _rd.NextDouble() + _rd.Next(0, 2);
                     if (intensity == 0)
                     {
                         intensity = 0.1;
@@ -39,17 +39,17 @@ namespace World
 
         public EnumTile Distance(int i, int j)
         {
-            double dismin = Math.Sqrt((i - Seeds[0].Item3) * (i - Seeds[0].Item3)
-                                      + (j - Seeds[0].Item4) * (j - Seeds[0].Item4));
+            double distmin = Math.Sqrt((i - Seeds[0].Item3) * (i - Seeds[0].Item3)
+                                     + (j - Seeds[0].Item4) * (j - Seeds[0].Item4));
             EnumTile seed = Seeds[0].Item1;
             foreach (var s in Seeds)
             {
                 int x = s.Item3;
                 int y = s.Item4;
                 double dis = Math.Sqrt((i - x) * (i - x) + (j - y) * (j - y)) * s.Item2;
-                if (dis < dismin)
+                if (dis < distmin)
                 {
-                    dismin = dis;
+                    distmin = dis;
                     seed = s.Item1;
                 }
             }

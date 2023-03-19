@@ -1,16 +1,12 @@
-using System;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Threading;
 using Scenes.ATH;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.InputSystem;
 
 
-namespace Players
+namespace Players.PlayerFolder
 {
-    public abstract class Player : MonoBehaviour
+    public abstract class Player :  MonoBehaviour
     {
         private int Health { get; set; }
         private int MaxHealth { get; }
@@ -62,7 +58,6 @@ namespace Players
         {
             healthBar.SetMaxHealth(MaxHealth);
             healthBar.SetHealth(MaxHealth);
-
         }
 
         protected void OnEnable()
@@ -72,16 +67,14 @@ namespace Players
 
             _sight = _playerControl.Player.PointerPosition;
             _sight.Enable();
-
-
         }
+        
         protected void OnDisable()
         {
             _move.Disable();
             _sight.Disable();
         }
         
-
         protected void Update()
         { 
            animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
@@ -92,14 +85,13 @@ namespace Players
 
         }
         
-
         protected void FixedUpdate()
         {
             rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
             healthBar.SetHealth(Health);
             _playersight.PointerPosition = pointerInput;
-            
         }
+        
         private Vector2 GetPointerInput()
         {
             mousepos = _sight.ReadValue<Vector2>();
@@ -109,6 +101,7 @@ namespace Players
           //  float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
            // RblaunchOffsetPLayer.rotation = angle;
         }
+        
         private void Looting(Item.Item[] loot)
         {
             int i = 0;

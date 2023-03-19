@@ -2,8 +2,11 @@
 {
     public enum EnumTile
     {
-        GroundWhite,
-        GroundDirt,
-        GroundGrassMedium
+        WallBorderMap,
+        Dirt1,
+        Grass1,
+        Sand1,
+        Snow1,
+        Water1
     }
 }

@@ -19,8 +19,8 @@ namespace Players.PlayerFolder
     
         void Update()
         {
-            var transform1 = transform;
-            transform1.right = (PointerPosition - (Vector2)transform1.position).normalized;
+        var transform1 = transform;
+        transform1.right = (PointerPosition - (Vector2)transform1.position).normalized;
         }
     }
 }

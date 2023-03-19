@@ -11,6 +11,7 @@ namespace World
         void Start()
         {
             _mapDefinition = new MapDefinition();
+            
             SetUpTile();
         }
 
@@ -25,6 +26,24 @@ namespace World
                     if (!tile.iswalkable)
                     {
                         go.AddComponent<BoxCollider2D>();
+                    }
+                    if (_mapDefinition.Map[i,j].HasSide)
+                    {
+                        EnumTile[] side = _mapDefinition.Map[i, j].Side;
+                        for (var index = 0; index < side.Length; index++)
+                        {
+                            switch (index)
+                            {
+                                case 0:
+                                    if (side[index] != EnumTile.NoTile)
+                                    {
+                                        GameObject goside = (GameObject)Resources.Load("Grass/Grass");
+                                        Instantiate(goside, new Vector3(i,j+0.5f, 0.5f), Quaternion.identity);
+                                        goside.transform.position = new Vector3(i, j + 0.5f, -0.5f);
+                                    }
+                                    break;
+                            }
+                        }
                     }
                 }
             }

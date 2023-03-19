@@ -78,6 +78,10 @@ namespace World
                 EnumTile.Snow1 => true,
                 _ => false
             };
+            {
+                EnumTile.Snow1 => true,
+                _ => false
+            };
         }
         
         private void DefaultMap()

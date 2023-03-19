@@ -2,6 +2,7 @@
 {
     public enum EnumTile
     {
+        NoTile = 0,
         WallBorderMap,
         Dirt1,
         Grass1,
@@ -11,6 +12,6 @@
         GrassSideLeft,
         GrassSideRight,
         GrassSideTop,
-        GrassSideBot
+        GrassSideBot,
     }
 }

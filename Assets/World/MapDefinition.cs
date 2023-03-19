@@ -1,4 +1,6 @@
-﻿namespace World
+﻿using UnityEngine;
+
+namespace World
 {
     public class MapDefinition
     {
@@ -13,13 +15,17 @@
             {
                 Map[0, i] = new TileDefinition(EnumTile.GroundWhite);
                 Map[Height - 1, i] = new TileDefinition(EnumTile.GroundWhite);
+                //count += 2;
             }
             for (int j = 0; j < Height; j++)
             {
                 Map[j, 0] = new TileDefinition(EnumTile.GroundWhite);
                 Map[j, Width - 1] = new TileDefinition(EnumTile.GroundWhite);
+                //count += 2;
             }
             SeedMap(200);
+            //Debug.Log(count);
+            SeedMap(5);
         }
 
         private void DefaultMap()

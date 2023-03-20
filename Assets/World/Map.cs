@@ -29,22 +29,50 @@ namespace World
                     }
                     if (_mapDefinition.Map[i,j].HasSide)
                     {
-                        EnumTile[] side = _mapDefinition.Map[i, j].Side;
-                        for (var index = 0; index < side.Length; index++)
+                        if (_mapDefinition.IsGrass(_mapDefinition.Map[i,j].TileType))
                         {
-                            switch (index)
-                            {
-                                case 0:
-                                    if (side[index] != EnumTile.NoTile)
-                                    {
-                                        GameObject goside = (GameObject)Resources.Load("Grass/Grass");
-                                        Instantiate(goside, new Vector3(i,j+0.5f, 0.5f), Quaternion.identity);
-                                        goside.transform.position = new Vector3(i, j + 0.5f, -0.5f);
-                                    }
-                                    break;
-                            }
+                            SetUpSideTileGrass(i,j);
                         }
                     }
+                }
+            }
+        }
+
+        void SetUpSideTileGrass(int i, int j)
+        {
+            EnumTile[] side = _mapDefinition.Map[i, j].Side;
+            for (var index = 0; index < side.Length; index++)
+            {
+                switch (index)
+                {
+                    case 0:
+                        if (side[index] != EnumTile.NoTile)
+                        {
+                            GameObject goside = (GameObject)Resources.Load("Grass/GrassSideTop1");
+                            Instantiate(goside, new Vector3(i, j, -0.5f), Quaternion.identity);
+                        }
+                        break;
+                    case 1:
+                        if (side[index] != EnumTile.NoTile)
+                        {
+                            GameObject goside = (GameObject)Resources.Load("Grass/GrassSideBot1");
+                            Instantiate(goside, new Vector3(i, j, -0.5f), Quaternion.identity);
+                        }
+                        break;
+                    case 2:
+                        if (side[index] != EnumTile.NoTile)
+                        {
+                            GameObject goside = (GameObject)Resources.Load("Grass/GrassSideRight");
+                            Instantiate(goside, new Vector3(i+1, j, -0.5f), Quaternion.identity);
+                        }
+                        break;
+                    default:
+                        if (side[index] != EnumTile.NoTile)
+                        {
+                            GameObject goside = (GameObject)Resources.Load("Grass/GrassSideLeft");
+                            Instantiate(goside, new Vector3(i, j, -0.5f), Quaternion.identity);
+                        }
+                        break;
                 }
             }
         }

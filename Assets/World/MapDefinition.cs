@@ -28,16 +28,6 @@
                     {
                         RoundedGrass(i,j);
                     }
-
-                    if (IsDirt(Map[i,j].TileType))
-                    {
-                        
-                    }
-
-                    if (IsSand(Map[i,j].TileType))
-                    {
-                        
-                    }
                     if (IsSnow(Map[i,j].TileType))
                     {
                         
@@ -46,7 +36,7 @@
             }
         }
 
-        private bool IsGrass(EnumTile tile)
+        public bool IsGrass(EnumTile tile)
         {
             return tile switch
             {
@@ -55,25 +45,7 @@
             };
         }
 
-        private bool IsDirt(EnumTile tile)
-        {
-            return tile switch
-            {
-                EnumTile.Dirt1 => true,
-                _ => false
-            };
-        }
-
-        private bool IsSand(EnumTile tile)
-        {
-            return tile switch
-            {
-                EnumTile.Sand1 => true,
-                _ => false
-            };
-        }
-
-        private bool IsSnow(EnumTile tile)
+        public bool IsSnow(EnumTile tile)
         {
             return tile switch
             {

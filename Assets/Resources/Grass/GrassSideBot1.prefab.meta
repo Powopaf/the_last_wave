@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Grass/GrassSideBot1.prefab.meta
+guid: 50bff2a32610f45458a293f554a869a4
+========
+guid: 1c0dd9db6caf0ab4e80b8a657ad6a394
+>>>>>>>> 2b96621 (Map modif (#91)):Assets/Resources/WallBorderMap.prefab.meta
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

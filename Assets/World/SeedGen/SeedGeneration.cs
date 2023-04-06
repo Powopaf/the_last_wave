@@ -6,7 +6,7 @@ namespace World
     public class SeedGeneration
     {
         private List<(EnumTile, double, int, int)> Seeds { get; } = new(); 
-        private readonly Random _rd = new();
+        private readonly Random _rd = new(1);
         private readonly TileSprite _tileSprite = new ();
         private readonly int _height;
         private readonly int _width;

@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/ATH/Canvas.prefab.meta
+guid: 34a6eb96818f5ea4087498c4f080a800
+========
 <<<<<<<< HEAD:Assets/World/GameObjetMap/WallBorderMap.prefab.meta
 guid: 1c0dd9db6caf0ab4e80b8a657ad6a394
+>>>>>>>> b0083bc (init):Assets/World/GameObjetMap/WallBorderMap.prefab.meta
 PrefabImporter:
 ========
 guid: f86aeda9e2eb4f34e9020aad06750304

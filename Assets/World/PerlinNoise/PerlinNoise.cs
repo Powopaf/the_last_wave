@@ -2,9 +2,9 @@
 
 namespace World.PerlinNoise
 {
-    public class PerlinNoise
+    public static class PerlinNoise
     {
-        private float Noise(int x, int y)
+        private static float Noise(int x, int y)
         {
             int seed1 = x + y * 42;
             int seed2 = (seed1 << 13) ^ seed1; // ^ = XOR
@@ -16,7 +16,7 @@ namespace World.PerlinNoise
             return lastSeed;
         }
 
-        private float SmoothNoise(int x, int y)
+        private static float SmoothNoise(int x, int y)
         {
             float sumCorner = (Noise(x - 1, y - 1) + Noise(x + 1, y + 1) 
                                                    + Noise(x + 1, y - 1) + Noise(x - 1, y + 1))/16;
@@ -26,12 +26,12 @@ namespace World.PerlinNoise
             return sumCorner + sumCross + sumUs;
         }
 
-        private float Lerp(float a, float b, float t)
+        private static float Lerp(float a, float b, float t)
         {
             return (b - a) * t + a;
         }
 
-        private float InterpolatedNoise(float x, float y)
+        private static float InterpolatedNoise(float x, float y)
         {
             float smoothUs = SmoothNoise((int)x, (int)y);
             float smoothRight = SmoothNoise((int)(x + 1), (int)y);
@@ -42,7 +42,7 @@ namespace World.PerlinNoise
             return Lerp(lerp1, lerp2, y - (int)y);
         }
 
-        private double GetPerlinValue(float x, float y, float persistence, int octaves)
+        private static double GetPerlinValue(float x, float y, float persistence, int octaves)
         {
             float interpolate = 0;
             for (int i = 0; i <= octaves; i++)
@@ -54,7 +54,7 @@ namespace World.PerlinNoise
             return interpolate;
         }
         
-        public float[,] GenerateNoiseMap(int mapWidth, int mapHeight, float noiseScale, Random random)
+        public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, float noiseScale, Random random)
         {
             if (mapHeight <= 0 || mapWidth <=0)
             {
@@ -66,10 +66,10 @@ namespace World.PerlinNoise
             }
             int x = random.Next(0, 100000);
             int y = random.Next(0, 100000);
-            float[,] map = new float[mapWidth, mapHeight];
-            for (int i = 0; i < mapWidth; i++)
+            float[,] map = new float[mapHeight, mapWidth];
+            for (int i = 0; i < mapHeight; i++)
             {
-                for (int j = 0; j < mapHeight; j++)
+                for (int j = 0; j < mapWidth; j++)
                 {
                     map[i, j] = (float)GetPerlinValue(i / noiseScale + x, j / noiseScale + y, 0.5f, 12);
                 }

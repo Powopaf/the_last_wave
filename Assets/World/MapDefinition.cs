@@ -1,4 +1,7 @@
-﻿namespace World
+﻿using System;
+using static World.PerlinNoise.PerlinNoise;
+
+namespace World
 {
     public class MapDefinition
     {
@@ -8,7 +11,7 @@
 
         public MapDefinition()
         {
-            Map = new TileDefinition[10, 15];
+            Map = new TileDefinition[50,80];
             for (int i = 0; i < Width; i++)
             {
                 Map[0, i] = new TileDefinition(EnumTile.WallBorderMap);
@@ -19,8 +22,47 @@
                 Map[j, 0] = new TileDefinition(EnumTile.WallBorderMap);
                 Map[j, Width - 1] = new TileDefinition(EnumTile.WallBorderMap);
             }
+            GetNoiseTile();
         }
 
+        private void GetNoiseTile()
+        {
+            float[,] noiseMap = GenerateNoiseMap(Width, Height, 64, new Random(0));
+            for (int i = 0; i < Height; i++)
+            {
+                for (int j = 0; j < Width; j++)
+                {
+                    float noise = noiseMap[i, j];
+                    Map[i, j] = new TileDefinition(GetTileNoise(noise));
+                }
+            }
+        }
+
+        private EnumTile GetTileNoise(float noise)
+        {
+            /*if (noise >= -1 && noise < -0.5 )
+            {
+                return EnumTile.Water1; // put deep water
+            }*/
+            if (noise >= -1 && noise < -0.6)
+            {
+                return EnumTile.Water1;
+            }
+            if (noise >= -0.6 && noise < -0.2)
+            {
+                return EnumTile.Sand1;
+            }
+            if (noise >= -0.2 && noise < 0.5)
+            {
+                return EnumTile.Grass1;
+            }
+            if (noise >= 0.5 && noise > 0.7)
+            {
+                return EnumTile.Dirt1;
+            }
+            return EnumTile.Snow1;
+        }
+        
         public bool IsGrass(EnumTile tile)
         {
             return tile switch

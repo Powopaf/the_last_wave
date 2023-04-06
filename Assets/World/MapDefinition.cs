@@ -19,21 +19,6 @@
                 Map[j, 0] = new TileDefinition(EnumTile.WallBorderMap);
                 Map[j, Width - 1] = new TileDefinition(EnumTile.WallBorderMap);
             }
-            SeedMap(5);
-            for (int i = 0; i < Height - 1; i++)
-            {
-                for (int j = 0; j < Width - 1; j++)
-                {
-                    if (IsGrass(Map[i,j].TileType))
-                    {
-                        RoundedGrass(i,j);
-                    }
-                    if (IsSnow(Map[i,j].TileType))
-                    {
-                        
-                    }
-                }
-            }
         }
 
         public bool IsGrass(EnumTile tile)

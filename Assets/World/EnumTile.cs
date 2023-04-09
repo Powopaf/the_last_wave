@@ -18,7 +18,22 @@
         /// <summary>
         /// Snow Tile
         /// </summary>
+        /// <value>
+        /// 2 go bellow 1 and 3 on the right od 2
+        /// </value>
         Snow1,
+        Snow2,
+        Snow3,
+        SnowDefault1,
+        SnowDefault2,
+        SnowDefault3,
+        SnowDefault4,
+        SnowSideBot1,
+        SnowSideBot2,
+        SnowSideLeft,
+        SnowSideRight,
+        SnowSideTop1,
+        SnowSideTop2,
         /// <summary>
         /// Water tile
         /// </summary>

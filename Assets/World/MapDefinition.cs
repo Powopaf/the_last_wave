@@ -21,7 +21,8 @@ namespace World
                 Map[j, 0] = new TileDefinition(EnumTile.WallBorderMap);
                 Map[j, Width - 1] = new TileDefinition(EnumTile.WallBorderMap);
             }
-            GetNoiseTile();
+            //GetNoiseTile();
+            SeedMap();
         }
 
         private void GetNoiseTile()
@@ -74,10 +75,6 @@ namespace World
         public bool IsSnow(EnumTile tile)
         {
             return tile switch
-            {
-                EnumTile.Snow1 => true,
-                _ => false
-            };
             {
                 EnumTile.Snow1 => true,
                 _ => false

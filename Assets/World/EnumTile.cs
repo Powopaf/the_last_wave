@@ -2,27 +2,25 @@
 {
     public enum EnumTile
     {
-        /// <summary>
         ///  WallBorder and Tile None
-        /// </summary>
         NoTile = 0,
         WallBorderMap,
-        /// <summary>
         /// Dirt Tile
-        /// </summary>
         Dirt1,
-        /// <summary>
         /// Sand Tile
-        /// </summary>
-        Sand1,
-        /// <summary>
+        Sand1, // 1 2 3 <- In this order
+        Sand2, // 4 5 6
+        Sand3,
+        Sand4,
+        Sand5,
+        Sand6,
+        SandDefault1, // 1 2 <- In this order
+        SandDefault2, // 3 4
+        SandDefault3,
+        SandDefault4,
         /// Snow Tile
-        /// </summary>
-        /// <value>
-        /// 2 go bellow 1 and 3 on the right od 2
-        /// </value>
-        Snow1,
-        Snow2,
+        Snow1, // 1 _ <- in this order _ == no tile on this patern
+        Snow2, // 2 3
         Snow3,
         SnowDefault1,
         SnowDefault2,
@@ -34,22 +32,15 @@
         SnowSideRight,
         SnowSideTop1,
         SnowSideTop2,
-        /// <summary>
         /// Water tile
-        /// </summary>
         Water1,
-        /// <summary>
         /// Grass Tile
-        /// </summary>
         DefaultGrass1,
         DefaultGrass2,
         DefaultGrass3,
         DefaultGrass4,
-        /// <value>
-        ///  1,2,3,4 go on top 5,6,7,8 got bellow 1234
-        /// </value>
-        Grass1,
-        Grass2,
+        Grass1, // 1 2 3 4 <- In this order
+        Grass2, // 5 6 7 8 
         Grass3,
         Grass4,
         Grass5,

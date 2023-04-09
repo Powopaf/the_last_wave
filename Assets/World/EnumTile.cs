@@ -37,6 +37,17 @@
         SnowSideTop2,
         /// Water tile
         Water1,
+        Water2, // 1 2 3 <- In this order
+        Water3, // 4 5 6
+        Water4,
+        Water5,
+        Water6,
+        WaterSideBot1,
+        WaterSideBot2,
+        WaterSideLeft,
+        WaterSideRight,
+        WaterSideTop1,
+        WaterSideTop2,
         /// Grass Tile
         DefaultGrass1,
         DefaultGrass2,

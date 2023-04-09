@@ -7,6 +7,9 @@
         WallBorderMap,
         /// Dirt Tile
         Dirt1,
+        Dirt2, // 1 2 <- In this order
+        Dirt3, // 3 4
+        Dirt4,
         /// Sand Tile
         Sand1, // 1 2 3 <- In this order
         Sand2, // 4 5 6

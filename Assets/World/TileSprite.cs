@@ -19,15 +19,11 @@ namespace World
                 { EnumTile.Water1, 5 }
             };
 
-            Tiles = new Dictionary<int, EnumTile>
+            Tiles = new Dictionary<int, EnumTile>();
+            foreach (KeyValuePair<EnumTile, int> kv in Sprite)
             {
-                { 0, EnumTile.WallBorderMap },
-                { 1, EnumTile.Dirt1 },
-                { 2, EnumTile.Grass1 },
-                { 3, EnumTile.Sand1 },
-                { 4, EnumTile.Snow1 },
-                { 5, EnumTile.Water1 }
-            };
+                Tiles[kv.Value] = (EnumTile)Sprite[kv.Key];
+            }
         }
     }
 }

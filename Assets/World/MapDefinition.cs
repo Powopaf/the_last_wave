@@ -24,6 +24,11 @@ namespace World
             GetNoiseTile();
         }
 
+        private bool IsInSide(int i, int j)
+        {
+            return i >= 0 && i < Height && j >= 0 && j < Width;
+        }
+
         private void GetNoiseTile()
         {
             float[,] noiseMap = GenerateNoiseMap(Width, Height, 64, new Random(0));
@@ -125,6 +130,32 @@ namespace World
             {
                 Map[i, j + 1].HasSide = true;
                 Map[i, j + 1].Side[3] = EnumTile.GrassSideLeft;
+            }
+        }
+
+        private void PrettyDirt()
+        {
+            for (int i = 0; i < Height; i++)
+            {
+                for (int j = 0; j < Width; j++)
+                {
+                    if (Map[i, j].TileType == EnumTile.Dirt1)
+                    {
+                        if (IsInSide(i + 1, j) && Map[i + 1, j].TileType == EnumTile.Dirt1)
+                        {
+                            Map[i + 1, j].TileType = EnumTile.Dirt2;
+                        }
+                        if (IsInSide(i, j - 1) && Map[i,j - 1].TileType == EnumTile.Dirt1)
+                        {
+                            Map[i, j - 1].TileType = EnumTile.Dirt3;
+                        }
+
+                        if (IsInSide(i + 1,j - 1) && Map[i + 1, j - 1].TileType == EnumTile.Dirt1)
+                        {
+                            Map[i + 1, j - 1].TileType = EnumTile.Dirt4;
+                        }
+                    }
+                }
             }
         }
     }

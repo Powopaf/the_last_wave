@@ -10,7 +10,7 @@ namespace World
 
         public MapDefinition()
         {
-            Map = new TileDefinition[50,80];
+            Map = new TileDefinition[512,512];
             for (int i = 0; i < Width; i++)
             {
                 Map[0, i] = new TileDefinition(EnumTile.WallBorderMap);
@@ -21,8 +21,7 @@ namespace World
                 Map[j, 0] = new TileDefinition(EnumTile.WallBorderMap);
                 Map[j, Width - 1] = new TileDefinition(EnumTile.WallBorderMap);
             }
-            //GetNoiseTile();
-            SeedMap();
+            GetNoiseTile();
         }
 
         private void GetNoiseTile()
@@ -40,23 +39,19 @@ namespace World
 
         private EnumTile GetTileNoise(float noise)
         {
-            /*if (noise >= -1 && noise < -0.5 )
-            {
-                return EnumTile.Water1; // put deep water
-            }*/
-            if (noise >= -1 && noise < -0.6)
+            if (noise >= -1 && noise < -0.15)
             {
                 return EnumTile.Water1;
             }
-            if (noise >= -0.6 && noise < -0.2)
+            if (noise >= -0.15 && noise < -0.05)
             {
                 return EnumTile.Sand1;
             }
-            if (noise >= -0.2 && noise < 0.5)
+            if (noise >= -0.05 && noise < 0.3)
             {
                 return EnumTile.Grass1;
             }
-            if (noise >= 0.5 && noise > 0.7)
+            if (noise >= 0.3 && noise < 0.5)
             {
                 return EnumTile.Dirt1;
             }

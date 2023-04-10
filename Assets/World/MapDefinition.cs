@@ -22,6 +22,7 @@ namespace World
                 Map[j, Width - 1] = new TileDefinition(EnumTile.WallBorderMap);
             }
             GetNoiseTile();
+            PrettyDirt();
         }
 
         private bool IsInSide(int i, int j)

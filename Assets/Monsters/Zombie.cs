@@ -1,4 +1,4 @@
-using Pathfinding;
+
 using UnityEngine;
 namespace Monsters
 {
@@ -15,8 +15,7 @@ namespace Monsters
         public Rigidbody2D rb;
         protected Vector2 Movement;
         public Animator animator;
-        protected Seeker seeker;
-        protected Path path;
+       
         protected int currentWaypoint = 0;
         protected bool reachedEndOfPath = false;
 

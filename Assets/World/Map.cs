@@ -7,11 +7,10 @@ namespace World
         public Tile[] tiles;
         private MapDefinition _mapDefinition;
         private readonly TileSprite _tileSprite = new TileSprite();
-    
         void Start()
         {
             _mapDefinition = new MapDefinition();
-            SetMapGen();
+            //SetMapGen();
             SetUpTile();
         }
 

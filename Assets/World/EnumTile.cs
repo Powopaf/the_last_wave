@@ -22,7 +22,7 @@
         SandDefault3,
         SandDefault4,
         /// Snow Tile
-        Snow1, // 1 _ <- in this order _ == no tile on this patern
+        Snow1, // 1 _ <- in this order _ == no tile on this pattern
         Snow2, // 2 3
         Snow3,
         SnowDefault1,

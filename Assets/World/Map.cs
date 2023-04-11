@@ -6,8 +6,7 @@ namespace World
     {
         public Tile[] tiles;
         private MapDefinition _mapDefinition;
-        private TileSprite _tileSprite = new TileSprite();
-    
+        private readonly TileSprite _tileSprite = new TileSprite();
         void Start()
         {
             _mapDefinition = new MapDefinition();
@@ -17,7 +16,7 @@ namespace World
 
         private void SetMapGen() // don't work
         {
-            Instantiate(Resources.Load(@"Assets/Resources/MapGenerator.prefab"));
+            Instantiate(Resources.Load(@"Assets/Resources/MapGenerator"));
         }
         
         private void SetUpTile()

@@ -1,5 +1,7 @@
 ﻿using System;
 using static World.PerlinNoise.PerlinNoise;
+using static World.GetType;
+
 namespace World
 {
     public class MapDefinition
@@ -10,7 +12,7 @@ namespace World
 
         public MapDefinition()
         {
-            Map = new TileDefinition[50,80];
+            Map = new TileDefinition[512,512];
             for (int i = 0; i < Width; i++)
             {
                 Map[0, i] = new TileDefinition(EnumTile.WallBorderMap);
@@ -21,12 +23,18 @@ namespace World
                 Map[j, 0] = new TileDefinition(EnumTile.WallBorderMap);
                 Map[j, Width - 1] = new TileDefinition(EnumTile.WallBorderMap);
             }
-            GetNoiseTile();
+            GetNoiseTile(); // can put seed here
+            PrettyDirt();
         }
 
-        private void GetNoiseTile()
+        private bool IsInSide(int i, int j)
         {
-            float[,] noiseMap = GenerateNoiseMap(Width, Height, 64, new Random(0));
+            return i >= 0 && i < Height && j >= 0 && j < Width;
+        }
+
+        private void GetNoiseTile(int seed = 0)
+        {
+            float[,] noiseMap = GenerateNoiseMap(Width, Height, 64, new Random(seed));
             for (int i = 0; i < Height; i++)
             {
                 for (int j = 0; j < Width; j++)
@@ -37,53 +45,6 @@ namespace World
             }
         }
 
-        private EnumTile GetTileNoise(float noise)
-        {
-            /*if (noise >= -1 && noise < -0.5 )
-            {
-                return EnumTile.Water1; // put deep water
-            }*/
-            if (noise >= -1 && noise < -0.6)
-            {
-                return EnumTile.Water1;
-            }
-            if (noise >= -0.6 && noise < -0.2)
-            {
-                return EnumTile.Sand1;
-            }
-            if (noise >= -0.2 && noise < 0.5)
-            {
-                return EnumTile.Grass1;
-            }
-            if (noise >= 0.5 && noise > 0.7)
-            {
-                return EnumTile.Dirt1;
-            }
-            return EnumTile.Snow1;
-        }
-        
-        public bool IsGrass(EnumTile tile)
-        {
-            return tile switch
-            {
-                EnumTile.Grass1 => true,
-                _ => false
-            };
-        }
-
-        public bool IsSnow(EnumTile tile)
-        {
-            return tile switch
-            {
-                EnumTile.Snow1 => true,
-                _ => false
-            };
-            {
-                EnumTile.Snow1 => true
-                _ => false
-            };
-        }
-        
         private void DefaultMap()
         {
             System.Random rd = new System.Random(0);
@@ -133,6 +94,38 @@ namespace World
             {
                 Map[i, j + 1].HasSide = true;
                 Map[i, j + 1].Side[3] = EnumTile.GrassSideLeft;
+            }
+        }
+
+        private void PrettyDirt()
+        {
+            for (int i = 0; i < Height; i++)
+            {
+                for (int j = 0; j < Width; j++)
+                {
+                    int agree = 0;
+                    if (Map[i, j].TileType == EnumTile.Dirt1)
+                    {
+                        if (IsInSide(i + 1, j) && Map[ i + 1, j].TileType == EnumTile.Dirt1)
+                        {
+                            agree++;
+                        }
+                        if (IsInSide(i, j - 1) && Map[i,j - 1].TileType == EnumTile.Dirt1)
+                        {
+                            agree++;
+                        }
+                        if (IsInSide(i + 1,j - 1) && Map[i + 1, j - 1].TileType == EnumTile.Dirt1)
+                        {
+                            agree++;
+                        }
+                        if (agree == 3)
+                        {
+                            Map[i + 1, j].TileType = EnumTile.Dirt2;
+                            Map[i, j - 1].TileType = EnumTile.Dirt3;
+                            Map[i + 1, j - 1].TileType = EnumTile.Dirt4;
+                        }
+                    }
+                }
             }
         }
     }

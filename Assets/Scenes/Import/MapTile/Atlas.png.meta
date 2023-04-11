@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -7991,16 +8003,16 @@ TextureImporter:
       Atlas_202: 1666221257
       Atlas_118: 335825731
       Atlas_0: -407561448
-      Atlas_181: -135564607
       Atlas_269: -1369097051
+      Atlas_181: -135564607
       Atlas_136: 163427429
       Atlas_345: -231585322
       Atlas_266: -581254869
       Atlas_285: -1421468769
       Atlas_17: 856537068
       Atlas_151: -1101681870
-      Atlas_230: -106619416
       Atlas_301: 2061231743
+      Atlas_230: -106619416
       Atlas_183: -98456943
       Atlas_321: -519862746
       Atlas_337: 1750908225
@@ -8035,9 +8047,9 @@ TextureImporter:
       Atlas_51: 464393433
       Atlas_316: -1366886518
       Atlas_101: 670093129
-      Atlas_109: -711391188
-      Atlas_76: -1053977148
       Atlas_143: -645947053
+      Atlas_76: -1053977148
+      Atlas_109: -711391188
       Atlas_262: 894896924
       Atlas_243: 544288797
       Atlas_140: -98021305

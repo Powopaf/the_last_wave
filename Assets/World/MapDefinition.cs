@@ -79,7 +79,7 @@ namespace World
                 _ => false
             };
             {
-                EnumTile.Snow1 => true,
+                EnumTile.Snow1 => true
                 _ => false
             };
         }

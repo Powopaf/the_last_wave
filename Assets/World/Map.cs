@@ -8,7 +8,7 @@ namespace World
         private MapDefinition _mapDefinition;
         private TileSprite _tileSprite = new TileSprite();
     
-        void Awake()
+        void Start()
         {
             _mapDefinition = new MapDefinition();
             //SetMapGen();

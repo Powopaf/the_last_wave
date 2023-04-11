@@ -76,5 +76,26 @@ namespace World.PerlinNoise
             }
             return map;
         }
+        
+        public static EnumTile GetTileNoise(float noise)
+        {
+            if (noise >= -1 && noise < -0.15)
+            {
+                return EnumTile.Water1;
+            }
+            if (noise >= -0.15 && noise < -0.05)
+            {
+                return EnumTile.Sand1;
+            }
+            if (noise >= -0.05 && noise < 0.3)
+            {
+                return EnumTile.Grass1;
+            }
+            if (noise >= 0.3 && noise < 0.5)
+            {
+                return EnumTile.Dirt1;
+            }
+            return EnumTile.Snow1;
+        }
     }
 }

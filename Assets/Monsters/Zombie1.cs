@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using World;
 
 namespace Monsters
 {
@@ -8,27 +10,32 @@ namespace Monsters
             base("Zombie1", new []{"Player", "Core"}, 
                 100, 20, 30) {}
 
+        
         protected override void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             Playertarget = GameObject.FindWithTag("Player").transform;
             animator = GetComponent<Animator>();
+            
         }
 
         protected override void Start()
         {
+            InvokeRepeating("UpdatePath", 0f, 0.5f);
         }
-        protected  override void ZombieMovement(Vector2 direction)
+       
+
+        protected override void ZombieMovement(Vector2 direction)
         {
             rb.MovePosition((Vector2)transform.position + direction * (speed * Time.deltaTime));
         }
-
+        
         protected override void Update()
-        {
+        { 
            
             Vector3 direction = Playertarget.position - transform.position;
-            //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            //rb.rotation = angle;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            rb.rotation = angle;
             direction.Normalize();
             Movement = direction;
             animator.SetFloat("X", Movement.x);

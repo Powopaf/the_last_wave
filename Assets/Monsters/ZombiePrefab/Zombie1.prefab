@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2281156968253885611}
   - component: {fileID: 2281156968253885610}
   - component: {fileID: 2006672809427668576}
-  - component: {fileID: 3992060302684624874}
+  - component: {fileID: 2321799927942132888}
   m_Layer: 0
   m_Name: Zombie1
   m_TagString: Untagged
@@ -171,7 +171,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &3992060302684624874
+--- !u!114 &2321799927942132888
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,22 +180,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2281156968253885609}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Script: {fileID: 11500000, guid: e59afdd545801ad43985907f7a34c1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1

@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 namespace Monsters
 {
@@ -15,9 +16,9 @@ namespace Monsters
         public Rigidbody2D rb;
         protected Vector2 Movement;
         public Animator animator;
-       
-        protected int currentWaypoint = 0;
-        protected bool reachedEndOfPath = false;
+        protected List<Node> path;
+        protected int currentWaypointIndex = 0;
+        protected float minDistance = 0.1f;
 
         protected Zombie(string name = "", string[] target = null,
             int health = 1, int damage = 1, float speed = 1f)

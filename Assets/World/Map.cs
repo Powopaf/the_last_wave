@@ -5,7 +5,7 @@ namespace World
     public class Map : MonoBehaviour
     {
         public Tile[] tiles;
-        private MapDefinition _mapDefinition;
+        public MapDefinition _mapDefinition;
         private TileSprite _tileSprite = new TileSprite();
     
         void Start()

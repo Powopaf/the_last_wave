@@ -12,7 +12,7 @@ namespace World
 
         public MapDefinition()
         {
-            Map = new TileDefinition[20,20]; // Do not put big number here or ...
+            Map = new TileDefinition[512,512]; // Do not put big number here or ...
             for (int i = 0; i < Width; i++)
             {
                 Map[0, i] = new TileDefinition(EnumTile.WallBorderMap);
@@ -126,6 +126,8 @@ namespace World
                             Map[i, j - 1].TileType = EnumTile.SandDefault3;
                             Map[i + 1, j - 1].TileType = EnumTile.SandDefault4;
                         }
+                        Map[i, j].HaveProps = rd.Next(0, 10) == 0;
+                        Map[i, j].Prop = (Obj.Crabe, rd.NextDouble());
                     }
                     
                     else if (Map[i,j].TileType == EnumTile.Snow1)
@@ -149,9 +151,25 @@ namespace World
                             Map[i, j - 1].TileType = EnumTile.SnowDefault3;
                             Map[i + 1, j - 1].TileType = EnumTile.SnowDefault4;
                         }
+                        Map[i, j].HaveProps = rd.Next(0, 5) == 0;
+                        if (Map[i,j].HaveProps)
+                        {
+                            Map[i, j].Prop = rd.Next(1, 5) switch
+                            {
+                                1 => (Obj.GrassSnow1, rd.NextDouble()),
+                                2 => (Obj.GrassSnow2, rd.NextDouble()),
+                                3 => (Obj.GrassSnow3, rd.NextDouble()),
+                                4 => (Obj.GrassSnow4, rd.NextDouble()),
+                                _ => (Obj.NoObj, 0)
+                            };
+                        }
+                        if (rd.Next(0,10) == 0)
+                        {
+                            SpawnTree(i,j);
+                        }
                     }
                     
-                    else if (Map[i,j].TileType == EnumTile.Water1 && rd.Next(0, 10) == 0)
+                    else if (Map[i,j].TileType == EnumTile.Water1 && rd.Next(0, 5) == 0)
                     {
                         if (IsInSide(i + 1, j) && Map[i + 1, j].TileType == EnumTile.Water1)
                         {
@@ -181,6 +199,13 @@ namespace World
                             Map[i + 1, j - 1].TileType = EnumTile.Water5;
                             Map[i + 2, j - 1].TileType = EnumTile.Water6;
                         }
+                        Map[i, j].HaveProps = rd.Next(0, 5) == 0;
+                        if (Map[i,j].HaveProps)
+                        {
+                            Map[i, j].Prop = rd.Next(1, 3) == 1
+                                ? (Obj.StarFish1, rd.NextDouble())
+                                : (Obj.StarFish2, rd.NextDouble());
+                        }
                     }
                     
                     else if (Map[i,j].TileType == EnumTile.DefaultGrass1)
@@ -203,10 +228,27 @@ namespace World
                             Map[i, j - 1].TileType = EnumTile.DefaultGrass3;
                             Map[i + 1, j - 1].TileType = EnumTile.DefaultGrass4;
                         }
+                        Map[i, j].HaveProps = rd.Next(0, 5) == 0;
+                        if (Map[i,j].HaveProps)
+                        {
+                            Map[i, j].Prop = rd.Next(1, 5) switch
+                            {
+                                1 => (Obj.Flower1, rd.NextDouble()),
+                                2 => (Obj.Flower2, rd.NextDouble()),
+                                3 => (Obj.Flower3, rd.NextDouble()),
+                                4 => (Obj.Flower4, rd.NextDouble()),
+                                _ => (Obj.NoObj, 0)
+                            };
+                        }
+                        if (rd.Next(0,10) == 0)
+                        {
+                            SpawnTree(i,j);
+                        }
                     }
                 }
             }
         }
+
 
         private void SetSideTile()
         {
@@ -266,7 +308,7 @@ namespace World
         private void RoundSnow(int i, int j, ref bool haveSide)
         {
             TileDefinition current = Map[i, j];
-            if (IsInSide(i, j + 1) && !IsGrass(Map[i, j + 1].TileType))
+            if (IsInSide(i, j + 1) && !IsSnow(Map[i, j + 1].TileType))
             {
                 haveSide = true;
                 current.Side[0] = EnumTile.SnowSideTop1;
@@ -310,6 +352,15 @@ namespace World
             {
                 haveSide = true;
                 current.Side[3] = EnumTile.WaterSideLeft;
+            }
+        }
+
+        private void SpawnTree(int i, int j)
+        {
+            
+            if (!Map[i,j].HaveProps)
+            {
+                Map[i, j].HaveTree = true;
             }
         }
     }

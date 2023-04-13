@@ -9,4 +9,11 @@ namespace World
         public GameObject visual;
         public bool iswalkable = true;
     }
+
+    [System.Serializable]
+    public class Side
+    {
+        public string name;
+        public GameObject visual;
+    }
 }

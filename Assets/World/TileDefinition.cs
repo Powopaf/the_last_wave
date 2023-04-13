@@ -9,9 +9,9 @@ namespace World
         public bool HaveSide { get; set; }
         public EnumTile[] Side = new EnumTile[4]; // top | right | bot | left
         public bool IsWall;
-        public bool HaveProps { get; set; } = false;
+        public bool HaveProps = false;
         public (Obj, double) Prop;
-        public bool HaveTree = false;
+        public bool HaveTree { get; set; }
         public TileDefinition(EnumTile tile, bool haveSide = false)
         {
             TileType = tile;

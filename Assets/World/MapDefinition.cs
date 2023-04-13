@@ -103,8 +103,6 @@ namespace World
                             Map[i, j - 1].TileType = EnumTile.Dirt3;
                             Map[i + 1, j - 1].TileType = EnumTile.Dirt4;
                         }
-
-                        SpawnTree(i, j);
                     }
                     
                     else if (Map[i,j].TileType == EnumTile.Sand1)
@@ -165,7 +163,10 @@ namespace World
                                 _ => (Obj.NoObj, 0)
                             };
                         }
-                        SpawnTree(i, j);
+                        if (rd.Next(0,10) == 0)
+                        {
+                            SpawnTree(i,j);
+                        }
                     }
                     
                     else if (Map[i,j].TileType == EnumTile.Water1 && rd.Next(0, 5) == 0)
@@ -238,6 +239,10 @@ namespace World
                                 4 => (Obj.Flower4, rd.NextDouble()),
                                 _ => (Obj.NoObj, 0)
                             };
+                        }
+                        if (rd.Next(0,10) == 0)
+                        {
+                            SpawnTree(i,j);
                         }
                     }
                 }

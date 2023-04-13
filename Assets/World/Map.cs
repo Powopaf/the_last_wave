@@ -36,12 +36,28 @@ namespace World
                     }
                     if (current.HaveSide)
                     {
-                        foreach (var t in current.Side)
+                        for (var index = 0; index < current.Side.Length; index++)
                         {
+                            var t = current.Side[index];
                             if (t != EnumTile.NoTile)
                             {
                                 var s = side[_tileSprite.Side[t]];
-                                Instantiate(s.visual, new Vector3(i, j, -0.1), Quaternion.identity);
+                                if (index == 0) // top Side
+                                {
+                                    Instantiate(s.visual, new Vector3(i, j + 1, -0.5f), Quaternion.identity);
+                                }
+                                else if (index == 1) // Right side
+                                {
+                                    Instantiate(s.visual, new Vector3(i + 1, j, -0.5f), Quaternion.identity);
+                                }
+                                else if (index == 2) // bottom side
+                                {
+                                    Instantiate(s.visual, new Vector3(i, j - 1, -0.5f), Quaternion.identity);
+                                }
+                                else
+                                {
+                                    Instantiate(s.visual, new Vector3(i - 1, j, -0.5f), Quaternion.identity);
+                                }
                             }
                         }
                     }

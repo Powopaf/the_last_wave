@@ -25,6 +25,7 @@ namespace World
             }
             GetNoiseTile(); // can put seed here
             PrettyMap();
+            SetSideTile();
         }
 
         private bool IsInSide(int i, int j)

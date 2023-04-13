@@ -1,10 +1,12 @@
 using UnityEngine;
+using System.Linq;
 
 namespace World
 {
     public class Map : MonoBehaviour
     {
         public Tile[] tiles;
+        public Side[] side;
         private MapDefinition _mapDefinition;
         private readonly TileSprite _tileSprite = new TileSprite();
         void Start()
@@ -34,11 +36,12 @@ namespace World
                     }
                     if (current.HaveSide)
                     {
-                        foreach (EnumTile side in current.Side)
+                        foreach (var t in current.Side)
                         {
-                            if (side != EnumTile.NoTile)
+                            if (t != EnumTile.NoTile)
                             {
-                                
+                                var s = side[_tileSprite.Side[t]];
+                                Instantiate(s.visual, new Vector3(i, j, -0.1), Quaternion.identity);
                             }
                         }
                     }

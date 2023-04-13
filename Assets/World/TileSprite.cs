@@ -6,6 +6,8 @@ namespace World
     {
         public IDictionary<EnumTile, int> Sprite { get; }
         public IDictionary<int, EnumTile> Tiles { get; }
+        
+        public  IDictionary<EnumTile, int> Side { get; }
 
         public TileSprite()
         {
@@ -58,6 +60,26 @@ namespace World
             {
                 Tiles[kv.Value] = (EnumTile)Sprite[kv.Key];
             }
+
+            Side = new Dictionary<EnumTile, int>()
+            {
+                { EnumTile.GrassSideTop, 0 },
+                { EnumTile.GrassSideRight, 1 },
+                { EnumTile.GrassSideBot, 2 },
+                { EnumTile.GrassSideLeft, 3 },
+                { EnumTile.SnowSideTop1, 4 },
+                { EnumTile.SnowSideTop2, 5 },
+                { EnumTile.SnowSideRight, 6 },
+                { EnumTile.SnowSideBot1, 7 },
+                { EnumTile.SnowSideBot2, 8 },
+                { EnumTile.SnowSideLeft, 9 },
+                { EnumTile.WaterSideTop1, 10 },
+                { EnumTile.WaterSideTop2, 11 },
+                { EnumTile.WaterSideRight, 12 },
+                { EnumTile.WaterSideBot1, 13 },
+                { EnumTile.WaterSideBot2, 14 },
+                { EnumTile.WaterSideLeft, 15 }
+            };
         }
     }
 }

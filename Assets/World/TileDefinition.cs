@@ -6,14 +6,14 @@ namespace World
     {
         public EnumTile TileType { get; set; }
         public bool HasLoot { get; } = false;
-        public bool HasSide { get; set; }
+        public bool HaveSide { get; set; }
         public EnumTile[] Side = new EnumTile[4]; // top | right | bot | left
         public bool IsWall;
 
-        public TileDefinition(EnumTile tile, bool hasSide = false)
+        public TileDefinition(EnumTile tile, bool haveSide = false)
         {
             TileType = tile;
-            HasSide = hasSide;
+            HaveSide = haveSide;
             IsWall = Walk(tile);
         }
 

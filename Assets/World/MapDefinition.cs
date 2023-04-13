@@ -216,17 +216,22 @@ namespace World
                     TileDefinition current = Map[i, j];
                     if (IsGrass(current.TileType))
                     {
-                        bool hasSide = false;
-                        RoundGrass(i, j, ref hasSide);
-                        Map[i, j].HasSide = hasSide;
+                        bool haveSide = false;
+                        RoundGrass(i, j, ref haveSide);
+                        Map[i, j].HaveSide = haveSide;
                     }
                     else if (IsWater(current.TileType))
                     {
+                        bool haveSide = false;
+                        RoundWater(i, j, ref haveSide);
+                        Map[i, j].HaveSide = haveSide;
                         
                     }
                     else if (IsSnow(current.TileType))
                     {
-                        
+                        bool haveSide = false;
+                        RoundSnow(i, j , ref haveSide);
+                        Map[i, j].HaveSide = haveSide;
                     }
                 }
             }
@@ -254,6 +259,56 @@ namespace World
             {
                 haveSide = true;
                 current.Side[3] = EnumTile.GrassSideLeft;
+            }
+        }
+        
+        private void RoundSnow(int i, int j, ref bool haveSide)
+        {
+            TileDefinition current = Map[i, j];
+            if (IsInSide(i, j + 1) && !IsGrass(Map[i, j + 1].TileType))
+            {
+                haveSide = true;
+                current.Side[0] = EnumTile.SnowSideTop1;
+            }
+            if (IsInSide(i + 1, j) && !IsSnow(Map[i + 1, j].TileType))
+            {
+                haveSide = true;
+                current.Side[1] = EnumTile.SnowSideRight;
+            }
+            if (IsInSide(i, j - 1) && !IsSnow(Map[i, j - 1].TileType))
+            {
+                haveSide = true;
+                current.Side[2] = EnumTile.SnowSideBot1;
+            }
+            if (IsInSide(i - 1, j) && !IsSnow(Map[i - 1, j].TileType))
+            {
+                haveSide = true;
+                current.Side[3] = EnumTile.SnowSideLeft;
+            }
+        }
+        
+        private void RoundWater(int i, int j, ref bool haveSide)
+        {
+            TileDefinition current = Map[i, j];
+            if (IsInSide(i, j + 1) && !IsWater(Map[i, j + 1].TileType))
+            {
+                haveSide = true;
+                current.Side[0] = EnumTile.WaterSideTop1;
+            }
+            if (IsInSide(i + 1, j) && !IsWater(Map[i + 1, j].TileType))
+            {
+                haveSide = true;
+                current.Side[1] = EnumTile.WaterSideRight;
+            }
+            if (IsInSide(i, j - 1) && !IsWater(Map[i, j - 1].TileType))
+            {
+                haveSide = true;
+                current.Side[2] = EnumTile.WaterSideBot1;
+            }
+            if (IsInSide(i - 1, j) && !IsWater(Map[i - 1, j].TileType))
+            {
+                haveSide = true;
+                current.Side[3] = EnumTile.WaterSideLeft;
             }
         }
     }

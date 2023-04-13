@@ -25,11 +25,22 @@ namespace World
             {
                 for (int j = 0; j < _mapDefinition.Width; j++)
                 {
-                    var tile = tiles[_tileSprite.Sprite[_mapDefinition.Map[i, j].TileType]];
+                    TileDefinition current = _mapDefinition.Map[i, j];
+                    var tile = tiles[_tileSprite.Sprite[current.TileType]];
                     GameObject go = Instantiate(tile.visual, new Vector3(i, j, 0), Quaternion.identity);
                     if (!tile.iswalkable)
                     {
                         go.AddComponent<BoxCollider2D>();
+                    }
+                    if (current.HaveSide)
+                    {
+                        foreach (EnumTile side in current.Side)
+                        {
+                            if (side != EnumTile.NoTile)
+                            {
+                                
+                            }
+                        }
                     }
                 }
             }

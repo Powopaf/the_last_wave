@@ -5,9 +5,11 @@ namespace World
     public class TileSprite
     {
         public IDictionary<EnumTile, int> Sprite { get; }
+        
         public IDictionary<int, EnumTile> Tiles { get; }
         
         public  IDictionary<EnumTile, int> Side { get; }
+        
 
         public TileSprite()
         {
@@ -80,6 +82,8 @@ namespace World
                 { EnumTile.WaterSideBot2, 14 },
                 { EnumTile.WaterSideLeft, 15 }
             };
+            
+            
         }
     }
 }

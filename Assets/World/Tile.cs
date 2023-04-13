@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using System;
 
 namespace World
 {
-    [System.Serializable]
+    [Serializable]
     public class Tile
     {
         public string name;
@@ -10,8 +11,15 @@ namespace World
         public bool iswalkable = true;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class Side
+    {
+        public string name;
+        public GameObject visual;
+    }
+
+    [Serializable]
+    public class Props
     {
         public string name;
         public GameObject visual;

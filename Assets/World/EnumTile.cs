@@ -88,4 +88,17 @@
         Rock1,
         Rock2
     }
+
+    public enum Corner
+    {
+        NoCorner = 0,
+        GrassCornerTopLeft,
+        GrassCornerTopRight,
+        GrassCornerBotLeft,
+        GrassCornerBotRight,
+        SnowCornerTopLeft,
+        SnowCornerTopRight,
+        SnowCornerBotLeft,
+        SnowCornerBotRight,
+    }
 }

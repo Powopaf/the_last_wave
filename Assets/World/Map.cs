@@ -1,8 +1,8 @@
 using System;
-using Unity.Mathematics;
 using UnityEngine;
 using static World.GetType;
-using Random = System.Random;
+using System.Linq;
+using GameObject = UnityEngine.GameObject;
 
 namespace World
 {
@@ -66,6 +66,50 @@ namespace World
                                     default:
                                         Instantiate(s.visual, new Vector3(i - 1, j, -0.1f), Quaternion.identity);
                                         break;
+                                }
+                            }
+                        }
+                        foreach (Corner corner in current.Corners)
+                        {
+                            if (corner != Corner.NoCorner)
+                            {
+                                switch (corner)
+                                {
+                                    case Corner.GrassCornerTopLeft:
+                                        GameObject gcTL = Resources.Load<GameObject>(@"Grass\GrassCornerTopLeft");
+                                        Instantiate(gcTL, new Vector3(i - 1, j + 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.GrassCornerTopRight:
+                                        GameObject gcTR = Resources.Load<GameObject>(@"Grass\GrassCornerTopRight");
+                                        Instantiate(gcTR, new Vector3(i + 1, j + 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.GrassCornerBotLeft:
+                                        GameObject gcBL = Resources.Load<GameObject>(@"Grass\GrassCornerBotLeft");
+                                        Instantiate(gcBL, new Vector3(i - 1, j - 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.GrassCornerBotRight:
+                                        GameObject gcBR = Resources.Load<GameObject>(@"Grass\GrassCornerBotRight");
+                                        Instantiate(gcBR, new Vector3(i + 1, j - 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.SnowCornerTopLeft:
+                                        GameObject scTL = Resources.Load<GameObject>(@"Snow\SnowCornerTopLeft");
+                                        Instantiate(scTL, new Vector3(i - 1, j + 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.SnowCornerTopRight:
+                                        GameObject scTR = Resources.Load<GameObject>(@"Snow\SnowCornerTopRight");
+                                        Instantiate(scTR, new Vector3(i + 1, j + 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.SnowCornerBotLeft:
+                                        GameObject scBL = Resources.Load<GameObject>(@"Snow\SnowCornerBotLeft");
+                                        Instantiate(scBL, new Vector3(i - 1, j - 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.SnowCornerBotRight:
+                                        GameObject scBR = Resources.Load<GameObject>(@"Snow\SnowCornerBotRight");
+                                        Instantiate(scBR, new Vector3(i + 1, j - 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.NoCorner:
+                                    default:
+                                        throw new ArgumentOutOfRangeException();
                                 }
                             }
                         }

@@ -127,7 +127,7 @@ namespace World
                             Map[i + 1, j - 1].TileType = EnumTile.SandDefault4;
                         }
                         Map[i, j].HaveProps = rd.Next(0, 10) == 0;
-                        Map[i, j].Prop = (Obj.Crabe, rd.NextDouble());
+                        Map[i, j].Prop = (Obj.Crabe, PlaceProps(rd));
                     }
                     
                     else if (Map[i,j].TileType == EnumTile.Snow1)
@@ -156,10 +156,10 @@ namespace World
                         {
                             Map[i, j].Prop = rd.Next(1, 5) switch
                             {
-                                1 => (Obj.GrassSnow1, rd.NextDouble()),
-                                2 => (Obj.GrassSnow2, rd.NextDouble()),
-                                3 => (Obj.GrassSnow3, rd.NextDouble()),
-                                4 => (Obj.GrassSnow4, rd.NextDouble()),
+                                1 => (Obj.GrassSnow1, PlaceProps(rd)),
+                                2 => (Obj.GrassSnow2, PlaceProps(rd)),
+                                3 => (Obj.GrassSnow3, PlaceProps(rd)),
+                                4 => (Obj.GrassSnow4, PlaceProps(rd)),
                                 _ => (Obj.NoObj, 0)
                             };
                         }
@@ -203,8 +203,8 @@ namespace World
                         if (Map[i,j].HaveProps)
                         {
                             Map[i, j].Prop = rd.Next(1, 3) == 1
-                                ? (Obj.StarFish1, rd.NextDouble())
-                                : (Obj.StarFish2, rd.NextDouble());
+                                ? (Obj.StarFish1, PlaceProps(rd))
+                                : (Obj.StarFish2, PlaceProps(rd));
                         }
                     }
                     
@@ -233,10 +233,10 @@ namespace World
                         {
                             Map[i, j].Prop = rd.Next(1, 5) switch
                             {
-                                1 => (Obj.Flower1, rd.NextDouble()),
-                                2 => (Obj.Flower2, rd.NextDouble()),
-                                3 => (Obj.Flower3, rd.NextDouble()),
-                                4 => (Obj.Flower4, rd.NextDouble()),
+                                1 => (Obj.Flower1, PlaceProps(rd)),
+                                2 => (Obj.Flower2, PlaceProps(rd)),
+                                3 => (Obj.Flower3, PlaceProps(rd)),
+                                4 => (Obj.Flower4, PlaceProps(rd)),
                                 _ => (Obj.NoObj, 0)
                             };
                         }
@@ -357,11 +357,8 @@ namespace World
 
         private void SpawnTree(int i, int j)
         {
-            
-            if (!Map[i,j].HaveProps)
-            {
-                Map[i, j].HaveTree = true;
-            }
+
+            Map[i, j].HaveTree = !Map[i, j].HaveProps;
         }
     }
 }

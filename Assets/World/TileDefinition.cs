@@ -12,6 +12,7 @@ namespace World
         public bool HaveProps = false;
         public (Obj, double) Prop;
         public bool HaveTree { get; set; }
+        public bool HaveRock { get; set; } = false;
         public TileDefinition(EnumTile tile, bool haveSide = false)
         {
             TileType = tile;

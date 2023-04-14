@@ -82,4 +82,10 @@
         StarFish1, 
         StarFish2
     }
+
+    public enum Rock
+    {
+        Rock1,
+        Rock2
+    }
 }

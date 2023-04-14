@@ -78,53 +78,53 @@ namespace World
                                 break;
                             case Obj.Crabe:
                                 GameObject crabe = Resources.Load<GameObject>(@"Props\crabe");
-                                Instantiate(crabe, new Vector3(i + dec, j + dec, -0.5f), Quaternion.identity);
+                                Instantiate(crabe, new Vector3(i + dec, j + dec, -0.3f), Quaternion.identity);
                                 break;
                             case Obj.Flower1:
                                 GameObject flower1 = Resources.Load<GameObject>(@"Props\flower1");
-                                Instantiate(flower1, new Vector3(i + dec, j + dec, -0.5f), Quaternion.identity);
+                                Instantiate(flower1, new Vector3(i + dec, j + dec, -0.3f), Quaternion.identity);
                                 break;
                             case Obj.Flower2:
                                 GameObject flower2 = Resources.Load<GameObject>(@"Props\flower2");
-                                Instantiate(flower2, new Vector3(i + dec, j + dec, -0.5f), Quaternion.identity);
+                                Instantiate(flower2, new Vector3(i + dec, j + dec, -0.3f), Quaternion.identity);
                                 break;
                             case Obj.Flower3:
                                 GameObject flower3 = Resources.Load<GameObject>(@"Props\flower3");
-                                Instantiate(flower3, new Vector3(i + dec, j + dec, -0.5f), Quaternion.identity);
+                                Instantiate(flower3, new Vector3(i + dec, j + dec, -0.3f), Quaternion.identity);
                                 break;
                             case Obj.Flower4:
                                 GameObject flower4 = Resources.Load<GameObject>(@"Props\flower4");
-                                Instantiate(flower4, new Vector3(i + dec, j + dec, -0.5f), Quaternion.identity);
+                                Instantiate(flower4, new Vector3(i + dec, j + dec, -0.3f), Quaternion.identity);
                                 break;
                             case Obj.GrassSnow1:
                                 GameObject grassSnow1 = Resources.Load<GameObject>(@"Props\GrassSnow1");
-                                Instantiate(grassSnow1, new Vector3(i + dec, j + dec, -0.5f), Quaternion.identity);
+                                Instantiate(grassSnow1, new Vector3(i + dec, j + dec, -0.3f), Quaternion.identity);
                                 break;
                             case Obj.GrassSnow2:
                                 GameObject grassSnow2 = Resources.Load<GameObject>(@"Props\GrassSnow2");
-                                Instantiate(grassSnow2, new Vector3(i + dec, j + dec, -0.5f), Quaternion.identity);
+                                Instantiate(grassSnow2, new Vector3(i + dec, j + dec, -0.3f), Quaternion.identity);
                                 break;
                             case Obj.GrassSnow3:
                                 GameObject grassSnow3 = Resources.Load<GameObject>(@"Props\GrassSnow3");
-                                Instantiate(grassSnow3, new Vector3(i + dec, j + dec, -0.5f), Quaternion.identity);
+                                Instantiate(grassSnow3, new Vector3(i + dec, j + dec, -0.3f), Quaternion.identity);
                                 break;
                             case Obj.GrassSnow4:
                                 GameObject grassSnow4 = Resources.Load<GameObject>(@"Props\GrassSnow4");
-                                Instantiate(grassSnow4, new Vector3(i + dec, j + dec, -0.5f), Quaternion.identity);
+                                Instantiate(grassSnow4, new Vector3(i + dec, j + dec, -0.3f), Quaternion.identity);
                                 break;
                             case Obj.StarFish1:
                                 GameObject starFish1 = Resources.Load<GameObject>(@"Props\StarFish1");
-                                Instantiate(starFish1, new Vector3(i + dec, j + dec, -0.5f), Quaternion.identity);
+                                Instantiate(starFish1, new Vector3(i + dec, j + dec, -0.3f), Quaternion.identity);
                                 break;
                             case Obj.StarFish2:
                                 GameObject starFish2 = Resources.Load<GameObject>(@"Props\StarFish2");
-                                Instantiate(starFish2, new Vector3(i + dec, j + dec, -0.5f), Quaternion.identity);
+                                Instantiate(starFish2, new Vector3(i + dec, j + dec, -0.3f), Quaternion.identity);
                                 break;
                             default:
                                 throw new ArgumentOutOfRangeException();
                         }
                     }
-                    if (current.HaveTree)
+                    if (current.HaveTree && CanPlaceTree(i, j, _mapDefinition))
                     {
                         if (IsGrass(current.TileType))
                         {

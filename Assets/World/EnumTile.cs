@@ -22,7 +22,7 @@
         SandDefault3,
         SandDefault4,
         /// Snow Tile
-        Snow1, // 1 _ <- in this order _ == no tile on this patern
+        Snow1, // 1 _ <- in this order _ == no tile on this pattern
         Snow2, // 2 3
         Snow3,
         SnowDefault1,
@@ -65,5 +65,27 @@
         GrassSideRight,
         GrassSideTop,
         GrassSideBot,
+    }
+    
+    public enum Obj
+    {
+        NoObj = 0,
+        Crabe,
+        Flower1, 
+        Flower2, 
+        Flower3, 
+        Flower4, 
+        GrassSnow1, 
+        GrassSnow2, 
+        GrassSnow3, 
+        GrassSnow4, 
+        StarFish1, 
+        StarFish2
+    }
+
+    public enum Rock
+    {
+        Rock1,
+        Rock2
     }
 }

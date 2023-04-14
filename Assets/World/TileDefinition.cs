@@ -1,4 +1,4 @@
-﻿using Unity.VisualScripting;
+﻿using static World.GetType;
 
 namespace World
 {
@@ -6,25 +6,23 @@ namespace World
     {
         public EnumTile TileType { get; set; }
         public bool HasLoot { get; } = false;
-        public bool HasSide { get; set; }
-        public EnumTile[] Side = new EnumTile[4];
+        public bool HaveSide { get; set; }
+        public EnumTile[] Side = new EnumTile[4]; // top | right | bot | left
         public bool IsWall;
-
-        public TileDefinition(EnumTile tile, bool hasSide = false)
+        public bool HaveProps = false;
+        public (Obj, double) Prop;
+        public bool HaveTree { get; set; }
+        public bool HaveRock { get; set; } = false;
+        public TileDefinition(EnumTile tile, bool haveSide = false)
         {
             TileType = tile;
-            HasSide = hasSide;
+            HaveSide = haveSide;
             IsWall = Walk(tile);
         }
 
         private bool Walk(EnumTile tile)
         {
-            return tile switch
-            {
-                EnumTile.WallBorderMap => false,
-                EnumTile.Water1 => false,
-                _ => true
-            };
+            return tile == EnumTile.WallBorderMap || IsWater(tile);
         }
     }
 }

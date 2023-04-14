@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3453533623498339316}
   - component: {fileID: 7448040183661705517}
   m_Layer: 0
-  m_Name: GrassSideRight
+  m_Name: EnumTile.GrassSideRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

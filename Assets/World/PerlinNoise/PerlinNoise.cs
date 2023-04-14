@@ -89,7 +89,7 @@ namespace World.PerlinNoise
             }
             if (noise >= -0.05 && noise < 0.3)
             {
-                return EnumTile.Grass1;
+                return EnumTile.DefaultGrass1;
             }
             if (noise >= 0.3 && noise < 0.5)
             {

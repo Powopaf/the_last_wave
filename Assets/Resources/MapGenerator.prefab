@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7943fca9d8db3f84db54fc562feaf1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles:
+  _tiles:
   - name: WallBorderMap
-    visual: {fileID: 4216730710499631332, guid: 8d6866cff3ea6414289548e4cc896e05, type: 3}
+    visual: {fileID: 4216730710499631332, guid: 737f2bf6a7b2f0143944a31fd5c0ab23, type: 3}
     iswalkable: 0
   - name: Dirt1
     visual: {fileID: 1633085112564009413, guid: dbb26a491b3913f4ebf62ec293b78a49, type: 3}
@@ -87,7 +87,7 @@ MonoBehaviour:
   - name: SandDefault3
     visual: {fileID: 1748067771511843135, guid: fe1e314271cdf6543a33d464cb036c89, type: 3}
     iswalkable: 1
-  - name: SandDefault4
+  - name: SanDefault4
     visual: {fileID: 6788743903154631077, guid: c091bed255e62064d90df8b12aec8d6c, type: 3}
     iswalkable: 1
   - name: Snow1
@@ -165,3 +165,36 @@ MonoBehaviour:
   - name: Grass8
     visual: {fileID: 5489332086894194216, guid: 1b246851692c3aa46a33e28917f64323, type: 3}
     iswalkable: 1
+  _side:
+  - name: GrassSideTop
+    visual: {fileID: 5577402462343321806, guid: 711bc0f5a741a4f49aabf1b855e799ad, type: 3}
+  - name: GrassSideRight
+    visual: {fileID: 6244280350414280986, guid: b218334602ea95d41b0536c4096a7e29, type: 3}
+  - name: GrassSideBot
+    visual: {fileID: 6709346182266344458, guid: bca68e36deebe3140a2c862bb4ab2e48, type: 3}
+  - name: GrassSideLeft
+    visual: {fileID: 8426447763898083011, guid: 922cc7928f08ff24086f37fb5672571d, type: 3}
+  - name: SnowSideTop1
+    visual: {fileID: 2334230754068654710, guid: 7ce58107b3041a64092b7edc3910aef1, type: 3}
+  - name: SnowSideTop2
+    visual: {fileID: 6847676231852302575, guid: a661d7925fc2b204eadb072a35588d52, type: 3}
+  - name: SnowSideRight
+    visual: {fileID: 6441783484741933602, guid: 8bb696e2c35654c47b3c3bb81ff67ced, type: 3}
+  - name: SnowSideBot1
+    visual: {fileID: 6544785346844590730, guid: 54b7742ba85c3144890175019376bef7, type: 3}
+  - name: SnowSideBot2
+    visual: {fileID: 3482359648383568969, guid: 97ec5b79217e9984ea4babf3b1e43cc7, type: 3}
+  - name: SnowSideLeft
+    visual: {fileID: 1352496667373897333, guid: 25c0f076ced09c14a9f7d96487413c8f, type: 3}
+  - name: WaterSideTop1
+    visual: {fileID: 4023949604216514622, guid: 02fbf700a71a51c44936fcd2129930cd, type: 3}
+  - name: WaterSideTop2
+    visual: {fileID: 1766435521190620220, guid: bcf395d0d502baf4faebe1fa16690c7a, type: 3}
+  - name: WaterSideRight
+    visual: {fileID: 142688867068365977, guid: 43b651a117857c246a97a02a370567c3, type: 3}
+  - name: WaterSideBot1
+    visual: {fileID: 6011233237100194861, guid: 71f4d152c22667d48ad8390a3c0b8eb6, type: 3}
+  - name: WaterSideBot1
+    visual: {fileID: 3982295492010174217, guid: d4efc0c977e16f34e8d0ec9de050abc0, type: 3}
+  - name: WaterSideLeft
+    visual: {fileID: 4541670078985899503, guid: b33a55b94f6579b458299d748ba334b9, type: 3}

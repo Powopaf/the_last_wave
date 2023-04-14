@@ -24,6 +24,7 @@ namespace Assets.Photon.C__script
         public override void OnConnectedToMaster()
         {
             SceneManager.LoadScene("Lobby");
+            PhotonNetwork.JoinLobby();
         }
     }
 }

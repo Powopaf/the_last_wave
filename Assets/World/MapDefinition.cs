@@ -12,7 +12,7 @@ namespace World
 
         public MapDefinition()
         {
-            Map = new TileDefinition[512,512];
+            Map = new TileDefinition[512,512]; // Do not put big number here or ...
             for (int i = 0; i < Width; i++)
             {
                 Map[0, i] = new TileDefinition(EnumTile.WallBorderMap);
@@ -24,7 +24,8 @@ namespace World
                 Map[j, Width - 1] = new TileDefinition(EnumTile.WallBorderMap);
             }
             GetNoiseTile(); // can put seed here
-            PrettyDirt();
+            PrettyMap();
+            SetSideTile();
         }
 
         private bool IsInSide(int i, int j)
@@ -45,6 +46,7 @@ namespace World
             }
         }
 
+        
         private void DefaultMap()
         {
             System.Random rd = new System.Random(0);
@@ -59,6 +61,7 @@ namespace World
             }
         }
 
+        
         private void SeedMap(int n = 1)
         {
             SeedGeneration seed = new SeedGeneration(Height, Width);
@@ -72,33 +75,9 @@ namespace World
             }
         }
 
-        private void RoundedGrass(int i, int j)
+        private void PrettyMap(int seed = 0)
         {
-            TileDefinition cur = Map[i, j]; 
-            if (Map[i,j + 1].TileType != EnumTile.WallBorderMap && Map[i,j + 1].TileType != cur.TileType) 
-            { 
-                Map[i, j + 1].HasSide = true; 
-                Map[i, j + 1].Side[0] = EnumTile.GrassSideTop;
-            }
-            if (Map[i, j - 1].TileType != EnumTile.WallBorderMap && Map[i, j - 1].TileType != cur.TileType)
-            {
-                Map[i, j + 1].HasSide = true;
-                Map[i, j + 1].Side[1] = EnumTile.GrassSideBot;
-            }
-            if (Map[i + 1, j].TileType != EnumTile.WallBorderMap && Map[i + 1 ,j].TileType != cur.TileType)
-            {
-                Map[i, j + 1].HasSide = true;
-                Map[i, j + 1].Side[2] = EnumTile.GrassSideRight;
-            }
-            if (Map[i - 1, j].TileType != EnumTile.WallBorderMap && Map[i - 1, j].TileType != cur.TileType)
-            {
-                Map[i, j + 1].HasSide = true;
-                Map[i, j + 1].Side[3] = EnumTile.GrassSideLeft;
-            }
-        }
-
-        private void PrettyDirt()
-        {
+            Random rd = new Random(seed);
             for (int i = 0; i < Height; i++)
             {
                 for (int j = 0; j < Width; j++)
@@ -125,8 +104,261 @@ namespace World
                             Map[i + 1, j - 1].TileType = EnumTile.Dirt4;
                         }
                     }
+                    
+                    else if (Map[i,j].TileType == EnumTile.Sand1)
+                    {
+                        if (IsInSide(i + 1, j)&&Map[i + 1, j].TileType == EnumTile.Sand1)
+                        {
+                            agree++;
+                        }
+                        if (IsInSide(i, j - 1) && Map[i, j - 1].TileType == EnumTile.Sand1)
+                        {
+                            agree++;
+                        }
+                        if (IsInSide(i + 1, j - 1) && Map[i + 1, j - 1].TileType == EnumTile.Sand1)
+                        {
+                            agree++;
+                        }
+                        if (agree == 3)
+                        {
+                            Map[i, j].TileType = EnumTile.SandDefault1;
+                            Map[i + 1, j].TileType = EnumTile.SandDefault2;
+                            Map[i, j - 1].TileType = EnumTile.SandDefault3;
+                            Map[i + 1, j - 1].TileType = EnumTile.SandDefault4;
+                        }
+                        Map[i, j].HaveProps = rd.Next(0, 10) == 0;
+                        Map[i, j].Prop = (Obj.Crabe, PlaceProps(rd));
+                    }
+                    
+                    else if (Map[i,j].TileType == EnumTile.Snow1)
+                    {
+                        if (IsInSide(i + 1, j)&&Map[i + 1, j].TileType == EnumTile.Snow1)
+                        {
+                            agree++;
+                        }
+                        if (IsInSide(i, j - 1) && Map[i, j - 1].TileType == EnumTile.Snow1)
+                        {
+                            agree++;
+                        }
+                        if (IsInSide(i + 1, j - 1) && Map[i + 1, j - 1].TileType == EnumTile.Snow1)
+                        {
+                            agree++;
+                        }
+                        if (agree == 3)
+                        {
+                            Map[i, j].TileType = EnumTile.SnowDefault1;
+                            Map[i + 1, j].TileType = EnumTile.SnowDefault2;
+                            Map[i, j - 1].TileType = EnumTile.SnowDefault3;
+                            Map[i + 1, j - 1].TileType = EnumTile.SnowDefault4;
+                        }
+                        Map[i, j].HaveProps = rd.Next(0, 5) == 0;
+                        if (Map[i,j].HaveProps)
+                        {
+                            Map[i, j].Prop = rd.Next(1, 5) switch
+                            {
+                                1 => (Obj.GrassSnow1, PlaceProps(rd)),
+                                2 => (Obj.GrassSnow2, PlaceProps(rd)),
+                                3 => (Obj.GrassSnow3, PlaceProps(rd)),
+                                4 => (Obj.GrassSnow4, PlaceProps(rd)),
+                                _ => (Obj.NoObj, 0)
+                            };
+                        }
+                        if (rd.Next(0,10) == 0)
+                        {
+                            SpawnTree(i,j);
+                        }
+                    }
+                    
+                    else if (Map[i,j].TileType == EnumTile.Water1 && rd.Next(0, 5) == 0)
+                    {
+                        if (IsInSide(i + 1, j) && Map[i + 1, j].TileType == EnumTile.Water1)
+                        {
+                            agree++;
+                        }
+                        if (IsInSide(i + 2, j) && Map[i + 2, j].TileType == EnumTile.Water1)
+                        {
+                            agree++;
+                        }
+                        if (IsInSide(i, j - 1) && Map[i, j - 1].TileType == EnumTile.Water1)
+                        {
+                            agree++;
+                        }
+                        if (IsInSide(i + 1, j - 1) && Map[i + 1, j - 1].TileType == EnumTile.Water1)
+                        {
+                            agree++;
+                        }
+                        if (IsInSide(i + 2, j - 1) && Map[i + 2, j - 1].TileType == EnumTile.Water1)
+                        {
+                            agree++;
+                        }
+                        if (agree == 5)
+                        {
+                            Map[i + 1, j].TileType = EnumTile.Water2;
+                            Map[i + 2, j].TileType = EnumTile.Water3;
+                            Map[i, j - 1].TileType = EnumTile.Water4;
+                            Map[i + 1, j - 1].TileType = EnumTile.Water5;
+                            Map[i + 2, j - 1].TileType = EnumTile.Water6;
+                        }
+                        Map[i, j].HaveProps = rd.Next(0, 5) == 0;
+                        if (Map[i,j].HaveProps)
+                        {
+                            Map[i, j].Prop = rd.Next(1, 3) == 1
+                                ? (Obj.StarFish1, PlaceProps(rd))
+                                : (Obj.StarFish2, PlaceProps(rd));
+                        }
+                    }
+                    
+                    else if (Map[i,j].TileType == EnumTile.DefaultGrass1)
+                    {
+                        if (IsInSide(i + 1, j)&&Map[i + 1, j].TileType == EnumTile.DefaultGrass1)
+                        {
+                            agree++;
+                        }
+                        if (IsInSide(i, j - 1) && Map[i, j - 1].TileType == EnumTile.DefaultGrass1)
+                        {
+                            agree++;
+                        }
+                        if (IsInSide(i + 1, j - 1) && Map[i + 1, j - 1].TileType == EnumTile.DefaultGrass1)
+                        {
+                            agree++;
+                        }
+                        if (agree == 3)
+                        {
+                            Map[i + 1, j].TileType = EnumTile.DefaultGrass2;
+                            Map[i, j - 1].TileType = EnumTile.DefaultGrass3;
+                            Map[i + 1, j - 1].TileType = EnumTile.DefaultGrass4;
+                        }
+                        Map[i, j].HaveProps = rd.Next(0, 5) == 0;
+                        if (Map[i,j].HaveProps)
+                        {
+                            Map[i, j].Prop = rd.Next(1, 5) switch
+                            {
+                                1 => (Obj.Flower1, PlaceProps(rd)),
+                                2 => (Obj.Flower2, PlaceProps(rd)),
+                                3 => (Obj.Flower3, PlaceProps(rd)),
+                                4 => (Obj.Flower4, PlaceProps(rd)),
+                                _ => (Obj.NoObj, 0)
+                            };
+                        }
+                        if (rd.Next(0,10) == 0)
+                        {
+                            SpawnTree(i,j);
+                        }
+                    }
                 }
             }
+        }
+
+
+        private void SetSideTile()
+        {
+            for (int i = 0; i < Height; i++)
+            {
+                for (int j = 0; j < Width; j++)
+                {
+                    TileDefinition current = Map[i, j];
+                    if (IsGrass(current.TileType))
+                    {
+                        bool haveSide = false;
+                        RoundGrass(i, j, ref haveSide);
+                        Map[i, j].HaveSide = haveSide;
+                    }
+                    else if (IsWater(current.TileType))
+                    {
+                        bool haveSide = false;
+                        RoundWater(i, j, ref haveSide);
+                        Map[i, j].HaveSide = haveSide;
+                        
+                    }
+                    else if (IsSnow(current.TileType))
+                    {
+                        bool haveSide = false;
+                        RoundSnow(i, j , ref haveSide);
+                        Map[i, j].HaveSide = haveSide;
+                    }
+                }
+            }
+        }
+
+        private void RoundGrass(int i, int j, ref bool haveSide)
+        {
+            TileDefinition current = Map[i, j];
+            if (IsInSide(i, j + 1) && !IsGrass(Map[i, j + 1].TileType))
+            {
+                haveSide = true;
+                current.Side[0] = EnumTile.GrassSideTop;
+            }
+            if (IsInSide(i + 1, j) && !IsGrass(Map[i + 1, j].TileType))
+            {
+                haveSide = true;
+                current.Side[1] = EnumTile.GrassSideRight;
+            }
+            if (IsInSide(i, j - 1) && !IsGrass(Map[i, j - 1].TileType))
+            {
+                haveSide = true;
+                current.Side[2] = EnumTile.GrassSideBot;
+            }
+            if (IsInSide(i - 1, j) && !IsGrass(Map[i - 1, j].TileType))
+            {
+                haveSide = true;
+                current.Side[3] = EnumTile.GrassSideLeft;
+            }
+        }
+        
+        private void RoundSnow(int i, int j, ref bool haveSide)
+        {
+            TileDefinition current = Map[i, j];
+            if (IsInSide(i, j + 1) && !IsSnow(Map[i, j + 1].TileType))
+            {
+                haveSide = true;
+                current.Side[0] = EnumTile.SnowSideTop1;
+            }
+            if (IsInSide(i + 1, j) && !IsSnow(Map[i + 1, j].TileType))
+            {
+                haveSide = true;
+                current.Side[1] = EnumTile.SnowSideRight;
+            }
+            if (IsInSide(i, j - 1) && !IsSnow(Map[i, j - 1].TileType))
+            {
+                haveSide = true;
+                current.Side[2] = EnumTile.SnowSideBot1;
+            }
+            if (IsInSide(i - 1, j) && !IsSnow(Map[i - 1, j].TileType))
+            {
+                haveSide = true;
+                current.Side[3] = EnumTile.SnowSideLeft;
+            }
+        }
+        
+        private void RoundWater(int i, int j, ref bool haveSide)
+        {
+            TileDefinition current = Map[i, j];
+            if (IsInSide(i, j + 1) && !IsWater(Map[i, j + 1].TileType))
+            {
+                haveSide = true;
+                current.Side[0] = EnumTile.WaterSideTop1;
+            }
+            if (IsInSide(i + 1, j) && !IsWater(Map[i + 1, j].TileType))
+            {
+                haveSide = true;
+                current.Side[1] = EnumTile.WaterSideRight;
+            }
+            if (IsInSide(i, j - 1) && !IsWater(Map[i, j - 1].TileType))
+            {
+                haveSide = true;
+                current.Side[2] = EnumTile.WaterSideBot1;
+            }
+            if (IsInSide(i - 1, j) && !IsWater(Map[i - 1, j].TileType))
+            {
+                haveSide = true;
+                current.Side[3] = EnumTile.WaterSideLeft;
+            }
+        }
+
+        private void SpawnTree(int i, int j)
+        {
+
+            Map[i, j].HaveTree = !Map[i, j].HaveProps;
         }
     }
 }

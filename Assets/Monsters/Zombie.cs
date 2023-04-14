@@ -1,4 +1,5 @@
 
+using Pathfinding;
 using UnityEngine;
 namespace Monsters
 {
@@ -26,6 +27,24 @@ namespace Monsters
             _target = target;
             _health = health;
             Damage = damage;
+        }
+
+        protected void NewGridForPathfinding()
+        {
+            // This holds all graph data
+            AstarData data = AstarPath.active.data; 
+            // This creates a Grid Graph
+            GridGraph gg = data.AddGraph(typeof(GridGraph)) as GridGraph; 
+            // Setup a grid graph with some values
+            int width = 50;
+            int depth = 50;
+            float nodeSize = 1;
+
+            gg.center = new Vector3(10, 0, 0); 
+            // Updates internal size from the above values
+            gg.SetDimensions(width, depth, nodeSize); 
+            // Scans all graphs
+            AstarPath.active.Scan();
         }
 
         protected string TargetZombie()

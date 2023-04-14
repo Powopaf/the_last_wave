@@ -10,8 +10,11 @@ namespace World
         public int Height => Map.GetLength(0);
         public int Width => Map.GetLength(1);
 
-        public MapDefinition()
+        private readonly int _seed;
+
+        public MapDefinition(int s = 0)
         {
+            _seed = s;
             Map = new TileDefinition[512,512]; // Do not put big number here or ...
             for (int i = 0; i < Width; i++)
             {
@@ -23,8 +26,8 @@ namespace World
                 Map[j, 0] = new TileDefinition(EnumTile.WallBorderMap);
                 Map[j, Width - 1] = new TileDefinition(EnumTile.WallBorderMap);
             }
-            GetNoiseTile(); // can put seed here
-            PrettyMap();
+            GetNoiseTile(_seed); // can put seed here
+            PrettyMap(_seed);
             SetSideTile();
         }
 
@@ -103,6 +106,10 @@ namespace World
                             Map[i, j - 1].TileType = EnumTile.Dirt3;
                             Map[i + 1, j - 1].TileType = EnumTile.Dirt4;
                         }
+                        if (rd.Next(0,9) == 0)
+                        {
+                            SpawnRock(i, j);
+                        }
                     }
                     
                     else if (Map[i,j].TileType == EnumTile.Sand1)
@@ -127,7 +134,14 @@ namespace World
                             Map[i + 1, j - 1].TileType = EnumTile.SandDefault4;
                         }
                         Map[i, j].HaveProps = rd.Next(0, 10) == 0;
-                        Map[i, j].Prop = (Obj.Crabe, PlaceProps(rd));
+                        if (Map[i, j].HaveProps)
+                        {
+                            Map[i, j].Prop = (Obj.Crabe, PlaceProps(rd));
+                        }
+                        if (rd.Next(0,9) == 0)
+                        {
+                            SpawnRock(i, j);
+                        }
                     }
                     
                     else if (Map[i,j].TileType == EnumTile.Snow1)
@@ -166,6 +180,10 @@ namespace World
                         if (rd.Next(0,10) == 0)
                         {
                             SpawnTree(i,j);
+                        }
+                        if (rd.Next(0,9) == 0)
+                        {
+                            SpawnRock(i, j);
                         }
                     }
                     
@@ -244,6 +262,10 @@ namespace World
                         {
                             SpawnTree(i,j);
                         }
+                        if (rd.Next(0,9) == 0)
+                        {
+                            SpawnRock(i, j);
+                        }
                     }
                 }
             }
@@ -282,52 +304,84 @@ namespace World
 
         private void RoundGrass(int i, int j, ref bool haveSide)
         {
+            int cornerTL = 0;
+            int cornerTR = 0;
+            int cornerBL = 0;
+            int cornerBR = 0;
             TileDefinition current = Map[i, j];
             if (IsInSide(i, j + 1) && !IsGrass(Map[i, j + 1].TileType))
             {
                 haveSide = true;
+                cornerTL++;
+                cornerTR++;
                 current.Side[0] = EnumTile.GrassSideTop;
             }
             if (IsInSide(i + 1, j) && !IsGrass(Map[i + 1, j].TileType))
             {
                 haveSide = true;
+                cornerTR++;
+                cornerBR++;
                 current.Side[1] = EnumTile.GrassSideRight;
             }
             if (IsInSide(i, j - 1) && !IsGrass(Map[i, j - 1].TileType))
             {
                 haveSide = true;
+                cornerBL++;
+                cornerBR++;
                 current.Side[2] = EnumTile.GrassSideBot;
             }
             if (IsInSide(i - 1, j) && !IsGrass(Map[i - 1, j].TileType))
             {
                 haveSide = true;
+                cornerTL++;
+                cornerBL++;
                 current.Side[3] = EnumTile.GrassSideLeft;
             }
+            current.Corners[0] = cornerTL == 2 ? Corner.GrassCornerTopLeft : Corner.NoCorner;
+            current.Corners[1] = cornerTR == 2 ? Corner.GrassCornerTopRight : Corner.NoCorner;
+            current.Corners[2] = cornerBL == 2 ? Corner.GrassCornerBotLeft : Corner.NoCorner;
+            current.Corners[3] = cornerBR == 2 ? Corner.GrassCornerBotRight : Corner.NoCorner;
         }
         
         private void RoundSnow(int i, int j, ref bool haveSide)
         {
+            int cornerTL = 0;
+            int cornerTR = 0;
+            int cornerBL = 0;
+            int cornerBR = 0;
             TileDefinition current = Map[i, j];
             if (IsInSide(i, j + 1) && !IsSnow(Map[i, j + 1].TileType))
             {
                 haveSide = true;
+                cornerTL++;
+                cornerTR++;
                 current.Side[0] = EnumTile.SnowSideTop1;
             }
             if (IsInSide(i + 1, j) && !IsSnow(Map[i + 1, j].TileType))
             {
                 haveSide = true;
+                cornerTR++;
+                cornerBR++;
                 current.Side[1] = EnumTile.SnowSideRight;
             }
             if (IsInSide(i, j - 1) && !IsSnow(Map[i, j - 1].TileType))
             {
                 haveSide = true;
+                cornerBL++;
+                cornerBR++;
                 current.Side[2] = EnumTile.SnowSideBot1;
             }
             if (IsInSide(i - 1, j) && !IsSnow(Map[i - 1, j].TileType))
             {
                 haveSide = true;
+                cornerTL++;
+                cornerBL++;
                 current.Side[3] = EnumTile.SnowSideLeft;
             }
+            current.Corners[0] = cornerTL == 2 ? Corner.SnowCornerTopLeft : Corner.NoCorner;
+            current.Corners[1] = cornerTR == 2 ? Corner.SnowCornerTopRight : Corner.NoCorner;
+            current.Corners[2] = cornerBL == 2 ? Corner.SnowCornerBotLeft : Corner.NoCorner;
+            current.Corners[3] = cornerBR == 2 ? Corner.SnowCornerBotRight : Corner.NoCorner;
         }
         
         private void RoundWater(int i, int j, ref bool haveSide)
@@ -359,6 +413,11 @@ namespace World
         {
 
             Map[i, j].HaveTree = !Map[i, j].HaveProps;
+        }
+
+        private void SpawnRock(int i, int j)
+        {
+            Map[i, j].HaveRock = !Map[i, j].HaveTree && !Map[i, j].HaveProps;
         }
     }
 }

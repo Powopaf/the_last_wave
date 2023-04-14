@@ -1,8 +1,8 @@
 using System;
-using Unity.Mathematics;
 using UnityEngine;
 using static World.GetType;
-using Random = System.Random;
+using System.Linq;
+using GameObject = UnityEngine.GameObject;
 
 namespace World
 {
@@ -12,10 +12,11 @@ namespace World
         public Side[] _side;
         private MapDefinition _mapDefinition;
         private readonly TileSprite _tileSprite = new ();
+        public int seed;
         
         void Start()
         {
-            _mapDefinition = new MapDefinition();
+            _mapDefinition = new MapDefinition(seed);
             //SetMapGen();
             SetUpTile();
         }
@@ -51,20 +52,64 @@ namespace World
                                 {
                                     // top Side
                                     case 0:
-                                        Instantiate(s.visual, new Vector3(i, j + 1, -0.5f), Quaternion.identity);
+                                        Instantiate(s.visual, new Vector3(i, j + 1, -0.1f), Quaternion.identity);
                                         break;
                                     // Right side
                                     case 1:
-                                        Instantiate(s.visual, new Vector3(i + 1, j, -0.5f), Quaternion.identity);
+                                        Instantiate(s.visual, new Vector3(i + 1, j, -0.1f), Quaternion.identity);
                                         break;
                                     // bottom side
                                     case 2:
-                                        Instantiate(s.visual, new Vector3(i, j - 1, -0.5f), Quaternion.identity);
+                                        Instantiate(s.visual, new Vector3(i, j - 1, -0.1f), Quaternion.identity);
                                         break;
                                     // left side
                                     default:
-                                        Instantiate(s.visual, new Vector3(i - 1, j, -0.5f), Quaternion.identity);
+                                        Instantiate(s.visual, new Vector3(i - 1, j, -0.1f), Quaternion.identity);
                                         break;
+                                }
+                            }
+                        }
+                        foreach (Corner corner in current.Corners)
+                        {
+                            if (corner != Corner.NoCorner)
+                            {
+                                switch (corner)
+                                {
+                                    case Corner.GrassCornerTopLeft:
+                                        GameObject gcTL = Resources.Load<GameObject>(@"Grass\GrassCornerTopLeft");
+                                        Instantiate(gcTL, new Vector3(i - 1, j + 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.GrassCornerTopRight:
+                                        GameObject gcTR = Resources.Load<GameObject>(@"Grass\GrassCornerTopRight");
+                                        Instantiate(gcTR, new Vector3(i + 1, j + 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.GrassCornerBotLeft:
+                                        GameObject gcBL = Resources.Load<GameObject>(@"Grass\GrassCornerBotLeft");
+                                        Instantiate(gcBL, new Vector3(i - 1, j - 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.GrassCornerBotRight:
+                                        GameObject gcBR = Resources.Load<GameObject>(@"Grass\GrassCornerBotRight");
+                                        Instantiate(gcBR, new Vector3(i + 1, j - 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.SnowCornerTopLeft:
+                                        GameObject scTL = Resources.Load<GameObject>(@"Snow\SnowCornerTopLeft");
+                                        Instantiate(scTL, new Vector3(i - 1, j + 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.SnowCornerTopRight:
+                                        GameObject scTR = Resources.Load<GameObject>(@"Snow\SnowCornerTopRight");
+                                        Instantiate(scTR, new Vector3(i + 1, j + 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.SnowCornerBotLeft:
+                                        GameObject scBL = Resources.Load<GameObject>(@"Snow\SnowCornerBotLeft");
+                                        Instantiate(scBL, new Vector3(i - 1, j - 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.SnowCornerBotRight:
+                                        GameObject scBR = Resources.Load<GameObject>(@"Snow\SnowCornerBotRight");
+                                        Instantiate(scBR, new Vector3(i + 1, j - 1, -0.1f), Quaternion.identity);
+                                        break;
+                                    case Corner.NoCorner:
+                                    default:
+                                        throw new ArgumentOutOfRangeException();
                                 }
                             }
                         }
@@ -124,7 +169,7 @@ namespace World
                                 throw new ArgumentOutOfRangeException();
                         }
                     }
-                    if (current.HaveTree && CanPlaceTree(i, j, _mapDefinition))
+                    else if (current.HaveTree && CanPlaceTree(i, j, _mapDefinition))
                     {
                         if (IsGrass(current.TileType))
                         {
@@ -161,6 +206,19 @@ namespace World
                             Instantiate(topLeftLeaf, new Vector3(i - 1, j + 2, -0.5f), Quaternion.identity);
                             Instantiate(topMidLeaf, new Vector3(i, j + 2, -0.5f), Quaternion.identity);
                             Instantiate(topRightLeaf, new Vector3(i + 1, j + 2, -0.5f), Quaternion.identity);
+                        }
+                    }
+                    else if (current.HaveRock)
+                    {
+                        if (IsDirt(current.TileType))
+                        {
+                            GameObject rock1 = Resources.Load<GameObject>(@"Rock\Rock1");
+                            Instantiate(rock1, new Vector3(i, j, -0.4f), Quaternion.identity);
+                        }
+                        else
+                        {
+                            GameObject rock2 = Resources.Load<GameObject>(@"Rock\Rock2");
+                            Instantiate(rock2, new Vector3(i, j, -0.4f), Quaternion.identity);
                         }
                     }
                 }

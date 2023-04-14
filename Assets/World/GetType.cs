@@ -1,4 +1,6 @@
-﻿namespace World
+﻿using System;
+
+namespace World
 {
     public static class GetType
     {
@@ -73,6 +75,34 @@
                 EnumTile.Water6 => true,
                 _ => false
             };
+        }
+
+        private static bool IsInSide(int i, int j, int height, int width)
+        {
+            return i >= 0 && i < height && j >= 0 && j < width;
+        }
+        
+        public static bool CanPlaceTree(int i, int j, MapDefinition mapDef)
+        {
+            TileDefinition[,] map = mapDef.Map;
+            if (IsInSide(i, j + 1, mapDef.Height, mapDef.Width) && map[i,j + 1].HaveTree)
+            {
+                return false;
+            }
+            if (IsInSide(i, j + 2, mapDef.Height, mapDef.Width) && map[i,j + 2].HaveTree)
+            {
+                return false;
+            }
+            if (IsInSide(i + 1, j + 1, mapDef.Height, mapDef.Width) && map[i + 1,j + 1].HaveTree)
+            {
+                return false;
+            }
+            return !IsInSide(i + 1, j + 2, mapDef.Height, mapDef.Width) || !map[i + 1,j + 2].HaveTree;
+        }
+
+        public static double PlaceProps(Random rd)
+        {
+            return rd.Next(0, 2) == 0 ? rd.NextDouble() : rd.NextDouble() * -1;
         }
     }
 }

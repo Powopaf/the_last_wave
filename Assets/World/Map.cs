@@ -19,6 +19,7 @@ namespace World
             _mapDefinition = new MapDefinition(seed);
             //SetMapGen();
             SetUpTile();
+            AstarPath.active.Scan();
         }
 
         private void SetMapGen() // don't work

@@ -12,10 +12,11 @@ namespace World
         public Side[] _side;
         private MapDefinition _mapDefinition;
         private readonly TileSprite _tileSprite = new ();
+        public int seed;
         
         void Start()
         {
-            _mapDefinition = new MapDefinition();
+            _mapDefinition = new MapDefinition(seed);
             //SetMapGen();
             SetUpTile();
         }
@@ -51,19 +52,19 @@ namespace World
                                 {
                                     // top Side
                                     case 0:
-                                        Instantiate(s.visual, new Vector3(i, j + 1, -0.5f), Quaternion.identity);
+                                        Instantiate(s.visual, new Vector3(i, j + 1, -0.1f), Quaternion.identity);
                                         break;
                                     // Right side
                                     case 1:
-                                        Instantiate(s.visual, new Vector3(i + 1, j, -0.5f), Quaternion.identity);
+                                        Instantiate(s.visual, new Vector3(i + 1, j, -0.1f), Quaternion.identity);
                                         break;
                                     // bottom side
                                     case 2:
-                                        Instantiate(s.visual, new Vector3(i, j - 1, -0.5f), Quaternion.identity);
+                                        Instantiate(s.visual, new Vector3(i, j - 1, -0.1f), Quaternion.identity);
                                         break;
                                     // left side
                                     default:
-                                        Instantiate(s.visual, new Vector3(i - 1, j, -0.5f), Quaternion.identity);
+                                        Instantiate(s.visual, new Vector3(i - 1, j, -0.1f), Quaternion.identity);
                                         break;
                                 }
                             }
@@ -124,7 +125,7 @@ namespace World
                                 throw new ArgumentOutOfRangeException();
                         }
                     }
-                    if (current.HaveTree && CanPlaceTree(i, j, _mapDefinition))
+                    else if (current.HaveTree && CanPlaceTree(i, j, _mapDefinition))
                     {
                         if (IsGrass(current.TileType))
                         {
@@ -161,6 +162,19 @@ namespace World
                             Instantiate(topLeftLeaf, new Vector3(i - 1, j + 2, -0.5f), Quaternion.identity);
                             Instantiate(topMidLeaf, new Vector3(i, j + 2, -0.5f), Quaternion.identity);
                             Instantiate(topRightLeaf, new Vector3(i + 1, j + 2, -0.5f), Quaternion.identity);
+                        }
+                    }
+                    else if (current.HaveRock)
+                    {
+                        if (IsDirt(current.TileType))
+                        {
+                            GameObject rock1 = Resources.Load<GameObject>(@"Rock\Rock1");
+                            Instantiate(rock1, new Vector3(i, j, -0.4f), Quaternion.identity);
+                        }
+                        else
+                        {
+                            GameObject rock2 = Resources.Load<GameObject>(@"Rock\Rock2");
+                            Instantiate(rock2, new Vector3(i, j, -0.4f), Quaternion.identity);
                         }
                     }
                 }

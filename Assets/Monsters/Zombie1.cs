@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Unity.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using World;
 
@@ -16,54 +18,47 @@ namespace Monsters
             rb = GetComponent<Rigidbody2D>();
             Playertarget = GameObject.FindWithTag("Player").transform;
             animator = GetComponent<Animator>();
-            
+            X =(int) transform.position.x;
+            Y = (int) transform.position.y;
+
         }
 
         protected override void Start()
         {
-            ZombiePathFinding pathFinder = GetComponent<ZombiePathFinding>();
-            Node[,] nodes = pathFinder.nodes;
-            GameObject player = pathFinder.Target;
-            TileDefinition[,] map = pathFinder.staticmap;
-            Node startNode = nodes[Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y)];
-            Node endNode = nodes[Mathf.RoundToInt(Playertarget.transform.position.x), Mathf.RoundToInt(Playertarget.transform.position.y)];
-            path = pathFinder.FindPath(startNode, endNode);
+          //  pathFinder = gameObject.GetComponent<ZombiePathFinding>();
         }
        
 
         protected override void ZombieMovement(Vector2 direction)
         {
-            rb.MovePosition((Vector2)transform.position + direction * (speed * Time.deltaTime));
+           rb.MovePosition((Vector2)transform.position + direction * (speed * Time.deltaTime));
         }
         
         protected override void Update()
         {
-            if (path == null || path.Count == 0)
-            {
-                return;
-            }
+           /*
+           var position = transform.position;
+           pathFinder.FindPath
+           (new int2(X, Y), new int2((int)Playertarget.transform.position.x, (int)Playertarget.transform.position.y));
+           Vector2 playermoved = Playertarget.transform.position;
+           int i = 0;
+           while ((Vector2)Playertarget.transform.position==playermoved)
+           {
+               if (pathFinder.NodePath.Count==0) break;
+               Vector2 direction=new Vector2(pathFinder.NodePath[i].x-position.x,pathFinder.NodePath[i].y-position.y);
+               direction.Normalize();
+               Movement = direction;
+               i += 1;
 
-            Vector3 targetPosition = new Vector3(path[currentWaypointIndex].X, path[currentWaypointIndex].Y, 0);
-            if (Vector3.Distance(transform.position, targetPosition) < minDistance)
-            {
-                currentWaypointIndex++;
-                if (currentWaypointIndex >= path.Count)
-                {
-                    return;
-                }
-                targetPosition = new Vector3(path[currentWaypointIndex].X, path[currentWaypointIndex].Y, 0);
-            }
-
-           // transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-           Vector3 direction = targetPosition.normalized - transform.position;
-           // direction.Normalize();
-           // Movement = direction;
-            animator.SetFloat("X", Movement.x);
-            animator.SetFloat("Y", Movement.y);
+           }
+           animator.SetFloat("X", Movement.x);
+           animator.SetFloat("Y", Movement.y);
+            X = (int) position.x;
+            Y = (int)position.y;*/
         }
         protected override void FixedUpdate()
         {
-           ZombieMovement(Movement);
+           //ZombieMovement(Movement);
         }
         protected override void OnCollisionEnter2D(Collision2D col)
         {

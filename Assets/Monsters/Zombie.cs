@@ -1,6 +1,10 @@
 
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
+using UnityEngine.WSA;
+using World;
+
 namespace Monsters
 {
     public abstract class Zombie: MonoBehaviour
@@ -16,9 +20,13 @@ namespace Monsters
         public Rigidbody2D rb;
         protected Vector2 Movement;
         public Animator animator;
-        protected List<Node> path;
-        protected int currentWaypointIndex = 0;
-        protected float minDistance = 0.1f;
+        //protected List<Node> path;
+        //protected int currentWaypointIndex = 0;
+        //protected float minDistance = 0.1f;
+        //protected ZombiePathFinding pathFinder;
+        protected int X;
+        protected int Y;
+        
 
         protected Zombie(string name = "", string[] target = null,
             int health = 1, int damage = 1, float speed = 1f)
@@ -27,6 +35,24 @@ namespace Monsters
             _target = target;
             _health = health;
             Damage = damage;
+        }
+
+        protected void CreateGridForAstarPathFinding()
+        {
+            // This holds all graph data
+            AstarData data = AstarPath.active.data; 
+            // This creates a Grid Graph
+            GridGraph gg = data.AddGraph(typeof(GridGraph)) as GridGraph; 
+            // Setup a grid graph with some values
+            int width = GameObject.FindWithTag("MapGenerator").GetComponent<Map>()._mapDefinition.Width;
+            int depth = GameObject.FindWithTag("MapGenerator").GetComponent<Map>()._mapDefinition.Height;
+            float nodeSize = 1;
+
+            gg.center = new Vector3(10, 0, 0); 
+            // Updates internal size from the above values
+            gg.SetDimensions(width, depth, nodeSize); 
+            // Scans all graphs
+            AstarPath.active.Scan();
         }
 
         protected string TargetZombie()
@@ -52,7 +78,7 @@ namespace Monsters
         protected abstract void Awake();
 
         protected abstract void Update();
-        
+
         protected abstract void Start();
 
         protected abstract void FixedUpdate();

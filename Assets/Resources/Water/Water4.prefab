@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4903278247057827839}
   - component: {fileID: 8406925166268916446}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Water4
   m_TagString: NotWalk
   m_Icon: {fileID: 0}

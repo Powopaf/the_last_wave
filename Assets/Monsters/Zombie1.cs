@@ -17,33 +17,34 @@ namespace Monsters
             Playertarget = GameObject.FindWithTag("Player").transform;
             animator = GetComponent<Animator>();
             
+            
         }
 
         protected override void Start()
         {
-            InvokeRepeating("UpdatePath", 0f, 0.5f);
+           
         }
        
 
         protected override void ZombieMovement(Vector2 direction)
         {
-            rb.MovePosition((Vector2)transform.position + direction * (speed * Time.deltaTime));
+            //rb.MovePosition((Vector2)transform.position + direction * (speed * Time.deltaTime));
         }
         
         protected override void Update()
         { 
            
-            Vector3 direction = Playertarget.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            rb.rotation = angle;
-            direction.Normalize();
-            Movement = direction;
+            //Vector3 direction = Playertarget.position - transform.position;
+           // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+           // rb.rotation = angle;
+            //direction.Normalize();
+           // Movement = direction;
             animator.SetFloat("X", Movement.x);
             animator.SetFloat("Y", Movement.y);
         }
         protected override void FixedUpdate()
         {
-            ZombieMovement(Movement);
+            //ZombieMovement(Movement);
         }
         protected override void OnCollisionEnter2D(Collision2D col)
         {

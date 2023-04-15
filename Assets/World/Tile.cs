@@ -17,11 +17,4 @@ namespace World
         public string name;
         public GameObject visual;
     }
-
-    [Serializable]
-    public class Props
-    {
-        public string name;
-        public GameObject visual;
-    }
 }

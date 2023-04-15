@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using World;
 
 namespace Monsters
@@ -16,10 +18,9 @@ namespace Monsters
             rb = GetComponent<Rigidbody2D>();
             Playertarget = GameObject.FindWithTag("Player").transform;
             animator = GetComponent<Animator>();
-            
-            
-        }
+            Movement= GetComponent<AIDestinationSetter>().
 
+        }
         protected override void Start()
         {
            
@@ -39,13 +40,16 @@ namespace Monsters
            // rb.rotation = angle;
             //direction.Normalize();
            // Movement = direction;
-            animator.SetFloat("X", Movement.x);
-            animator.SetFloat("Y", Movement.y);
+           Vector3 horizontalMove=
+            animator.SetFloat("X", transform.position.x);
+            animator.SetFloat("Y", transform.position.y);
         }
         protected override void FixedUpdate()
         {
             //ZombieMovement(Movement);
         }
+
+       
         protected override void OnCollisionEnter2D(Collision2D col)
         {
             if (col.transform.CompareTag("Player"))   //Need to change  the tag

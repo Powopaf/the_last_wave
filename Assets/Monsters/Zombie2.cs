@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Monsters
 {
@@ -70,6 +71,7 @@ namespace Monsters
                 rb.MovePosition((Vector2)transform.position + direction * (speed * Time.deltaTime));
             }
         }
+        
 
         protected override void OnCollisionEnter2D(Collision2D col)
         {

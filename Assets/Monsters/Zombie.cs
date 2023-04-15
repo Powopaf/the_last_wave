@@ -1,6 +1,8 @@
 
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 namespace Monsters
 {
     public abstract class Zombie: MonoBehaviour
@@ -16,9 +18,7 @@ namespace Monsters
         public Rigidbody2D rb;
         protected Vector2 Movement;
         public Animator animator;
-       
-        protected int currentWaypoint = 0;
-        protected bool reachedEndOfPath = false;
+        protected Vector3 VectrorDirection;
 
         protected Zombie(string name = "", string[] target = null,
             int health = 1, int damage = 1, float speed = 1f)
@@ -75,7 +75,7 @@ namespace Monsters
 
         protected abstract void FixedUpdate();
         protected abstract void ZombieMovement(Vector2 direction);
-
+       
         protected abstract void OnCollisionEnter2D(Collision2D col);
     }
 }

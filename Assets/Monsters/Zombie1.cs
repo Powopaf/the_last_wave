@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
@@ -8,6 +9,10 @@ namespace Monsters
 {
     public class Zombie1 : Zombie
     {
+        private static readonly int X = Animator.StringToHash("X");
+        private static readonly int Y = Animator.StringToHash("Y");
+
+
         public Zombie1() : 
             base("Zombie1", new []{"Player", "Core"}, 
                 100, 20, 30) {}
@@ -18,7 +23,7 @@ namespace Monsters
             rb = GetComponent<Rigidbody2D>();
             Playertarget = GameObject.FindWithTag("Player").transform;
             animator = GetComponent<Animator>();
-            Movement= GetComponent<AIDestinationSetter>().
+             AI=GetComponent<AIPath>();
 
         }
         protected override void Start()
@@ -32,6 +37,7 @@ namespace Monsters
             //rb.MovePosition((Vector2)transform.position + direction * (speed * Time.deltaTime));
         }
         
+       
         protected override void Update()
         { 
            
@@ -40,9 +46,9 @@ namespace Monsters
            // rb.rotation = angle;
             //direction.Normalize();
            // Movement = direction;
-           Vector3 horizontalMove=
-            animator.SetFloat("X", transform.position.x);
-            animator.SetFloat("Y", transform.position.y);
+           Movement = AI.desiredVelocity;
+           animator.SetFloat(X, Movement.x);
+           animator.SetFloat(Y, Movement.y);
         }
         protected override void FixedUpdate()
         {

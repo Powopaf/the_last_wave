@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Monsters
 {
@@ -30,6 +31,7 @@ namespace Monsters
         {
             throw new NotImplementedException();
         }
+       
         protected override void OnCollisionEnter2D(Collision2D col)
         {
             throw new NotImplementedException();

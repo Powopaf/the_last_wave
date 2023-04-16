@@ -1,6 +1,9 @@
 
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
+
 namespace Monsters
 {
     public abstract class Zombie: MonoBehaviour
@@ -9,16 +12,14 @@ namespace Monsters
         protected int Damage;
         private string _name;
         //private Item[] _loot;
-        private string[] _target;
+        protected string[] _target;
         private (int, int) _coordinate;
         public float speed;
         protected Transform Playertarget; //On doit pouvoir changer l'objet avec la fonction TargetZombie()
         public Rigidbody2D rb;
         protected Vector2 Movement;
         public Animator animator;
-       
-        protected int currentWaypoint = 0;
-        protected bool reachedEndOfPath = false;
+        protected AIPath AI;
 
         protected Zombie(string name = "", string[] target = null,
             int health = 1, int damage = 1, float speed = 1f)
@@ -28,42 +29,22 @@ namespace Monsters
             _health = health;
             Damage = damage;
         }
-
-        protected void NewGridForPathfinding()
-        {
-            // This holds all graph data
-            AstarData data = AstarPath.active.data; 
-            // This creates a Grid Graph
-            GridGraph gg = data.AddGraph(typeof(GridGraph)) as GridGraph; 
-            // Setup a grid graph with some values
-            int width = 50;
-            int depth = 50;
-            float nodeSize = 1;
-
-            gg.center = new Vector3(10, 0, 0); 
-            // Updates internal size from the above values
-            gg.SetDimensions(width, depth, nodeSize); 
-            // Scans all graphs
-            AstarPath.active.Scan();
-        }
+        
 
         protected string TargetZombie()
         {
-            Vector3 closertargetPosition = GameObject.Find(_target[0]).transform.position;
             string result = _target[0];
             for (int i = 1; i < _target.Length; i++)
             {
-                Vector3 newtargetPosition = GameObject.Find(_target[i]).transform.position;
-                Vector3 position = transform.position;
-                Vector3 firstcomparison = position - closertargetPosition;
-                Vector3 secondcomparison = position - newtargetPosition;
-                if (secondcomparison.magnitude < firstcomparison.magnitude)
+                Vector2 positionTest = GameObject.FindWithTag(_target[i]).transform.position;
+                Vector2 positionResult = GameObject.FindWithTag(result).transform.position;
+                float testmagnitude = ((Vector2) transform.position - positionTest).magnitude;
+                float resultmagnitude = ((Vector2) transform.position - positionResult).magnitude;
+                if (testmagnitude>resultmagnitude)
                 {
-                    closertargetPosition = newtargetPosition;
                     result = _target[i];
                 }
             }
-
             return result;
         }
 
@@ -75,7 +56,7 @@ namespace Monsters
 
         protected abstract void FixedUpdate();
         protected abstract void ZombieMovement(Vector2 direction);
-
+       
         protected abstract void OnCollisionEnter2D(Collision2D col);
     }
 }

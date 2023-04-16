@@ -1,5 +1,7 @@
 using System;
+using Pathfinding;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Monsters
 {
@@ -11,9 +13,12 @@ namespace Monsters
         private Rigidbody2D _launchOffsetRigidbody2D;
         private float _zombieWeaponRecharging =1 ;
         protected float _bulletspeed;
+        private static readonly int X = Animator.StringToHash("X");
+        private static readonly int Y = Animator.StringToHash("Y");
+
         public Zombie2(float bulletspeed=1) :
             base("Zombie2",
-                new[] { "Core" },
+                new[] { "Survivor" },
                 50, 15, 100)
         {
             _bulletspeed = bulletspeed;
@@ -29,6 +34,7 @@ namespace Monsters
             launchOffset = GameObject.FindWithTag("Zombie2LaunchOffset");
             animator = GetComponent<Animator>();
             _launchOffsetRigidbody2D = launchOffset.GetComponent<Rigidbody2D>();
+            AI=GetComponent<AIPath>();
         }
         protected override void Start()
         {
@@ -36,13 +42,11 @@ namespace Monsters
 
         protected override void Update()
         {
-            Vector3 direction = Playertarget.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            _launchOffsetRigidbody2D.rotation = angle;
-            direction.Normalize();
-            Movement = direction;
-            animator.SetFloat("X", Movement.x);
-            animator.SetFloat("Y", Movement.y);
+            AI.canMove = true;
+            if (transform.position.magnitude<=playerdistance)
+            {
+                AI.canMove = false;
+            }
             if (_zombieWeaponRecharging <= 0)
             {
                 if ((Playertarget.position - transform.position).magnitude < playerdistance + 2)
@@ -56,20 +60,21 @@ namespace Monsters
             {
                 _zombieWeaponRecharging -= Time.deltaTime;
             }
+            Movement = AI.desiredVelocity;
+            animator.SetFloat(X, Movement.x);
+            animator.SetFloat(Y, Movement.y);
             
         }
 
         protected override void FixedUpdate()
         {
-            ZombieMovement(Movement);
+           
         }
         protected override void ZombieMovement(Vector2 direction)
         {
-            if ((Playertarget.position-transform.position).magnitude > playerdistance)
-            {
-                rb.MovePosition((Vector2)transform.position + direction * (speed * Time.deltaTime));
-            }
+           
         }
+        
 
         protected override void OnCollisionEnter2D(Collision2D col)
         {

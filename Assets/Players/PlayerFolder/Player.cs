@@ -96,10 +96,7 @@ namespace Players.PlayerFolder
         {
             mousepos = _sight.ReadValue<Vector2>();
             mousepos.z = camera.nearClipPlane;
-            return camera.ScreenToWorldPoint(mousepos);  
-          //  Vector3 direction = worldpmousepos - LaunchOffsetPlayer.transform.position; 
-          //  float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-           // RblaunchOffsetPLayer.rotation = angle;
+            return camera.ScreenToWorldPoint(mousepos);
         }
         
         private void Looting(Item.Item[] loot)

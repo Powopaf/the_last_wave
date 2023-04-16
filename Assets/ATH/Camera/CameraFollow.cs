@@ -12,7 +12,7 @@ namespace Scenes.ATH
 
         private void Start()
         {
-            _target = GameObject.FindWithTag("Player").transform;
+            _target = GetComponentInParent<GameObject>().transform;
         }
 
         void Update()

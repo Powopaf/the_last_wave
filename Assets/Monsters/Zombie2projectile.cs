@@ -5,20 +5,24 @@ namespace Monsters
     public class Zombie2projectile : Zombie2
     {
         public float bulletspeed;
+        private float lifeBullet;
 
-        public Zombie2projectile(float speed = 10)
-        {
-            bulletspeed = speed;
-        }
-
+      
         new void Start()
         {
             animator = GetComponent<Animator>();
+            bulletspeed = 10;
+            lifeBullet = 5;
         }
 
         new void Update()
         {
             transform.position += transform.right * (Time.deltaTime * bulletspeed);
+            lifeBullet -= Time.deltaTime;
+            if (lifeBullet <= 0)
+            {
+                Destroy(gameObject);
+            }
 
         }
 

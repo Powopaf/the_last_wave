@@ -16,6 +16,7 @@ namespace Assets.Photon.C__script
             if (UsernameInput.text.Length >= 1)
             {
                 PhotonNetwork.NickName = UsernameInput.text;
+                PlayerPrefs.SetString("Username", UsernameInput.text);
                 ButtonText.text = "Connecting";
                 PhotonNetwork.ConnectUsingSettings();
             }

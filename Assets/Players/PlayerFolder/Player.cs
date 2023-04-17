@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Photon.Pun;
 using Scenes.ATH;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -50,7 +51,7 @@ namespace Players.PlayerFolder
             rb = GetComponent<Rigidbody2D>();
             _playerControl = new PlayerInputAction();
             _playersight = GetComponentInChildren<Playersight>();
-            camera=Camera.main;
+            camera = Camera.main;
             animator = GetComponent<Animator>();
         }
 
@@ -87,9 +88,12 @@ namespace Players.PlayerFolder
         
         protected void FixedUpdate()
         {
-            rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
-            healthBar.SetHealth(Health);
-            _playersight.PointerPosition = pointerInput;
+            if (GetComponent<PhotonView>().IsMine)
+            {
+                rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
+                healthBar.SetHealth(Health);
+                _playersight.PointerPosition = pointerInput;
+            }
         }
         
         private Vector2 GetPointerInput()

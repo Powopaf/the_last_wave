@@ -8,7 +8,7 @@ public class Spawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PhotonNetwork.Instantiate("PhotonPlayer", new Vector3(Random.Range(10, -10), Random.Range(10, -10), -1),
+        PhotonNetwork.Instantiate("PhotonPlayer", new Vector3(Random.Range(300, 310), Random.Range(300, 310), -1),
             Quaternion.identity);
     }
 

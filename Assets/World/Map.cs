@@ -2,7 +2,9 @@ using System;
 using UnityEngine;
 using static World.GetType;
 using System.Linq;
+using Photon.Pun;
 using GameObject = UnityEngine.GameObject;
+using Random = UnityEngine.Random;
 
 namespace World
 {
@@ -16,7 +18,23 @@ namespace World
         
         void Start()
         {
+            /*
             _mapDefinition = new MapDefinition(seed);
+            //SetMapGen();
+            SetUpTile();
+            AstarPath.active.Scan();
+            */
+            if (PhotonNetwork.IsMasterClient)
+            {
+                int GenSeed = Random.Range(0, Int32.MaxValue);
+                GetComponent<PhotonView>().RPC("MapGen", RpcTarget.All, GenSeed);
+            }
+        }
+
+        [PunRPC] public void MapGen(int newseed)
+        {
+            Debug.Log("test");
+            _mapDefinition = new MapDefinition(newseed);
             //SetMapGen();
             SetUpTile();
             AstarPath.active.Scan();

@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Pathfinding;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,35 +8,54 @@ namespace Monsters
 {
     public class Zombie3 : Zombie
     {
+        private static readonly int X = Animator.StringToHash("X");
+        private static readonly int Y = Animator.StringToHash("Y");
+
         public Zombie3() :
-            base("Zombie3", 
-                new []{"Building", "Core"},
-                200, 15, 10) {}
+            base("Zombie3",
+                new String[] { "Building", "Core" },
+                200, 15, 10)
+        {
+        }
+
+
 
         protected override void Awake()
         {
-            throw new NotImplementedException();
+            rb = GetComponent<Rigidbody2D>();
+            animator = GetComponent<Animator>();
+            AI = GetComponent<AIPath>();
+
         }
+
         protected override void Start()
-        {
-            throw new NotImplementedException();
-        }
+        {}
+
+
+        protected override void ZombieMovement(Vector2 direction)
+        {}
+
+
         protected override void Update()
         {
-            throw new NotImplementedException();
+            Movement = AI.desiredVelocity;
+            animator.SetFloat(X, Movement.x);
+            animator.SetFloat(Y, Movement.y);
         }
+
         protected override void FixedUpdate()
         {
-            throw new NotImplementedException();
         }
-        protected override void ZombieMovement(Vector2 direction)
-        {
-            throw new NotImplementedException();
-        }
-       
+
+
         protected override void OnCollisionEnter2D(Collision2D col)
         {
-            throw new NotImplementedException();
+            if (((IList)_target).Contains(col.transform.tag)) //Need to change  the tag
+            {
+                Players.Survivor survivor = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
+                survivor.ZombieDamageOnPlayer(Damage); // Zombie Attack
+            }
+
         }
     }
 }

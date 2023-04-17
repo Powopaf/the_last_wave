@@ -20,6 +20,7 @@ namespace Monsters
         protected Vector2 Movement;
         public Animator animator;
         protected AIPath AI;
+        protected AIDestinationSetter AIsetter;
 
         protected Zombie(string name = "", string[] target = null,
             int health = 1, int damage = 1, float speed = 1f)

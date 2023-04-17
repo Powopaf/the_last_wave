@@ -5,14 +5,14 @@ namespace Scenes.ATH
     public class CameraFollow : MonoBehaviour
     {
         private const float CamFollowSpeed = 2100f;
-        private Transform _target;
+        public Transform _target;
 
     
         // Update is called once per frame
 
         private void Start()
         {
-            _target = GetComponentInParent<GameObject>().transform;
+            
         }
 
         void Update()

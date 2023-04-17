@@ -23,9 +23,8 @@ namespace Monsters
         protected override void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
-            GetComponent<AIDestinationSetter>().target = GameObject.FindWithTag("Player").transform;
             animator = GetComponent<Animator>();
-             AI=GetComponent<AIPath>();
+            AI=GetComponent<AIPath>();
 
         }
         protected override void Start()
@@ -47,7 +46,6 @@ namespace Monsters
         }
         protected override void FixedUpdate()
         {
-            //ZombieMovement(Movement);
         }
 
        

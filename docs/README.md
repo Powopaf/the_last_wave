@@ -37,7 +37,7 @@ Membres de l'équipe Steeve diff:
 - [Barre de vie](https://www.freepik.com/free-vector/game-ui-kit-set-user-interface-gui-build-2d-games-casual-game-vector-can-be-used-mobile-web-games-vector-illustration_25273347.htm#query=game%20health%20bar&position=2&from_view=keyword&track=aisFreepik)
 - [Sprite du joueur](https://game-endeavor.itch.io/mystic-woods)
 - [Sprite de la map](https://bekri36.itch.io/36x36-top-down-tileset)
-- [Sprite Zombies]()
+- [Sprite Zombies](https://pipoya.itch.io/pipoya-free-rpg-character-sprites-32x32)
 
 ## Download
-Pour télécherger le Projet: [Link](https://pipoya.itch.io/pipoya-free-rpg-character-sprites-32x32)
+Pour télécherger le Projet: [Link]()

@@ -51,7 +51,7 @@ namespace Players.PlayerFolder
             rb = GetComponent<Rigidbody2D>();
             _playerControl = new PlayerInputAction();
             _playersight = GetComponentInChildren<Playersight>();
-            camera = Camera.main;
+            camera = GameObject.FindWithTag("Camera").GetComponent<Camera>();
             animator = GetComponent<Animator>();
         }
 

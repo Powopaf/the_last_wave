@@ -23,9 +23,9 @@ namespace Monsters
         protected override void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
-            GetComponent<AIDestinationSetter>().target = GameObject.FindWithTag("Player").transform;
             animator = GetComponent<Animator>();
-             AI=GetComponent<AIPath>();
+            AI=GetComponent<AIPath>();
+            AIsetter.target=GameObject.FindWithTag("Core").transform;
 
         }
         protected override void Start()
@@ -47,7 +47,6 @@ namespace Monsters
         }
         protected override void FixedUpdate()
         {
-            //ZombieMovement(Movement);
         }
 
        
@@ -60,6 +59,14 @@ namespace Monsters
             }
         
         }
-    
+
+        protected override void OnTriggerExit2D(Collider2D other)
+        {
+            if (_target.Contains(other.tag))
+            {
+                AIsetter.target = GameObject.FindWithTag("Core").transform;
+            }
+           
+        }
     }
 }

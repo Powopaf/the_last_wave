@@ -30,11 +30,11 @@ namespace Monsters
         {
             playerdistance = 10;
             rb = GetComponent<Rigidbody2D>();
-            Playertarget = GameObject.FindWithTag("Player").transform;
             launchOffset = GameObject.FindWithTag("Zombie2LaunchOffset");
             animator = GetComponent<Animator>();
             _launchOffsetRigidbody2D = launchOffset.GetComponent<Rigidbody2D>();
             AI=GetComponent<AIPath>();
+            AIsetter = GetComponent<AIDestinationSetter>();
         }
         protected override void Start()
         {
@@ -42,14 +42,14 @@ namespace Monsters
 
         protected override void Update()
         {
-            AI.canMove = true;
+           /* AI.canMove = true;
             if (transform.position.magnitude<=playerdistance)
             {
                 AI.canMove = false;
-            }
+            }*/
             if (_zombieWeaponRecharging <= 0)
             {
-                if ((Playertarget.position - transform.position).magnitude < playerdistance + 2)
+                if ((AIsetter.target.position - transform.position).magnitude < playerdistance + 2)
                 {
                      GameObject t = Instantiate(zombie2Projectile, launchOffset.transform.position, launchOffset.transform.rotation);
                      t.tag = "Zombie2Projectile";
@@ -77,6 +77,10 @@ namespace Monsters
         
 
         protected override void OnCollisionEnter2D(Collision2D col)
+        {
+            throw new NotImplementedException();
+        }
+        protected override void OnTriggerExit2D(Collider2D other)
         {
             throw new NotImplementedException();
         }

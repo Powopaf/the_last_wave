@@ -38,6 +38,7 @@ Membres de l'équipe Steeve diff:
 - [Sprite du joueur](https://game-endeavor.itch.io/mystic-woods)
 - [Sprite de la map](https://bekri36.itch.io/36x36-top-down-tileset)
 - [Sprite Zombies](https://pipoya.itch.io/pipoya-free-rpg-character-sprites-32x32)
+- [Fond d'écran accueil](https://www.besthdwallpaper.com/forests/forest-pixel-art-dt_en-US-106514.html)
 
 ## Download
 Pour télécherger le Projet: [Link]()

@@ -7,14 +7,16 @@ TagManager:
   - Zombie2LaunchOffset
   - Zombie2Projectile
   - PlayerLaunchOffset
+  - Survivor
+  - NotWalk
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - NotWalk
   - 
   - 
   - 

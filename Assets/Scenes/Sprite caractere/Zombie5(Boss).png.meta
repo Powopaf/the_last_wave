@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7655d07928538154497efd63444672a7
+guid: 4e3b32b0054714748ba7d3fe6c76d0a4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 10
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy 18_0
+      name: Enemy 22_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d59eaa83866341b46b14e5f8935979ce
-      internalID: 1596434070
+      spriteID: 7142f9c0e1af59345bc955e9598bbd47
+      internalID: -1053554783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_1
+      name: Enemy 22_1
       rect:
         serializedVersion: 2
         x: 32
@@ -164,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efc226c2fcf9d2944ba7e3d7677cb5e7
-      internalID: 1124312411
+      spriteID: e2953f2576c31134fb7b0b8471087ef2
+      internalID: -770129331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_2
+      name: Enemy 22_2
       rect:
         serializedVersion: 2
         x: 64
@@ -185,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68f91e093b3eaf64ca7540ebae7751ad
-      internalID: -910520933
+      spriteID: dd573365a492c604ca033b40365acd22
+      internalID: -1455439396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_3
+      name: Enemy 22_3
       rect:
         serializedVersion: 2
         x: 0
@@ -206,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 302e4e046c27de74a9810f2af317e9a5
-      internalID: 2042548276
+      spriteID: 87b6e8d164f4bf84792f1f46b9107093
+      internalID: -56858874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_4
+      name: Enemy 22_4
       rect:
         serializedVersion: 2
         x: 32
@@ -227,14 +227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b5cada63350f5b45ae7bf0d333bfe36
-      internalID: 1817672580
+      spriteID: fe2a262454ceac14ea1ab3a382aafc34
+      internalID: -1449563352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_5
+      name: Enemy 22_5
       rect:
         serializedVersion: 2
         x: 64
@@ -248,14 +248,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 333bb368b9cf8e345b32755e115d1f8c
-      internalID: 741784324
+      spriteID: 0953bad9e90be3c4e88bbe4ba3cfd3f5
+      internalID: 1589659554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_6
+      name: Enemy 22_6
       rect:
         serializedVersion: 2
         x: 0
@@ -269,14 +269,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09808283e271a1b4dbf30fbd9a96c8b6
-      internalID: 1635657270
+      spriteID: dcf3b052726694147929865bfcc7f363
+      internalID: -1817205982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_7
+      name: Enemy 22_7
       rect:
         serializedVersion: 2
         x: 32
@@ -290,14 +290,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8047b74ee369ecd4dbeba5e656adf271
-      internalID: -1226157214
+      spriteID: 4ad48069e01c11d47a8bf01e63b71adc
+      internalID: -280796153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_8
+      name: Enemy 22_8
       rect:
         serializedVersion: 2
         x: 64
@@ -311,14 +311,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e3600fbe5bea1944ba9661d4f7c276e
-      internalID: -458770765
+      spriteID: c5b661292a0b0b84bac42f729785cdd9
+      internalID: -476615040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_9
+      name: Enemy 22_9
       rect:
         serializedVersion: 2
         x: 0
@@ -332,14 +332,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9523bda4e130af4993e6cf13cd21be2
-      internalID: -1093793666
+      spriteID: 4e76ed0241193e24c89ef06c8876ad84
+      internalID: 2065008404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_10
+      name: Enemy 22_10
       rect:
         serializedVersion: 2
         x: 32
@@ -353,14 +353,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88e6067adb5e6fe43b779d8790507816
-      internalID: 940684275
+      spriteID: a528d64b7bb207b4e9236bdc57f50baf
+      internalID: 2047482630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_11
+      name: Enemy 22_11
       rect:
         serializedVersion: 2
         x: 64
@@ -374,8 +374,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e61a37a29cef8164fbc722084c9c716c
-      internalID: -1155991496
+      spriteID: 685373de6936f884d916bc4880448ec4
+      internalID: 627031337
       vertices: []
       indices: 
       edges: []
@@ -391,18 +391,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Enemy 18_7: -1226157214
-      Enemy 18_4: 1817672580
-      Enemy 18_0: 1596434070
-      Enemy 18_5: 741784324
-      Enemy 18_2: -910520933
-      Enemy 18_3: 2042548276
-      Enemy 18_6: 1635657270
-      Enemy 18_8: -458770765
-      Enemy 18_1: 1124312411
-      Enemy 18_9: -1093793666
-      Enemy 18_11: -1155991496
-      Enemy 18_10: 940684275
+      Enemy 22_10: 2047482630
+      Enemy 22_2: -1455439396
+      Enemy 22_3: -56858874
+      Enemy 22_5: 1589659554
+      Enemy 22_9: 2065008404
+      Enemy 22_8: -476615040
+      Enemy 22_0: -1053554783
+      Enemy 22_1: -770129331
+      Enemy 22_7: -280796153
+      Enemy 22_4: -1449563352
+      Enemy 22_6: -1817205982
+      Enemy 22_11: 627031337
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

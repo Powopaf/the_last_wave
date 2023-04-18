@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7655d07928538154497efd63444672a7
+guid: 77a02da3189fad042818e2327320d4b2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 15
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy 18_0
+      name: Zombie3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d59eaa83866341b46b14e5f8935979ce
-      internalID: 1596434070
+      spriteID: f9dd17e1f6274794e84d20a96c012918
+      internalID: -213072484
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_1
+      name: Zombie3_1
       rect:
         serializedVersion: 2
         x: 32
@@ -164,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efc226c2fcf9d2944ba7e3d7677cb5e7
-      internalID: 1124312411
+      spriteID: 658d1fd2e8d8a9c4aa1de7df3260d016
+      internalID: 134948561
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_2
+      name: Zombie3_2
       rect:
         serializedVersion: 2
         x: 64
@@ -185,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68f91e093b3eaf64ca7540ebae7751ad
-      internalID: -910520933
+      spriteID: 979436d3c3a475044a24b5ace32a24e0
+      internalID: 608434131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_3
+      name: Zombie3_3
       rect:
         serializedVersion: 2
         x: 0
@@ -206,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 302e4e046c27de74a9810f2af317e9a5
-      internalID: 2042548276
+      spriteID: f70ff05198a88a349a2cef811243a265
+      internalID: -1797723778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_4
+      name: Zombie3_4
       rect:
         serializedVersion: 2
         x: 32
@@ -227,14 +227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b5cada63350f5b45ae7bf0d333bfe36
-      internalID: 1817672580
+      spriteID: 0b9ec4b9eeb1c9b4180c51f5b2c710bc
+      internalID: 1698902768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_5
+      name: Zombie3_5
       rect:
         serializedVersion: 2
         x: 64
@@ -248,14 +248,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 333bb368b9cf8e345b32755e115d1f8c
-      internalID: 741784324
+      spriteID: 2c1dc9342e2cb01459b371d87ddb2319
+      internalID: 1823211710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_6
+      name: Zombie3_6
       rect:
         serializedVersion: 2
         x: 0
@@ -269,14 +269,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09808283e271a1b4dbf30fbd9a96c8b6
-      internalID: 1635657270
+      spriteID: b866259a0fe93bd478bf2ad02ecd4d47
+      internalID: -880249082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_7
+      name: Zombie3_7
       rect:
         serializedVersion: 2
         x: 32
@@ -290,14 +290,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8047b74ee369ecd4dbeba5e656adf271
-      internalID: -1226157214
+      spriteID: a3c3a466e47074240921ec4217973de1
+      internalID: 1664685853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_8
+      name: Zombie3_8
       rect:
         serializedVersion: 2
         x: 64
@@ -311,14 +311,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e3600fbe5bea1944ba9661d4f7c276e
-      internalID: -458770765
+      spriteID: 551c20d09c0c83d47b61cd0b8aef1659
+      internalID: 826808939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_9
+      name: Zombie3_9
       rect:
         serializedVersion: 2
         x: 0
@@ -332,14 +332,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9523bda4e130af4993e6cf13cd21be2
-      internalID: -1093793666
+      spriteID: 72139d0ab3fbf5840a789faa40d4c585
+      internalID: -942484380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_10
+      name: Zombie3_10
       rect:
         serializedVersion: 2
         x: 32
@@ -353,14 +353,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88e6067adb5e6fe43b779d8790507816
-      internalID: 940684275
+      spriteID: e989cfa57389327409d981080f39a82a
+      internalID: 1744307705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 18_11
+      name: Zombie3_11
       rect:
         serializedVersion: 2
         x: 64
@@ -374,8 +374,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e61a37a29cef8164fbc722084c9c716c
-      internalID: -1155991496
+      spriteID: e845a8e58907a2b41833ba666a521e10
+      internalID: -512231091
       vertices: []
       indices: 
       edges: []
@@ -391,18 +391,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Enemy 18_7: -1226157214
-      Enemy 18_4: 1817672580
-      Enemy 18_0: 1596434070
-      Enemy 18_5: 741784324
-      Enemy 18_2: -910520933
-      Enemy 18_3: 2042548276
-      Enemy 18_6: 1635657270
-      Enemy 18_8: -458770765
-      Enemy 18_1: 1124312411
-      Enemy 18_9: -1093793666
-      Enemy 18_11: -1155991496
-      Enemy 18_10: 940684275
+      Zombie3_4: 1698902768
+      Zombie3_11: -512231091
+      Zombie3_2: 608434131
+      Zombie3_10: 1744307705
+      Zombie3_9: -942484380
+      Zombie3_5: 1823211710
+      Zombie3_6: -880249082
+      Zombie3_7: 1664685853
+      Zombie3_8: 826808939
+      Zombie3_0: -213072484
+      Zombie3_1: 134948561
+      Zombie3_3: -1797723778
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

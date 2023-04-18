@@ -14,26 +14,24 @@ namespace World
         public Side[] _side;
         private MapDefinition _mapDefinition;
         private readonly TileSprite _tileSprite = new ();
-        public int seed;
-        
+        public bool RandomSeed = false;
+
         void Start()
         {
-            /*
-            _mapDefinition = new MapDefinition(seed);
-            //SetMapGen();
-            SetUpTile();
-            AstarPath.active.Scan();
-            */
             if (PhotonNetwork.IsMasterClient)
             {
-                int GenSeed = Random.Range(0, Int32.MaxValue);
+                int GenSeed = 0;
+                if (RandomSeed)
+                {
+                    GenSeed = Random.Range(0, Int32.MaxValue);
+                }
                 GetComponent<PhotonView>().RPC("MapGen", RpcTarget.All, GenSeed);
             }
         }
+        
 
         [PunRPC] public void MapGen(int newseed)
         {
-            Debug.Log("test");
             _mapDefinition = new MapDefinition(newseed);
             //SetMapGen();
             SetUpTile();

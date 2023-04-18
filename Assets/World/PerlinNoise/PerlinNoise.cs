@@ -67,9 +67,9 @@ namespace World.PerlinNoise
             int x = random.Next(0, 100000);
             int y = random.Next(0, 100000);
             float[,] map = new float[mapHeight, mapWidth];
-            for (int i = 0; i < mapHeight; i++)
+            for (int i = 1; i < mapHeight; i++)
             {
-                for (int j = 0; j < mapWidth; j++)
+                for (int j = 1; j < mapWidth; j++)
                 {
                     map[i, j] = (float)GetPerlinValue(i / noiseScale + x, j / noiseScale + y, 0.5f, 12);
                 }

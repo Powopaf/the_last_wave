@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using Scenes.ATH;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,6 +33,7 @@ namespace Players.PlayerFolder
         private Vector2 pointerInput;
         private Vector3 mousepos;
         private Playersight _playersight;
+        public GameObject Mark;
 
         public Player(int health = 100, int damage = 1,
             int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
@@ -48,42 +50,56 @@ namespace Players.PlayerFolder
 
         protected void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
-            _playerControl = new PlayerInputAction();
-            _playersight = GetComponentInChildren<Playersight>();
-            camera = Camera.main;
-            animator = GetComponent<Animator>();
+            if (GetComponent<PhotonView>().IsMine)
+            {
+                rb = GetComponent<Rigidbody2D>();
+                _playerControl = new PlayerInputAction();
+                _playersight = GetComponentInChildren<Playersight>();
+                camera = Camera.main;
+                animator = GetComponent<Animator>();
+            }
         }
 
         protected void Start()
         {
-            healthBar.SetMaxHealth(MaxHealth);
-            healthBar.SetHealth(MaxHealth);
+            if (GetComponent<PhotonView>().IsMine)
+            {
+                healthBar.SetMaxHealth(MaxHealth);
+                healthBar.SetHealth(MaxHealth);
+            }
         }
 
         protected void OnEnable()
         {
-            _move = _playerControl.Player.Move;
-            _move.Enable();
+            if (GetComponent<PhotonView>().IsMine)
+            {
+                _move = _playerControl.Player.Move;
+                _move.Enable();
 
-            _sight = _playerControl.Player.PointerPosition;
-            _sight.Enable();
+                _sight = _playerControl.Player.PointerPosition;
+                _sight.Enable();
+            }
         }
         
         protected void OnDisable()
         {
-            _move.Disable();
-            _sight.Disable();
+            if (GetComponent<PhotonView>().IsMine)
+            {
+                _move.Disable();
+                _sight.Disable();
+            }
         }
         
         protected void Update()
-        { 
-           animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
-           animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
-           healthBar.SetHealth(Health);
-           dir = _move.ReadValue<Vector2>();
-           pointerInput = GetPointerInput();
-
+        {
+            if (GetComponent<PhotonView>().IsMine)
+            {
+                animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+                animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
+                healthBar.SetHealth(Health);
+                dir = _move.ReadValue<Vector2>();
+                pointerInput = GetPointerInput();
+            }
         }
         
         protected void FixedUpdate()

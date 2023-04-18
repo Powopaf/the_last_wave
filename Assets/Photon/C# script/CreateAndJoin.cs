@@ -38,7 +38,6 @@ public class CreateAndJoin : MonoBehaviourPunCallbacks
         LobbyPanel.SetActive(false);
         RoomPanel.SetActive(true);
         RoomName.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
-        Debug.Log($"Joined Room: {PhotonNetwork.CurrentRoom.Name}");
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
@@ -51,9 +50,8 @@ public class CreateAndJoin : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsOpen = true;
             PhotonNetwork.LoadLevel("GameScene");
         }
     }
-   
 }

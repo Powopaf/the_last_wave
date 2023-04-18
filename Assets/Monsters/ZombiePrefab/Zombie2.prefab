@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 6666121166126259014}
   - component: {fileID: 8449001679565531635}
   - component: {fileID: 1336804905001739256}
+  - component: {fileID: -8165278345018622850}
   m_Layer: 0
   m_Name: Zombie2
   m_TagString: Untagged
@@ -287,3 +288,19 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1
   constrainInsideGraph: 0
+--- !u!58 &-8165278345018622850
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812268159022241882}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 16

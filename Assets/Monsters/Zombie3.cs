@@ -57,5 +57,9 @@ namespace Monsters
             }
 
         }
+        protected override void OnTriggerExit2D(Collider2D other)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

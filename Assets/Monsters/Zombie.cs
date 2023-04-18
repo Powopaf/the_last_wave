@@ -1,4 +1,6 @@
 
+using System;
+using System.Linq;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,7 +22,7 @@ namespace Monsters
         protected Vector2 Movement;
         public Animator animator;
         protected AIPath AI;
-        protected AIDestinationSetter AIsetter;
+        public AIDestinationSetter AIsetter;
 
         protected Zombie(string name = "", string[] target = null,
             int health = 1, int damage = 1, float speed = 1f)
@@ -59,5 +61,15 @@ namespace Monsters
         protected abstract void ZombieMovement(Vector2 direction);
        
         protected abstract void OnCollisionEnter2D(Collision2D col);
+
+        protected void OnTriggerEnter2D(Collider2D other)
+        {
+            if (_target.Contains(other.tag))
+            {
+                AIsetter.target = other.transform;
+            }
+        }
+
+        protected abstract void OnTriggerExit2D(Collider2D other);
     }
 }

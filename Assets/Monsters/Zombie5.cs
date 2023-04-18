@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Pathfinding;
 using UnityEngine;
@@ -50,6 +51,10 @@ namespace Monsters
                 survivor.ZombieDamageOnPlayer(Damage); // Zombie Attack
             }
         
+        }
+        protected override void OnTriggerExit2D(Collider2D other)
+        {
+            throw new NotImplementedException();
         }
     
     }

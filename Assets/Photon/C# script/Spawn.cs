@@ -8,7 +8,7 @@ public class Spawn : MonoBehaviour
 { 
     void Start()
     {
-        PhotonNetwork.Instantiate("PhotonPlayerTest", new Vector3(Random.Range(300, 310), 
+        PhotonNetwork.Instantiate("PhotonPlayerTest2", new Vector3(Random.Range(300, 310), 
                 Random.Range(300, 310), -1), Quaternion.identity);
     }
 }

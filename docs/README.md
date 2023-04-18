@@ -41,4 +41,5 @@ Membres de l'équipe Steeve diff:
 - [Fond d'écran accueil](https://www.besthdwallpaper.com/forests/forest-pixel-art-dt_en-US-106514.html)
 
 ## Download
-Pour télécherger le Projet: [Link]()
+Le projet est téléchargable avec le lien si dessous. Se lien renvoie vers la release la plus récente du projet. Pour jouer au jeu il faut dowload le .zip, le unzip et lancer le .exe (sous windowns).
+Pour télécherger le Projet: [Link](https://github.com/Powopaf/the_last_wave/releases/tag/Soutenance2.1)

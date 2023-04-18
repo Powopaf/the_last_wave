@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using Scenes.ATH;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 
 namespace Players.PlayerFolder
 {
@@ -34,6 +35,8 @@ namespace Players.PlayerFolder
         private Vector3 mousepos;
         private Playersight _playersight;
         public GameObject Mark;
+        public GameObject CanvasName;
+        public TMP_Text Name;
 
         public Player(int health = 100, int damage = 1,
             int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
@@ -66,6 +69,11 @@ namespace Players.PlayerFolder
             {
                 healthBar.SetMaxHealth(MaxHealth);
                 healthBar.SetHealth(MaxHealth);
+            }
+            else
+            {
+                CanvasName.SetActive(true);
+                Name.text = GetComponent<PhotonView>().Controller.NickName;
             }
         }
 

@@ -10,18 +10,18 @@ Membres de l'équipe Steeve diff:
 
 ## Avancement
 
-### 26/01/23 --> création du repo git
-### 28/02/23 --> déplacement du joueur 
-### 01/03/23 --> création du premier zombie
-### 02/03/23 --> création de la map (via une matrice)
-### 03/03/23 --> ajout de la caméra joueur
-### 05/03/23 --> création du Zombie2
-### 18/03/23 --> Mis en place des nouveau input
-### 10/04/23 --> création de l'host des parties
-### 13/04/23 --> création des paties privée
-### 14/04/23 --> génération de la carte fini
-### 14/04/23 --> Zombie 1 fini
-### 16/04/23 --> cration du lancement de la partie
+#### 26/01/23 --> création du repo git
+#### 28/02/23 --> déplacement du joueur 
+#### 01/03/23 --> création du premier zombie
+#### 02/03/23 --> création de la map (via une matrice)
+#### 03/03/23 --> ajout de la caméra joueur
+#### 05/03/23 --> création du Zombie2
+#### 18/03/23 --> Mis en place des nouveau input
+#### 10/04/23 --> création de l'host des parties
+#### 13/04/23 --> création des paties privée
+#### 14/04/23 --> génération de la carte fini
+#### 14/04/23 --> Zombie 1 fini
+#### 16/04/23 --> cration du lancement de la partie
 
 ## Problèmes
 - Nous avons eu des problèmes avec GitHub.

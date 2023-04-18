@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 536239972, guid: 6d51791d01cc8104f8d9897a9ff523d3, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1038445697335053227, guid: 6d51791d01cc8104f8d9897a9ff523d3, type: 3}
       propertyPath: m_Name
       value: MapGenerator
@@ -176,6 +180,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282945931275272150, guid: 6d51791d01cc8104f8d9897a9ff523d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966204729858013831, guid: 6d51791d01cc8104f8d9897a9ff523d3, type: 3}
+      propertyPath: RandomSeed
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

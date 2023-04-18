@@ -67,6 +67,8 @@ namespace Players.PlayerFolder
         {
             if (GetComponent<PhotonView>().IsMine)
             {
+                PhotonNetwork.SendRate = 40;
+                PhotonNetwork.SerializationRate = 40;
                 healthBar.SetMaxHealth(MaxHealth);
                 healthBar.SetHealth(MaxHealth);
             }

@@ -6,7 +6,7 @@ namespace Item
     {
         public int Damage => 0;
         public int Protection => 0;
-        public (int, int) Potion { get; private set; } // (level of the potion, healing amount)
+        public (int, int) Potion { get; } // (level of the potion, healing amount)
 
         public Potions()
         {
@@ -22,6 +22,11 @@ namespace Item
                 1 => (level, 10),
                 _ => (level, 15)
             };
+        }
+
+        public Potions(int level, int healing)
+        {
+            Potion = (level, healing);
         }
         
         public void Reset() { }

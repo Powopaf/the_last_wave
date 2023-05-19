@@ -1,14 +1,8 @@
-using UnityEngine;
-
-namespace Item
+﻿namespace Item
 {
-    public abstract class Item : MonoBehaviour
+    public interface Item
     {
-        protected int _durability { get; set; }
-
-        protected Item() { }
-    
-
-        protected abstract void UpdateMe(int a);
+        public int Damage { get; set; }
+        public int Protection { get; set; }
     }
 }

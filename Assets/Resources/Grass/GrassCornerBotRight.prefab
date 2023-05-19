@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5979948942465058827}
   - component: {fileID: 8688071748457596380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GrassCornerBotRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

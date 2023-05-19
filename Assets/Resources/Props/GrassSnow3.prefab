@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1870726353540499223}
   - component: {fileID: 61489091297761964}
-  m_Layer: 0
-  m_Name: SnowGrass3
+  m_Layer: 9
+  m_Name: GrassSnow3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1519750855597665061}
   - component: {fileID: 5696534349405657978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SnowCornerBotLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}

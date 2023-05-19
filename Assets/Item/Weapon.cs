@@ -1,14 +1,15 @@
 ﻿namespace Item
 {
-    public class Weapon : Item
+    public class Weapon : IItem
     {
         public int Damage { get; private set; }
-        public int Protection { get; }
+        public int Protection => 0;
+        
+        public (int, int) Potion => (-1, -1);
 
         public Weapon()
         {
             Damage = 1;
-            Protection = 0;
         }
         
         public void Reset()

@@ -12,7 +12,6 @@ namespace Players.PlayerFolder
         private int Health { get; set; }
         private int MaxHealth { get; }
         private int Damage { get; set; }
-        private List<Item.Item> _item_inv;
         private (string,int)[] _ressource_inv;
         private string _name;
         private  int _heal;
@@ -42,7 +41,6 @@ namespace Players.PlayerFolder
             _name = name;
             _heal = heal;
             this.speed = speed;
-            _item_inv = new List<Item.Item>();
             _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
         }
 
@@ -97,24 +95,6 @@ namespace Players.PlayerFolder
             mousepos = _sight.ReadValue<Vector2>();
             mousepos.z = camera.nearClipPlane;
             return camera.ScreenToWorldPoint(mousepos);
-        }
-        
-        private void Looting(Item.Item[] loot)
-        {
-            int i = 0;
-            while (_item_inv.Count <= 9 && i < loot.Length)
-            {
-                _item_inv.Add(loot[i]);
-            }
-        }
-
-        private void Looting(Item.Item item)
-        {
-            if (_item_inv.Count == 9)
-            {
-                return;
-            }
-            _item_inv.Add(item);
         }
 
         private void Heal(int life)

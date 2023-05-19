@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4698768591670873182}
   - component: {fileID: 7368138917987082491}
-  m_Layer: 0
-  m_Name: EnumTile.GrassSideLeft
+  m_Layer: 8
+  m_Name: GrassSideLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

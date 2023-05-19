@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8626988890680731019}
   - component: {fileID: 6331283924664248617}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DefaultGrass4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

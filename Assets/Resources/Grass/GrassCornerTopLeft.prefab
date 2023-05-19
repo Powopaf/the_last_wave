@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6178349448315787906}
   - component: {fileID: 6781689779528330005}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GrassCornerTopLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}

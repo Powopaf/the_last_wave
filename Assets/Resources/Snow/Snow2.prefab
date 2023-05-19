@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1647050285783348323}
   - component: {fileID: 8638384689324587835}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Snow2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

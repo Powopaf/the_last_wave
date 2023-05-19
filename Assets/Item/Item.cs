@@ -2,7 +2,9 @@
 {
     public interface Item
     {
-        public int Damage { get; set; }
-        public int Protection { get; set; }
+        public int Damage { get;}
+        public int Protection { get;}
+        public void Reset();
+        public void Upgrade();
     }
 }

@@ -12,7 +12,7 @@ namespace World
     {
         public Tile[] _tiles;
         public Side[] _side;
-        private MapDefinition _mapDefinition;
+        public MapDefinition _mapDefinition;
         private readonly TileSprite _tileSprite = new ();
         public int seed;
         

@@ -1,37 +1,45 @@
+using System;
 using System.Collections.Generic;
 using Photon.Pun;
 using Scenes.ATH;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using World;
 
 
 namespace Players.PlayerFolder
 {
-    public abstract class LocalPlayer :  MonoBehaviour
+    public abstract class LocalPlayer : MonoBehaviour
     {
         private int Health { get; set; }
         private int MaxHealth { get; }
         private int Damage { get; set; }
         private List<Item.Item> _item_inv;
-        private (string,int)[] _ressource_inv;
+        private (string, int)[] _ressource_inv;
         private string _name;
-        private  int _heal;
+        private int _heal;
         public float speed;
-        private Vector2 dir=Vector2.zero;
+        private Vector2 dir = Vector2.zero;
         [SerializeField] private HealthBar healthBar;
         public Rigidbody2D rb;
         [SerializeField] protected new Camera camera;
         public Animator animator;
         private GameObject LaunchOffsetPlayer;
         private Rigidbody2D RblaunchOffsetPLayer;
-        
-        
+
+
         private PlayerInputAction _playerControl;
         private InputAction _move;
         private InputAction _sight;
         private Vector2 pointerInput;
         private Vector3 mousepos;
         private Playersight _playersight;
+
+        public int nbTree = 0;
+        public int nbRock = 0;
+        public int nbGold = 0;
+        private InputAction _farming;
 
         public LocalPlayer(int health = 100, int damage = 1,
             int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
@@ -68,37 +76,36 @@ namespace Players.PlayerFolder
 
             _sight = _playerControl.Player.PointerPosition;
             _sight.Enable();
+
+            _farming = _playerControl.Player.Farming;
+            _farming.Enable();
+
+
         }
-        
+
         protected void OnDisable()
         {
             _move.Disable();
             _sight.Disable();
+            _farming.Disable();
         }
-        
+
         protected void Update()
-        { 
-           animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
-           animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
-           healthBar.SetHealth(Health);
-           dir = _move.ReadValue<Vector2>();
-           pointerInput = GetPointerInput();
+        {
+            animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+            animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
+            healthBar.SetHealth(Health);
+            dir = _move.ReadValue<Vector2>();
         }
-        
+
         protected void FixedUpdate()
         {
             rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
             healthBar.SetHealth(Health);
-            _playersight.PointerPosition = pointerInput;
         }
-        
-        private Vector2 GetPointerInput()
-        {
-            mousepos = _sight.ReadValue<Vector2>();
-            mousepos.z = camera.nearClipPlane;
-            return camera.ScreenToWorldPoint(mousepos);
-        }
-        
+
+       
+
         private void Looting(Item.Item[] loot)
         {
             int i = 0;
@@ -114,6 +121,7 @@ namespace Players.PlayerFolder
             {
                 return;
             }
+
             _item_inv.Add(item);
         }
 
@@ -141,5 +149,35 @@ namespace Players.PlayerFolder
                 Debug.Log("the player died!!!"); // To see the effect pf the Zombie Attack
             }
         }
+        public void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.transform.CompareTag("Rock") || col.transform.CompareTag("Tree") ||
+                col.transform.CompareTag("SnowTree"))
+            {
+                TileDefinition[,] map = GameObject.FindWithTag("LocalMap").GetComponent<LocalMap>()
+                    ._mapDefinition.Map;
+                switch (col.transform.tag)
+                {
+                    case "SnowTree":
+                        Farming tree = new Farming("Tree");
+                        nbTree += tree.number;
+                        (double X, double Y) = (Math.Truncate(transform.position.x),
+                            Math.Truncate(transform.position.y));
+                        break;
+                    case "Rock":
+                        Farming rock1 = new Farming("Rock");
+                        nbRock += rock1.number;
+                        Debug.Log($"number of rock :{nbRock}");
+                        if (Keyboard.current.qKey.wasPressedThisFrame)
+                        { 
+                            Destroy(col.gameObject);
+                        }
+                        break;
+                }
+            }
+        }
+
+
+
     }
 }

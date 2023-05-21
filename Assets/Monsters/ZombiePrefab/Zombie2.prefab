@@ -153,7 +153,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7812268159022241882}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -181,9 +181,10 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 7812268159022241876}
   animator: {fileID: 1982493387995045792}
-  playerdistance: 10
+  AIsetter: {fileID: 6666121166126259014}
+  playerdistance: 5
   zombie2Projectile: {fileID: 8064333646727624643, guid: 1b6f7bb9ed31f2d4aa73280e008df737, type: 3}
-  launchOffset: {fileID: 0}
+  launchOffset: {fileID: 2260570288839788237}
 --- !u!95 &1982493387995045792
 Animator:
   serializedVersion: 5

@@ -16,7 +16,8 @@ namespace Monsters
 
 
         public Zombie1() : 
-            base("Zombie1", new []{"Assassin","Farmer","Survivor","Worker"}, 
+            base("Zombie1", new []{"Assassin","Farmer","Survivor","Worker"},
+                
                 100, 20, 30) {}
 
         
@@ -52,11 +53,11 @@ namespace Monsters
        
         protected override void OnCollisionEnter2D(Collision2D col)
         {
-            if ( _target.Contains(col.transform.tag))   //Need to change  the tag
+           /* if ( _target.Contains(col.transform.tag))   //Need to change  the tag
             {
                 Players.Survivor survivor = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
                 survivor.ZombieDamageOnPlayer(Damage); // Zombie Attack
-            }
+            }*/
         
         }
 

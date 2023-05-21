@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,34 +8,28 @@ namespace Monsters
 {
     public class Zombie2 : Zombie
     {
-        public float playerdistance;
+        public float playerdistance=10;
         public GameObject zombie2Projectile;
         public GameObject launchOffset;
         private Rigidbody2D _launchOffsetRigidbody2D;
         private float _zombieWeaponRecharging =1 ;
-        protected float _bulletspeed;
         private static readonly int X = Animator.StringToHash("X");
         private static readonly int Y = Animator.StringToHash("Y");
 
-        public Zombie2(float bulletspeed=1) :
+        public Zombie2() :
             base("Zombie2",
-                new[] { "Survivor" },
+                new []{"Assassin","Farmer","Survivor","Worker"},
                 50, 15, 100)
-        {
-            _bulletspeed = bulletspeed;
-            playerdistance = 10;
-
-        }
+        {}
 
         protected override void Awake()
         {
             playerdistance = 10;
             rb = GetComponent<Rigidbody2D>();
-            launchOffset = GameObject.FindWithTag("Zombie2LaunchOffset");
-            animator = GetComponent<Animator>();
             _launchOffsetRigidbody2D = launchOffset.GetComponent<Rigidbody2D>();
+            animator = GetComponent<Animator>();
             AI=GetComponent<AIPath>();
-            AIsetter = GetComponent<AIDestinationSetter>();
+            AIsetter.target=GameObject.FindWithTag("Core").transform;
         }
         protected override void Start()
         {
@@ -42,15 +37,18 @@ namespace Monsters
 
         protected override void Update()
         {
-           /* AI.canMove = true;
-            if (transform.position.magnitude<=playerdistance)
+            AI.canMove = true;
+            if (( (Vector2)transform.position-(Vector2)AIsetter.target.position).magnitude<=playerdistance)
             {
                 AI.canMove = false;
-            }*/
+            }
             if (_zombieWeaponRecharging <= 0)
             {
                 if ((AIsetter.target.position - transform.position).magnitude < playerdistance + 2)
                 {
+                    Vector3 direction = AIsetter.target.position - transform.position;
+                    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                    _launchOffsetRigidbody2D.rotation = angle;
                      GameObject t = Instantiate(zombie2Projectile, launchOffset.transform.position, launchOffset.transform.rotation);
                      t.tag = "Zombie2Projectile";
                     _zombieWeaponRecharging = 1;
@@ -82,7 +80,11 @@ namespace Monsters
         }
         protected override void OnTriggerExit2D(Collider2D other)
         {
-            throw new NotImplementedException();
+            if (_target.Contains(other.tag))
+            {
+                AIsetter.target = GameObject.FindWithTag("Core").transform;
+            }
+           
         }
     }
 }

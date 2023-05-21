@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using Photon.Pun;
 using Scenes.ATH;
 using TMPro;
@@ -6,27 +8,29 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using World;
 
 namespace Players.PlayerFolder
 {
-    public abstract class Player :  MonoBehaviour
+    public abstract class Player : MonoBehaviour
     {
         private int Health { get; set; }
         private int MaxHealth { get; }
         private int Damage { get; set; }
+
         private (string,int)[] _ressource_inv;
         private string _name;
-        private  int _heal;
+        private int _heal;
         public float speed;
-        private Vector2 dir=Vector2.zero;
+        private Vector2 dir = Vector2.zero;
         [SerializeField] private HealthBar healthBar;
         public Rigidbody2D rb;
         [SerializeField] protected new Camera camera;
         public Animator animator;
         private GameObject LaunchOffsetPlayer;
         private Rigidbody2D RblaunchOffsetPLayer;
-        
-        
+
+
         private PlayerInputAction _playerControl;
         private InputAction _move;
         private InputAction _sight;
@@ -36,6 +40,10 @@ namespace Players.PlayerFolder
         public GameObject Mark;
         public GameObject CanvasName;
         public TMP_Text Name;
+
+        public int nbTree = 0;
+        public int nbRock = 0;
+        public int nbGold = 0;
 
         public Player(int health = 100, int damage = 1,
             int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
@@ -88,7 +96,7 @@ namespace Players.PlayerFolder
                 _sight.Enable();
             }
         }
-        
+
         protected void OnDisable()
         {
             if (GetComponent<PhotonView>().IsMine)
@@ -97,7 +105,7 @@ namespace Players.PlayerFolder
                 _sight.Disable();
             }
         }
-        
+
         protected void Update()
         {
             if (GetComponent<PhotonView>().IsMine)
@@ -109,7 +117,7 @@ namespace Players.PlayerFolder
                 pointerInput = GetPointerInput();
             }
         }
-        
+
         protected void FixedUpdate()
         {
             if (GetComponent<PhotonView>().IsMine)
@@ -119,7 +127,7 @@ namespace Players.PlayerFolder
                 _playersight.PointerPosition = pointerInput;
             }
         }
-        
+
         private Vector2 GetPointerInput()
         {
             mousepos = _sight.ReadValue<Vector2>();
@@ -151,5 +159,7 @@ namespace Players.PlayerFolder
                 Debug.Log("the player died!!!"); // To see the effect pf the Zombie Attack
             }
         }
+        
     }
 }
+

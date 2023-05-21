@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6992292604610808410}
   m_Layer: 0
   m_Name: BotRightLeaf
-  m_TagString: Untagged
+  m_TagString: Leaf
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

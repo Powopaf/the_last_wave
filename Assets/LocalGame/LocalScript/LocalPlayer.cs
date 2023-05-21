@@ -15,8 +15,8 @@ namespace Players.PlayerFolder
         private int Health { get; set; }
         private int MaxHealth { get; }
         private int Damage { get; set; }
-        private List<Item.Item> _item_inv;
-        private (string, int)[] _ressource_inv;
+        private (string,int)[] _ressource_inv;
+
         private string _name;
         private int _heal;
         public float speed;
@@ -50,7 +50,6 @@ namespace Players.PlayerFolder
             _name = name;
             _heal = heal;
             this.speed = speed;
-            _item_inv = new List<Item.Item>();
             _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
         }
 

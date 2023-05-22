@@ -13,10 +13,11 @@ namespace LocalGame.LocalScript
         private int Health { get; set; }
         private int MaxHealth { get; }
         private int Damage { get; set; }
-        /// inventory
-        private IItem[] _inventory;
-        private int _gold = 0;
-        ///////////////////
+        // player inv
+        private Inventory _inventory;
+        private int money
+        /////////////////////
+
         private int _heal;
         public float speed;
         private Vector2 dir = Vector2.zero;
@@ -38,22 +39,14 @@ namespace LocalGame.LocalScript
         public int nbRock = 0;
         private InputAction _farming;
 
-        protected LocalPlayer(int health = 100, int damage = 1,
-            int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
+        protected LocalPlayer(int health = 100, int damage = 1, int speed = 1, int maxHealth = 100, int heal = 1)
         {
             MaxHealth = maxHealth;
             Health = health;
             Damage = damage;
             _heal = heal;
             this.speed = speed;
-            _inventory = new IItem[]
-            {
-                new Armor(),
-                new Armor(),
-                new Armor(),
-                new Armor(),
-                new Weapon()
-            };
+            _inventory = new Inventory();
         }
 
         protected void Awake()
@@ -81,8 +74,6 @@ namespace LocalGame.LocalScript
 
             _farming = _playerControl.Player.Farming;
             _farming.Enable();
-
-
         }
 
         protected void OnDisable()

@@ -17,9 +17,14 @@
             Damage = 1;
         }
 
-        public void Upgrade()
+        public bool Upgrade(int money)
         {
-            Damage += 10;
+            if (money >= 10)
+            {
+                Damage += 10;
+                return true;
+            }
+            return false;
         }
     }
 }

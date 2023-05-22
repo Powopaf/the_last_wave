@@ -44,6 +44,7 @@ namespace Players.PlayerFolder
         public int nbTree = 0;
         public int nbRock = 0;
         public int nbGold = 0;
+        public Transform[][] TreeTransforms;
 
         public Player(int health = 100, int damage = 1,
             int speed = 1, int maxHealth = 100, int heal = 1, string name = "")

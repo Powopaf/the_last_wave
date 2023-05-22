@@ -36,10 +36,15 @@ namespace Players.PlayerFolder
         private Vector3 mousepos;
         private Playersight _playersight;
 
+        //Farimngcode
         public int nbTree = 0;
         public int nbRock = 0;
-        public int nbGold = 0;
+        
         private InputAction _farming;
+        private bool Canbefarm = false;
+        private Collider2D? _farmingElt;
+        public List<Transform[]> TreeTransforms;
+        //
 
         public LocalPlayer(int health = 100, int damage = 1,
             int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
@@ -60,6 +65,11 @@ namespace Players.PlayerFolder
             _playersight = GetComponentInChildren<Playersight>();
             camera = GameObject.FindWithTag("Camera").GetComponent<Camera>();
             animator = GetComponent<Animator>();
+            
+            ////////////////////////////////////////////////////////////////////FarmingCode
+            TreeTransforms = GameObject.FindWithTag("LocalMap").GetComponent<LocalMap>().TreeTransforms;
+            /////////////
+
         }
 
         protected void Start()
@@ -75,9 +85,12 @@ namespace Players.PlayerFolder
 
             _sight = _playerControl.Player.PointerPosition;
             _sight.Enable();
-
+            
+            /////////////////////////////////////Farmingcode
             _farming = _playerControl.Player.Farming;
+            _farming.performed += Farming; 
             _farming.Enable();
+            ////////////////////////////////////////
 
 
         }
@@ -86,7 +99,10 @@ namespace Players.PlayerFolder
         {
             _move.Disable();
             _sight.Disable();
+            
+            //Farmingcode
             _farming.Disable();
+            ///////////////
         }
 
         protected void Update()
@@ -105,25 +121,7 @@ namespace Players.PlayerFolder
 
        
 
-        private void Looting(Item.Item[] loot)
-        {
-            int i = 0;
-            while (_item_inv.Count <= 9 && i < loot.Length)
-            {
-                _item_inv.Add(loot[i]);
-            }
-        }
-
-        private void Looting(Item.Item item)
-        {
-            if (_item_inv.Count == 9)
-            {
-                return;
-            }
-
-            _item_inv.Add(item);
-        }
-
+        
         private void Heal(int life)
         {
             if (life * _heal >= MaxHealth)
@@ -148,35 +146,54 @@ namespace Players.PlayerFolder
                 Debug.Log("the player died!!!"); // To see the effect pf the Zombie Attack
             }
         }
-        public void OnCollisionEnter2D(Collision2D col)
+
+        //////////////////////////////////////////////////////////////////////////////Farming code
+        public void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.transform.CompareTag("Rock") || col.transform.CompareTag("Tree") ||
-                col.transform.CompareTag("SnowTree"))
+            if (col.transform.CompareTag("Rock") || col.transform.CompareTag("Tree"))
             {
-                TileDefinition[,] map = GameObject.FindWithTag("LocalMap").GetComponent<LocalMap>()
-                    ._mapDefinition.Map;
-                switch (col.transform.tag)
+                if (!Canbefarm)
                 {
-                    case "SnowTree":
-                        Farming tree = new Farming("Tree");
-                        nbTree += tree.number;
-                        (double X, double Y) = (Math.Truncate(transform.position.x),
-                            Math.Truncate(transform.position.y));
-                        break;
-                    case "Rock":
-                        Farming rock1 = new Farming("Rock");
-                        nbRock += rock1.number;
-                        Debug.Log($"number of rock :{nbRock}");
-                        if (Keyboard.current.qKey.wasPressedThisFrame)
-                        { 
-                            Destroy(col.gameObject);
-                        }
-                        break;
+                    _farmingElt = col;
+                    Canbefarm = true;
                 }
+                
             }
         }
 
-
-
+        public void OnTriggerExit2D(Collider2D other)
+        {
+            if (Canbefarm)
+            {
+                _farmingElt = null;
+                Canbefarm = false;
+            }
+        }
+        
+        private void Farming(InputAction.CallbackContext context)
+        {
+            if (Canbefarm)
+            {
+                if (_farmingElt.tag == "Rock")
+                {
+                    Farming rock=new Farming("Rock");
+                    nbRock += rock.number;
+                    Debug.Log(nbRock);
+                   
+                }
+                else if (_farmingElt.tag =="Tree")
+                {
+                    Farming tree = new Farming("Tree");
+                    nbTree += tree.number;
+                    Debug.Log(nbTree);
+                }
+                Destroy(_farmingElt.gameObject);
+            }
+            
+        }
+       /////////////////////////////////////////////////////////////////////////////////////////
+                
+            
+        
     }
 }

@@ -27,8 +27,7 @@ namespace Players.PlayerFolder
         public Animator animator;
         private GameObject LaunchOffsetPlayer;
         private Rigidbody2D RblaunchOffsetPLayer;
-
-
+        
         private PlayerInputAction _playerControl;
         private InputAction _move;
         private InputAction _sight;
@@ -102,28 +101,7 @@ namespace Players.PlayerFolder
             rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
             healthBar.SetHealth(Health);
         }
-
-       
-
-        private void Looting(Item.Item[] loot)
-        {
-            int i = 0;
-            while (_item_inv.Count <= 9 && i < loot.Length)
-            {
-                _item_inv.Add(loot[i]);
-            }
-        }
-
-        private void Looting(Item.Item item)
-        {
-            if (_item_inv.Count == 9)
-            {
-                return;
-            }
-
-            _item_inv.Add(item);
-        }
-
+        
         private void Heal(int life)
         {
             if (life * _heal >= MaxHealth)
@@ -141,13 +119,14 @@ namespace Players.PlayerFolder
             if (Health - damage > 0)
             {
                 Health -= damage;
-                Debug.Log("Aie!!!!!");
+                Debug.Log($"Damage: {damage} | Health before : {Health + damage} | Health after: {Health}");
             }
             else
             {
                 Debug.Log("the player died!!!"); // To see the effect pf the Zombie Attack
             }
         }
+        
         public void OnCollisionEnter2D(Collision2D col)
         {
             if (col.transform.CompareTag("Rock") || col.transform.CompareTag("Tree") ||
@@ -175,8 +154,5 @@ namespace Players.PlayerFolder
                 }
             }
         }
-
-
-
     }
 }

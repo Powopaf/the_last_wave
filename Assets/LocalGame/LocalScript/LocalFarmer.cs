@@ -1,6 +1,6 @@
 ﻿using Players.PlayerFolder;
 
-namespace Players
+namespace LocalGame.LocalScript
 {
     public class LocalFarmer : LocalPlayer
     {

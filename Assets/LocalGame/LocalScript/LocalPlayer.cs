@@ -1,23 +1,22 @@
 using System;
-using System.Collections.Generic;
-using Photon.Pun;
+using Item;
+using Players.PlayerFolder;
 using Scenes.ATH;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 using World;
 
-
-namespace Players.PlayerFolder
+namespace LocalGame.LocalScript
 {
     public abstract class LocalPlayer : MonoBehaviour
     {
         private int Health { get; set; }
         private int MaxHealth { get; }
         private int Damage { get; set; }
-        private (string,int)[] _ressource_inv;
-
-        private string _name;
+        /// inventory
+        private IItem[] _inventory;
+        private int _gold = 0;
+        ///////////////////
         private int _heal;
         public float speed;
         private Vector2 dir = Vector2.zero;
@@ -27,7 +26,7 @@ namespace Players.PlayerFolder
         public Animator animator;
         private GameObject LaunchOffsetPlayer;
         private Rigidbody2D RblaunchOffsetPLayer;
-        
+
         private PlayerInputAction _playerControl;
         private InputAction _move;
         private InputAction _sight;
@@ -37,19 +36,24 @@ namespace Players.PlayerFolder
 
         public int nbTree = 0;
         public int nbRock = 0;
-        public int nbGold = 0;
         private InputAction _farming;
 
-        public LocalPlayer(int health = 100, int damage = 1,
+        protected LocalPlayer(int health = 100, int damage = 1,
             int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
         {
             MaxHealth = maxHealth;
             Health = health;
             Damage = damage;
-            _name = name;
             _heal = heal;
             this.speed = speed;
-            _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
+            _inventory = new IItem[]
+            {
+                new Armor(),
+                new Armor(),
+                new Armor(),
+                new Armor(),
+                new Weapon()
+            };
         }
 
         protected void Awake()

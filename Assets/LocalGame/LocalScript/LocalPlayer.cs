@@ -15,7 +15,7 @@ namespace LocalGame.LocalScript
         private int Damage { get; set; }
         // player inv
         private Inventory _inventory;
-        private int money
+        private int money;
         /////////////////////
 
         private int _heal;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3628370405203847161}
   - component: {fileID: 6230672107782570857}
   - component: {fileID: 6078478147639254562}
+  - component: {fileID: -2974858555993339736}
   m_Layer: 6
   m_Name: Rock2
   m_TagString: Rock
@@ -111,3 +112,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.4}
   m_EdgeRadius: 0
+--- !u!58 &-2974858555993339736
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6348592168343038721}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

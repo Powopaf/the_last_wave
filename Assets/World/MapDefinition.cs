@@ -81,9 +81,9 @@ namespace World
         private void PrettyMap(int seed = 0)
         {
             Random rd = new Random(seed);
-            for (int i = 0; i < Height; i++)
+            for (int i = 1; i < Height-1; i++)
             {
-                for (int j = 0; j < Width; j++)
+                for (int j = 1; j < Width-1; j++)
                 {
                     int agree = 0;
                     if (Map[i, j].TileType == EnumTile.Dirt1)

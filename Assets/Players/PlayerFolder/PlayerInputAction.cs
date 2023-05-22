@@ -308,7 +308,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""964638e1-3ee5-4c25-a730-fba2f2bd2cb5"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/semicolon"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",

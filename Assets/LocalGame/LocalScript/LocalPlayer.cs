@@ -2,6 +2,7 @@ using System;
 using Item;
 using Players.PlayerFolder;
 using Scenes.ATH;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using World;
@@ -15,7 +16,10 @@ namespace LocalGame.LocalScript
         private int Damage { get; set; }
         // player inv
         private Inventory _inventory;
-        private int money;
+        private int _money;
+
+        private InputAction _upgradeInv;
+        //private InputAction _upgradeInv;
         /////////////////////
 
         private int _heal;
@@ -74,13 +78,34 @@ namespace LocalGame.LocalScript
 
             _farming = _playerControl.Player.Farming;
             _farming.Enable();
-        }
 
+            _upgradeInv = _playerControl.Player.UpgradeItem;
+            _upgradeInv.performed += ItemUpgrade;
+            _upgradeInv.Enable();
+            
+        }
+        
+        // upgrade item
+        private void ItemUpgrade(InputAction.CallbackContext context)
+        {
+            _money = context.ReadValue<Key>() switch
+            {
+                Key.Digit1 => _inventory.UpgradeItem(_money, ItemEnum.Helmet),
+                Key.Digit2 => _inventory.UpgradeItem(_money, ItemEnum.ChestPlate),
+                Key.Digit3 => _inventory.UpgradeItem(_money, ItemEnum.Pants),
+                Key.Digit4 => _inventory.UpgradeItem(_money, ItemEnum.Boots),
+                Key.Digit5 => _inventory.UpgradeItem(_money, ItemEnum.Sword),
+                _ => _money
+            };
+        }
+        // // // // // // // //
+        
         protected void OnDisable()
         {
             _move.Disable();
             _sight.Disable();
             _farming.Disable();
+            _upgradeInv.Disable();
         }
 
         protected void Update()
@@ -95,18 +120,6 @@ namespace LocalGame.LocalScript
         {
             rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
             healthBar.SetHealth(Health);
-        }
-        
-        private void Heal(int life)
-        {
-            if (life * _heal >= MaxHealth)
-            {
-                Health = MaxHealth;
-            }
-            else
-            {
-                Health += life * _heal;
-            }
         }
 
         public void ZombieDamageOnPlayer(int damage)

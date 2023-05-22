@@ -17,7 +17,6 @@ namespace World
             _mapDefinition = new MapDefinition(seed);
             SetUpTile();
             AstarPath.active.Scan();
-            
         }
 
         private void SetUpTile()

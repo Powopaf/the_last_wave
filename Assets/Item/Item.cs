@@ -6,6 +6,6 @@
         public int Protection { get;}
         public (int,int) Potion { get; }
         public void Reset();
-        public bool Upgrade(int money);
+        public int Upgrade(int money);
     }
 }

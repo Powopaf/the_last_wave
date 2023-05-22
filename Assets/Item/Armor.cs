@@ -15,14 +15,14 @@
             Protection = 0;
         }
 
-        public bool Upgrade(int money)
+        public int Upgrade(int money)
         {
             if (money >= 10)
             {
                 Protection += 10;
-                return true;
+                return money - 10;
             }
-            return false;
+            return money;
         }
     }
 }

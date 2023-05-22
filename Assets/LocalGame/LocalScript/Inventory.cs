@@ -19,7 +19,7 @@ namespace LocalGame.LocalScript
             };
         }
 
-        private bool UpgradeItem(int money, ItemEnum item)
+        public int UpgradeItem(int money, ItemEnum item)
         {
             Dictionary<ItemEnum, int> index = new GetItem().GetInv;
             return Inv[index[item]].Upgrade(money);

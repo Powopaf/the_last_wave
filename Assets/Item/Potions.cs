@@ -31,9 +31,9 @@ namespace Item
         
         public void Reset() { }
 
-        public bool Upgrade(int money)
+        public int Upgrade(int money)
         {
-            return false;
+            return money;
         }
     }
 }

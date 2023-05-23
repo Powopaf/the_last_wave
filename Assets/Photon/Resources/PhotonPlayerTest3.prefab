@@ -645,7 +645,6 @@ MonoBehaviour:
   rb: {fileID: 2732533045166153847}
   camera: {fileID: 6751431432156208078}
   animator: {fileID: 5898715587252903801}
-  Mark: {fileID: 4401155247739251778}
   CanvasName: {fileID: 7223969435368034240}
   Name: {fileID: 2890243258377079461}
   nbTree: 0

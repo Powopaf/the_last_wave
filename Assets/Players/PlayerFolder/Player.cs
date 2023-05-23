@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
 using Photon.Pun;
 using Players.Inventory;
 using Scenes.ATH;
@@ -8,8 +6,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
-using World;
 
 namespace Players.PlayerFolder
 {
@@ -85,50 +81,54 @@ namespace Players.PlayerFolder
             {
                 _move = _playerControl.Player.Move;
                 _move.Enable();
-
-                // touche pour l'inv
-                _upgradeInv = _playerControl.Player.UpgradeItem;
-                _upgradeInv.performed += ItemUpgrade;
-                _upgradeInv.Enable();
+                
                 // touche pour give
                 _giveMoney = _playerControl.Player.Give;
                 _giveMoney.performed += Give;
                 _giveMoney.Enable();
+
+                _upgradeInv = _playerControl.Player.Upgrade;
+                _upgradeInv.Enable();
                 
                 _farming = _playerControl.Player.Farming;
                 _farming.performed += Farming; 
                 _farming.Enable();
             }
         }
-        
-        private void Give(InputAction.CallbackContext context) => _money += 10;
+
+        private void Give(InputAction.CallbackContext context)
+        {
+            _money += 10;
+        }
         
         // upgrade item
-        private void ItemUpgrade(InputAction.CallbackContext context)
+        private void ItemUpgrade()
         {
             var index = new GetItem().GetInv;
-            switch (context.ReadValue<Key>())
+            if (Input.GetKeyDown("W"))
             {
-                case Key.Digit1:
-                    _inventory.UpgradeItem(_money, ItemEnum.Helmet);
-                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Helmet]].Item2, ItemEnum.Helmet);
-                    break;
-                case Key.Digit2:
-                    _inventory.UpgradeItem(_money, ItemEnum.ChestPlate);
-                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.ChestPlate]].Item2, ItemEnum.ChestPlate);
-                    break;
-                case Key.Digit3:
-                    _inventory.UpgradeItem(_money, ItemEnum.Gloves);
-                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Gloves]].Item2, ItemEnum.Gloves);
-                    break;
-                case Key.Digit4:
-                    _inventory.UpgradeItem(_money, ItemEnum.Boots);
-                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Boots]].Item2, ItemEnum.Boots);
-                    break;
-                case Key.Digit5:
-                    _inventory.UpgradeItem(_money, ItemEnum.Sword);
-                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Sword]].Item2, ItemEnum.Sword);
-                    break;
+                _money = _inventory.UpgradeItem(_money, ItemEnum.Helmet);
+                _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Sword]].Item2, ItemEnum.Helmet);
+            }
+            else if (Input.GetKeyDown("X"))
+            {
+                _money = _inventory.UpgradeItem(_money, ItemEnum.ChestPlate);
+                _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Sword]].Item2, ItemEnum.ChestPlate);
+            }
+            else if (Input.GetKeyDown("C"))
+            {
+                _money = _inventory.UpgradeItem(_money, ItemEnum.Gloves);
+                _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Sword]].Item2, ItemEnum.Gloves);
+            }
+            else if (Input.GetKeyDown("V"))
+            {
+                _money = _inventory.UpgradeItem(_money, ItemEnum.Boots);
+                _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Sword]].Item2, ItemEnum.Boots);
+            }
+            else if (Input.GetKeyDown("B"))
+            {
+                _money = _inventory.UpgradeItem(_money, ItemEnum.Sword);
+                _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Sword]].Item2, ItemEnum.Sword);
             }
         }
 
@@ -151,6 +151,7 @@ namespace Players.PlayerFolder
                 animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
                 healthBar.SetHealth(Health);
                 _dir = _move.ReadValue<Vector2>();
+                ItemUpgrade();
             }
         }
 

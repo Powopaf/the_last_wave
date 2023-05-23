@@ -55,15 +55,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""PointerPosition"",
-                    ""type"": ""Value"",
-                    ""id"": ""66d6b987-8fab-4da5-85b6-01141d20d1d6"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Farming"",
                     ""type"": ""Button"",
                     ""id"": ""1d294b3e-dd20-4492-a41f-c09be4b8ac8c"",
@@ -73,18 +64,18 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""UpgradeItem*"",
-                    ""type"": ""Value"",
-                    ""id"": ""8489f953-ccab-4aec-8d1c-36f038ec7661"",
-                    ""expectedControlType"": ""Key"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Give"",
                     ""type"": ""Button"",
                     ""id"": ""34e36412-6f6a-43e5-b765-5e3ebe2c3857"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Upgrade"",
+                    ""type"": ""Button"",
+                    ""id"": ""16a1b2f3-5b19-4e18-9a0a-ff155c6608d8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -182,17 +173,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a8a69de3-bdbd-4065-976b-c43ccd2626ce"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR;Gamepad;Touch;Joystick"",
-                    ""action"": ""PointerPosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""964638e1-3ee5-4c25-a730-fba2f2bd2cb5"",
                     ""path"": ""<Keyboard>/semicolon"",
                     ""interactions"": """",
@@ -259,67 +239,67 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6ddf25a4-9d20-4e91-8ea9-ec26925ea482"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UpgradeItem*"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9a8021e8-dbf3-4b3c-97bc-b58e6d644fb1"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UpgradeItem*"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cf13ff6a-3664-45f5-87a9-0db67f143031"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UpgradeItem*"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a12e36ae-7ff8-4ba4-ab31-47b4bb64467e"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UpgradeItem*"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1808b377-79f5-470d-b491-83df77ac277f"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UpgradeItem*"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""d0b4fd60-a5ec-4139-8c1b-0b0890e5c2d6"",
-                    ""path"": ""<Keyboard>/backquote"",
+                    ""path"": ""<Keyboard>/numpad0"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Give"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14ee1ef6-7323-4b36-b3d5-fdf6a96a1c16"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Upgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50969fe0-7825-4cb5-b3d0-64341b6f32d5"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Upgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c932e4d5-08c7-4c83-9026-fc1242d9b2b0"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Upgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05fbe9ab-6e40-497b-9add-2b0703d1f587"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Upgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7ff9de2-41a2-4240-9e78-e6f2783bdcca"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Upgrade"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -910,10 +890,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
-        m_Player_PointerPosition = m_Player.FindAction("PointerPosition", throwIfNotFound: true);
         m_Player_Farming = m_Player.FindAction("Farming", throwIfNotFound: true);
-        m_Player_UpgradeItem = m_Player.FindAction("UpgradeItem*", throwIfNotFound: true);
         m_Player_Give = m_Player.FindAction("Give", throwIfNotFound: true);
+        m_Player_Upgrade = m_Player.FindAction("Upgrade", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -988,10 +967,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
-    private readonly InputAction m_Player_PointerPosition;
     private readonly InputAction m_Player_Farming;
-    private readonly InputAction m_Player_UpgradeItem;
     private readonly InputAction m_Player_Give;
+    private readonly InputAction m_Player_Upgrade;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -999,10 +977,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
-        public InputAction @PointerPosition => m_Wrapper.m_Player_PointerPosition;
         public InputAction @Farming => m_Wrapper.m_Player_Farming;
-        public InputAction @UpgradeItem => m_Wrapper.m_Player_UpgradeItem;
         public InputAction @Give => m_Wrapper.m_Player_Give;
+        public InputAction @Upgrade => m_Wrapper.m_Player_Upgrade;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1021,18 +998,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @PointerPosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPointerPosition;
-                @PointerPosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPointerPosition;
-                @PointerPosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPointerPosition;
                 @Farming.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFarming;
                 @Farming.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFarming;
                 @Farming.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFarming;
-                @UpgradeItem.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpgradeItem;
-                @UpgradeItem.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpgradeItem;
-                @UpgradeItem.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpgradeItem;
                 @Give.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGive;
                 @Give.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGive;
                 @Give.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGive;
+                @Upgrade.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpgrade;
+                @Upgrade.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpgrade;
+                @Upgrade.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpgrade;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1046,18 +1020,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
-                @PointerPosition.started += instance.OnPointerPosition;
-                @PointerPosition.performed += instance.OnPointerPosition;
-                @PointerPosition.canceled += instance.OnPointerPosition;
                 @Farming.started += instance.OnFarming;
                 @Farming.performed += instance.OnFarming;
                 @Farming.canceled += instance.OnFarming;
-                @UpgradeItem.started += instance.OnUpgradeItem;
-                @UpgradeItem.performed += instance.OnUpgradeItem;
-                @UpgradeItem.canceled += instance.OnUpgradeItem;
                 @Give.started += instance.OnGive;
                 @Give.performed += instance.OnGive;
                 @Give.canceled += instance.OnGive;
+                @Upgrade.started += instance.OnUpgrade;
+                @Upgrade.performed += instance.OnUpgrade;
+                @Upgrade.canceled += instance.OnUpgrade;
             }
         }
     }
@@ -1217,10 +1188,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
-        void OnPointerPosition(InputAction.CallbackContext context);
         void OnFarming(InputAction.CallbackContext context);
-        void OnUpgradeItem(InputAction.CallbackContext context);
         void OnGive(InputAction.CallbackContext context);
+        void OnUpgrade(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

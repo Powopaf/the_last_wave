@@ -33,15 +33,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PointerPosition",
-                    "type": "Value",
-                    "id": "66d6b987-8fab-4da5-85b6-01141d20d1d6",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Farming",
                     "type": "Button",
                     "id": "1d294b3e-dd20-4492-a41f-c09be4b8ac8c",
@@ -51,18 +42,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UpgradeItem*",
-                    "type": "Value",
-                    "id": "8489f953-ccab-4aec-8d1c-36f038ec7661",
-                    "expectedControlType": "Key",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Give",
                     "type": "Button",
                     "id": "34e36412-6f6a-43e5-b765-5e3ebe2c3857",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Upgrade",
+                    "type": "Button",
+                    "id": "16a1b2f3-5b19-4e18-9a0a-ff155c6608d8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -160,17 +151,6 @@
                 },
                 {
                     "name": "",
-                    "id": "a8a69de3-bdbd-4065-976b-c43ccd2626ce",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR;Gamepad;Touch;Joystick",
-                    "action": "PointerPosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "964638e1-3ee5-4c25-a730-fba2f2bd2cb5",
                     "path": "<Keyboard>/semicolon",
                     "interactions": "",
@@ -237,67 +217,67 @@
                 },
                 {
                     "name": "",
-                    "id": "6ddf25a4-9d20-4e91-8ea9-ec26925ea482",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UpgradeItem*",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9a8021e8-dbf3-4b3c-97bc-b58e6d644fb1",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UpgradeItem*",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cf13ff6a-3664-45f5-87a9-0db67f143031",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UpgradeItem*",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a12e36ae-7ff8-4ba4-ab31-47b4bb64467e",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UpgradeItem*",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1808b377-79f5-470d-b491-83df77ac277f",
-                    "path": "<Keyboard>/5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UpgradeItem*",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d0b4fd60-a5ec-4139-8c1b-0b0890e5c2d6",
-                    "path": "<Keyboard>/backquote",
+                    "path": "<Keyboard>/numpad0",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Give",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14ee1ef6-7323-4b36-b3d5-fdf6a96a1c16",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Upgrade",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50969fe0-7825-4cb5-b3d0-64341b6f32d5",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Upgrade",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c932e4d5-08c7-4c83-9026-fc1242d9b2b0",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Upgrade",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05fbe9ab-6e40-497b-9add-2b0703d1f587",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Upgrade",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f7ff9de2-41a2-4240-9e78-e6f2783bdcca",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Upgrade",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

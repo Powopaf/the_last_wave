@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Players.Inventory;
-using Item;
 using Players.Farming;
 using Players.PlayerFolder;
 using Scenes.ATH;
@@ -88,7 +87,7 @@ namespace LocalGame.LocalScript
             _move = _playerControl.Player.Move;
             _move.Enable();
 
-            _sight = _playerControl.Player.PointerPosition;
+
             _sight.Enable();
             
             /////////////////////////////////////Farmingcode
@@ -96,9 +95,6 @@ namespace LocalGame.LocalScript
             _farming.performed += Farming; 
             _farming.Enable();
             // touche pour l'inv
-            _upgradeInv = _playerControl.Player.UpgradeItem;
-            _upgradeInv.performed += ItemUpgrade;
-            _upgradeInv.Enable();
             // touche pour give
             _giveMoney = _playerControl.Player.Give;
             _giveMoney.performed += Give;

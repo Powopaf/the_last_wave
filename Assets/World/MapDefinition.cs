@@ -52,7 +52,7 @@ namespace World
         
         private void DefaultMap()
         {
-            System.Random rd = new System.Random(0);
+            Random rd = new Random(0);
             for (int i = 1; i < Height - 1; i++)
             {
                 for (int j = 1; j < Width - 1; j++)
@@ -60,20 +60,6 @@ namespace World
                     int a = rd.Next(1, 3);
                     var tile = a == 1 ? EnumTile.Dirt1 : EnumTile.Grass1;
                     Map[i, j] = new TileDefinition(tile);
-                }
-            }
-        }
-
-        
-        private void SeedMap(int n = 1)
-        {
-            SeedGeneration seed = new SeedGeneration(Height, Width);
-            seed.GenerateSeeds(n);
-            for (int i = 1; i < Height - 1; i++)
-            {
-                for (int j = 1; j < Width - 1; j++)
-                {
-                    Map[i, j] = new TileDefinition(seed.Distance(i, j));
                 }
             }
         }

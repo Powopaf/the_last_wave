@@ -5,9 +5,6 @@ namespace World
     public class TileSprite
     {
         public IDictionary<EnumTile, int> Sprite { get; }
-        
-        public IDictionary<int, EnumTile> Tiles { get; }
-        
         public  IDictionary<EnumTile, int> Side { get; }
         
 
@@ -56,12 +53,6 @@ namespace World
                 { EnumTile.Grass7, 38 },
                 { EnumTile.Grass8, 39 }
             };
-
-            Tiles = new Dictionary<int, EnumTile>();
-            foreach (KeyValuePair<EnumTile, int> kv in Sprite)
-            {
-                Tiles[kv.Value] = (EnumTile)Sprite[kv.Key];
-            }
 
             Side = new Dictionary<EnumTile, int>()
             {

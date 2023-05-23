@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Players.Inventory;
+using Item;
+using Players.Farming;
 using Players.PlayerFolder;
 using Scenes.ATH;
 using UnityEditor;
@@ -14,7 +16,7 @@ namespace LocalGame.LocalScript
     {
         private int Health { get; set; }
         private int MaxHealth { get; }
-        private int Damage { get; set; }
+        private int Damage { get; }
         // player inv
         private Inventory _inventory;
         private int _money;
@@ -189,14 +191,14 @@ namespace LocalGame.LocalScript
                 if (_farmingElt.tag == "Rock")
                 {
                     Farming rock=new Farming("Rock");
-                    nbRock += rock.number;
+                    nbRock += rock.Number;
                     Debug.Log(nbRock);
                    
                 }
                 else if (_farmingElt.tag =="Tree")
                 {
                     Farming tree = new Farming("Tree");
-                    nbTree += tree.number;
+                    nbTree += tree.Number;
                     Debug.Log(nbTree);
                 }
                 Destroy(_farmingElt.gameObject);

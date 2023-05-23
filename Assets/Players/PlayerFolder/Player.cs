@@ -17,13 +17,9 @@ namespace Players.PlayerFolder
     {
         private int Health { get; set; }
         private int MaxHealth { get; }
-        private int Damage { get; set; }
-
-        private (string,int)[] _ressource_inv;
-        private string _name;
-        private int _heal;
+        
         public float speed;
-        private Vector2 dir = Vector2.zero;
+        private Vector2 _dir = Vector2.zero;
         [SerializeField] private HealthBar healthBar;
         public Rigidbody2D rb;
         [SerializeField] protected new Camera camera;
@@ -40,28 +36,20 @@ namespace Players.PlayerFolder
 
         private PlayerInputAction _playerControl;
         private InputAction _move;
-        private InputAction _sight;
-        private Vector2 pointerInput;
-        private Vector3 mousepos;
-        private Playersight _playersight;
-        public GameObject Mark;
         public GameObject CanvasName;
         public TMP_Text Name;
 
-        public int nbTree = 0;
-        public int nbRock = 0;
-        public Transform[][] TreeTransforms;
+        public int nbTree;
+        public int nbRock;
+        private InputAction _farming;
+        private bool _canbefarm;
+        private Collider2D _farmingElt;
 
-        public Player(int health = 100, int damage = 1,
-            int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
+        public Player(int health = 100, int speed = 1, int maxHealth = 100)
         {
             MaxHealth = maxHealth;
             Health = health;
-            Damage = damage;
-            _name = name;
-            _heal = heal;
             this.speed = speed;
-            _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
         }
 
         protected void Awake()
@@ -70,7 +58,6 @@ namespace Players.PlayerFolder
             {
                 rb = GetComponent<Rigidbody2D>();
                 _playerControl = new PlayerInputAction();
-                _playersight = GetComponentInChildren<Playersight>();
                 camera = Camera.main;
                 animator = GetComponent<Animator>();
             }
@@ -99,9 +86,6 @@ namespace Players.PlayerFolder
                 _move = _playerControl.Player.Move;
                 _move.Enable();
 
-                _sight = _playerControl.Player.PointerPosition;
-                _sight.Enable();
-                
                 // touche pour l'inv
                 _upgradeInv = _playerControl.Player.UpgradeItem;
                 _upgradeInv.performed += ItemUpgrade;
@@ -110,6 +94,10 @@ namespace Players.PlayerFolder
                 _giveMoney = _playerControl.Player.Give;
                 _giveMoney.performed += Give;
                 _giveMoney.Enable();
+                
+                _farming = _playerControl.Player.Farming;
+                _farming.performed += Farming; 
+                _farming.Enable();
             }
         }
         
@@ -149,10 +137,9 @@ namespace Players.PlayerFolder
             if (GetComponent<PhotonView>().IsMine)
             {
                 _move.Disable();
-                _sight.Disable();
-                
                 _upgradeInv.Disable();
                 _giveMoney.Disable();
+                _farming.Disable();
             }
         }
 
@@ -163,8 +150,7 @@ namespace Players.PlayerFolder
                 animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
                 animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
                 healthBar.SetHealth(Health);
-                dir = _move.ReadValue<Vector2>();
-                pointerInput = GetPointerInput();
+                _dir = _move.ReadValue<Vector2>();
             }
         }
 
@@ -172,28 +158,8 @@ namespace Players.PlayerFolder
         {
             if (GetComponent<PhotonView>().IsMine)
             {
-                rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
+                rb.velocity = new Vector2(_dir.x * speed, _dir.y * speed);
                 healthBar.SetHealth(Health);
-                _playersight.PointerPosition = pointerInput;
-            }
-        }
-
-        private Vector2 GetPointerInput()
-        {
-            mousepos = _sight.ReadValue<Vector2>();
-            mousepos.z = camera.nearClipPlane;
-            return camera.ScreenToWorldPoint(mousepos);
-        }
-
-        private void Heal(int life)
-        {
-            if (life * _heal >= MaxHealth)
-            {
-                Health = MaxHealth;
-            }
-            else
-            {
-                Health += life * _heal;
             }
         }
 
@@ -209,7 +175,49 @@ namespace Players.PlayerFolder
                 Debug.Log("the player died!!!"); // To see the effect pf the Zombie Attack
             }
         }
+     
+        public void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.transform.CompareTag("Rock") || col.transform.CompareTag("Tree"))
+            {
+                if (!_canbefarm)
+                {
+                    _farmingElt = col;
+                    _canbefarm = true;
+                }
+                
+            }
+        }
+
+        public void OnTriggerExit2D(Collider2D other)
+        {
+            if (_canbefarm)
+            {
+                _farmingElt = null;
+                _canbefarm = false;
+            }
+        }
         
+        private void Farming(InputAction.CallbackContext context)
+        {
+            if (_canbefarm)
+            {
+                if (_farmingElt!.tag! == "Rock")
+                {
+                    Farming.Farming rock=new Farming.Farming("Rock");
+                    nbRock += rock.Number;
+                    Debug.Log(nbRock);
+                   
+                }
+                else if (_farmingElt!.tag! =="Tree")
+                {
+                    Farming.Farming tree = new Farming.Farming("Tree");
+                    nbTree += tree.Number;
+                    Debug.Log(nbTree);
+                }
+                Destroy(_farmingElt.gameObject);
+            }
+        }
     }
 }
 

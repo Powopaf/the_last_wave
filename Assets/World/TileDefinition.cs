@@ -7,13 +7,13 @@ namespace World
         public EnumTile TileType { get; set; }
         public bool HasLoot { get; } = false;
         public bool HaveSide { get; set; }
-        public EnumTile[] Side = new EnumTile[4]; // top | right | bot | left
-        public bool IsWall;
+        public readonly EnumTile[] Side = new EnumTile[4]; // top | right | bot | left
+        public readonly bool IsWall;
         public bool HaveProps { get; set; }
         public (Obj, double) Prop;
         public bool HaveTree { get; set; }
         public bool HaveRock { get; set; }
-        public Corner[] Corners = new Corner[4];
+        public readonly Corner[] Corners = new Corner[4];
         
         public TileDefinition(EnumTile tile, bool haveSide = false)
         {

@@ -1,4 +1,3 @@
-#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -38,7 +37,7 @@ namespace Players.PlayerFolder
         public int nbRock;
         private InputAction _farming;
         private bool _canbefarm;
-        private Collider2D? _farmingElt;
+        private Collider2D _farmingElt;
 
         public Player(int health = 100, int speed = 1, int maxHealth = 100)
         {

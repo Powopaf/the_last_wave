@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using Photon.Pun;
+using Players.Inventory;
 using Scenes.ATH;
 using TMPro;
 using Unity.VisualScripting;
@@ -23,8 +24,14 @@ namespace Players.PlayerFolder
         public Rigidbody2D rb;
         [SerializeField] protected new Camera camera;
         public Animator animator;
-        private GameObject _launchOffsetPlayer;
-        private Rigidbody2D _rblaunchOffsetPLayer;
+        private GameObject LaunchOffsetPlayer;
+        private Rigidbody2D RblaunchOffsetPLayer;
+        
+        private Inventory.Inventory _inventory;
+        private int _money;
+        private InputAction _giveMoney;
+        private InputAction _upgradeInv;
+        private VisualInventory _visualInventory;
 
 
         private PlayerInputAction _playerControl;
@@ -32,7 +39,6 @@ namespace Players.PlayerFolder
         public GameObject CanvasName;
         public TMP_Text Name;
 
-        //Farimngcode
         public int nbTree;
         public int nbRock;
         private InputAction _farming;
@@ -80,10 +86,49 @@ namespace Players.PlayerFolder
                 _move = _playerControl.Player.Move;
                 _move.Enable();
 
-                /////////////////////////////////////Farmingcode
+                // touche pour l'inv
+                _upgradeInv = _playerControl.Player.UpgradeItem;
+                _upgradeInv.performed += ItemUpgrade;
+                _upgradeInv.Enable();
+                // touche pour give
+                _giveMoney = _playerControl.Player.Give;
+                _giveMoney.performed += Give;
+                _giveMoney.Enable();
+                
                 _farming = _playerControl.Player.Farming;
                 _farming.performed += Farming; 
                 _farming.Enable();
+            }
+        }
+        
+        private void Give(InputAction.CallbackContext context) => _money += 10;
+        
+        // upgrade item
+        private void ItemUpgrade(InputAction.CallbackContext context)
+        {
+            var index = new GetItem().GetInv;
+            switch (context.ReadValue<Key>())
+            {
+                case Key.Digit1:
+                    _inventory.UpgradeItem(_money, ItemEnum.Helmet);
+                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Helmet]].Item2, ItemEnum.Helmet);
+                    break;
+                case Key.Digit2:
+                    _inventory.UpgradeItem(_money, ItemEnum.ChestPlate);
+                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.ChestPlate]].Item2, ItemEnum.ChestPlate);
+                    break;
+                case Key.Digit3:
+                    _inventory.UpgradeItem(_money, ItemEnum.Gloves);
+                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Gloves]].Item2, ItemEnum.Gloves);
+                    break;
+                case Key.Digit4:
+                    _inventory.UpgradeItem(_money, ItemEnum.Boots);
+                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Boots]].Item2, ItemEnum.Boots);
+                    break;
+                case Key.Digit5:
+                    _inventory.UpgradeItem(_money, ItemEnum.Sword);
+                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Sword]].Item2, ItemEnum.Sword);
+                    break;
             }
         }
 
@@ -92,6 +137,8 @@ namespace Players.PlayerFolder
             if (GetComponent<PhotonView>().IsMine)
             {
                 _move.Disable();
+                _upgradeInv.Disable();
+                _giveMoney.Disable();
                 _farming.Disable();
             }
         }

@@ -679,6 +679,9 @@ MonoBehaviour:
   Mark: {fileID: 5462522026695990901}
   CanvasName: {fileID: 1340520569569426935}
   Name: {fileID: 6829420043422840978}
+  nbTree: 0
+  nbRock: 0
+  nbGold: 0
 --- !u!50 &5994614248276955712
 Rigidbody2D:
   serializedVersion: 4

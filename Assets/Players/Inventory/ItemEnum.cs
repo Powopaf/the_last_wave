@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace LocalGame.LocalScript
+namespace Players.Inventory
 {
     public enum ItemEnum
     {
         Helmet,
         ChestPlate,
-        Pants,
+        Gloves,
         Boots,
         Sword
     }
@@ -21,7 +21,7 @@ namespace LocalGame.LocalScript
             {
                 { ItemEnum.Helmet, 0 },
                 { ItemEnum.ChestPlate, 1 },
-                { ItemEnum.Pants, 2 },
+                { ItemEnum.Gloves, 2 },
                 { ItemEnum.Boots, 3 },
                 { ItemEnum.Sword, 4 }
             };

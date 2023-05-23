@@ -1,5 +1,6 @@
 using System;
-using Item;
+using System.Collections.Generic;
+using Players.Inventory;
 using Players.PlayerFolder;
 using Scenes.ATH;
 using UnityEditor;
@@ -77,7 +78,7 @@ namespace LocalGame.LocalScript
         {
             healthBar.SetMaxHealth(MaxHealth);
             healthBar.SetHealth(MaxHealth);
-            _visualInventory.InitText();
+            ///   _visualInventory.InitText();
         }
 
         protected void OnEnable()
@@ -112,7 +113,7 @@ namespace LocalGame.LocalScript
             {
                 Key.Digit1 => _inventory.UpgradeItem(_money, ItemEnum.Helmet),
                 Key.Digit2 => _inventory.UpgradeItem(_money, ItemEnum.ChestPlate),
-                Key.Digit3 => _inventory.UpgradeItem(_money, ItemEnum.Pants),
+                Key.Digit3 => _inventory.UpgradeItem(_money, ItemEnum.Gloves),
                 Key.Digit4 => _inventory.UpgradeItem(_money, ItemEnum.Boots),
                 Key.Digit5 => _inventory.UpgradeItem(_money, ItemEnum.Sword),
                 _ => _money
@@ -137,7 +138,7 @@ namespace LocalGame.LocalScript
             animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
             healthBar.SetHealth(Health);
             dir = _move.ReadValue<Vector2>();
-            _visualInventory.SetText(_inventory.Inv[ItemEnum.Helmet]);
+            ///_visualInventory.SetText(_inventory.Inv[ItemEnum.Helmet]);
         }
 
         protected void FixedUpdate()

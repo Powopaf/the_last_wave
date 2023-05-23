@@ -1,4 +1,4 @@
-﻿namespace Item
+﻿namespace Players.Item
 {
     public interface IItem
     {

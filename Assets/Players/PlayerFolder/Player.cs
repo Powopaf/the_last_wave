@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using Photon.Pun;
+using Players.Inventory;
 using Scenes.ATH;
 using TMPro;
 using Unity.VisualScripting;
@@ -29,6 +30,12 @@ namespace Players.PlayerFolder
         public Animator animator;
         private GameObject LaunchOffsetPlayer;
         private Rigidbody2D RblaunchOffsetPLayer;
+        
+        private Inventory.Inventory _inventory;
+        private int _money;
+        private InputAction _giveMoney;
+        private InputAction _upgradeInv;
+        private VisualInventory _visualInventory;
 
 
         private PlayerInputAction _playerControl;
@@ -43,7 +50,6 @@ namespace Players.PlayerFolder
 
         public int nbTree = 0;
         public int nbRock = 0;
-        public int nbGold = 0;
         public Transform[][] TreeTransforms;
 
         public Player(int health = 100, int damage = 1,
@@ -95,6 +101,46 @@ namespace Players.PlayerFolder
 
                 _sight = _playerControl.Player.PointerPosition;
                 _sight.Enable();
+                
+                // touche pour l'inv
+                _upgradeInv = _playerControl.Player.UpgradeItem;
+                _upgradeInv.performed += ItemUpgrade;
+                _upgradeInv.Enable();
+                // touche pour give
+                _giveMoney = _playerControl.Player.Give;
+                _giveMoney.performed += Give;
+                _giveMoney.Enable();
+            }
+        }
+        
+        private void Give(InputAction.CallbackContext context) => _money += 10;
+        
+        // upgrade item
+        private void ItemUpgrade(InputAction.CallbackContext context)
+        {
+            var index = new GetItem().GetInv;
+            switch (context.ReadValue<Key>())
+            {
+                case Key.Digit1:
+                    _inventory.UpgradeItem(_money, ItemEnum.Helmet);
+                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Helmet]].Item2, ItemEnum.Helmet);
+                    break;
+                case Key.Digit2:
+                    _inventory.UpgradeItem(_money, ItemEnum.ChestPlate);
+                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.ChestPlate]].Item2, ItemEnum.ChestPlate);
+                    break;
+                case Key.Digit3:
+                    _inventory.UpgradeItem(_money, ItemEnum.Gloves);
+                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Gloves]].Item2, ItemEnum.Gloves);
+                    break;
+                case Key.Digit4:
+                    _inventory.UpgradeItem(_money, ItemEnum.Boots);
+                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Boots]].Item2, ItemEnum.Boots);
+                    break;
+                case Key.Digit5:
+                    _inventory.UpgradeItem(_money, ItemEnum.Sword);
+                    _visualInventory.UpdateText(_inventory.Inv[index[ItemEnum.Sword]].Item2, ItemEnum.Sword);
+                    break;
             }
         }
 
@@ -104,6 +150,9 @@ namespace Players.PlayerFolder
             {
                 _move.Disable();
                 _sight.Disable();
+                
+                _upgradeInv.Disable();
+                _giveMoney.Disable();
             }
         }
 

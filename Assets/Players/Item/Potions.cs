@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Item
+namespace Players.Item
 {
     public class Potions : IItem
     {

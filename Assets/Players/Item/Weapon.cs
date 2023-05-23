@@ -1,4 +1,4 @@
-﻿namespace Item
+﻿namespace Players.Item
 {
     public class Weapon : IItem
     {

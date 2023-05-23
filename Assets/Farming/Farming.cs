@@ -16,13 +16,11 @@ public class Farming
             this.type = "Tree";
             number =Random.Next(30,50);
         }
-
         else if (type == "Rock")
         {
             this.type = "Rock";
             number = Random.Next(10,30);
         }
-
         else if (type == "Gold")
         {
             this.type = "Gold";

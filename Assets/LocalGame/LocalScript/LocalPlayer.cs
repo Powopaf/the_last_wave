@@ -17,7 +17,7 @@ namespace LocalGame.LocalScript
         // player inv
         private Inventory _inventory;
         private int _money;
-
+        private InputAction _giveMoney;
         private InputAction _upgradeInv;
         //private InputAction _upgradeInv;
         /////////////////////
@@ -51,6 +51,7 @@ namespace LocalGame.LocalScript
             _heal = heal;
             this.speed = speed;
             _inventory = new Inventory();
+            _money = 1;
         }
 
         protected void Awake()
@@ -78,12 +79,18 @@ namespace LocalGame.LocalScript
 
             _farming = _playerControl.Player.Farming;
             _farming.Enable();
-
+            // touche pour l'inv
             _upgradeInv = _playerControl.Player.UpgradeItem;
             _upgradeInv.performed += ItemUpgrade;
             _upgradeInv.Enable();
-            
+            // touche pour give
+            _giveMoney = _playerControl.Player.Give;
+            _giveMoney.performed += Give;
+            _giveMoney.Enable();
         }
+        
+        // give money
+        private void Give(InputAction.CallbackContext context) => _money += 10;
         
         // upgrade item
         private void ItemUpgrade(InputAction.CallbackContext context)
@@ -106,6 +113,7 @@ namespace LocalGame.LocalScript
             _sight.Disable();
             _farming.Disable();
             _upgradeInv.Disable();
+            _giveMoney.Disable();
         }
 
         protected void Update()

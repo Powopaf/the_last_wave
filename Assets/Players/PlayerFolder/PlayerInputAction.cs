@@ -80,6 +80,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Give"",
+                    ""type"": ""Button"",
+                    ""id"": ""34e36412-6f6a-43e5-b765-5e3ebe2c3857"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -300,6 +309,17 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""UpgradeItem*"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0b4fd60-a5ec-4139-8c1b-0b0890e5c2d6"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Give"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -893,6 +913,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Player_PointerPosition = m_Player.FindAction("PointerPosition", throwIfNotFound: true);
         m_Player_Farming = m_Player.FindAction("Farming", throwIfNotFound: true);
         m_Player_UpgradeItem = m_Player.FindAction("UpgradeItem*", throwIfNotFound: true);
+        m_Player_Give = m_Player.FindAction("Give", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -970,6 +991,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PointerPosition;
     private readonly InputAction m_Player_Farming;
     private readonly InputAction m_Player_UpgradeItem;
+    private readonly InputAction m_Player_Give;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -980,6 +1002,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @PointerPosition => m_Wrapper.m_Player_PointerPosition;
         public InputAction @Farming => m_Wrapper.m_Player_Farming;
         public InputAction @UpgradeItem => m_Wrapper.m_Player_UpgradeItem;
+        public InputAction @Give => m_Wrapper.m_Player_Give;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1007,6 +1030,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @UpgradeItem.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpgradeItem;
                 @UpgradeItem.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpgradeItem;
                 @UpgradeItem.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpgradeItem;
+                @Give.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGive;
+                @Give.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGive;
+                @Give.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGive;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1029,6 +1055,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @UpgradeItem.started += instance.OnUpgradeItem;
                 @UpgradeItem.performed += instance.OnUpgradeItem;
                 @UpgradeItem.canceled += instance.OnUpgradeItem;
+                @Give.started += instance.OnGive;
+                @Give.performed += instance.OnGive;
+                @Give.canceled += instance.OnGive;
             }
         }
     }
@@ -1191,6 +1220,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnPointerPosition(InputAction.CallbackContext context);
         void OnFarming(InputAction.CallbackContext context);
         void OnUpgradeItem(InputAction.CallbackContext context);
+        void OnGive(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

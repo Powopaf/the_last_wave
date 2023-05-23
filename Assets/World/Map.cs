@@ -228,39 +228,13 @@ namespace World
                     {
                         if (IsGrass(current.TileType))
                         {
-                            var botLeftLeaf = Resources.Load<GameObject>(@"Tree\GrassTree\BotLeftLeaf");
-                            var botRightLeaf = Resources.Load<GameObject>(@"Tree\GrassTree\BotRightLeaf");
-                            var topLeftLeaf = Resources.Load<GameObject>(@"Tree\GrassTree\TopLeftLeaf");
-                            var topRightLeaf = Resources.Load<GameObject>(@"Tree\GrassTree\TopRightLeaf");
-                            var trunkLeft = Resources.Load<GameObject>(@"Tree\GrassTree\TrunkLeft");
-                            var trunkRight = Resources.Load<GameObject>(@"Tree\GrassTree\TrunkRight");
-                            Instantiate(trunkLeft, new Vector3(i - 0.5f, j, -0.5f), Quaternion.identity);
-                            Instantiate(trunkRight, new Vector3(i + 0.5f, j, -0.5f), Quaternion.identity);
-                            Instantiate(botLeftLeaf, new Vector3(i - 0.5f, j + 1, -0.5f), Quaternion.identity);
-                            Instantiate(botRightLeaf, new Vector3(i + 0.5f, j + 1, -0.5f), Quaternion.identity);
-                            Instantiate(topLeftLeaf, new Vector3(i - 0.5f, j + 2, -0.5f), Quaternion.identity);
-                            Instantiate(topRightLeaf, new Vector3(i + 0.5f, j + 2, -0.5f), Quaternion.identity);
+                            var grassTree = Resources.Load<GameObject>(@"Tree\GrassTree");
+                            Instantiate(grassTree, new Vector3(i, j, -0.5f), Quaternion.identity);
                         }
                         else
                         {
-                            var botLeftLeaf = Resources.Load<GameObject>(@"Tree\SnowTree\BotLeftLeaf");
-                            var botMidLeaf = Resources.Load<GameObject>(@"Tree\SnowTree\BotMidLeaf");
-                            var botRightLeaf = Resources.Load<GameObject>(@"Tree\SnowTree\BotRightLeaf");
-                            var topLeftLeaf = Resources.Load<GameObject>(@"Tree\SnowTree\TopLeftLeaf");
-                            var topMidLeaf = Resources.Load<GameObject>(@"Tree\SnowTree\TopMidLeaf");
-                            var topRightLeaf = Resources.Load<GameObject>(@"Tree\SnowTree\TopRightLeaf");
-                            var trunkLeft = Resources.Load<GameObject>(@"Tree\SnowTree\TrunkLeft");
-                            var trunkMid = Resources.Load<GameObject>(@"Tree\SnowTree\TrunkMid");
-                            var trunkRight = Resources.Load<GameObject>(@"Tree\SnowTree\TrunkRight");
-                            Instantiate(trunkLeft, new Vector3(i - 1, j, -0.4f), Quaternion.identity);
-                            Instantiate(trunkMid, new Vector3(i, j, -0.4f), Quaternion.identity);
-                            Instantiate(trunkRight, new Vector3(i + 1, j, -0.4f), Quaternion.identity);
-                            Instantiate(botLeftLeaf, new Vector3(i - 1, j + 1, -0.4f), Quaternion.identity);
-                            Instantiate(botMidLeaf, new Vector3(i, j + 1, -0.4f), Quaternion.identity);
-                            Instantiate(botRightLeaf, new Vector3(i + 1, j + 1, -0.4f), Quaternion.identity);
-                            Instantiate(topLeftLeaf, new Vector3(i - 1, j + 2, -0.4f), Quaternion.identity);
-                            Instantiate(topMidLeaf, new Vector3(i, j + 2, -0.4f), Quaternion.identity);
-                            Instantiate(topRightLeaf, new Vector3(i + 1, j + 2, -0.4f), Quaternion.identity);
+                            var snowTree = Resources.Load<GameObject>(@"Tree\SnowTree");
+                            Instantiate(snowTree, new Vector3(i, j, -0.4f), Quaternion.identity);
                         }
                     }
                     else if (current.HaveRock)

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scenes.ATH
+namespace ATH.Camera
 {
     public class CameraFollow : MonoBehaviour
     {
@@ -15,7 +15,7 @@ namespace Scenes.ATH
             
         }
 
-        void Update()
+        void FixedUpdate()
         {
             var position = _target.position;
             Vector3 newPos = new Vector3(position.x, position.y, -10f);

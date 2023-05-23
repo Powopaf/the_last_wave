@@ -127,6 +127,7 @@ MonoBehaviour:
   speed: 2
   rb: {fileID: 6719441838899063607}
   animator: {fileID: -473030047989737235}
+  AIsetter: {fileID: 7429280982855142100}
 --- !u!114 &-6082699091340057420
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -190,6 +190,7 @@ MonoBehaviour:
   speed: 0
   rb: {fileID: 7445428910030326616}
   animator: {fileID: -662334306291196755}
+  AIsetter: {fileID: -6085347726886592097}
 --- !u!50 &7445428910030326616
 Rigidbody2D:
   serializedVersion: 4

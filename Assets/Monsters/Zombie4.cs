@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,6 +24,7 @@ namespace Monsters
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             AI = GetComponent<AIPath>();
+            AIsetter.target=GameObject.FindWithTag("Core").transform;
 
         }
 
@@ -59,7 +61,11 @@ namespace Monsters
         }
         protected override void OnTriggerExit2D(Collider2D other)
         {
-            throw new NotImplementedException();
+            if (_target.Contains(other.tag))
+            {
+                AIsetter.target = GameObject.FindWithTag("Core").transform;
+            }
+           
         }
     }
 }

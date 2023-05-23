@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Farming",
+                    "type": "Button",
+                    "id": "1d294b3e-dd20-4492-a41f-c09be4b8ac8c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -269,8 +278,19 @@
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XR;Keyboard&Mouse;Gamepad;Touch;Joystick",
+                    "groups": "XR;Gamepad;Touch;Joystick",
                     "action": "PointerPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "964638e1-3ee5-4c25-a730-fba2f2bd2cb5",
+                    "path": "<Keyboard>/semicolon",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Farming",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

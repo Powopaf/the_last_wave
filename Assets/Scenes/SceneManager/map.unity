@@ -152,25 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7943fca9d8db3f84db54fc562feaf1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles:
-  - name: WallBorderMap
-    visual: {fileID: 4216730710499631332, guid: 1c0dd9db6caf0ab4e80b8a657ad6a394, type: 3}
-    iswalkable: 0
-  - name: Dirt1
-    visual: {fileID: 1406260018248667951, guid: dbb26a491b3913f4ebf62ec293b78a49, type: 3}
-    iswalkable: 1
-  - name: Grass1
-    visual: {fileID: 3783414805853241847, guid: 0626b7e97b92f0a49a3d5cc33b197035, type: 3}
-    iswalkable: 1
-  - name: Sand1
-    visual: {fileID: 4013866394723460391, guid: 4faff564973c4774e82629f36cf241e3, type: 3}
-    iswalkable: 1
-  - name: Snow1
-    visual: {fileID: 1243098089613470427, guid: e15f341f4f13e894f922f475c0d37c3a, type: 3}
-    iswalkable: 1
-  - name: Water1
-    visual: {fileID: 7540579490300787691, guid: b0e85a2ec91bc0f45945c221a99a837a, type: 3}
-    iswalkable: 0
+  _tiles: []
+  _side: []
+  RandomSeed: 1
 --- !u!4 &659185932
 Transform:
   m_ObjectHideFlags: 0

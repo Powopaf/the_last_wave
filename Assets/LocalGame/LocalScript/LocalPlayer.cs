@@ -39,9 +39,14 @@ namespace LocalGame.LocalScript
         private Vector3 mousepos;
         private Playersight _playersight;
 
+        //Farimngcode
         public int nbTree = 0;
         public int nbRock = 0;
         private InputAction _farming;
+        private bool Canbefarm = false;
+        private Collider2D? _farmingElt;
+        public List<Transform[]> TreeTransforms;
+        //
 
         protected LocalPlayer(int health = 100, int damage = 1, int speed = 1, int maxHealth = 100, int heal = 1)
         {
@@ -61,6 +66,11 @@ namespace LocalGame.LocalScript
             _playersight = GetComponentInChildren<Playersight>();
             camera = GameObject.FindWithTag("Camera").GetComponent<Camera>();
             animator = GetComponent<Animator>();
+            
+            ////////////////////////////////////////////////////////////////////FarmingCode
+            TreeTransforms = GameObject.FindWithTag("LocalMap").GetComponent<LocalMap>().TreeTransforms;
+            /////////////
+
         }
 
         protected void Start()
@@ -77,8 +87,10 @@ namespace LocalGame.LocalScript
 
             _sight = _playerControl.Player.PointerPosition;
             _sight.Enable();
-
+            
+            /////////////////////////////////////Farmingcode
             _farming = _playerControl.Player.Farming;
+            _farming.performed += Farming; 
             _farming.Enable();
             // touche pour l'inv
             _upgradeInv = _playerControl.Player.UpgradeItem;
@@ -112,6 +124,8 @@ namespace LocalGame.LocalScript
         {
             _move.Disable();
             _sight.Disable();
+            
+            //Farmingcode
             _farming.Disable();
             _upgradeInv.Disable();
             _giveMoney.Disable();
@@ -131,7 +145,7 @@ namespace LocalGame.LocalScript
             rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
             healthBar.SetHealth(Health);
         }
-
+        
         public void ZombieDamageOnPlayer(int damage)
         {
             if (Health - damage > 0)
@@ -144,33 +158,50 @@ namespace LocalGame.LocalScript
                 Debug.Log("the player died!!!"); // To see the effect pf the Zombie Attack
             }
         }
-        
-        public void OnCollisionEnter2D(Collision2D col)
+        //////////////////////////////////////////////////////////////////////////////Farming code
+        public void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.transform.CompareTag("Rock") || col.transform.CompareTag("Tree") ||
-                col.transform.CompareTag("SnowTree"))
+            if (col.transform.CompareTag("Rock") || col.transform.CompareTag("Tree"))
             {
-                TileDefinition[,] map = GameObject.FindWithTag("LocalMap").GetComponent<LocalMap>()
-                    ._mapDefinition.Map;
-                switch (col.transform.tag)
+                if (!Canbefarm)
                 {
-                    case "SnowTree":
-                        Farming tree = new Farming("Tree");
-                        nbTree += tree.number;
-                        (double X, double Y) = (Math.Truncate(transform.position.x),
-                            Math.Truncate(transform.position.y));
-                        break;
-                    case "Rock":
-                        Farming rock1 = new Farming("Rock");
-                        nbRock += rock1.number;
-                        Debug.Log($"number of rock :{nbRock}");
-                        if (Keyboard.current.qKey.wasPressedThisFrame)
-                        { 
-                            Destroy(col.gameObject);
-                        }
-                        break;
+                    _farmingElt = col;
+                    Canbefarm = true;
                 }
+                
             }
         }
+
+        public void OnTriggerExit2D(Collider2D other)
+        {
+            if (Canbefarm)
+            {
+                _farmingElt = null;
+                Canbefarm = false;
+            }
+        }
+        
+        private void Farming(InputAction.CallbackContext context)
+        {
+            if (Canbefarm)
+            {
+                if (_farmingElt.tag == "Rock")
+                {
+                    Farming rock=new Farming("Rock");
+                    nbRock += rock.number;
+                    Debug.Log(nbRock);
+                   
+                }
+                else if (_farmingElt.tag =="Tree")
+                {
+                    Farming tree = new Farming("Tree");
+                    nbTree += tree.number;
+                    Debug.Log(nbTree);
+                }
+                Destroy(_farmingElt.gameObject);
+            }
+            
+        }
+       /////////////////////////////////////////////////////////////////////////////////////////
     }
 }

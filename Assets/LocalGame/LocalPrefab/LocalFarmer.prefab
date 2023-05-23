@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 20594815013239126}
   - component: {fileID: 20594815013239127}
   - component: {fileID: 20594815013239080}
+  - component: {fileID: 5110657106533578344}
   m_Layer: 0
   m_Name: LocalFarmer
   m_TagString: Farmer
@@ -79,15 +80,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 35068575, guid: dc56427f0c4ae0b428a08a254dd90c08, type: 3}
+  m_Sprite: {fileID: -2013788561, guid: 9ebc2edf04d2f34429ec7e40294216d1, type: 3}
   m_Color: {r: 0.9433962, g: 0.9202563, b: 0.9202563, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 2.1333334, y: 2.1333334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &20594815013239125
@@ -107,8 +108,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 3.2}
-    newSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 2.1333334, y: 2.1333334}
+    newSize: {x: 2.1333334, y: 2.1333334}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -177,6 +178,22 @@ MonoBehaviour:
   nbTree: 0
   nbRock: 0
   nbGold: 0
+--- !u!58 &5110657106533578344
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20594815013239081}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.5
 --- !u!1 &20594815214086215
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using System.Linq;
 using Photon.Pun;
 using GameObject = UnityEngine.GameObject;
 using Random = UnityEngine.Random;
+using static Spawn;
 
 namespace World
 {
@@ -14,7 +15,7 @@ namespace World
         public Side[] _side;
         private MapDefinition _mapDefinition;
         private readonly TileSprite _tileSprite = new ();
-        public bool RandomSeed = false;
+        public bool RandomSeed;
 
         void Start()
         {
@@ -26,16 +27,59 @@ namespace World
                     GenSeed = Random.Range(0, Int32.MaxValue);
                 }
                 GetComponent<PhotonView>().RPC("MapGen", RpcTarget.All, GenSeed);
+
+                ChooseSpawnTile(_mapDefinition, 255, 255);
             }
         }
+
+        public void ChooseSpawnTile(MapDefinition map, int x, int y)
+        {
+            if (Placable(_mapDefinition, x, y)) 
+            {
+                int lengthNorth = Length(_mapDefinition, x, y, "north");
+                int lengthSouth = Length(_mapDefinition, x, y, "south");
+                int lengthEast = Length(_mapDefinition, x, y, "east");
+                int lengthWest = Length(_mapDefinition, x, y, "west");
+                if (IsMainIsland(lengthNorth + lengthSouth, lengthEast + lengthWest))
+                {
+                    int Xcoord = x + Random.Range(-8, 9);
+                    int Ycoord = y + Random.Range(-8, 9);
+                    if (!IsSpawnable(_mapDefinition, Xcoord, Ycoord))
+                    {
+                        while (!IsSpawnable(_mapDefinition, Xcoord, Ycoord)) 
+                        {
+                            Xcoord = x + Random.Range(-8, 9);
+                            Ycoord = y + Random.Range(-8, 9);
+                        }
+                    }
+                    GetComponent<PhotonView>().RPC("SpawnPlayer", RpcTarget.All, x, y);
+                }
+                else
+                {
+                    ChooseSpawnTile(map, Random.Range(100, 400), Random.Range(100, 400));
+                }
+            }
+            else
+            {
+                ChooseSpawnTile(map, Random.Range(100, 400), Random.Range(100, 400));
+            }
+            
+        }
+    
         
+        [PunRPC]
+        public void SpawnPlayer(int x, int y)
+        {
+            PhotonNetwork.Instantiate("PhotonPlayerTest2", new Vector3(x, 
+                y, -1), Quaternion.identity);
+        }
 
         [PunRPC] public void MapGen(int newseed)
         {
             _mapDefinition = new MapDefinition(newseed);
             //SetMapGen();
             SetUpTile();
-            AstarPath.active.Scan();
+            //////AstarPath.active.Scan();
         }
 
         private void SetUpTile()

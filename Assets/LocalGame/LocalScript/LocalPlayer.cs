@@ -19,7 +19,7 @@ namespace LocalGame.LocalScript
         private int _money;
         private InputAction _giveMoney;
         private InputAction _upgradeInv;
-        //private InputAction _upgradeInv;
+        private VisualInventory _visualInventory;
         /////////////////////
 
         private int _heal;
@@ -67,6 +67,7 @@ namespace LocalGame.LocalScript
         {
             healthBar.SetMaxHealth(MaxHealth);
             healthBar.SetHealth(MaxHealth);
+            _visualInventory.InitText();
         }
 
         protected void OnEnable()
@@ -122,6 +123,7 @@ namespace LocalGame.LocalScript
             animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
             healthBar.SetHealth(Health);
             dir = _move.ReadValue<Vector2>();
+            _visualInventory.SetText(_inventory.Inv[ItemEnum.Helmet]);
         }
 
         protected void FixedUpdate()

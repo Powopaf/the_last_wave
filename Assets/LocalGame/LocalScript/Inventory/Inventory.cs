@@ -5,7 +5,7 @@ namespace LocalGame.LocalScript
 {
     public class Inventory
     {
-        private IItem[] Inv { get; }
+        public IItem[] Inv { get; }
 
         public Inventory()
         {

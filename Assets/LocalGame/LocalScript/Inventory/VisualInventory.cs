@@ -12,6 +12,16 @@ namespace LocalGame.LocalScript
         public Text textSword;
         public Text textMoney;
 
-        public void InitText(Text text) => text.text = "1";
+        public void InitText()
+        {
+            textBoots.text = "1";
+            textGloves.text = "1";
+            textHelmet.text = "1";
+            textMoney.text = "1";
+            textSword.text = "1";
+            textChestPlate.text = "1";
+        }
+
+        public void SetText(int value, Text text) => text.text = value.ToString();
     }
 }

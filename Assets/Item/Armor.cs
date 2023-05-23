@@ -15,9 +15,14 @@
             Protection = 0;
         }
 
-        public void Upgrade()
+        public int Upgrade(int money)
         {
-            Protection += 10;
+            if (money >= 10)
+            {
+                Protection += 10;
+                return money - 10;
+            }
+            return money;
         }
     }
 }

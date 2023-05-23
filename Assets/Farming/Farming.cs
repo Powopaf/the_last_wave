@@ -15,7 +15,6 @@ public class Farming
             this.type = "Tree";
             number = 10;
         }
-
         else if (type == "Rock")
         {
             this.type = "Rock";

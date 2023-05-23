@@ -31,6 +31,9 @@ namespace Item
         
         public void Reset() { }
 
-        public void Upgrade() { }
+        public int Upgrade(int money)
+        {
+            return money;
+        }
     }
 }

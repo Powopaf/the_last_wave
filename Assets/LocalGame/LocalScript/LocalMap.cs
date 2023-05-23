@@ -22,9 +22,7 @@ namespace World
             _mapDefinition = new MapDefinition(seed);
             SetUpTile();
             AstarPath.active.Scan();
-
             TreeTransforms = new List<Transform[]>();
-
         }
 
         private void SetUpTile()

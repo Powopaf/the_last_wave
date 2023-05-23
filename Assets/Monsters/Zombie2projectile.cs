@@ -1,45 +1,41 @@
-using Pathfinding;
 using UnityEngine;
 
 namespace Monsters
 {
-    public class Zombie2projectile :MonoBehaviour
+    public class Zombie2Projectile :MonoBehaviour
     {
-        public float bulletspeed=5;
-        private float lifeBullet;
+        public float bulletspeed = 5;
+        private float _lifeBullet;
         public Animator animator;
         
-        
-
-      
-        new void Start()
+        void Start()
         { 
             animator = GetComponent<Animator>();
             bulletspeed = 10;
-            lifeBullet = 5;
+            _lifeBullet = 5;
             
         }
 
-        new void Update()
+        void Update()
         {
             transform.position += transform.right * (Time.deltaTime * bulletspeed);
-            lifeBullet -= Time.deltaTime;
-            if (lifeBullet <= 0)
+            _lifeBullet -= Time.deltaTime;
+            if (_lifeBullet <= 0)
             {
                 Destroy(gameObject);
             }
 
         }
 
-        new void OnCollisionEnter2D(Collision2D col)
+        /*new void OnCollisionEnter2D(Collision2D col)
         {
-           /* if (col.transform.CompareTag("Player"))
+            if (col.transform.CompareTag("Player"))
             {
                 Players.Survivor player = transform.GetComponent<Players.Survivor>(); //Zombie Attack
                 player.ZombieDamageOnPlayer(20); // Zombie Attack 
             }
 
-            Destroy(gameObject);*/
-        }
+            Destroy(gameObject);
+        }*/
     }
 }

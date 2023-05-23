@@ -1,23 +1,27 @@
 using System;
-using System.Collections.Generic;
-using Photon.Pun;
+using Item;
+using Players.PlayerFolder;
 using Scenes.ATH;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 using World;
 
-
-namespace Players.PlayerFolder
+namespace LocalGame.LocalScript
 {
     public abstract class LocalPlayer : MonoBehaviour
     {
         private int Health { get; set; }
         private int MaxHealth { get; }
         private int Damage { get; set; }
-        private (string,int)[] _ressource_inv;
+        // player inv
+        private Inventory _inventory;
+        private int _money;
+        private InputAction _giveMoney;
+        private InputAction _upgradeInv;
+        private VisualInventory _visualInventory;
+        /////////////////////
 
-        private string _name;
         private int _heal;
         public float speed;
         private Vector2 dir = Vector2.zero;
@@ -27,7 +31,6 @@ namespace Players.PlayerFolder
         public Animator animator;
         private GameObject LaunchOffsetPlayer;
         private Rigidbody2D RblaunchOffsetPLayer;
-
 
         private PlayerInputAction _playerControl;
         private InputAction _move;
@@ -39,23 +42,21 @@ namespace Players.PlayerFolder
         //Farimngcode
         public int nbTree = 0;
         public int nbRock = 0;
-        
         private InputAction _farming;
         private bool Canbefarm = false;
         private Collider2D? _farmingElt;
         public List<Transform[]> TreeTransforms;
         //
 
-        public LocalPlayer(int health = 100, int damage = 1,
-            int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
+        protected LocalPlayer(int health = 100, int damage = 1, int speed = 1, int maxHealth = 100, int heal = 1)
         {
             MaxHealth = maxHealth;
             Health = health;
             Damage = damage;
-            _name = name;
             _heal = heal;
             this.speed = speed;
-            _ressource_inv = new[] { ("wood", 0), ("stone", 0), ("iron", 0) };
+            _inventory = new Inventory();
+            _money = 1;
         }
 
         protected void Awake()
@@ -76,6 +77,7 @@ namespace Players.PlayerFolder
         {
             healthBar.SetMaxHealth(MaxHealth);
             healthBar.SetHealth(MaxHealth);
+            _visualInventory.InitText();
         }
 
         protected void OnEnable()
@@ -90,11 +92,34 @@ namespace Players.PlayerFolder
             _farming = _playerControl.Player.Farming;
             _farming.performed += Farming; 
             _farming.Enable();
-            ////////////////////////////////////////
-
-
+            // touche pour l'inv
+            _upgradeInv = _playerControl.Player.UpgradeItem;
+            _upgradeInv.performed += ItemUpgrade;
+            _upgradeInv.Enable();
+            // touche pour give
+            _giveMoney = _playerControl.Player.Give;
+            _giveMoney.performed += Give;
+            _giveMoney.Enable();
         }
-
+        
+        // give money
+        private void Give(InputAction.CallbackContext context) => _money += 10;
+        
+        // upgrade item
+        private void ItemUpgrade(InputAction.CallbackContext context)
+        {
+            _money = context.ReadValue<Key>() switch
+            {
+                Key.Digit1 => _inventory.UpgradeItem(_money, ItemEnum.Helmet),
+                Key.Digit2 => _inventory.UpgradeItem(_money, ItemEnum.ChestPlate),
+                Key.Digit3 => _inventory.UpgradeItem(_money, ItemEnum.Pants),
+                Key.Digit4 => _inventory.UpgradeItem(_money, ItemEnum.Boots),
+                Key.Digit5 => _inventory.UpgradeItem(_money, ItemEnum.Sword),
+                _ => _money
+            };
+        }
+        // // // // // // // //
+        
         protected void OnDisable()
         {
             _move.Disable();
@@ -102,7 +127,8 @@ namespace Players.PlayerFolder
             
             //Farmingcode
             _farming.Disable();
-            ///////////////
+            _upgradeInv.Disable();
+            _giveMoney.Disable();
         }
 
         protected void Update()
@@ -111,6 +137,7 @@ namespace Players.PlayerFolder
             animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
             healthBar.SetHealth(Health);
             dir = _move.ReadValue<Vector2>();
+            _visualInventory.SetText(_inventory.Inv[ItemEnum.Helmet]);
         }
 
         protected void FixedUpdate()
@@ -118,35 +145,19 @@ namespace Players.PlayerFolder
             rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
             healthBar.SetHealth(Health);
         }
-
-       
-
         
-        private void Heal(int life)
-        {
-            if (life * _heal >= MaxHealth)
-            {
-                Health = MaxHealth;
-            }
-            else
-            {
-                Health += life * _heal;
-            }
-        }
-
         public void ZombieDamageOnPlayer(int damage)
         {
             if (Health - damage > 0)
             {
                 Health -= damage;
-                Debug.Log("Aie!!!!!");
+                Debug.Log($"Damage: {damage} | Health before : {Health + damage} | Health after: {Health}");
             }
             else
             {
                 Debug.Log("the player died!!!"); // To see the effect pf the Zombie Attack
             }
         }
-
         //////////////////////////////////////////////////////////////////////////////Farming code
         public void OnTriggerEnter2D(Collider2D col)
         {
@@ -192,8 +203,5 @@ namespace Players.PlayerFolder
             
         }
        /////////////////////////////////////////////////////////////////////////////////////////
-                
-            
-        
     }
 }

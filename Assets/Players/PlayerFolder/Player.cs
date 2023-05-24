@@ -1,8 +1,7 @@
-using System.Collections.Generic;
+using UnityEngine.UI;
+using ATH.HealthBar;
 using Photon.Pun;
 using Players.Inventory;
-using Players.Item;
-using Scenes.ATH;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -28,13 +27,20 @@ namespace Players.PlayerFolder
         private int _money;
         private InputAction _giveMoney;
         private InputAction _upgradeInv;
-        private VisualInventory _visualInventory;
-
-
+        
         private PlayerInputAction _playerControl;
         private InputAction _move;
         public GameObject CanvasName;
         public TMP_Text Name;
+        
+        // text for UI inventory and money
+        public Text helmetText;
+        public Text chestPlateText;
+        public Text glovesText;
+        public Text bootsText;
+        public Text swordText;
+        public Text moneyText;
+        // // // // // // // // // // // //
 
         public int nbTree;
         public int nbRock;
@@ -47,6 +53,8 @@ namespace Players.PlayerFolder
             MaxHealth = maxHealth;
             Health = health;
             this.speed = speed;
+            _inventory = new Inventory.Inventory();
+            
         }
 
         protected void Awake()
@@ -68,6 +76,12 @@ namespace Players.PlayerFolder
                 PhotonNetwork.SerializationRate = 40;
                 healthBar.SetMaxHealth(MaxHealth);
                 healthBar.SetHealth(MaxHealth);
+                helmetText.text = _inventory.Inv[0].Item2.ToString();
+                chestPlateText.text = _inventory.Inv[1].Item2.ToString();
+                glovesText.text = _inventory.Inv[2].Item2.ToString();
+                bootsText.text = _inventory.Inv[3].Item2.ToString();
+                swordText.text = _inventory.Inv[4].Item2.ToString();
+                moneyText.text = _money.ToString();
             }
             else
             {
@@ -101,38 +115,38 @@ namespace Players.PlayerFolder
         private void Give(InputAction.CallbackContext context)
         {
             _money += 10;
-            _visualInventory.UpdateMoney(_money);
+            moneyText.text = _money.ToString();
         }
         
         // upgrade item
         private void ItemUpgrade(InputAction.CallbackContext context)
         {
-            switch ((context.control as KeyControl).keyCode)
+            switch ((context.control as KeyControl)!.keyCode)
             {
                 case Key.Z:
                     _money = _inventory.UpgradeItem(_money, ItemEnum.Helmet);
-                    _visualInventory.UpdateText(_inventory, ItemEnum.Helmet);
-                    _visualInventory.UpdateMoney(_money);
+                    helmetText.text = _inventory.Inv[0].Item2.ToString();
+                    moneyText.text = _money.ToString();
                     break;
                 case Key.X:
                     _money = _inventory.UpgradeItem(_money, ItemEnum.ChestPlate);
-                    _visualInventory.UpdateText(_inventory, ItemEnum.ChestPlate);
-                    _visualInventory.UpdateMoney(_money);
+                    chestPlateText.text = _inventory.Inv[1].Item2.ToString();
+                    moneyText.text = _money.ToString();
                     break;
                 case Key.C:
                     _money = _inventory.UpgradeItem(_money, ItemEnum.Gloves);
-                    _visualInventory.UpdateText(_inventory, ItemEnum.Gloves);
-                    _visualInventory.UpdateMoney(_money);
+                    glovesText.text = _inventory.Inv[2].Item2.ToString();
+                    moneyText.text = _money.ToString();
                     break;
                 case Key.V:
                     _money = _inventory.UpgradeItem(_money, ItemEnum.Boots);
-                    _visualInventory.UpdateText(_inventory, ItemEnum.Boots);
-                    _visualInventory.UpdateMoney(_money);
+                    bootsText.text = _inventory.Inv[3].Item2.ToString();
+                    moneyText.text = _money.ToString();
                     break;
                 case Key.B:
                     _money = _inventory.UpgradeItem(_money, ItemEnum.Sword);
-                    _visualInventory.UpdateText(_inventory, ItemEnum.Sword);
-                    _visualInventory.UpdateMoney(_money);
+                    swordText.text = _inventory.Inv[4].Item2.ToString();
+                    moneyText.text = _money.ToString();
                     break;
             }
         }

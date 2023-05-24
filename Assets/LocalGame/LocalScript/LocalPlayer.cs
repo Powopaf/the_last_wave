@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using ATH.HealthBar;
 using Players.Inventory;
 using Players.Farming;
 using Players.PlayerFolder;
-using Scenes.ATH;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -21,7 +21,6 @@ namespace LocalGame.LocalScript
         private int _money;
         private InputAction _giveMoney;
         private InputAction _upgradeInv;
-        private VisualInventory _visualInventory;
         /////////////////////
 
         private int _heal;

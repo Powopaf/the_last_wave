@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Scenes.ATH
+namespace ATH.HealthBar
 {
     public class HealthBar : MonoBehaviour
     {
@@ -12,10 +12,10 @@ namespace Scenes.ATH
             _slider = GetComponent<Slider>();
         }
 
-        public void SetMaxHealth(int maxhealth)
+        public void SetMaxHealth(int maxHealth)
         {
-            _slider.maxValue = maxhealth;
-            _slider.value = maxhealth;
+            _slider.maxValue = maxHealth;
+            _slider.value = maxHealth;
         }
     
         public void SetHealth(int health)

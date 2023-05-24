@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
+using ATH.HealthBar;
 using Players.Inventory;
-using Item;
 using Players.Farming;
 using Players.PlayerFolder;
-using Scenes.ATH;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,7 +21,6 @@ namespace LocalGame.LocalScript
         private int _money;
         private InputAction _giveMoney;
         private InputAction _upgradeInv;
-        private VisualInventory _visualInventory;
         /////////////////////
 
         private int _heal;
@@ -88,7 +86,7 @@ namespace LocalGame.LocalScript
             _move = _playerControl.Player.Move;
             _move.Enable();
 
-            _sight = _playerControl.Player.PointerPosition;
+
             _sight.Enable();
             
             /////////////////////////////////////Farmingcode
@@ -96,9 +94,6 @@ namespace LocalGame.LocalScript
             _farming.performed += Farming; 
             _farming.Enable();
             // touche pour l'inv
-            _upgradeInv = _playerControl.Player.UpgradeItem;
-            _upgradeInv.performed += ItemUpgrade;
-            _upgradeInv.Enable();
             // touche pour give
             _giveMoney = _playerControl.Player.Give;
             _giveMoney.performed += Give;

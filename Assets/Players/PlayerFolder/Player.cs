@@ -31,7 +31,6 @@ namespace Players.PlayerFolder
         
         //spawn 1 zombies
         private InputAction _spawnZombie;
-        
         private PlayerInputAction _playerControl;
         private InputAction _move;
         public GameObject CanvasName;

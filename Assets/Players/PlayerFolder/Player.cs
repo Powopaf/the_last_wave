@@ -291,7 +291,7 @@ namespace Players.PlayerFolder
                     nbTree += tree.Number;
                     Debug.Log(nbTree);
                 }
-                Destroy(_farmingElt.gameObject);
+                PhotonNetwork.Destroy(_farmingElt.gameObject);
             }
         }
         

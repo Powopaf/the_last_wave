@@ -80,6 +80,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc0a7f02-7ce6-4e59-8e9d-65f8efa48b09"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -300,6 +309,17 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Upgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3ae7fcc-14b3-4451-9829-1f22d7f9a382"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spawn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -893,6 +913,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Player_Farming = m_Player.FindAction("Farming", throwIfNotFound: true);
         m_Player_Give = m_Player.FindAction("Give", throwIfNotFound: true);
         m_Player_Upgrade = m_Player.FindAction("Upgrade", throwIfNotFound: true);
+        m_Player_Spawn = m_Player.FindAction("Spawn", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -970,6 +991,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Farming;
     private readonly InputAction m_Player_Give;
     private readonly InputAction m_Player_Upgrade;
+    private readonly InputAction m_Player_Spawn;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -980,6 +1002,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Farming => m_Wrapper.m_Player_Farming;
         public InputAction @Give => m_Wrapper.m_Player_Give;
         public InputAction @Upgrade => m_Wrapper.m_Player_Upgrade;
+        public InputAction @Spawn => m_Wrapper.m_Player_Spawn;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1007,6 +1030,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Upgrade.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpgrade;
                 @Upgrade.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpgrade;
                 @Upgrade.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpgrade;
+                @Spawn.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawn;
+                @Spawn.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawn;
+                @Spawn.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawn;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1029,6 +1055,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Upgrade.started += instance.OnUpgrade;
                 @Upgrade.performed += instance.OnUpgrade;
                 @Upgrade.canceled += instance.OnUpgrade;
+                @Spawn.started += instance.OnSpawn;
+                @Spawn.performed += instance.OnSpawn;
+                @Spawn.canceled += instance.OnSpawn;
             }
         }
     }
@@ -1191,6 +1220,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnFarming(InputAction.CallbackContext context);
         void OnGive(InputAction.CallbackContext context);
         void OnUpgrade(InputAction.CallbackContext context);
+        void OnSpawn(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

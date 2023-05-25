@@ -28,6 +28,9 @@ namespace Players.PlayerFolder
         private InputAction _giveMoney;
         private InputAction _upgradeInv;
         
+        //spawn 1 zombies
+        private InputAction _spawnZombie;
+        
         private PlayerInputAction _playerControl;
         private InputAction _move;
         public GameObject CanvasName;
@@ -94,6 +97,10 @@ namespace Players.PlayerFolder
         {
             if (GetComponent<PhotonView>().IsMine)
             {
+                _spawnZombie = _playerControl.Player.Spawn;
+                _spawnZombie.performed += 
+                _spawnZombie.Enable();
+                
                 _move = _playerControl.Player.Move;
                 _move.Enable();
                 
@@ -159,6 +166,7 @@ namespace Players.PlayerFolder
                 _upgradeInv.Disable();
                 _giveMoney.Disable();
                 _farming.Disable();
+                _spawnZombie.Disable();
             }
         }
 
@@ -181,7 +189,9 @@ namespace Players.PlayerFolder
                 healthBar.SetHealth(Health);
             }
         }
-
+        
+        
+        
         public void ZombieDamageOnPlayer(int damage)
         {
             if (Health - damage > 0)

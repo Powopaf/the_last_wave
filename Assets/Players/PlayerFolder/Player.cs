@@ -169,7 +169,6 @@ namespace Players.PlayerFolder
                 animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
                 animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
                 healthBar.SetHealth(Health);
-                _dir = _move.ReadValue<Vector2>();
             }
         }
 
@@ -177,6 +176,7 @@ namespace Players.PlayerFolder
         {
             if (GetComponent<PhotonView>().IsMine)
             {
+                _dir = _move.ReadValue<Vector2>();
                 rb.velocity = new Vector2(_dir.x * speed, _dir.y * speed);
                 healthBar.SetHealth(Health);
             }

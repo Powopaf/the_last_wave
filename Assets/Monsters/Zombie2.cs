@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Pathfinding;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Monsters
 {
@@ -80,7 +79,7 @@ namespace Monsters
         }
         protected override void OnTriggerExit2D(Collider2D other)
         {
-            if (_target.Contains(other.tag))
+            if (Target.Contains(other.tag))
             {
                 AIsetter.target = GameObject.FindWithTag("Core").transform;
             }

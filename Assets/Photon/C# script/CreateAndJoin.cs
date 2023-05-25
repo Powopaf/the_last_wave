@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
 using UnityEngine;
-using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;

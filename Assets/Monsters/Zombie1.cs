@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using Pathfinding;
 using Players;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using World;
 
 namespace Monsters
 {
@@ -16,22 +12,20 @@ namespace Monsters
 
 
         public Zombie1() : 
-            base("Zombie1", new []{"Assassin","Farmer","Survivor","Worker"},
-                
-                100, 20, 30) {}
+            base("Zombie1", new []{"Assassin","Farmer","Survivor","Worker"}, 100, 20, 30) { }
 
         
         protected override void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
-            AI=GetComponent<AIPath>();
-            AIsetter.target=GameObject.FindWithTag("Core").transform;
+            AI = GetComponent<AIPath>();
+            AIsetter.target=GameObject.FindWithTag("Survivor").transform;
 
         }
         protected override void Start()
         {
-           
+            
         }
        
 
@@ -41,10 +35,10 @@ namespace Monsters
         
        
         protected override void Update()
-        {
+        { 
             Movement = AI.desiredVelocity;
-           animator.SetFloat(X, Movement.x);
-           animator.SetFloat(Y, Movement.y);
+            animator.SetFloat(X, Movement.x);
+            animator.SetFloat(Y, Movement.y);
         }
         protected override void FixedUpdate()
         {
@@ -53,21 +47,24 @@ namespace Monsters
        
         protected override void OnCollisionEnter2D(Collision2D col)
         {
-           /* if ( _target.Contains(col.transform.tag))   //Need to change  the tag
+            
+            if (Target.Contains(col.transform.tag))   //Need to change  the tag
             {
-                Players.Survivor survivor = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
-                survivor.ZombieDamageOnPlayer(Damage); // Zombie Attack
-            }*/
+                if (col.transform.CompareTag("Survivor"))
+                {
+                    Survivor survivor = col.transform.GetComponent<Survivor>();
+                    survivor.ZombieDamageOnPlayer(Damage);
+                }
+            }
         
         }
 
         protected override void OnTriggerExit2D(Collider2D other)
         {
-            if (_target.Contains(other.tag))
+            if (Target.Contains(other.tag))
             {
                 AIsetter.target = GameObject.FindWithTag("Core").transform;
             }
-           
         }
     }
 }

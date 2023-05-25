@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Pathfinding;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Monsters
 {
@@ -52,7 +50,7 @@ namespace Monsters
 
         protected override void OnCollisionEnter2D(Collision2D col)
         {
-            if (((IList<string>)_target).Contains(col.transform.tag)) //Need to change  the tag
+            if (((IList<string>)Target).Contains(col.transform.tag)) //Need to change  the tag
             {
                 Players.Survivor survivor = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
                 survivor.ZombieDamageOnPlayer(Damage); // Zombie Attack
@@ -61,7 +59,7 @@ namespace Monsters
         }
         protected override void OnTriggerExit2D(Collider2D other)
         {
-            if (_target.Contains(other.tag))
+            if (Target.Contains(other.tag))
             {
                 AIsetter.target = GameObject.FindWithTag("Core").transform;
             }

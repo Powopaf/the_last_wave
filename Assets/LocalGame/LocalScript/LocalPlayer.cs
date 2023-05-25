@@ -43,8 +43,11 @@ namespace Players.PlayerFolder
         private InputAction _farming;
         private bool Canbefarm = false;
         private Collider2D? _farmingElt;
-        public List<Transform[]> TreeTransforms;
         //
+        //Attack
+        private InputAction _attack;
+        private float _attackTimeCounter;
+        
 
         public LocalPlayer(int health = 100, int damage = 1,
             int speed = 1, int maxHealth = 100, int heal = 1, string name = "")
@@ -65,11 +68,7 @@ namespace Players.PlayerFolder
             _playersight = GetComponentInChildren<Playersight>();
             camera = GameObject.FindWithTag("Camera").GetComponent<Camera>();
             animator = GetComponent<Animator>();
-            
-            ////////////////////////////////////////////////////////////////////FarmingCode
-            TreeTransforms = GameObject.FindWithTag("LocalMap").GetComponent<LocalMap>().TreeTransforms;
-            /////////////
-
+            _attackTimeCounter = 2;
         }
 
         protected void Start()
@@ -91,7 +90,10 @@ namespace Players.PlayerFolder
             _farming.performed += Farming; 
             _farming.Enable();
             ////////////////////////////////////////
-
+            ///Attack
+            _attack = _playerControl.Player.Attack;
+            _attack.performed += Attack;
+            _attack.Enable();
 
         }
 
@@ -103,6 +105,9 @@ namespace Players.PlayerFolder
             //Farmingcode
             _farming.Disable();
             ///////////////
+            //Attack
+            _attack.Disable();
+            
         }
 
         protected void Update()
@@ -111,6 +116,10 @@ namespace Players.PlayerFolder
             animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
             healthBar.SetHealth(Health);
             dir = _move.ReadValue<Vector2>();
+            
+            //attack
+            animator.SetFloat("LastMoveX", dir.x);
+            animator.SetFloat("LastMoveY",dir.y);
         }
 
         protected void FixedUpdate()
@@ -192,7 +201,13 @@ namespace Players.PlayerFolder
             
         }
        /////////////////////////////////////////////////////////////////////////////////////////
-                
+       //Attack
+       private void Attack(InputAction.CallbackContext context)
+       {
+          
+           animator.SetBool("Attack", true);
+           _attackTimeCounter = 2;
+       }
             
         
     }

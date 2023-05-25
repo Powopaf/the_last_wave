@@ -37,6 +37,10 @@
                     "type": "Button",
                     "id": "1d294b3e-dd20-4492-a41f-c09be4b8ac8c",
                     "expectedControlType": "Button",
+                    "name": "PointerPosition",
+                    "type": "Value",
+                    "id": "66d6b987-8fab-4da5-85b6-01141d20d1d6",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -63,6 +67,15 @@
                     "name": "Spawn",
                     "type": "Button",
                     "id": "bc0a7f02-7ce6-4e59-8e9d-65f8efa48b09",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "ee0107c0-c694-461d-82e4-61264d0eea82",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -298,6 +311,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Spawn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d0d550f-c598-470e-a27d-8d97c078b6ce",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -44,8 +44,11 @@ namespace LocalGame.LocalScript
         private InputAction _farming;
         private bool Canbefarm = false;
         private Collider2D? _farmingElt;
-        public List<Transform[]> TreeTransforms;
         //
+        //Attack
+        private InputAction _attack;
+        private float _attackTimeCounter;
+        
 
         protected LocalPlayer(int health = 100, int damage = 1, int speed = 1, int maxHealth = 100, int heal = 1)
         {
@@ -65,11 +68,7 @@ namespace LocalGame.LocalScript
             _playersight = GetComponentInChildren<Playersight>();
             camera = GameObject.FindWithTag("Camera").GetComponent<Camera>();
             animator = GetComponent<Animator>();
-            
-            ////////////////////////////////////////////////////////////////////FarmingCode
-            TreeTransforms = GameObject.FindWithTag("LocalMap").GetComponent<LocalMap>().TreeTransforms;
-            /////////////
-
+            _attackTimeCounter = 2;
         }
 
         protected void Start()
@@ -95,8 +94,11 @@ namespace LocalGame.LocalScript
             _giveMoney = _playerControl.Player.Give;
             _giveMoney.performed += Give;
             _giveMoney.Enable();
+            ///Attack
+            _attack = _playerControl.Player.Attack;
+            _attack.performed += Attack;
+            _attack.Enable();
         }
-        
         // give money
         private void Give(InputAction.CallbackContext context) => _money += 10;
         
@@ -124,6 +126,8 @@ namespace LocalGame.LocalScript
             _farming.Disable();
             _upgradeInv.Disable();
             _giveMoney.Disable();
+            _attack.Disable();
+            
         }
 
         protected void Update()
@@ -131,7 +135,10 @@ namespace LocalGame.LocalScript
             animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
             animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
             dir = _move.ReadValue<Vector2>();
-            ///_visualInventory.SetText(_inventory.Inv[ItemEnum.Helmet]);
+            
+            //attack
+            animator.SetFloat("LastMoveX", dir.x);
+            animator.SetFloat("LastMoveY",dir.y);
         }
 
         protected void FixedUpdate()
@@ -196,5 +203,12 @@ namespace LocalGame.LocalScript
             
         }
        /////////////////////////////////////////////////////////////////////////////////////////
+       //Attack
+       private void Attack(InputAction.CallbackContext context)
+       {
+          
+           animator.SetBool("Attack", true);
+           _attackTimeCounter = 2;
+       }
     }
 }

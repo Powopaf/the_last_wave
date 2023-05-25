@@ -170,43 +170,11 @@ namespace World
                         if (IsGrass(current.TileType))
                         {
                             var treeGrass = Resources.Load<GameObject>(@"Tree\GrassTree");
-                            ////////////////////////////////////////////////FarmingCode
-                           /* trunkLeft.AddComponent<TreeDestroy>().leafPosition=new[]
-                            {
-                                botLeftLeaf.transform,botRightLeaf.transform , topLeftLeaf.transform,
-                                topRightLeaf.transform, trunkRight.transform
-                            };
-                            trunkRight.AddComponent<TreeDestroy>().leafPosition=
-                            new[]
-                                {
-                                    botLeftLeaf.transform,botRightLeaf.transform , topLeftLeaf.transform,
-                                    topRightLeaf.transform, trunkLeft.transform
-                                };*/
-                           //TreeTransforms.Add(new []{trunkLeft.transform,botLeftLeaf.transform,botRightLeaf.transform , 
-                               //topLeftLeaf.transform, topRightLeaf.transform, trunkRight.transform});
-                            
-                               ////////////////////////////////////////////////////////////////////////////////::::://
                             Instantiate(treeGrass, new Vector3(i , j, -0.5f), Quaternion.identity);
                         }
                         else
                         {
                             var SnowTree = Resources.Load<GameObject>(@"Tree\SnowTree");
-                            
-                            /////////////////////////////////////////////////////////////////://FarmingCode
-                            /*
-                            trunkMid.AddComponent<TreeDestroy>().leafPosition=
-                                new Transform[]
-                                {
-                                    botLeftLeaf.transform,botMidLeaf.transform,botRightLeaf.transform,topLeftLeaf.transform,
-                                    topMidLeaf.transform,topRightLeaf.transform,trunkLeft.transform,trunkRight.transform
-                                    
-                                };
-                            *//*
-                            TreeTransforms.Add(new []{trunkMid.transform, botLeftLeaf.transform,botMidLeaf.transform,
-                                botRightLeaf.transform,topLeftLeaf.transform, topMidLeaf.transform,
-                                topRightLeaf.transform,trunkLeft.transform,trunkRight.transform});
-                            */
-                            //////////////////////////////////////////////////////////////////////////////
                             Instantiate(SnowTree, new Vector3(i , j, -0.5f), Quaternion.identity);
                         }
                     }

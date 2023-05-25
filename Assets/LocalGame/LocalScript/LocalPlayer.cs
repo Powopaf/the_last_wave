@@ -33,10 +33,7 @@ namespace LocalGame.LocalScript
 
         private PlayerInputAction _playerControl;
         private InputAction _move;
-        private InputAction _sight;
-        private Vector2 pointerInput;
-        private Vector3 mousepos;
-        private Playersight _playersight;
+       
 
         //Farimngcode
         public int nbTree = 0;
@@ -65,7 +62,6 @@ namespace LocalGame.LocalScript
         {
             rb = GetComponent<Rigidbody2D>();
             _playerControl = new PlayerInputAction();
-            _playersight = GetComponentInChildren<Playersight>();
             camera = GameObject.FindWithTag("Camera").GetComponent<Camera>();
             animator = GetComponent<Animator>();
             _attackTimeCounter = 2;
@@ -83,7 +79,7 @@ namespace LocalGame.LocalScript
             _move.Enable();
 
 
-            _sight.Enable();
+           
             
             /////////////////////////////////////Farmingcode
             _farming = _playerControl.Player.Farming;
@@ -120,8 +116,7 @@ namespace LocalGame.LocalScript
         protected void OnDisable()
         {
             _move.Disable();
-            _sight.Disable();
-            
+
             //Farmingcode
             _farming.Disable();
             _upgradeInv.Disable();

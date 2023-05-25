@@ -51,6 +51,11 @@ namespace Players.PlayerFolder
         private InputAction _farming;
         private bool _canbefarm;
         private Collider2D _farmingElt;
+        
+        //
+        private InputAction _attack;
+        private float _attackTimeCounter;
+
 
         public Player(int health = 100, int speed = 1, int maxHealth = 100)
         {
@@ -116,6 +121,10 @@ namespace Players.PlayerFolder
                 _farming = _playerControl.Player.Farming;
                 _farming.performed += Farming; 
                 _farming.Enable();
+                
+                _attack = _playerControl.Player.Attack;
+                _attack.performed += Attack;
+                _attack.Enable();
             }
         }
 
@@ -175,6 +184,7 @@ namespace Players.PlayerFolder
                 _giveMoney.Disable();
                 _farming.Disable();
                 _spawnZombie.Disable();
+                _attack.Disable();
             }
         }
 
@@ -182,8 +192,11 @@ namespace Players.PlayerFolder
         {
             if (GetComponent<PhotonView>().IsMine)
             {
-                animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
-                animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
+                animator.SetFloat("X", _dir.x);
+                animator.SetFloat("Y", _dir.y);
+                
+                animator.SetFloat("LastMoveX", _dir.x);
+                animator.SetFloat("LastMoveY",_dir.y);
             }
         }
 
@@ -251,6 +264,13 @@ namespace Players.PlayerFolder
                 }
                 Destroy(_farmingElt.gameObject);
             }
+        }
+        
+        private void Attack(InputAction.CallbackContext context)
+        {
+          
+            animator.SetBool("Attack", true);
+            _attackTimeCounter = 2;
         }
     }
 }

@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Item;
 using UnityEngine;
 
-public class Sword : MonoBehaviour, IItem
+public class Sword : MonoBehaviour
 {
     public int Damage { get; }
     public int Protection { get; }

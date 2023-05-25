@@ -9,6 +9,8 @@ TagManager:
   - PlayerLaunchOffset
   - Survivor
   - NotWalk
+  - Rock
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -43,9 +45,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Tile
+    uniqueID: 4252719937
+    locked: 0
+  - name: Props
+    uniqueID: 1507666825
+    locked: 0
+  - name: Border
+    uniqueID: 3674012803
+    locked: 0
+  - name: Rock
+    uniqueID: 4196644709
+    locked: 0
+  - name: Tree
+    uniqueID: 4033952727
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: 
-    uniqueID: 4252719937
     locked: 0

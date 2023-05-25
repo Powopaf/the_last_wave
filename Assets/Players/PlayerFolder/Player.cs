@@ -31,7 +31,7 @@ namespace Players.PlayerFolder
         private int _money;
         private InputAction _giveMoney;
         private InputAction _upgradeInv;
-        private VisualInventory _visualInventory;
+        public VisualInventory _visualInventory;
 
 
         private PlayerInputAction _playerControl;
@@ -215,7 +215,7 @@ namespace Players.PlayerFolder
                     nbTree += tree.Number;
                     Debug.Log(nbTree);
                 }
-                Destroy(_farmingElt.gameObject);
+                PhotonNetwork.Destroy(_farmingElt.gameObject);
             }
         }
     }

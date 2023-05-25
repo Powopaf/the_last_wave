@@ -11,6 +11,8 @@ namespace Players.Inventory
         public TMP_Text textGloves;
         public TMP_Text textSword;
         public TMP_Text textMoney;
+        public TMP_Text textWood;
+        public TMP_Text textStone;
 
         public void UpdateText(int lvl, ItemEnum item)
         {

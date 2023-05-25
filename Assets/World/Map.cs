@@ -52,7 +52,10 @@ namespace World
                             Ycoord = y + Random.Range(-8, 9);
                         }
                     }
-                    GetComponent<PhotonView>().RPC("SpawnPlayer", RpcTarget.All, x, y);
+                    PhotonNetwork.Instantiate("Crystal", new Vector3(x, 
+                        y, -1), Quaternion.identity);
+
+                    GetComponent<PhotonView>().RPC("Spawn", RpcTarget.All, Xcoord, Ycoord);
                 }
                 else
                 {
@@ -68,7 +71,7 @@ namespace World
     
         
         [PunRPC]
-        public void SpawnPlayer(int x, int y)
+        public void Spawn(int x, int y)
         {
             PhotonNetwork.Instantiate("PhotonPlayerTest3", new Vector3(x, 
                 y, -1), Quaternion.identity);

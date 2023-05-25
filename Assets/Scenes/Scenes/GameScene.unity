@@ -184,7 +184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8966204729858013831, guid: 6d51791d01cc8104f8d9897a9ff523d3, type: 3}
       propertyPath: RandomSeed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8966204729858013831, guid: 6d51791d01cc8104f8d9897a9ff523d3, type: 3}
       propertyPath: _tiles.Array.data[0].visual

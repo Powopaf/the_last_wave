@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using ATH.HealthBar;
 using Players.Inventory;
 using Players.Farming;
 using Players.PlayerFolder;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using World;
@@ -77,7 +75,6 @@ namespace LocalGame.LocalScript
         protected void Start()
         {
             healthBar.SetMaxHealth(MaxHealth);
-            healthBar.SetHealth(MaxHealth);
             ///   _visualInventory.InitText();
         }
 
@@ -133,7 +130,6 @@ namespace LocalGame.LocalScript
         {
             animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
             animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
-            healthBar.SetHealth(Health);
             dir = _move.ReadValue<Vector2>();
             ///_visualInventory.SetText(_inventory.Inv[ItemEnum.Helmet]);
         }
@@ -141,7 +137,6 @@ namespace LocalGame.LocalScript
         protected void FixedUpdate()
         {
             rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
-            healthBar.SetHealth(Health);
         }
         
         public void ZombieDamageOnPlayer(int damage)

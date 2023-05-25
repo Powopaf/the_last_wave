@@ -2,6 +2,7 @@ using UnityEngine.UI;
 using ATH.HealthBar;
 using Photon.Pun;
 using Players.Inventory;
+using Players.Item;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,6 +28,9 @@ namespace Players.PlayerFolder
         private int _money;
         private InputAction _giveMoney;
         private InputAction _upgradeInv;
+        
+        //spawn 1 zombies
+        private InputAction _spawnZombie;
         
         private PlayerInputAction _playerControl;
         private InputAction _move;
@@ -75,7 +79,6 @@ namespace Players.PlayerFolder
                 PhotonNetwork.SendRate = 40;
                 PhotonNetwork.SerializationRate = 40;
                 healthBar.SetMaxHealth(MaxHealth);
-                healthBar.SetHealth(MaxHealth);
                 helmetText.text = _inventory.Inv[0].Item2.ToString();
                 chestPlateText.text = _inventory.Inv[1].Item2.ToString();
                 glovesText.text = _inventory.Inv[2].Item2.ToString();
@@ -94,6 +97,10 @@ namespace Players.PlayerFolder
         {
             if (GetComponent<PhotonView>().IsMine)
             {
+                _spawnZombie = _playerControl.Player.Spawn;
+                _spawnZombie.performed += Spawn;
+                _spawnZombie.Enable();
+                
                 _move = _playerControl.Player.Move;
                 _move.Enable();
                 
@@ -110,6 +117,14 @@ namespace Players.PlayerFolder
                 _farming.performed += Farming; 
                 _farming.Enable();
             }
+        }
+
+        private void Spawn(InputAction.CallbackContext context)
+        {
+            var position = rb.transform.position;
+            var x = position.x;
+            var y = position.y;
+            PhotonNetwork.Instantiate("Zombie1", new Vector3(x + 1, y + 1, -1), Quaternion.identity);
         }
 
         private void Give(InputAction.CallbackContext context)
@@ -159,6 +174,7 @@ namespace Players.PlayerFolder
                 _upgradeInv.Disable();
                 _giveMoney.Disable();
                 _farming.Disable();
+                _spawnZombie.Disable();
             }
         }
 
@@ -168,7 +184,6 @@ namespace Players.PlayerFolder
             {
                 animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
                 animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
-                healthBar.SetHealth(Health);
             }
         }
 
@@ -178,21 +193,21 @@ namespace Players.PlayerFolder
             {
                 _dir = _move.ReadValue<Vector2>();
                 rb.velocity = new Vector2(_dir.x * speed, _dir.y * speed);
-                healthBar.SetHealth(Health);
             }
         }
-
+        
+        
+        
         public void ZombieDamageOnPlayer(int damage)
         {
-            if (Health - damage > 0)
+            int defence = 0;
+            foreach ((IItem, int) item in _inventory.Inv)
             {
-                Health -= damage;
-                Debug.Log("Aie!!!!!");
+                defence += item.Item2;
             }
-            else
-            {
-                Debug.Log("the player died!!!"); // To see the effect pf the Zombie Attack
-            }
+            // ReSharper disable once IntDivisionByZero
+            Health -= damage / (defence / 2);
+            healthBar.SetHealth(Health);
         }
      
         public void OnTriggerEnter2D(Collider2D col)

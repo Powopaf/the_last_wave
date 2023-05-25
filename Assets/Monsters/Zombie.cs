@@ -1,10 +1,6 @@
-
-using System;
 using System.Linq;
 using Pathfinding;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 
 namespace Monsters
 {
@@ -14,10 +10,10 @@ namespace Monsters
         protected int Damage;
         private string _name;
         //private Item[] _loot;
-        protected string[] _target;
+        protected readonly string[] Target;
         private (int, int) _coordinate;
         public float speed;
-        protected Transform Playertarget; //On doit pouvoir changer l'objet avec la fonction TargetZombie()
+        protected Transform Playertarget;
         public Rigidbody2D rb;
         protected Vector2 Movement;
         public Animator animator;
@@ -28,7 +24,7 @@ namespace Monsters
             int health = 1, int damage = 1, float speed = 1f)
         {
             _name = name;
-            _target = target;
+            Target = target;
             _health = health;
             Damage = damage;
         }
@@ -36,16 +32,16 @@ namespace Monsters
 
         protected string TargetZombie()
         {
-            string result = _target[0];
-            for (int i = 1; i < _target.Length; i++)
+            string result = Target[0];
+            for (int i = 1; i < Target.Length; i++)
             {
-                Vector2 positionTest = GameObject.FindWithTag(_target[i]).transform.position;
+                Vector2 positionTest = GameObject.FindWithTag(Target[i]).transform.position;
                 Vector2 positionResult = GameObject.FindWithTag(result).transform.position;
                 float testmagnitude = ((Vector2) transform.position - positionTest).magnitude;
                 float resultmagnitude = ((Vector2) transform.position - positionResult).magnitude;
                 if (testmagnitude>resultmagnitude)
                 {
-                    result = _target[i];
+                    result = Target[i];
                 }
             }
             return result;
@@ -64,7 +60,7 @@ namespace Monsters
 
         protected void OnTriggerEnter2D(Collider2D other)
         {
-            if (_target.Contains(other.tag))
+            if (Target.Contains(other.tag))
             {
                 AIsetter.target = other.transform;
             }

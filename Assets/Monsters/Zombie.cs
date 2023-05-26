@@ -6,7 +6,7 @@ namespace Monsters
 {
     public abstract class Zombie: MonoBehaviour
     {
-        private int _health;
+        protected int Health;
         protected int Damage;
         private string _name;
         //private Item[] _loot;
@@ -24,8 +24,8 @@ namespace Monsters
             int health = 1, int damage = 1, float speed = 1f)
         {
             _name = name;
-            Target = target;
-            _health = health;
+            Target = target; 
+            Health = health;
             Damage = damage;
         }
         
@@ -67,5 +67,6 @@ namespace Monsters
         }
 
         protected abstract void OnTriggerExit2D(Collider2D other);
+        
     }
 }

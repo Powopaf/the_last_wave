@@ -11,6 +11,13 @@ TagManager:
   - NotWalk
   - Rock
   - Tree
+  - Zombie
+  - LocalMap
+  - Bullet
+  - Core
+  - Farmer
+  - Camera
+  - Zombie1
   layers:
   - Default
   - TransparentFX

@@ -8,11 +8,11 @@ public class Sword : MonoBehaviour
     public int Damage { get; }
     public int Protection { get; }
     public (int, int) Potion { get; }
-    public void Reset()
+    public void Reset() { }
+
+    public int Upgrade(int money)
     {
-    }
-    public void Upgrade()
-    {
+        throw new NotImplementedException();
     }
 
     public void OnCollisionEnter2D(Collision2D other)

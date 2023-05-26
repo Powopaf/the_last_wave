@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Monsters;
 using Photon.Pun;
 using UnityEngine;
@@ -8,11 +9,16 @@ namespace Players {
     {
         private readonly string[] _target =  { "Survivor" };
 
+        void Start()
+        {
+            
+        }
+
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (_target.Contains(col.transform.tag))
             {
-                GameObject p = PhotonNetwork.Instantiate("Fire", col.transform.position, Quaternion.identity);
+                var p = PhotonNetwork.Instantiate("Fire", col.transform.position, Quaternion.identity);
                 p.GetComponent<ParticleSystem>().Play();
                 if (col.transform.CompareTag("Survivor"))
                 {

@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8559117054388033648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 5478238688588863672, guid: 06cd72dde76590e4f87e5a404baa4189, type: 3}
+  m_PrefabInstance: {fileID: 4334545821286392751}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7104210506125672797}
+  m_Layer: 0
+  m_Name: 'Fire (Missing Prefab with guid: 3fb0e2036b86aa248a85739b22ad222d) (Missing
+    Prefab with guid: 06cd72dde76590e4f87e5a404baa4189)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7104210506125672797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 6823058599071572722, guid: 06cd72dde76590e4f87e5a404baa4189, type: 3}
+  m_PrefabInstance: {fileID: 4334545821286392751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8559117054388033648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1043679384561823271}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8694873173992390436
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +152,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8694873173992390436}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -240,8 +272,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06cd72dde76590e4f87e5a404baa4189, type: 3}
---- !u!4 &7104210506125672797 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6823058599071572722, guid: 06cd72dde76590e4f87e5a404baa4189, type: 3}
-  m_PrefabInstance: {fileID: 4334545821286392751}
-  m_PrefabAsset: {fileID: 0}

@@ -308,6 +308,12 @@ namespace Players.PlayerFolder
             _attacking = true;
             
         }
+
+        public bool TakeDamage(int damage)
+        {
+            Health -= damage;
+            return true;
+        }
     }
 }
 

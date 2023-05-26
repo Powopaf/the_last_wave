@@ -55,8 +55,12 @@ namespace Players.PlayerFolder
         //
         private InputAction _attack;
         private float _attackTimeCounter;
-
-
+        
+        private bool Walking;
+        private float _LastMoveX;
+        private float _LastMoveY;
+        private float _attackTime;
+        private bool _attacking;
         public Player(int health = 100, int speed = 1, int maxHealth = 100)
         {
             MaxHealth = maxHealth;
@@ -74,6 +78,9 @@ namespace Players.PlayerFolder
                 _playerControl = new PlayerInputAction();
                 camera = Camera.main;
                 animator = GetComponent<Animator>();
+                
+                _attackTime = 1;
+                _attacking = false;
             }
         }
 
@@ -194,9 +201,17 @@ namespace Players.PlayerFolder
             {
                 animator.SetFloat("X", _dir.x);
                 animator.SetFloat("Y", _dir.y);
+                if (_attacking)
+                {
+                    _attackTime -= Time.deltaTime;
+                    if (_attackTime <= 0)
+                    {
+                        animator.SetBool("Attack",false);
+                        _attackTime = 1;
+                        _attacking = false;
+                    }
+                }
                 
-                animator.SetFloat("LastMoveX", _dir.x);
-                animator.SetFloat("LastMoveY",_dir.y);
             }
         }
 
@@ -206,6 +221,20 @@ namespace Players.PlayerFolder
             {
                 _dir = _move.ReadValue<Vector2>();
                 rb.velocity = new Vector2(_dir.x * speed, _dir.y * speed);
+                if (rb.velocity != Vector2.zero)
+                {
+                    animator.SetBool("Walking", true);
+                    Walking = true;
+                    _LastMoveX = _dir.x;
+                    _LastMoveY = _dir.y;
+
+                }
+                else if (Walking)
+                {
+                    animator.SetBool("Walking" , false);
+                    animator.SetFloat("LastMoveX", _LastMoveX);
+                    animator.SetFloat("LastMoveY",_LastMoveY);
+                }
             }
         }
         
@@ -270,7 +299,8 @@ namespace Players.PlayerFolder
         {
           
             animator.SetBool("Attack", true);
-            _attackTimeCounter = 2;
+            _attacking = true;
+            
         }
     }
 }

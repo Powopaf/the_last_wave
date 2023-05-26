@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7549103898111286876}
   - component: {fileID: 7549103898111286877}
   - component: {fileID: 7549103898111286818}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7549103898465464703}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 399228351
-  m_SortingLayer: -7
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1001997806, guid: 19e4f3f4a78cc104ba7ee858701691db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8950f29621521eb4b94250420e965865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 35
+  speed: 10
   healthBar: {fileID: 7118533133899129243}
   rb: {fileID: 7549103898526985876}
   camera: {fileID: 7549103898111286876}
@@ -364,23 +364,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1355748436511909714, guid: bb4484b19ab51644f8087a375551222c, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2417138278844022203, guid: bb4484b19ab51644f8087a375551222c, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2457192763581154298, guid: bb4484b19ab51644f8087a375551222c, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2818663804077573475, guid: bb4484b19ab51644f8087a375551222c, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6425410615817052041, guid: bb4484b19ab51644f8087a375551222c, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7564604661688032970, guid: bb4484b19ab51644f8087a375551222c, type: 3}
       propertyPath: m_Name
@@ -388,7 +388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7564604661688032970, guid: bb4484b19ab51644f8087a375551222c, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8844073976418160946, guid: bb4484b19ab51644f8087a375551222c, type: 3}
       propertyPath: m_Pivot.x
@@ -577,7 +577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3484831787229598534, guid: bcc4f5b32280c114699ff7f80d69ada3, type: 3}
       propertyPath: m_SortingLayer
-      value: -6
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3484831787229598534, guid: bcc4f5b32280c114699ff7f80d69ada3, type: 3}
       propertyPath: m_SortingLayerID
@@ -586,6 +586,10 @@ PrefabInstance:
     - target: {fileID: 3739309365063728608, guid: bcc4f5b32280c114699ff7f80d69ada3, type: 3}
       propertyPath: m_Name
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739309365063728608, guid: bcc4f5b32280c114699ff7f80d69ada3, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcc4f5b32280c114699ff7f80d69ada3, type: 3}

@@ -1,5 +1,6 @@
 using System.Linq;
 using Pathfinding;
+using Photon.Pun;
 using Players;
 using UnityEngine;
 
@@ -65,6 +66,12 @@ namespace Monsters
             {
                 AIsetter.target = GameObject.FindWithTag("Core").transform;
             }
+        }
+
+        public bool ZombieTakeDamage(int damage)
+        {
+            Health -= damage;
+            return Health <= 0;
         }
     }
 }

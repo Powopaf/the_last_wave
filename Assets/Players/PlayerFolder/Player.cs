@@ -137,7 +137,14 @@ namespace Players.PlayerFolder
             var position = rb.transform.position;
             var x = position.x;
             var y = position.y;
-            PhotonNetwork.Instantiate("Zombie1", new Vector3(x + 1, y + 1, -1), Quaternion.identity);
+            if ((context.control as KeyControl)!.keyCode == Key.P)
+            {
+                PhotonNetwork.Instantiate("Zombie1", new Vector3(x + 1, y + 1, -1), Quaternion.identity);
+            }
+            else if((context.control as KeyControl)!.keyCode == Key.O)
+            {
+                PhotonNetwork.Instantiate("Turret", new Vector3(x + 1, y, -1), Quaternion.identity);
+            }
         }
 
         private void Give(InputAction.CallbackContext context)
@@ -335,6 +342,12 @@ namespace Players.PlayerFolder
         {
             animator.SetBool("Attack", true);
             _attacking = true;
+        }
+
+        public bool TakeDamage(int damage)
+        {
+            Health -= damage;
+            return true;
         }
     }
 }

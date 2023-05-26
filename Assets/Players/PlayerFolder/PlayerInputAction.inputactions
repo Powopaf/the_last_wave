@@ -37,10 +37,6 @@
                     "type": "Button",
                     "id": "1d294b3e-dd20-4492-a41f-c09be4b8ac8c",
                     "expectedControlType": "Button",
-                    "name": "PointerPosition",
-                    "type": "Value",
-                    "id": "66d6b987-8fab-4da5-85b6-01141d20d1d6",
-                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -307,6 +303,17 @@
                     "name": "",
                     "id": "a3ae7fcc-14b3-4451-9829-1f22d7f9a382",
                     "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spawn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "804e8f32-ee78-457f-b148-60cc656f9c24",
+                    "path": "<Keyboard>/o",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

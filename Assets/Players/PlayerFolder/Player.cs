@@ -139,11 +139,11 @@ namespace Players.PlayerFolder
             var position = rb.transform.position;
             var x = position.x;
             var y = position.y;
-            if ((context.control as KeyControl).keyCode == Key.P)
+            if ((context.control as KeyControl)!.keyCode == Key.P)
             {
                 PhotonNetwork.Instantiate("Zombie1", new Vector3(x + 1, y + 1, -1), Quaternion.identity);
             }
-            else
+            else if((context.control as KeyControl)!.keyCode == Key.O)
             {
                 PhotonNetwork.Instantiate("Turret", new Vector3(x + 1, y, -1), Quaternion.identity);
             }

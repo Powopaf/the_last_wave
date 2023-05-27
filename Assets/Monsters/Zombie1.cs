@@ -13,51 +13,39 @@ namespace Monsters
 
 
         public Zombie1() : 
-            base("Zombie1", new []{"Assassin","Farmer","Survivor","Worker"}, 100, 20, 30) { }
+            base(new []{"Assassin","Farmer","Survivor","Worker"}, 100, 20, 30) { }
 
         
         protected override void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             AI = GetComponent<AIPath>();
-            AIsetter.target=GameObject.FindWithTag("Survivor").transform;
+            AIsetter.target=GameObject.FindWithTag("Farmer").transform;
+        }
 
-        }
-        protected override void Start()
-        {
-            
-        }
-       
 
-        protected override void ZombieMovement(Vector2 direction)
+        protected void Update()
         {
-        }
-        
-       
-        protected override void Update()
-        { 
             Movement = AI.desiredVelocity;
             animator.SetFloat(X, Movement.x);
             animator.SetFloat(Y, Movement.y);
         }
-        protected override void FixedUpdate()
-        {
-        }
 
-       
+
         protected void OnCollisionStay2D(Collision2D col)
         {
-            
-            if (Target.Contains(col.transform.tag))   //Need to change  the tag
+            if (Target.Contains(col.transform.tag) && CanAttack) //Need to add tag
             {
-                if (col.transform.CompareTag("Survivor"))
+                if (col.transform.CompareTag("Farmer"))
                 {
-                    Survivor survivor = col.transform.GetComponent<Survivor>();
-                    survivor.ZombieDamageOnPlayer(Damage);
+                    Farmer survivor = col.gameObject.GetComponent<Farmer>();
+                    if (survivor.ZombieDamageOnPlayer(Damage)) // put Damage here
+                    {
+                        StartCoroutine(PlayerDeath(col, "Farmer"));
+                    }
                 }
+                StartCoroutine(DelayAttack());
             }
-        
         }
 
         protected override void OnTriggerExit2D(Collider2D other)

@@ -16,25 +16,21 @@ namespace Monsters
         private static readonly int Y = Animator.StringToHash("Y");
 
         public Zombie2() :
-            base("Zombie2",
-                new []{"Assassin","Farmer","Survivor","Worker"},
+            base(new []{"Assassin","Farmer","Survivor","Worker"},
                 50, 15, 100)
         {}
 
         protected override void Awake()
         {
             playerdistance = 10;
-            rb = GetComponent<Rigidbody2D>();
             _launchOffsetRigidbody2D = launchOffset.GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             AI=GetComponent<AIPath>();
             AIsetter.target=GameObject.FindWithTag("Core").transform;
         }
-        protected override void Start()
-        {
-        }
 
-        protected override void Update()
+
+        protected void Update()
         {
             AI.canMove = true;
             if (( (Vector2)transform.position-(Vector2)AIsetter.target.position).magnitude<=playerdistance)
@@ -63,22 +59,12 @@ namespace Monsters
             
         }
 
-        protected override void FixedUpdate()
-        {
-           
-        }
-        protected override void ZombieMovement(Vector2 direction)
-        {
-           
-        }
-        
         protected override void OnTriggerExit2D(Collider2D other)
         {
             if (Target.Contains(other.tag))
             {
                 AIsetter.target = GameObject.FindWithTag("Core").transform;
             }
-           
         }
     }
 }

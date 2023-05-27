@@ -12,8 +12,8 @@ namespace Players.PlayerFolder
 {
     public abstract class Player : MonoBehaviour
     {
-        private int Health { get; set; }
-        private int MaxHealth { get; }
+        public int Health { get; set; }
+        public int MaxHealth { get; }
         
         public float speed;
         private Vector2 _dir = Vector2.zero;
@@ -243,10 +243,8 @@ namespace Players.PlayerFolder
                 }
             }
         }
-        
-        
-        
-        public void ZombieDamageOnPlayer(int damage)
+
+        public bool ZombieDamageOnPlayer(int damage)
         {
             int defence = 0;
             foreach ((IItem, int) item in _inventory.Inv)
@@ -256,6 +254,7 @@ namespace Players.PlayerFolder
             // ReSharper disable once IntDivisionByZero
             Health -= damage / (defence / 2);
             healthBar.SetHealth(Health);
+            return Health <= 0;
         }
      
         public void OnTriggerEnter2D(Collider2D col)
@@ -267,7 +266,6 @@ namespace Players.PlayerFolder
                     _farmingElt = col;
                     _canbefarm = true;
                 }
-                
             }
         }
 
@@ -303,16 +301,8 @@ namespace Players.PlayerFolder
         
         private void Attack(InputAction.CallbackContext context)
         {
-          
             animator.SetBool("Attack", true);
             _attacking = true;
-            
-        }
-
-        public bool TakeDamage(int damage)
-        {
-            Health -= damage;
-            return true;
         }
     }
 }

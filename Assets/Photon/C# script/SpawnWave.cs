@@ -1,6 +1,4 @@
-﻿using System;
-using Monsters;
-using Photon.Pun;
+﻿using Photon.Pun;
 using UnityEngine;
 namespace Photon.C__script
 {

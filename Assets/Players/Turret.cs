@@ -4,16 +4,18 @@ using Monsters;
 using Photon.Pun;
 using UnityEngine;
 
-namespace Players {
+namespace Players 
+{
     public class Turret : MonoBehaviour
     {
         private readonly string[] _target =  { "Zombie1" };
         public ParticleSystem particle;
-        private bool CanAttack = true;
+        private bool _canAttack = true;
+        private int _health;
         
         private void OnTriggerStay2D(Collider2D col)
         {
-            if (_target.Contains(col.transform.tag) && CanAttack)
+            if (_target.Contains(col.transform.tag) && _canAttack)
             {
                 particle.transform.position = col.transform.position;
                 particle.Play();
@@ -32,9 +34,15 @@ namespace Players {
 
         private IEnumerator DelayAttack()
         {
-            CanAttack = false;
+            _canAttack = false;
             yield return new WaitForSeconds(2);
-            CanAttack = true;
+            _canAttack = true;
+        }
+
+        public bool DamageTurret(int damage)
+        {
+            _health -= damage;
+            return _health <= 0;
         }
     } 
 }

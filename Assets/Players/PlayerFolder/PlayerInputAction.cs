@@ -345,6 +345,17 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d1e867fa-080c-4cf0-a8f2-f8d1a177c605"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""5d0d550f-c598-470e-a27d-8d97c078b6ce"",
                     ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",

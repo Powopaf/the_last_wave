@@ -34,21 +34,19 @@ namespace Monsters
 
         protected void OnCollisionStay2D(Collision2D col)
         {
-            if (Target.Contains(col.transform.tag)) //Need to add tag
+            if (Target.Contains(col.transform.tag) && CanAttack) //Need to add tag
             {
                 if (col.transform.CompareTag("Farmer"))
                 {
                     Farmer survivor = col.gameObject.GetComponent<Farmer>();
-                    if (survivor.ZombieDamageOnPlayer(5)) // put Damage here
+                    if (survivor.ZombieDamageOnPlayer(Damage)) // put Damage here
                     {
                         StartCoroutine(PlayerDeath(col, "Farmer"));
                     }
                 }
+                StartCoroutine(DelayAttack());
             }
-            StartCoroutine(new WaitForSecondsRealtime(5));
         }
-        
-        
 
         protected override void OnTriggerExit2D(Collider2D other)
         {

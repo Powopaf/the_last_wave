@@ -9,13 +9,14 @@ namespace Monsters
     public abstract class Zombie: MonoBehaviour
     {
         protected int Health;
-        protected int Damage;
+        protected readonly int Damage;
         protected readonly string[] Target;
         private (int, int) _coordinate;
         protected Vector2 Movement;
         public Animator animator;
         protected AIPath AI;
         public AIDestinationSetter AIsetter;
+        protected bool CanAttack = true;
 
         protected Zombie(string[] target = null,
             int health = 1, int damage = 1, float speed = 1f)
@@ -80,11 +81,15 @@ namespace Monsters
                 h.Health = h.MaxHealth;
                 farmer.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
                 farmer.tag = "Farmer";
-                rbPlayer.constraints = RigidbodyConstraints2D.None;
-                // ReSharper disable once Unity.InefficientPropertyAccess
                 rbPlayer.constraints = RigidbodyConstraints2D.FreezeRotation;
-
             }
+        }
+
+        protected IEnumerator DelayAttack(int time = 3)
+        {
+            CanAttack = false;
+            yield return new WaitForSeconds(time);
+            CanAttack = true;
         }
     }
 }

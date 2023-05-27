@@ -142,13 +142,13 @@ namespace Players.PlayerFolder
             switch ((context.control as KeyControl)!.keyCode)
             {
                 case Key.P:
-                    PhotonNetwork.Instantiate("Zombie1", new Vector3(x + 1, y + 1, 0), Quaternion.identity);
+                    PhotonNetwork.Instantiate("Zombie1", new Vector3(x + 1, y, 0), Quaternion.identity);
                     break;
                 case Key.O:
-                    PhotonNetwork.Instantiate("Turret", new Vector3(x + 1, y, 0), Quaternion.identity);
+                    PhotonNetwork.Instantiate("Turret", new Vector3(x, y - 1, 0), Quaternion.identity);
                     break;
                 case Key.I:
-                    PhotonNetwork.Instantiate("PLayerWall", new Vector3(x - 1, y, 0), Quaternion.identity);
+                    PhotonNetwork.Instantiate("PLayerWall", new Vector3(x, y - 1, 0), Quaternion.identity);
                     break;
             }
         }

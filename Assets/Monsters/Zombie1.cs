@@ -21,7 +21,7 @@ namespace Monsters
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             AI = GetComponent<AIPath>();
-            AIsetter.target=GameObject.FindWithTag("Survivor").transform;
+            AIsetter.target=GameObject.FindWithTag("Farmer").transform;
         }
 
 
@@ -36,16 +36,15 @@ namespace Monsters
         protected void OnCollisionStay2D(Collision2D col)
         {
             
-            if (Target.Contains(col.transform.tag))   //Need to change  the tag
+            if (Target.Contains(col.transform.tag)) //Need to add tag
             {
-                if (col.transform.CompareTag("Survivor"))
+                if (col.transform.CompareTag("Farmer"))
                 {
-                    Survivor survivor = col.transform.GetComponent<Survivor>();
-                    if (survivor.ZombieDamageOnPlayer(Damage))
+                    Farmer survivor = col.gameObject.GetComponent<Farmer>();
+                    if (survivor.ZombieDamageOnPlayer(5)) // put Damage here
                     {
-                        PlayerDeath(col.gameObject);
+                        var playerDeath = PlayerDeath(col.gameObject);
                     }
-                    
                 }
             }
         }

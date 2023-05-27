@@ -61,7 +61,7 @@ namespace Players.PlayerFolder
         private bool _walking;
         private float _lastMoveX;
         private float _lastMoveY;
-        private float _attackTime;
+        private double _attackTime;
         private bool _attacking;
 
         protected Player(int health = 100, int speed = 1, int maxHealth = 100)

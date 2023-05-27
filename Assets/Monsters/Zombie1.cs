@@ -22,30 +22,17 @@ namespace Monsters
             animator = GetComponent<Animator>();
             AI = GetComponent<AIPath>();
             AIsetter.target=GameObject.FindWithTag("Survivor").transform;
+        }
 
-        }
-        protected override void Start()
-        {
-            
-        }
-       
 
-        protected override void ZombieMovement(Vector2 direction)
-        {
-        }
-        
-       
-        protected override void Update()
+        protected void Update()
         { 
             Movement = AI.desiredVelocity;
             animator.SetFloat(X, Movement.x);
             animator.SetFloat(Y, Movement.y);
         }
-        protected override void FixedUpdate()
-        {
-        }
 
-       
+
         protected void OnCollisionStay2D(Collision2D col)
         {
             
@@ -54,10 +41,13 @@ namespace Monsters
                 if (col.transform.CompareTag("Survivor"))
                 {
                     Survivor survivor = col.transform.GetComponent<Survivor>();
-                    survivor.ZombieDamageOnPlayer(Damage);
+                    if (survivor.ZombieDamageOnPlayer(Damage))
+                    {
+                        PlayerDeath(col.gameObject);
+                    }
+                    
                 }
             }
-        
         }
 
         protected override void OnTriggerExit2D(Collider2D other)

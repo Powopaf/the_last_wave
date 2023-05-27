@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using Pathfinding;
 using UnityEngine;
@@ -49,12 +50,6 @@ namespace Monsters
 
         protected abstract void Awake();
 
-        protected abstract void Update();
-        
-        protected abstract void Start();
-
-        protected abstract void FixedUpdate();
-        protected abstract void ZombieMovement(Vector2 direction);
 
         protected void OnTriggerEnter2D(Collider2D other)
         {
@@ -65,6 +60,15 @@ namespace Monsters
         }
 
         protected abstract void OnTriggerExit2D(Collider2D other);
+
+        protected IEnumerator PlayerDeath(GameObject player)
+        {
+            player.GetComponent<SpriteRenderer>().sortingLayerName = "PlayerDeath";
+            player.GetComponent<Rigidbody2D>().isKinematic = true;
+            yield return new WaitForSeconds(10);
+            player.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+            player.GetComponent<Rigidbody2D>().isKinematic = false;
+        }
         
     }
 }

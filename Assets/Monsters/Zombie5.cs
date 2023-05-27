@@ -22,26 +22,17 @@ namespace Monsters
             AIsetter.target=GameObject.FindWithTag("Core").transform;
 
         }
-        protected override void Start()
-        {
-           
-        }
-       
 
-        protected override void ZombieMovement(Vector2 direction)
-        {
-        }
         
        
-        protected override void Update()
+        protected void Update()
         {
             Movement = AI.desiredVelocity;
             animator.SetFloat(X, Movement.x);
             animator.SetFloat(Y, Movement.y);
         }
-        protected override void FixedUpdate() { }
 
-       
+
         protected void OnCollisionStay2D(Collision2D col)
         {
             if (Target.Contains(col.transform.tag))   //Need to change  the tag

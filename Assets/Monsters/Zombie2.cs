@@ -30,11 +30,9 @@ namespace Monsters
             AI=GetComponent<AIPath>();
             AIsetter.target=GameObject.FindWithTag("Core").transform;
         }
-        protected override void Start()
-        {
-        }
 
-        protected override void Update()
+
+        protected void Update()
         {
             AI.canMove = true;
             if (( (Vector2)transform.position-(Vector2)AIsetter.target.position).magnitude<=playerdistance)
@@ -63,15 +61,6 @@ namespace Monsters
             
         }
 
-        protected override void FixedUpdate()
-        {
-           
-        }
-        protected override void ZombieMovement(Vector2 direction)
-        {
-           
-        }
-        
         protected override void OnTriggerExit2D(Collider2D other)
         {
             if (Target.Contains(other.tag))

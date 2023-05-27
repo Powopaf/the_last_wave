@@ -55,8 +55,6 @@ namespace Monsters
 
         protected abstract void FixedUpdate();
         protected abstract void ZombieMovement(Vector2 direction);
-       
-        protected abstract void OnCollisionEnter2D(Collision2D col);
 
         protected void OnTriggerEnter2D(Collider2D other)
         {

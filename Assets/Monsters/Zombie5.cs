@@ -39,14 +39,12 @@ namespace Monsters
             animator.SetFloat(X, Movement.x);
             animator.SetFloat(Y, Movement.y);
         }
-        protected override void FixedUpdate()
-        {
-        }
+        protected override void FixedUpdate() { }
 
        
-        protected override void OnCollisionEnter2D(Collision2D col)
+        protected void OnCollisionStay2D(Collision2D col)
         {
-            if ( ((IList)Target).Contains(col.transform.tag))   //Need to change  the tag
+            if (Target.Contains(col.transform.tag))   //Need to change  the tag
             {
                 Players.Survivor survivor = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
                 survivor.ZombieDamageOnPlayer(Damage); // Zombie Attack

@@ -15,6 +15,8 @@ namespace Players.PlayerFolder
         public int Health { get; set; }
         public int MaxHealth { get; }
         
+        public int Damage { get; }
+        
         public float speed;
         private Vector2 _dir = Vector2.zero;
         [SerializeField] private HealthBar healthBar;
@@ -25,7 +27,7 @@ namespace Players.PlayerFolder
         private Rigidbody2D RblaunchOffsetPLayer;
         
         private Inventory.Inventory _inventory;
-        private int _money;
+        public int money;
         private InputAction _giveMoney;
         private InputAction _upgradeInv;
         
@@ -61,8 +63,9 @@ namespace Players.PlayerFolder
         private double _attackTime;
         private bool _attacking;
 
-        protected Player(int health = 100, int speed = 1, int maxHealth = 100)
+        protected Player(int damage = 1, int health = 100, int speed = 1, int maxHealth = 100)
         {
+            Damage = damage;
             MaxHealth = maxHealth;
             Health = health;
             this.speed = speed;
@@ -81,6 +84,7 @@ namespace Players.PlayerFolder
                 
                 _attackTime = 0.5;
                 _attacking = false;
+                
             }
         }
 
@@ -96,7 +100,7 @@ namespace Players.PlayerFolder
                 glovesText.text = _inventory.Inv[2].Item2.ToString();
                 bootsText.text = _inventory.Inv[3].Item2.ToString();
                 swordText.text = _inventory.Inv[4].Item2.ToString();
-                moneyText.text = _money.ToString();
+                moneyText.text = money.ToString();
             }
             else
             {
@@ -156,8 +160,8 @@ namespace Players.PlayerFolder
 
         private void Give(InputAction.CallbackContext context)
         {
-            _money += 10;
-            moneyText.text = _money.ToString();
+            money += 10;
+            moneyText.text = money.ToString();
         }
         
         // upgrade item
@@ -166,29 +170,29 @@ namespace Players.PlayerFolder
             switch ((context.control as KeyControl)!.keyCode)
             {
                 case Key.Z:
-                    _money = _inventory.UpgradeItem(_money, ItemEnum.Helmet);
+                    money = _inventory.UpgradeItem(money, ItemEnum.Helmet);
                     helmetText.text = _inventory.Inv[0].Item2.ToString();
-                    moneyText.text = _money.ToString();
+                    moneyText.text = money.ToString();
                     break;
                 case Key.X:
-                    _money = _inventory.UpgradeItem(_money, ItemEnum.ChestPlate);
+                    money = _inventory.UpgradeItem(money, ItemEnum.ChestPlate);
                     chestPlateText.text = _inventory.Inv[1].Item2.ToString();
-                    moneyText.text = _money.ToString();
+                    moneyText.text = money.ToString();
                     break;
                 case Key.C:
-                    _money = _inventory.UpgradeItem(_money, ItemEnum.Gloves);
+                    money = _inventory.UpgradeItem(money, ItemEnum.Gloves);
                     glovesText.text = _inventory.Inv[2].Item2.ToString();
-                    moneyText.text = _money.ToString();
+                    moneyText.text = money.ToString();
                     break;
                 case Key.V:
-                    _money = _inventory.UpgradeItem(_money, ItemEnum.Boots);
+                    money = _inventory.UpgradeItem(money, ItemEnum.Boots);
                     bootsText.text = _inventory.Inv[3].Item2.ToString();
-                    moneyText.text = _money.ToString();
+                    moneyText.text = money.ToString();
                     break;
                 case Key.B:
-                    _money = _inventory.UpgradeItem(_money, ItemEnum.Sword);
+                    money = _inventory.UpgradeItem(money, ItemEnum.Sword);
                     swordText.text = _inventory.Inv[4].Item2.ToString();
-                    moneyText.text = _money.ToString();
+                    moneyText.text = money.ToString();
                     break;
             }
         }

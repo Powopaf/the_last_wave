@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Linq;
 using Pathfinding;
 using UnityEngine;
+using Players;
 
 namespace Monsters
 {
@@ -10,9 +10,7 @@ namespace Monsters
         private static readonly int X = Animator.StringToHash("X");
         private static readonly int Y = Animator.StringToHash("Y");
 
-        public Zombie5() : 
-            base(new []{"Assassin","Farmer","Survivor","Worker"}, 
-                10000, 100, 30) {}  
+        public Zombie5() : base(new []{"Assassin","Farmer","Survivor","Worker"}, 10000, 100, 30) {}  
     
         protected override void Awake()
         {
@@ -22,8 +20,6 @@ namespace Monsters
 
         }
 
-        
-       
         protected void Update()
         {
             Movement = AI.desiredVelocity;
@@ -34,21 +30,21 @@ namespace Monsters
 
         protected void OnCollisionStay2D(Collision2D col)
         {
-            if (Target.Contains(col.transform.tag))   //Need to change  the tag
+            
+            if (Target.Contains(col.transform.tag) && CanAttack) //Need to add tag
             {
-                
+                if (col.transform.CompareTag("Farmer"))
+                {
+                    Farmer survivor = col.gameObject.GetComponent<Farmer>();
+                    if (survivor.ZombieDamageOnPlayer(Damage)) // put Damage here
+                    {
+                        StartCoroutine(PlayerDeath(col, "Farmer"));
+                    }
+                }
+                StartCoroutine(DelayAttack());
             }
         
         }
-        protected override void OnTriggerExit2D(Collider2D other)
-        {
-            if (Target.Contains(other.tag))
-            {
-                AIsetter.target = GameObject.FindWithTag("Core").transform;
-            }
-           
-        }
-    
     }
 }
 

@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using Pathfinding;
 using UnityEngine;
 
@@ -7,18 +5,15 @@ namespace Monsters
 {
     public class Zombie2 : Zombie
     {
-        public float playerdistance=10;
+        public float playerdistance = 10;
         public GameObject zombie2Projectile;
         public GameObject launchOffset;
         private Rigidbody2D _launchOffsetRigidbody2D;
-        private float _zombieWeaponRecharging =1 ;
+        private float _zombieWeaponRecharging = 1 ;
         private static readonly int X = Animator.StringToHash("X");
         private static readonly int Y = Animator.StringToHash("Y");
 
-        public Zombie2() :
-            base(new []{"Assassin","Farmer","Survivor","Worker"},
-                50, 15, 100)
-        {}
+        public Zombie2() : base(new []{"Assassin","Farmer","Survivor","Worker"}, 50, 15, 100) { }
 
         protected override void Awake()
         {
@@ -28,7 +23,6 @@ namespace Monsters
             AI=GetComponent<AIPath>();
             AIsetter.target=GameObject.FindWithTag("Core").transform;
         }
-
 
         protected void Update()
         {
@@ -57,14 +51,6 @@ namespace Monsters
             animator.SetFloat(X, Movement.x);
             animator.SetFloat(Y, Movement.y);
             
-        }
-
-        protected override void OnTriggerExit2D(Collider2D other)
-        {
-            if (Target.Contains(other.tag))
-            {
-                AIsetter.target = GameObject.FindWithTag("Core").transform;
-            }
         }
     }
 }

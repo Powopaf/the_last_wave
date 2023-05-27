@@ -53,14 +53,19 @@ namespace Monsters
             {
                 AIsetter.target = other.transform;
             }
-
             if (AIsetter.target.CompareTag("Dead"))
             {
                 AIsetter.target=GameObject.FindWithTag("Core").transform;
             }
         }
 
-        protected abstract void OnTriggerExit2D(Collider2D other);
+        protected void OnTriggerExit2D(Collider2D other)
+        {
+            if (Target.Contains(other.tag))
+            {
+                AIsetter.target = GameObject.FindWithTag("Core").transform;
+            }
+        }
 
         // ReSharper disable Unity.PerformanceAnalysis
         protected IEnumerator PlayerDeath(Collision2D col, string id)
@@ -90,6 +95,12 @@ namespace Monsters
             CanAttack = false;
             yield return new WaitForSeconds(time);
             CanAttack = true;
+        }
+        
+        public bool ZombieTakeDamage(int damage)
+        {
+            Health -= damage;
+            return Health <= 0;
         }
     }
 }

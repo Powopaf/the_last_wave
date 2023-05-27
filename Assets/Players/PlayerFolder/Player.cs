@@ -58,7 +58,7 @@ namespace Players.PlayerFolder
         private bool Walking;
         private float _LastMoveX;
         private float _LastMoveY;
-        private float _attackTime;
+        private double _attackTime;
         private bool _attacking;
         public Player(int health = 100, int speed = 1, int maxHealth = 100)
         {
@@ -78,7 +78,7 @@ namespace Players.PlayerFolder
                 camera = Camera.main;
                 animator = GetComponent<Animator>();
                 
-                _attackTime = 1;
+                _attackTime = 0.5;
                 _attacking = false;
             }
         }
@@ -206,7 +206,7 @@ namespace Players.PlayerFolder
                     if (_attackTime <= 0)
                     {
                         animator.SetBool("Attack",false);
-                        _attackTime = 1;
+                        _attackTime = 0.5;
                         _attacking = false;
                     }
                 }

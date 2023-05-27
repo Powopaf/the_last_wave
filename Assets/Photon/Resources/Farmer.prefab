@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7676032718694182459}
   m_Layer: 0
   m_Name: Farmer
-  m_TagString: Untagged
+  m_TagString: Farmer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,7 +286,7 @@ MonoBehaviour:
   healthBar: {fileID: 7118533133899129243}
   rb: {fileID: 7549103898526985876}
   camera: {fileID: 7549103898111286876}
-  animator: {fileID: 0}
+  animator: {fileID: 7192403950065674981}
   CanvasName: {fileID: 0}
   Name: {fileID: 0}
   helmetText: {fileID: 0}

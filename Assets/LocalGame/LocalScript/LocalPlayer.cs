@@ -1,11 +1,8 @@
-using System.Collections.Generic;
 using ATH.HealthBar;
 using Players.Inventory;
 using Players.Farming;
-using Players.PlayerFolder;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using World;
 
 namespace LocalGame.LocalScript
 {

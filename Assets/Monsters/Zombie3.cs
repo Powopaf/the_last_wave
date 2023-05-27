@@ -1,7 +1,8 @@
 using System;
-using System.Collections;
 using System.Linq;
 using Pathfinding;
+using Photon.Pun;
+using Players;
 using UnityEngine;
 
 namespace Monsters
@@ -12,59 +13,45 @@ namespace Monsters
         private static readonly int Y = Animator.StringToHash("Y");
 
         public Zombie3() :
-            base("Zombie3",
-                new String[] { "Building", "Core" },
-                200, 15, 10)
-        {
-        }
-
-
+            base(new String[] { "PLayerWall", "Core", "Turret" }, 200, 15, 10) { }
 
         protected override void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             AI = GetComponent<AIPath>();
             AIsetter.target=GameObject.FindWithTag("Core").transform;
-
         }
 
-        protected override void Start()
-        {}
-
-
-        protected override void ZombieMovement(Vector2 direction)
-        {}
-
-
-        protected override void Update()
+        protected void Update()
         {
             Movement = AI.desiredVelocity;
             animator.SetFloat(X, Movement.x);
             animator.SetFloat(Y, Movement.y);
         }
-
-        protected override void FixedUpdate()
+        
+        protected void OnCollisionStay2D(Collision2D col)
         {
-        }
-
-
-        protected override void OnCollisionEnter2D(Collision2D col)
-        {
-            if (((IList)Target).Contains(col.transform.tag)) //Need to change  the tag
+            
+            if (Target.Contains(col.transform.tag) && CanAttack) //Need to add tag
             {
-                Players.Survivor survivor = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
-                survivor.ZombieDamageOnPlayer(Damage); // Zombie Attack
+                if (col.transform.CompareTag("PlayerWall"))
+                {
+                    var wall = col.gameObject.GetComponent<Wall>();
+                    if (wall.DamageWall(Damage)) // put Damage here
+                    {
+                        PhotonNetwork.Destroy(col.gameObject);
+                    }
+                }
+                else if (col.transform.CompareTag("Turret"))
+                {
+                    var turret = col.gameObject.GetComponent<Turret>();
+                    if (turret.DamageTurret(Damage))
+                    {
+                        PhotonNetwork.Destroy(col.gameObject);
+                    }
+                }
+                StartCoroutine(DelayAttack());
             }
-
-        }
-        protected override void OnTriggerExit2D(Collider2D other)
-        {
-            if (Target.Contains(other.tag))
-            {
-                AIsetter.target = GameObject.FindWithTag("Core").transform;
-            }
-           
         }
     }
 }

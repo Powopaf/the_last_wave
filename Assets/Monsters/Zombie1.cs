@@ -35,7 +35,6 @@ namespace Monsters
 
         protected void OnCollisionStay2D(Collision2D col)
         {
-            
             if (Target.Contains(col.transform.tag)) //Need to add tag
             {
                 if (col.transform.CompareTag("Farmer"))
@@ -43,11 +42,14 @@ namespace Monsters
                     Farmer survivor = col.gameObject.GetComponent<Farmer>();
                     if (survivor.ZombieDamageOnPlayer(5)) // put Damage here
                     {
-                        var playerDeath = PlayerDeath(col.gameObject);
+                        StartCoroutine(PlayerDeath(col, "Farmer"));
                     }
                 }
             }
+            StartCoroutine(CooldownAttack(5));
         }
+        
+        
 
         protected override void OnTriggerExit2D(Collider2D other)
         {

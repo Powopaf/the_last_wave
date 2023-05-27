@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using Pathfinding;
+using Players;
 using UnityEngine;
 
 namespace Monsters
@@ -61,14 +62,32 @@ namespace Monsters
 
         protected abstract void OnTriggerExit2D(Collider2D other);
 
-        protected IEnumerator PlayerDeath(GameObject player)
+        // ReSharper disable Unity.PerformanceAnalysis
+        protected IEnumerator PlayerDeath(Collision2D col, string id)
         {
-            player.GetComponent<SpriteRenderer>().sortingLayerName = "PlayerDeath";
-            player.GetComponent<Rigidbody2D>().isKinematic = true;
-            yield return new WaitForSeconds(10);
-            player.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
-            player.GetComponent<Rigidbody2D>().isKinematic = false;
+            if (id == "Farmer")
+            {
+                GameObject o = col.gameObject;
+                o.tag = "Dead"; 
+                var rbPlayer = o.GetComponent<Rigidbody2D>();
+                o.GetComponent<SpriteRenderer>().sortingLayerName = "PlayerDeath";
+                rbPlayer.constraints = RigidbodyConstraints2D.FreezePosition;
+                yield return new WaitForSeconds(10);
+                var h = o.GetComponent<Farmer>();
+                h.Health = h.MaxHealth;
+                o.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+                o.tag = "Farmer";
+                rbPlayer.constraints = RigidbodyConstraints2D.None;
+                // ReSharper disable once Unity.InefficientPropertyAccess
+                rbPlayer.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            }
         }
-        
+
+        // ReSharper disable Unity.PerformanceAnalysis
+        protected IEnumerator CooldownAttack(int time = 2)
+        {
+            yield return new WaitForSeconds(time);
+        }
     }
 }

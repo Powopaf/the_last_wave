@@ -16,15 +16,13 @@ namespace Monsters
         private static readonly int Y = Animator.StringToHash("Y");
 
         public Zombie2() :
-            base("Zombie2",
-                new []{"Assassin","Farmer","Survivor","Worker"},
+            base(new []{"Assassin","Farmer","Survivor","Worker"},
                 50, 15, 100)
         {}
 
         protected override void Awake()
         {
             playerdistance = 10;
-            rb = GetComponent<Rigidbody2D>();
             _launchOffsetRigidbody2D = launchOffset.GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             AI=GetComponent<AIPath>();
@@ -67,7 +65,6 @@ namespace Monsters
             {
                 AIsetter.target = GameObject.FindWithTag("Core").transform;
             }
-           
         }
     }
 }

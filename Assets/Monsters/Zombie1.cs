@@ -13,12 +13,11 @@ namespace Monsters
 
 
         public Zombie1() : 
-            base("Zombie1", new []{"Assassin","Farmer","Survivor","Worker"}, 100, 20, 30) { }
+            base(new []{"Assassin","Farmer","Survivor","Worker"}, 100, 20, 30) { }
 
         
         protected override void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             AI = GetComponent<AIPath>();
             AIsetter.target=GameObject.FindWithTag("Farmer").transform;
@@ -26,7 +25,7 @@ namespace Monsters
 
 
         protected void Update()
-        { 
+        {
             Movement = AI.desiredVelocity;
             animator.SetFloat(X, Movement.x);
             animator.SetFloat(Y, Movement.y);
@@ -46,7 +45,7 @@ namespace Monsters
                     }
                 }
             }
-            StartCoroutine(CooldownAttack(5));
+            StartCoroutine(new WaitForSecondsRealtime(5));
         }
         
         

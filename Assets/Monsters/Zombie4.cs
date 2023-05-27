@@ -11,15 +11,13 @@ namespace Monsters
         private static readonly int Y = Animator.StringToHash("Y");
 
         public Zombie4() :
-            base("Zombie4",
-                new[] { "Player", "Core" },
+            base(new[] { "Player", "Core" },
                 100, 85, 70)
         {
         }
 
         protected override void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             AI = GetComponent<AIPath>();
             AIsetter.target=GameObject.FindWithTag("Core").transform;
@@ -38,8 +36,7 @@ namespace Monsters
         {
             if (((IList<string>)Target).Contains(col.transform.tag)) //Need to change  the tag
             {
-                Players.Survivor survivor = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
-                survivor.ZombieDamageOnPlayer(Damage); // Zombie Attack
+                
             }
 
         }

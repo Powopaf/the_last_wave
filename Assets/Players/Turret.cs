@@ -9,11 +9,11 @@ namespace Players {
     {
         private readonly string[] _target =  { "Zombie1" };
         public ParticleSystem particle;
-        private bool CanAttack = true;
+        private bool _canAttack = true;
         
         private void OnTriggerStay2D(Collider2D col)
         {
-            if (_target.Contains(col.transform.tag) && CanAttack)
+            if (_target.Contains(col.transform.tag) && _canAttack)
             {
                 particle.transform.position = col.transform.position;
                 particle.Play();
@@ -32,9 +32,9 @@ namespace Players {
 
         private IEnumerator DelayAttack()
         {
-            CanAttack = false;
+            _canAttack = false;
             yield return new WaitForSeconds(2);
-            CanAttack = true;
+            _canAttack = true;
         }
     } 
 }

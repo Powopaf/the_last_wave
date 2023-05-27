@@ -13,7 +13,7 @@ namespace Monsters
 
 
         public Zombie1() : 
-            base(new []{"Assassin","Farmer","Survivor","Worker"}, 100, 20, 30) { }
+            base(new [] {"Assassin","Farmer","Survivor","Worker"}, 100, 20, 30) { }
 
         
         protected override void Awake()

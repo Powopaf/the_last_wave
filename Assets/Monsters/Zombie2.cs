@@ -72,11 +72,6 @@ namespace Monsters
            
         }
         
-
-        protected override void OnCollisionEnter2D(Collision2D col)
-        {
-            throw new NotImplementedException();
-        }
         protected override void OnTriggerExit2D(Collider2D other)
         {
             if (Target.Contains(other.tag))

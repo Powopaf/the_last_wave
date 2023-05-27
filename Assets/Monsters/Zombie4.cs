@@ -48,7 +48,7 @@ namespace Monsters
         }
 
 
-        protected override void OnCollisionEnter2D(Collision2D col)
+        protected void OnCollisionStay2D(Collision2D col)
         {
             if (((IList<string>)Target).Contains(col.transform.tag)) //Need to change  the tag
             {

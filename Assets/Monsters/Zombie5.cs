@@ -11,43 +11,32 @@ namespace Monsters
         private static readonly int Y = Animator.StringToHash("Y");
 
         public Zombie5() : 
-            base("Zombie1", new []{"Assassin","Farmer","Survivor","Worker"}, 
+            base(new []{"Assassin","Farmer","Survivor","Worker"}, 
                 10000, 100, 30) {}  
     
         protected override void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             AI=GetComponent<AIPath>();
             AIsetter.target=GameObject.FindWithTag("Core").transform;
 
         }
-        protected override void Start()
-        {
-           
-        }
-       
 
-        protected override void ZombieMovement(Vector2 direction)
-        {
-        }
         
        
-        protected override void Update()
+        protected void Update()
         {
             Movement = AI.desiredVelocity;
             animator.SetFloat(X, Movement.x);
             animator.SetFloat(Y, Movement.y);
         }
-        protected override void FixedUpdate() { }
 
-       
+
         protected void OnCollisionStay2D(Collision2D col)
         {
             if (Target.Contains(col.transform.tag))   //Need to change  the tag
             {
-                Players.Survivor survivor = Playertarget.transform.GetComponent<Players.Survivor>(); //Zombie Attack
-                survivor.ZombieDamageOnPlayer(Damage); // Zombie Attack
+                
             }
         
         }

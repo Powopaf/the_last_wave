@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using Monsters;
 using Photon.Pun;
 using UnityEngine;
@@ -8,10 +9,11 @@ namespace Players {
     {
         private readonly string[] _target =  { "Zombie1" };
         public ParticleSystem particle;
+        private bool CanAttack = true;
         
         private void OnTriggerStay2D(Collider2D col)
         {
-            if (_target.Contains(col.transform.tag))
+            if (_target.Contains(col.transform.tag) && CanAttack)
             {
                 particle.transform.position = col.transform.position;
                 particle.Play();
@@ -24,7 +26,15 @@ namespace Players {
                     }
                 }
                 particle.Stop();
+                StartCoroutine(DelayAttack());
             }
+        }
+
+        private IEnumerator DelayAttack()
+        {
+            CanAttack = false;
+            yield return new WaitForSeconds(2);
+            CanAttack = true;
         }
     } 
 }

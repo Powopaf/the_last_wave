@@ -18,6 +18,7 @@ TagManager:
   - Farmer
   - Camera
   - Zombie1
+  - Dead
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: PlayerDeath
+    uniqueID: 3536840297
+    locked: 0
   - name: Tile
     uniqueID: 4252719937
     locked: 0

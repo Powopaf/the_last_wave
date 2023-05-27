@@ -51,19 +51,19 @@ namespace Players.PlayerFolder
         public int nbTree;
         public int nbRock;
         private InputAction _farming;
-        private bool _canbefarm;
+        private bool _canBeFarm;
         private Collider2D _farmingElt;
         
-        //
         private InputAction _attack;
         private float _attackTimeCounter;
         
-        private bool Walking;
-        private float _LastMoveX;
-        private float _LastMoveY;
+        private bool _walking;
+        private float _lastMoveX;
+        private float _lastMoveY;
         private float _attackTime;
         private bool _attacking;
-        public Player(int health = 100, int speed = 1, int maxHealth = 100)
+
+        protected Player(int health = 100, int speed = 1, int maxHealth = 100)
         {
             MaxHealth = maxHealth;
             Health = health;
@@ -137,13 +137,17 @@ namespace Players.PlayerFolder
             var position = rb.transform.position;
             var x = position.x;
             var y = position.y;
-            if ((context.control as KeyControl)!.keyCode == Key.P)
+            switch ((context.control as KeyControl)!.keyCode)
             {
-                PhotonNetwork.Instantiate("Zombie1", new Vector3(x + 1, y + 1, -1), Quaternion.identity);
-            }
-            else if((context.control as KeyControl)!.keyCode == Key.O)
-            {
-                PhotonNetwork.Instantiate("Turret", new Vector3(x + 1, y, -1), Quaternion.identity);
+                case Key.P:
+                    PhotonNetwork.Instantiate("Zombie1", new Vector3(x + 1, y, 0), Quaternion.identity);
+                    break;
+                case Key.O:
+                    PhotonNetwork.Instantiate("Turret", new Vector3(x, y - 1, 0), Quaternion.identity);
+                    break;
+                case Key.I:
+                    PhotonNetwork.Instantiate("PLayerWall", new Vector3(x, y - 1, 0), Quaternion.identity);
+                    break;
             }
         }
 
@@ -228,16 +232,15 @@ namespace Players.PlayerFolder
                 if (rb.velocity != Vector2.zero)
                 {
                     animator.SetBool("Walking", true);
-                    Walking = true;
-                    _LastMoveX = _dir.x;
-                    _LastMoveY = _dir.y;
-
+                    _walking = true;
+                    _lastMoveX = _dir.x;
+                    _lastMoveY = _dir.y;
                 }
-                else if (Walking)
+                else if (_walking)
                 {
                     animator.SetBool("Walking" , false);
-                    animator.SetFloat("LastMoveX", _LastMoveX);
-                    animator.SetFloat("LastMoveY",_LastMoveY);
+                    animator.SetFloat("LastMoveX", _lastMoveX);
+                    animator.SetFloat("LastMoveY",_lastMoveY);
                 }
             }
         }
@@ -259,14 +262,13 @@ namespace Players.PlayerFolder
         {
             if (col.transform.CompareTag("Rock") || col.transform.CompareTag("Tree"))
             {
-                if (GetComponent<PhotonView>().IsMine)
+                if (!_canBeFarm)
                 {
                     if (col.transform.CompareTag("Rock") || col.transform.CompareTag("Tree"))
                     {
-                        if (!_canbefarm)
                         {
                             _farmingElt = col;
-                            _canbefarm = true;
+                    _canBeFarm = true;
                         }
                 }
             }
@@ -274,25 +276,23 @@ namespace Players.PlayerFolder
 
         public void OnTriggerExit2D(Collider2D other)
         {
-            if (GetComponent<PhotonView>().IsMine)
+            if (_canBeFarm)
             {
-                if (_canbefarm)
                 {
                     _farmingElt = null;
-                    _canbefarm = false;
+                _canBeFarm = false;
                 }
             }
         }
         
         private void Farming(InputAction.CallbackContext context)
         {
-            if (GetComponent<PhotonView>().IsMine)
+            if (_canBeFarm)
             {
-                if (_canbefarm)
                 {
                     if (_farmingElt!.tag! == "Rock")
                     {
-                        Farming.Farming rock = new Farming.Farming("Rock");
+                    Farming.Farming rock = new Farming.Farming("Rock");
                         nbRock += rock.Number;
                         stoneText.text = nbRock.ToString();
                         GetComponent<PhotonView>().RPC("AddRock", RpcTarget.All, nbRock);

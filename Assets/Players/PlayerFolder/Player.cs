@@ -57,6 +57,7 @@ namespace Players.PlayerFolder
         private InputAction _attack;
         private float _attackTimeCounter;
         
+
         private bool _walking;
         private float _lastMoveX;
         private float _lastMoveY;
@@ -81,7 +82,7 @@ namespace Players.PlayerFolder
                 camera = Camera.main;
                 animator = GetComponent<Animator>();
                 
-                _attackTime = 1;
+                _attackTime = 0.5;
                 _attacking = false;
             }
         }
@@ -215,7 +216,7 @@ namespace Players.PlayerFolder
                     if (_attackTime <= 0)
                     {
                         animator.SetBool("Attack",false);
-                        _attackTime = 1;
+                        _attackTime = 0.5;
                         _attacking = false;
                     }
                 }

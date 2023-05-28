@@ -39,7 +39,7 @@ namespace Players
             if (_target.Contains(tagEnemy) )
             {
                 var player = GetPlayer();
-                int damage = 1000;
+                int damage = player.Damage;
                 switch (tagEnemy)
                 {
                     case "Zombie1":

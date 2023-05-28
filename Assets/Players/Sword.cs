@@ -48,7 +48,7 @@ namespace Players
                         {
                             PhotonNetwork.Destroy(col.gameObject);
                         }
-                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left);
+                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(10,10));
                         player.money += 10;
                     break;
                     case "Zombie3":
@@ -57,7 +57,7 @@ namespace Players
                         {
                             PhotonNetwork.Destroy(col.gameObject);
                         }
-                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left);
+                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(10,10));
                         player.money += 10;
                         break;
                     case "Zombie4":
@@ -66,7 +66,7 @@ namespace Players
                         {
                             PhotonNetwork.Destroy(col.gameObject);
                         }
-                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left);
+                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(10,10));
                         player.money += 10;
                         break;
                     case "Zombie5":
@@ -75,7 +75,7 @@ namespace Players
                         {
                             PhotonNetwork.Destroy(col.gameObject);
                         }
-                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left);
+                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(10,10));
                         player.money += 10;
                         break;
                 }

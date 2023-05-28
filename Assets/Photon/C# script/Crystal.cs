@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using Photon.Pun;
 using UnityEngine;
 
@@ -6,17 +6,41 @@ namespace Photon.C__script
 {
     public class Crystal : MonoBehaviour
     {
-        private int BuildRadius = 6;
-        private int Health = 500;
-        private int MaxHealth = 500;
+        private int _health = 250;
         public GameObject waveSystem;
 
-        private void Start()
+        void Start()
         {
             if (PhotonNetwork.IsMasterClient)
             {
                 waveSystem.SetActive(true);
             }
+        }
+
+        void Update()
+        {
+            StartCoroutine(Delay5Second());
+            if (_health <= 0)
+            {
+                GetComponent<PhotonView>().RPC("KillGame", RpcTarget.All);
+            }
+        }
+
+        [PunRPC]
+        public void KillGame()
+        {
+            PhotonNetwork.Disconnect();
+            PhotonNetwork.LoadLevel("Lobby");
+        }
+
+        private IEnumerator Delay5Second(int time = 5)
+        {
+            yield return new WaitForSeconds(time);
+        }
+
+        public void AttackCrystal(int damage)
+        {
+            _health -= damage;
         }
     }
 }

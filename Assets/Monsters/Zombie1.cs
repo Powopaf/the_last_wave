@@ -1,5 +1,6 @@
 using System.Linq;
 using Pathfinding;
+using Photon.C__script;
 using Players;
 using UnityEngine;
 
@@ -11,13 +12,13 @@ namespace Monsters
         private static readonly int Y = Animator.StringToHash("Y");
 
 
-        public Zombie1() : base(new [] {"Assassin","Farmer","Survivor","Worker"}, 100, 20, 30) { }
+        public Zombie1() : base(new [] {"Assassin","Farmer","Survivor","Worker", "Core"}, 100, 20, 30) { }
 
         protected override void Awake()
         {
             animator = GetComponent<Animator>();
             AI = GetComponent<AIPath>();
-            AIsetter.target=GameObject.FindWithTag("Farmer").transform;
+            AIsetter.target=GameObject.FindWithTag("Core").transform;
         }
         
         protected void Update()
@@ -38,6 +39,10 @@ namespace Monsters
                     {
                         StartCoroutine(PlayerDeath(col, "Farmer"));
                     }
+                }
+                else
+                {
+                    col.gameObject.GetComponent<Crystal>().AttackCrystal(Damage);
                 }
                 StartCoroutine(DelayAttack());
             }

@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Pathfinding;
+using Photon.C__script;
 using Photon.Pun;
 using Players;
 using UnityEngine;
@@ -49,6 +50,10 @@ namespace Monsters
                     {
                         PhotonNetwork.Destroy(col.gameObject);
                     }
+                }
+                else
+                {
+                    col.gameObject.GetComponent<Crystal>().AttackCrystal(Damage);
                 }
                 StartCoroutine(DelayAttack());
             }

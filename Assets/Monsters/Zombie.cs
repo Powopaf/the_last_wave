@@ -78,7 +78,7 @@ namespace Monsters
                 var rbPlayer = farmer.GetComponent<Rigidbody2D>();
                 farmer.GetComponent<SpriteRenderer>().sortingLayerName = "PlayerDeath";
                 rbPlayer.constraints = RigidbodyConstraints2D.FreezePosition;
-                
+
                 yield return new WaitForSeconds(10); // is dead
                 
                 // back to life

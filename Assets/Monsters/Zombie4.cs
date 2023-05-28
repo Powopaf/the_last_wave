@@ -1,5 +1,6 @@
 using System.Linq;
 using Pathfinding;
+using Photon.C__script;
 using Players;
 using UnityEngine;
 
@@ -39,6 +40,10 @@ namespace Monsters
                     {
                         StartCoroutine(PlayerDeath(col, "Farmer"));
                     }
+                }
+                else
+                {
+                    col.gameObject.GetComponent<Crystal>().AttackCrystal(Damage);
                 }
                 StartCoroutine(DelayAttack());
             }

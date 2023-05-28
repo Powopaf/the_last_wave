@@ -72,7 +72,7 @@ namespace World
         [PunRPC]
         public void Spawn(int x, int y)
         {
-            PhotonNetwork.Instantiate("Farmer", new Vector3(x, 
+            PhotonNetwork.Instantiate("PhotonPlayerTest3", new Vector3(x, 
                 y, -1), Quaternion.identity);
         }
 

@@ -43,6 +43,9 @@ namespace Players.PlayerFolder
         public Text bootsText;
         public Text swordText;
         public Text moneyText;
+        public Text stoneText;
+        public Text woodText;
+        public GameObject canvas;
         // // // // // // // // // // // //
 
         public int nbTree;
@@ -89,13 +92,8 @@ namespace Players.PlayerFolder
             {
                 PhotonNetwork.SendRate = 40;
                 PhotonNetwork.SerializationRate = 40;
+                canvas.SetActive(true);
                 healthBar.SetMaxHealth(MaxHealth);
-                helmetText.text = _inventory.Inv[0].Item2.ToString();
-                chestPlateText.text = _inventory.Inv[1].Item2.ToString();
-                glovesText.text = _inventory.Inv[2].Item2.ToString();
-                bootsText.text = _inventory.Inv[3].Item2.ToString();
-                swordText.text = _inventory.Inv[4].Item2.ToString();
-                moneyText.text = _money.ToString();
             }
             else
             {
@@ -255,43 +253,71 @@ namespace Players.PlayerFolder
         {
             if (col.transform.CompareTag("Rock") || col.transform.CompareTag("Tree"))
             {
-                if (!_canbefarm)
+                if (GetComponent<PhotonView>().IsMine)
                 {
-                    _farmingElt = col;
-                    _canbefarm = true;
+                    if (col.transform.CompareTag("Rock") || col.transform.CompareTag("Tree"))
+                    {
+                        if (!_canbefarm)
+                        {
+                            _farmingElt = col;
+                            _canbefarm = true;
+                        }
+                    }
                 }
-                
             }
         }
 
         public void OnTriggerExit2D(Collider2D other)
         {
-            if (_canbefarm)
+            if (GetComponent<PhotonView>().IsMine)
             {
-                _farmingElt = null;
-                _canbefarm = false;
+                if (_canbefarm)
+                {
+                    _farmingElt = null;
+                    _canbefarm = false;
+                }
             }
         }
         
         private void Farming(InputAction.CallbackContext context)
         {
-            if (_canbefarm)
+            if (GetComponent<PhotonView>().IsMine)
             {
-                if (_farmingElt!.tag! == "Rock")
+                if (_canbefarm)
                 {
-                    Farming.Farming rock=new Farming.Farming("Rock");
-                    nbRock += rock.Number;
-                    Debug.Log(nbRock);
-                   
+                    if (_farmingElt!.tag! == "Rock")
+                    {
+                        Farming.Farming rock = new Farming.Farming("Rock");
+                        nbRock += rock.Number;
+                        stoneText.text = nbRock.ToString();
+                        GetComponent<PhotonView>().RPC("AddRock", RpcTarget.All, nbRock);
+                        Debug.Log(nbRock);
+                    }
+                    else if (_farmingElt!.tag! == "Tree")
+                    {
+                        Farming.Farming tree = new Farming.Farming("Tree");
+                        nbTree += tree.Number;
+                        woodText.text = nbTree.ToString();
+                        GetComponent<PhotonView>().RPC("AddTree", RpcTarget.All, nbTree);
+                        Debug.Log(nbTree);
+                    }
+                    PhotonNetwork.Destroy(_farmingElt.gameObject);
                 }
-                else if (_farmingElt!.tag! =="Tree")
-                {
-                    Farming.Farming tree = new Farming.Farming("Tree");
-                    nbTree += tree.Number;
-                    Debug.Log(nbTree);
-                }
-                PhotonNetwork.Destroy(_farmingElt.gameObject);
             }
+        }
+        
+        [PunRPC]
+        public void AddTree(int tree)
+        {
+            nbTree = tree;
+            woodText.text = nbTree.ToString();
+        }
+        
+        [PunRPC]
+        public void AddRock(int rock)
+        {
+            nbRock = rock;
+            stoneText.text = nbRock.ToString();
         }
         
         private void Attack(InputAction.CallbackContext context)

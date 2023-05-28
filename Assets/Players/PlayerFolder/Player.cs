@@ -15,7 +15,7 @@ namespace Players.PlayerFolder
         public int Health { get; set; }
         public int MaxHealth { get; }
         
-        public int Damage { get; }
+        public int Damage { get; private set; }
         
         public float speed;
         private Vector2 _dir = Vector2.zero;
@@ -189,6 +189,7 @@ namespace Players.PlayerFolder
                     break;
                 case Key.B:
                     money = _inventory.UpgradeItem(money, ItemEnum.Sword);
+                    Damage += _inventory.Inv[4].Item1.Damage;
                     swordText.text = _inventory.Inv[4].Item2.ToString();
                     moneyText.text = money.ToString();
                     break;

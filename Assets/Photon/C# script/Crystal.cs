@@ -6,7 +6,7 @@ namespace Photon.C__script
 {
     public class Crystal : MonoBehaviour
     {
-        private int _health = 100;
+        private int _health = 250;
         public GameObject waveSystem;
 
         void Start()

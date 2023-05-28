@@ -10,6 +10,7 @@
         {
             Protection = 1;
         }
+        
         public void Reset()
         {
             Protection = 0;

@@ -305,28 +305,36 @@ namespace Players.PlayerFolder
                 }
             }
         }
+
+        public void SetTree(int nb)
+        {
+            nbTree = nb;
+            woodText.text = nbTree.ToString();
+        }
+        
+        public void SetRock(int nb)
+        {
+            nbRock = nb;
+            stoneText.text = nbRock.ToString();
+            Debug.Log(nbRock);
+        }
         
         [PunRPC]
         public void AddTree(int tree)
         {
-            nbTree = tree;
-            woodText.text = nbTree.ToString();
+            SetTree(tree);
         }
         
         [PunRPC]
         public void AddRock(int rock)
         {
-            nbRock = rock;
-            stoneText.text = nbRock.ToString();
-            Debug.Log(nbRock);
+            SetRock(rock);
         }
         
         private void Attack(InputAction.CallbackContext context)
         {
-          
             animator.SetBool("Attack", true);
             _attacking = true;
-            
         }
     }
 }

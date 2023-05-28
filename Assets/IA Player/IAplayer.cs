@@ -19,24 +19,24 @@ public abstract class IAplayer : MonoBehaviour
     protected readonly string[] Target;
     private (int, int) _coordinate;
     protected Vector2 Movement;
-    public Animator animator; 
-    
-   
+    public Animator animator;
+
+
     private int _money;
     private InputAction _giveMoney;
     private InputAction _upgradeInv;
-    
+
     protected AIPath AI;
     public AIDestinationSetter AIsetter;
-    
-    
+
+
     public Text helmetText;
     public Text chestPlateText;
     public Text glovesText;
     public Text bootsText;
     public Text swordText;
     public Text moneyText;
-    
+
     public int nbTree;
     public int nbRock;
     private bool _canBeFarm;
@@ -81,6 +81,7 @@ public abstract class IAplayer : MonoBehaviour
         }
 
     }
+
     protected void FixedUpdate()
     {
         if (GetComponent<PhotonView>().IsMine)
@@ -96,9 +97,9 @@ public abstract class IAplayer : MonoBehaviour
             }
             else if (_walking)
             {
-                animator.SetBool("Walking" , false);
+                animator.SetBool("Walking", false);
                 animator.SetFloat("LastMoveX", _lastMoveX);
-                animator.SetFloat("LastMoveY",_lastMoveY);
+                animator.SetFloat("LastMoveY", _lastMoveY);
             }
         }
     }
@@ -108,11 +109,5 @@ public abstract class IAplayer : MonoBehaviour
         _money += 10;
         moneyText.text = _money.ToString();
     }
-    
-    
-    
-
-
 }
-
 

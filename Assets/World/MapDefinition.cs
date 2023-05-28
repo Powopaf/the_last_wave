@@ -7,15 +7,15 @@ namespace World
     public class MapDefinition
     {
         public TileDefinition[,] Map { get; }
-        public int Height => Map.GetLength(0);
-        public int Width => Map.GetLength(1);
+        public int Height => 100;//Map.GetLength(0);
+        public int Width => 100; //Map.GetLength(1);
 
         private readonly int _seed;
 
         public MapDefinition(int s = 0)
         {
             _seed = s;
-            Map = new TileDefinition[512,512]; // Do not put big number here or ...
+            Map = new TileDefinition[100,100]; // Do not put big number here or 
             for (int i = 0; i < Width; i++)
             {
                 Map[0, i] = new TileDefinition(EnumTile.WallBorderMap);
@@ -92,7 +92,7 @@ namespace World
                             Map[i, j - 1].TileType = EnumTile.Dirt3;
                             Map[i + 1, j - 1].TileType = EnumTile.Dirt4;
                         }
-                        if (rd.Next(0,9) == 0)
+                        if (rd.Next(0,30) == 0)
                         {
                             SpawnRock(i, j);
                         }
@@ -124,7 +124,7 @@ namespace World
                         {
                             Map[i, j].Prop = (Obj.Crabe, PlaceProps(rd));
                         }
-                        if (rd.Next(0,9) == 0)
+                        if (rd.Next(0,25) == 0)
                         {
                             SpawnRock(i, j);
                         }
@@ -163,11 +163,11 @@ namespace World
                                 _ => (Obj.NoObj, 0)
                             };
                         }
-                        if (rd.Next(0,10) == 0)
+                        if (rd.Next(0,30) == 0)
                         {
                             SpawnTree(i,j);
                         }
-                        if (rd.Next(0,9) == 0)
+                        if (rd.Next(0,25) == 0)
                         {
                             SpawnRock(i, j);
                         }
@@ -244,11 +244,11 @@ namespace World
                                 _ => (Obj.NoObj, 0)
                             };
                         }
-                        if (rd.Next(0,10) == 0)
+                        if (rd.Next(0,30) == 0)
                         {
                             SpawnTree(i,j);
                         }
-                        if (rd.Next(0,9) == 0)
+                        if (rd.Next(0,25) == 0)
                         {
                             SpawnRock(i, j);
                         }

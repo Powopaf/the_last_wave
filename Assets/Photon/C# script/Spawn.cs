@@ -59,7 +59,7 @@ namespace Photon.C__script
 
         public static bool IsMainIsland(int height, int width)
         {
-            if ((height + width) / 2 >= 400)
+            if ((height + width) / 2 >= 50)
             {
                 return true;
             }

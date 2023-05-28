@@ -1,4 +1,3 @@
-using Photon.C__script;
 using UnityEngine;
 using TMPro;
 

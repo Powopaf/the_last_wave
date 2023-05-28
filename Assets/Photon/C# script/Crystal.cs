@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Photon.Pun;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ namespace Photon.C__script
 {
     public class Crystal : MonoBehaviour
     {
-        private int _health = 500;
+        private int _health = 100;
         public GameObject waveSystem;
 
         void Start()
@@ -30,7 +29,7 @@ namespace Photon.C__script
         [PunRPC]
         public void KillGame()
         {
-            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.Disconnect();
             PhotonNetwork.LoadLevel("Lobby");
         }
 

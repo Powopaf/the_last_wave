@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Photon.Pun;
-using Photon.Pun.Demo.Cockpit;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 

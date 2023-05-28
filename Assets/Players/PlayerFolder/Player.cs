@@ -273,8 +273,9 @@ namespace Players.PlayerFolder
                     {
                         {
                             _farmingElt = col;
-                    _canBeFarm = true;
+                            _canBeFarm = true;
                         }
+                    }
                 }
             }
         }
@@ -296,8 +297,7 @@ namespace Players.PlayerFolder
             {
                 {
                     if (_farmingElt!.tag! == "Rock")
-                    {
-                    Farming.Farming rock = new Farming.Farming("Rock");
+                    { Farming.Farming rock = new Farming.Farming("Rock");
                         nbRock += rock.Number;
                         stoneText.text = nbRock.ToString();
                         GetComponent<PhotonView>().RPC("AddRock", RpcTarget.All, nbRock);

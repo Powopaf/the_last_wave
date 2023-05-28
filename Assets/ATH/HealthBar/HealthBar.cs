@@ -5,7 +5,7 @@ namespace ATH.HealthBar
 {
     public class HealthBar : MonoBehaviour
     {
-        private Slider _slider;
+        Slider _slider;
 
         void Start()
         {

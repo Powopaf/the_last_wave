@@ -318,6 +318,7 @@ namespace Players.PlayerFolder
         {
             nbRock = rock;
             stoneText.text = nbRock.ToString();
+            Debug.Log(nbRock);
         }
         
         private void Attack(InputAction.CallbackContext context)

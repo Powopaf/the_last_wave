@@ -26,7 +26,7 @@ namespace World
                     GenSeed = Random.Range(0, Int32.MaxValue);
                 }
                 GetComponent<PhotonView>().RPC("MapGen", RpcTarget.All, GenSeed);
-                ChooseSpawnTile(255, 255);
+                ChooseSpawnTile(50, 50);
             }
             AstarPath.active.Scan();
         }
@@ -58,12 +58,12 @@ namespace World
                 }
                 else
                 {
-                    ChooseSpawnTile(Random.Range(100, 400), Random.Range(100, 400));
+                    ChooseSpawnTile(Random.Range(10, 90), Random.Range(10, 90));
                 }
             }
             else
             {
-                ChooseSpawnTile(Random.Range(100, 400), Random.Range(100, 400));
+                ChooseSpawnTile(Random.Range(10, 90), Random.Range(10, 90));
             }
             
         }
@@ -94,6 +94,7 @@ namespace World
                     {
                         go.AddComponent<BoxCollider2D>();
                     }
+
                     if (current.HaveSide)
                     {
                         for (var index = 0; index < current.Side.Length; index++)
@@ -123,6 +124,7 @@ namespace World
                                 }
                             }
                         }
+
                         foreach (Corner corner in current.Corners)
                         {
                             if (corner != Corner.NoCorner)
@@ -168,6 +170,7 @@ namespace World
                             }
                         }
                     }
+
                     if (current.HaveProps)
                     {
                         float dec = (float)current.Prop.Item2;
@@ -223,33 +226,40 @@ namespace World
                                 throw new ArgumentOutOfRangeException();
                         }
                     }
-                    else if (current.HaveTree && CanPlaceTree(i, j, _mapDefinition))
+
+                    if (GetComponent<PhotonView>().IsMine)
                     {
-                        if (IsGrass(current.TileType))
+                        if (PhotonNetwork.IsMasterClient)
                         {
-                            var grassTree = Resources.Load<GameObject>(@"Tree\GrassTree");
-                            Instantiate(grassTree, new Vector3(i, j, -0.5f), Quaternion.identity);
-                        }
-                        else
-                        {
-                            var snowTree = Resources.Load<GameObject>(@"Tree\SnowTree");
-                            Instantiate(snowTree, new Vector3(i, j, -0.4f), Quaternion.identity);
+                            if (current.HaveTree && CanPlaceTree(i, j, _mapDefinition))
+                            {
+                                if (IsGrass(current.TileType))
+                                {
+                                    PhotonNetwork.Instantiate("GrassTree", new Vector3(i, j, -0.5f),
+                                        Quaternion.identity);
+                                }
+                                else
+                                {
+                                    PhotonNetwork.Instantiate("SnowTree", new Vector3(i, j, -0.4f),
+                                        Quaternion.identity);
+                                }
+                            }
+                            else if (current.HaveRock)
+                            {
+                                if (IsDirt(current.TileType))
+                                {
+                                    PhotonNetwork.Instantiate("Rock1", new Vector3(i, j, -0.3f), Quaternion.identity);
+                                }
+                                else
+                                {
+                                    PhotonNetwork.Instantiate("Rock2", new Vector3(i, j, -0.3f), Quaternion.identity);
+                                }
+                            }
                         }
                     }
-                    else if (current.HaveRock)
-                    {
-                        if (IsDirt(current.TileType))
-                        {
-                            GameObject rock1 = Resources.Load<GameObject>(@"Rock\Rock1");
-                            Instantiate(rock1, new Vector3(i, j, -0.3f), Quaternion.identity);
-                        }
-                        else
-                        {
-                            GameObject rock2 = Resources.Load<GameObject>(@"Rock\Rock2");
-                            Instantiate(rock2, new Vector3(i, j, -0.3f), Quaternion.identity);
-                        }
-                    }
+
                 }
+
             }
         }
     }

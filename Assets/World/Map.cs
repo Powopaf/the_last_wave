@@ -4,7 +4,7 @@ using static World.GetType;
 using Photon.Pun;
 using GameObject = UnityEngine.GameObject;
 using Random = UnityEngine.Random;
-using static Spawn;
+using static Photon.C__script.Spawn;
 
 namespace World
 {
@@ -72,8 +72,7 @@ namespace World
         [PunRPC]
         public void Spawn(int x, int y)
         {
-            PhotonNetwork.Instantiate("PhotonPlayerTest3", new Vector3(x, 
-                y, -1), Quaternion.identity);
+            PhotonNetwork.Instantiate("Farmer", new Vector3(x, y, -1), Quaternion.identity);
         }
 
         [PunRPC] public void MapGen(int newseed)

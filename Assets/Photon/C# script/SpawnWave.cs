@@ -46,7 +46,7 @@ namespace Photon.C__script
             }
             waveValue = waveValueScale;
             currentValue = waveValueScale;
-            GenerateWave();
+            ///GenerateWave();
         }
 
         private void FixedUpdate()

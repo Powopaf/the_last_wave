@@ -15,6 +15,8 @@ namespace World
         private MapDefinition _mapDefinition;
         private readonly TileSprite _tileSprite = new ();
         public bool RandomSeed;
+        public GameObject DayNightCycle;
+        public GameObject GlobalLight;
 
         void Start()
         {
@@ -29,6 +31,8 @@ namespace World
                 ChooseSpawnTile(50, 50);
             }
             AstarPath.active.Scan();
+            GlobalLight.SetActive(true);
+            DayNightCycle.SetActive(true);
         }
 
         private void ChooseSpawnTile(int x, int y)

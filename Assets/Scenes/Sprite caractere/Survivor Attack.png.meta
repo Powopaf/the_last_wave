@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4071111533c9ce74e8eb2c584efca85c
+guid: a0fe807a25494664db25d5350c44d9c0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,337 +129,337 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TemplateSword_0
+      name: Survivor Attack_0
       rect:
         serializedVersion: 2
-        x: 92
+        x: 0
         y: 192
-        width: 56
-        height: 52
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49e376bd851c77f4aad210b927de63e5
-      internalID: -987779908
+      spriteID: 7abe026d9c0b23d42a8a72fc95856310
+      internalID: -834367407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_1
+      name: Survivor Attack_1
       rect:
         serializedVersion: 2
-        x: 124
-        y: 294
-        width: 58
-        height: 46
+        x: 64
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9850dd0ac7abec48958bff5333a404e
-      internalID: 92130759
+      spriteID: 4b8bd1659713a49478f1f9e37d6d8916
+      internalID: 70159729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_2
+      name: Survivor Attack_2
       rect:
         serializedVersion: 2
-        x: 207
-        y: 285
-        width: 58
-        height: 46
+        x: 128
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aed1098a0a1d9ef46be81bd3ff0487f3
-      internalID: 1824068355
+      spriteID: 148106c1ccafe754e9d441079e5d29ed
+      internalID: -2040544610
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_3
+      name: Survivor Attack_3
       rect:
         serializedVersion: 2
-        x: 304
-        y: 285
-        width: 57
-        height: 46
+        x: 192
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de5302b5623ebd3419e8cfb98012538e
-      internalID: -941445566
+      spriteID: 18e393856fa209f4e8e2ec209238d710
+      internalID: -1885438380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_4
+      name: Survivor Attack_4
       rect:
         serializedVersion: 2
-        x: 182
-        y: 209
-        width: 58
-        height: 46
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4723f0a7d66632742bf63ab6e8cc6870
-      internalID: -116265963
+      spriteID: 3032b97cb5fac9e439261ba7a4a0d7cf
+      internalID: -1334664935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_5
+      name: Survivor Attack_5
       rect:
         serializedVersion: 2
-        x: 279
-        y: 209
-        width: 58
-        height: 46
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6945ebd20c902984abdbb2bdedfd1705
-      internalID: -1702650734
+      spriteID: e7086be55f0b08a468b038b26547e595
+      internalID: -215590805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_6
+      name: Survivor Attack_6
       rect:
         serializedVersion: 2
-        x: 333
-        y: 113
-        width: 51
-        height: 46
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3219f3765cf758489b99d078c90f56c
-      internalID: -876222528
+      spriteID: 0d5d081d63b919149ba5498e6f64eaa7
+      internalID: -1074716003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_7
+      name: Survivor Attack_7
       rect:
         serializedVersion: 2
-        x: 308
-        y: 43
-        width: 58
-        height: 46
+        x: 192
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d61f3b3d1bdc86b4e9b9845fdf9eead6
-      internalID: -33851405
+      spriteID: 64d7de0edefa7fc4f98029b17db3c5fe
+      internalID: 1125074927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_8
+      name: Survivor Attack_8
       rect:
         serializedVersion: 2
-        x: 212
-        y: 44
-        width: 58
-        height: 46
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd10e03dc0c2a764baab9337abab0b1c
-      internalID: 1501409461
+      spriteID: aa127b87a6a50ed45ab99a740a4f9d58
+      internalID: -991219447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_9
+      name: Survivor Attack_9
       rect:
         serializedVersion: 2
-        x: 241
-        y: 113
-        width: 58
-        height: 46
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad5d872096f160e438988b5d6131ec01
-      internalID: 1221187354
+      spriteID: 65eb50098c8761142931f9a2fdf1cf5d
+      internalID: -141741757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_10
+      name: Survivor Attack_10
       rect:
         serializedVersion: 2
-        x: 139
-        y: 98
-        width: 58
-        height: 46
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c38f0239f80041c448fbde252b86efb3
-      internalID: -602879115
+      spriteID: bceb84ff7135bfa4a962e4c9f35d6f55
+      internalID: 2019830725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_11
+      name: Survivor Attack_11
       rect:
         serializedVersion: 2
-        x: 100
-        y: 37
-        width: 58
-        height: 46
+        x: 192
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 685e5ccbc28d9cf47aabc50e3d3fc490
-      internalID: -2083098262
+      spriteID: f8e0c4d96507c834c8101e8d954630fc
+      internalID: 1106113056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_12
+      name: Survivor Attack_12
       rect:
         serializedVersion: 2
-        x: 13
-        y: 2
-        width: 58
-        height: 46
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02517a7ab6daaa842bc4183383cc30de
-      internalID: -297151775
+      spriteID: d75698c609b3b454386165d6556df0b9
+      internalID: -1022022549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_13
+      name: Survivor Attack_13
       rect:
         serializedVersion: 2
-        x: 11
-        y: 107
-        width: 58
-        height: 46
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1e29d1faef85524b8c08f5593f3c94e
-      internalID: -643294706
+      spriteID: cdb3e734f172af14da02a4c8593019d9
+      internalID: -445092377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_14
+      name: Survivor Attack_14
       rect:
         serializedVersion: 2
-        x: 28
-        y: 203
-        width: 58
-        height: 46
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69f0c496bc8036f49b23e646d2ab73ac
-      internalID: -772570267
+      spriteID: d527d77575b1f1a48a8f226bfa0ae44b
+      internalID: -1284734071
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TemplateSword_15
+      name: Survivor Attack_15
       rect:
         serializedVersion: 2
-        x: 25
-        y: 315
-        width: 58
-        height: 46
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e80ca8a43895f941af81b2219fa3e22
-      internalID: -1608179763
+      spriteID: ec9f827d2e0fb744ea792250463da740
+      internalID: -1940589498
       vertices: []
       indices: 
       edges: []
@@ -475,22 +475,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TemplateSword_2: 1824068355
-      TemplateSword_7: -33851405
-      TemplateSword_10: -602879115
-      TemplateSword_5: -1702650734
-      TemplateSword_3: -941445566
-      TemplateSword_6: -876222528
-      TemplateSword_4: -116265963
-      TemplateSword_12: -297151775
-      TemplateSword_14: -772570267
-      TemplateSword_13: -643294706
-      TemplateSword_8: 1501409461
-      TemplateSword_0: -987779908
-      TemplateSword_11: -2083098262
-      TemplateSword_1: 92130759
-      TemplateSword_15: -1608179763
-      TemplateSword_9: 1221187354
+      Survivor Attack_7: 1125074927
+      Survivor Attack_13: -445092377
+      Survivor Attack_11: 1106113056
+      Survivor Attack_1: 70159729
+      Survivor Attack_12: -1022022549
+      Survivor Attack_6: -1074716003
+      Survivor Attack_14: -1284734071
+      Survivor Attack_8: -991219447
+      Survivor Attack_4: -1334664935
+      Survivor Attack_3: -1885438380
+      Survivor Attack_2: -2040544610
+      Survivor Attack_10: 2019830725
+      Survivor Attack_0: -834367407
+      Survivor Attack_15: -1940589498
+      Survivor Attack_5: -215590805
+      Survivor Attack_9: -141741757
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

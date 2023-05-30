@@ -77,6 +77,7 @@ namespace Monsters
             GameObject farmer = col.gameObject; 
             farmer.tag = "Dead";
             farmer.GetComponent<SpriteRenderer>().sortingLayerName = "PlayerDeath";
+            
             yield return new WaitForSeconds(2); // is dead
             
             // back to life

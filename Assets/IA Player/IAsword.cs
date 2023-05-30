@@ -1,45 +1,22 @@
-﻿using System;
-using System.Linq;
-using IAPlayer;
-using UnityEngine;
+﻿using System.Collections;
 using Monsters;
 using Photon.Pun;
-using Players.PlayerFolder;
+using UnityEngine;
 
-namespace Players
+namespace IAPlayer
 {
-    public class Sword : MonoBehaviour
+   
+    public class IAsword: MonoBehaviour
     {
         public GameObject objPlayer;
         private readonly string[] _target = { "Zombie1", "Zombie3", "Zombie4", "Zombie5" };
-
-        private Player GetPlayer()
-        {
-            if (objPlayer.GetComponent<Farmer>() != null)
-            {
-                return objPlayer.GetComponent<Farmer>();
-            }
-            if (objPlayer.GetComponent<Survivor>() != null)
-            {
-                return objPlayer.GetComponent<Survivor>();
-            }
-            if (objPlayer.GetComponent<Worker>() != null)
-            {
-                return objPlayer.GetComponent<Worker>();
-            }
-            if (objPlayer.GetComponent<Assassin>() != null)
-            {
-                return objPlayer.GetComponent<Assassin>();
-            }
-            throw new Exception("Invalid player type");
-        }
-
+        
         private void OnCollisionEnter2D(Collision2D col)
         {
             string tagEnemy = col.gameObject.tag;
-            if (_target.Contains(tagEnemy) )
+            if (((IList)_target).Contains(tagEnemy))
             {
-                var player = GetPlayer(); // getcomponent IAplayer
+                var player = objPlayer.GetComponent<IAplayer>(); // getcomponent IAplayer
                 int damage = player.Damage;
                 switch (tagEnemy)
                 {
@@ -49,17 +26,17 @@ namespace Players
                         {
                             PhotonNetwork.Destroy(col.gameObject);
                         }
-                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(10,10));
-                        player.money += 10;
-                    break;
+
+                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, 10));
+                        break;
                     case "Zombie3":
                         var zom3 = col.gameObject.GetComponent<Zombie3>();
                         if (zom3.ZombieTakeDamage(damage))
                         {
                             PhotonNetwork.Destroy(col.gameObject);
                         }
-                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(10,10));
-                        player.money += 10;
+
+                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, 10));
                         break;
                     case "Zombie4":
                         var zom4 = col.gameObject.GetComponent<Zombie4>();
@@ -67,8 +44,8 @@ namespace Players
                         {
                             PhotonNetwork.Destroy(col.gameObject);
                         }
-                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(10,10));
-                        player.money += 10;
+
+                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, 10));
                         break;
                     case "Zombie5":
                         var zom5 = col.gameObject.GetComponent<Zombie5>();
@@ -76,8 +53,9 @@ namespace Players
                         {
                             PhotonNetwork.Destroy(col.gameObject);
                         }
-                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(10,10));
-                        player.money += 10;
+
+                        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, 10));
+                        
                         break;
                 }
             }

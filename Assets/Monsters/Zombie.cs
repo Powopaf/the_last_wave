@@ -76,19 +76,15 @@ namespace Monsters
             // just die
             GameObject farmer = col.gameObject; 
             farmer.tag = "Dead";
-            var rbPlayer = farmer.GetComponent<Rigidbody2D>(); 
-            farmer.GetComponent<SpriteRenderer>().sortingLayerName = "PlayerDeath"; 
-            rbPlayer.constraints = RigidbodyConstraints2D.FreezePosition;
-            
-            yield return new WaitForSeconds(10); // is dead
+            farmer.GetComponent<SpriteRenderer>().sortingLayerName = "PlayerDeath";
+            yield return new WaitForSeconds(2); // is dead
             
             // back to life
-            var h = GetPlayer(col.gameObject);
+            var h = GetPlayer(farmer);
             h.Health = h.MaxHealth; 
             farmer.GetComponent<SpriteRenderer>().sortingLayerName = "Default"; 
-            farmer.tag = id; 
-            rbPlayer.constraints = RigidbodyConstraints2D.FreezeRotation;
-            }
+            farmer.tag = id;
+        }
 
         protected IEnumerator DelayAttack(int time = 3)
         {

@@ -719,7 +719,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2386035585936691492}
+  m_TransformParent: {fileID: 2386035585936691492}
     m_Modifications:
     - target: {fileID: 5208249418607706511, guid: 3662bf30e87c18643b7e333c4f8aee53, type: 3}
       propertyPath: m_Pivot.x

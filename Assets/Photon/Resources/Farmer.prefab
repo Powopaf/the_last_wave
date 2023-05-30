@@ -290,7 +290,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 774301463
-  m_SortingLayer: 0
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: -1001997806, guid: 19e4f3f4a78cc104ba7ee858701691db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  m_SynchronizeScale: 1
   m_UseLocal: 1
 --- !u!114 &3090816409559873705
 MonoBehaviour:
@@ -500,28 +500,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 0
+  ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 1
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: LastMoveX
   - Type: 1
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: LastMoveY
   - Type: 1
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: X
   - Type: 1
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Y
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Walking
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Attack
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 1
     LayerIndex: 0
 --- !u!1001 &2702182395476021699
 PrefabInstance:
@@ -832,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 7549103898526985881}
     - target: {fileID: 3484831787229598534, guid: bcc4f5b32280c114699ff7f80d69ada3, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3484831787229598534, guid: bcc4f5b32280c114699ff7f80d69ada3, type: 3}
       propertyPath: m_SortingLayerID

@@ -1,4 +1,5 @@
 using System.Linq;
+using IAPlayer;
 using Pathfinding;
 using Photon.C__script;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Monsters
         private static readonly int X = Animator.StringToHash("X");
         private static readonly int Y = Animator.StringToHash("Y");
 
-        public Zombie5() : base(new []{"Assassin","Farmer","Survivor","Worker"}, 10000, 100, 30) {}  
+        public Zombie5() : base(new []{"Assassin","Farmer","Survivor","Worker","IAplayer"}, 10000, 100, 30) {}  
     
         protected override void Awake()
         {
@@ -67,6 +68,14 @@ namespace Monsters
                     if (survivor.ZombieDamageOnPlayer(Damage)) // put Damage here
                     {
                         StartCoroutine(PlayerDeath(col, "Assassin"));
+                    }
+                }
+                else if (col.transform.CompareTag("IAplayer"))
+                {
+                    var survivor = col.gameObject.GetComponent<IAplayer>();
+                    if (survivor.ZombieDamageOnPlayer(Damage)) // put Damage here
+                    {
+                        StartCoroutine(PlayerDeath(col, "IA Farmer"));
                     }
                 }
                 else

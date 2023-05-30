@@ -12,11 +12,23 @@ public class WhenAttack : MonoBehaviour
         IaplayeAplayer = GetComponentInParent<IAplayer>();
     }
 
-    public void OnTriggerEnter2D(Collider2D col)
+    public void OnTriggerStay2D(Collider2D col)
     {
         if (col.CompareTag(IaplayeAplayer.AIsetter.target.tag))
         {
+            
             IaplayeAplayer.attacking = true;
+            IaplayeAplayer.animator.SetBool("Attack",true);
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag(IaplayeAplayer.AIsetter.target.tag))
+        {
+            
+            IaplayeAplayer.attacking = false;
+            IaplayeAplayer.animator.SetBool("Attack",false);
         }
     }
 }

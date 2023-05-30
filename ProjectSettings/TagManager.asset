@@ -26,6 +26,9 @@ TagManager:
   - ZombieLVL
   - Worker
   - Assassin
+  - Turret
+  - PLayerWall
+  - IAplayer
   layers:
   - Default
   - TransparentFX

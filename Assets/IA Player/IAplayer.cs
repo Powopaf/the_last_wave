@@ -44,10 +44,11 @@ namespace IAPlayer
             animator = GetComponent<Animator>();
 
             _attackTime = 0.5;
-            _attacking = false;
+            attacking = false;
 
             health = 300;
-            
+            Damage = 100;
+
             AI = GetComponent<AIPath>();
             AIsetter = GetComponent<AIDestinationSetter>();
             
@@ -60,16 +61,16 @@ namespace IAPlayer
         {
             animator.SetFloat("X", Movement.x);
             animator.SetFloat("Y", Movement.y);
-            if (_attacking)
+            /*if (attacking)
             {
                 _attackTime -= Time.deltaTime;
                 if (_attackTime <= 0)
                 {
                     animator.SetBool("Attack", false);
                     _attackTime = 0.5;
-                    _attacking = false;
+                    attacking = false;
                 }
-            }
+            }*/
 
             if (!TargetZombie)
             {
@@ -116,8 +117,9 @@ namespace IAPlayer
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (Target.Contains(col.tag))
+            if (Target.Contains(col.tag) && !TargetZombie)
             {
+                
                 TargetZombie = true;
                 AIsetter.target = col.transform;
             }
@@ -129,6 +131,12 @@ namespace IAPlayer
             {
                 TargetZombie = false;
             }
+        }
+        public bool ZombieDamageOnPlayer(int damage)
+        {
+            // ReSharper disable once IntDivisionByZero
+            health -= damage;
+            return health <= 0;
         }
 
        

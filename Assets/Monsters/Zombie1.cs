@@ -1,4 +1,5 @@
 using System.Linq;
+using IAPlayer;
 using Pathfinding;
 using Photon.C__script;
 using Players;
@@ -12,7 +13,9 @@ namespace Monsters
         private static readonly int Y = Animator.StringToHash("Y");
 
 
-        public Zombie1() : base(new [] {"Assassin","Farmer","Survivor","Worker", "Core"}, 100, 20, 30) { }
+        public Zombie1() : base(new[] { "Assassin", "Farmer", "Survivor", "Worker", "Core", "IAplayer" }, 100, 20, 30)
+        {
+        }
 
         protected override void Awake()
         {
@@ -20,16 +23,16 @@ namespace Monsters
             SetLevel();
             animator = GetComponent<Animator>();
             AI = GetComponent<AIPath>();
-            AIsetter.target=GameObject.FindWithTag("Core").transform;
+            AIsetter.target = GameObject.FindWithTag("Core").transform;
         }
-        
+
         protected void Update()
         {
             Movement = AI.desiredVelocity;
             animator.SetFloat(X, Movement.x);
             animator.SetFloat(Y, Movement.y);
         }
-        
+
         protected void OnCollisionStay2D(Collision2D col)
         {
             if (Target.Contains(col.transform.tag) && CanAttack) //Need to add tag
@@ -66,10 +69,19 @@ namespace Monsters
                         StartCoroutine(PlayerDeath(col, "Assassin"));
                     }
                 }
+                else if (col.transform.CompareTag("IAplayer"))
+                {
+                    var survivor = col.gameObject.GetComponent<IAplayer>();
+                    if (survivor.ZombieDamageOnPlayer(Damage)) // put Damage here
+                    {
+                        StartCoroutine(PlayerDeath(col, "IA Farmer"));
+                    }
+                }
                 else
                 {
                     col.gameObject.GetComponent<Crystal>().AttackCrystal(Damage);
                 }
+
                 StartCoroutine(DelayAttack());
             }
         }

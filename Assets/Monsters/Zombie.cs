@@ -1,15 +1,17 @@
+using System;
 using System.Collections;
 using System.Linq;
 using Pathfinding;
 using Players;
+using Players.PlayerFolder;
 using UnityEngine;
 
 namespace Monsters
 {
     public abstract class Zombie: MonoBehaviour
     {
-        protected int Health;
-        protected readonly int Damage;
+        public int Health;
+        public int Damage;
         protected readonly string[] Target;
         private (int, int) _coordinate;
         protected Vector2 Movement;
@@ -17,6 +19,7 @@ namespace Monsters
         protected AIPath AI;
         public AIDestinationSetter AIsetter;
         protected bool CanAttack = true;
+        public int lvl;
 
         protected Zombie(string[] target = null,
             int health = 1, int damage = 1, float speed = 1f)
@@ -70,25 +73,22 @@ namespace Monsters
         // ReSharper disable Unity.PerformanceAnalysis
         protected IEnumerator PlayerDeath(Collision2D col, string id)
         {
-            if (id == "Farmer")
-            {
-                // just die
-                GameObject farmer = col.gameObject;
-                farmer.tag = "Dead";
-                var rbPlayer = farmer.GetComponent<Rigidbody2D>();
-                farmer.GetComponent<SpriteRenderer>().sortingLayerName = "PlayerDeath";
-                rbPlayer.constraints = RigidbodyConstraints2D.FreezePosition;
-
-                yield return new WaitForSeconds(10); // is dead
-                
-                // back to life
-                var h = farmer.GetComponent<Farmer>();
-                h.Health = h.MaxHealth;
-                farmer.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
-                farmer.tag = "Farmer";
-                rbPlayer.constraints = RigidbodyConstraints2D.FreezeRotation;
+            // just die
+            GameObject farmer = col.gameObject; 
+            farmer.tag = "Dead";
+            var rbPlayer = farmer.GetComponent<Rigidbody2D>(); 
+            farmer.GetComponent<SpriteRenderer>().sortingLayerName = "PlayerDeath"; 
+            rbPlayer.constraints = RigidbodyConstraints2D.FreezePosition;
+            
+            yield return new WaitForSeconds(10); // is dead
+            
+            // back to life
+            var h = GetPlayer(col.gameObject);
+            h.Health = h.MaxHealth; 
+            farmer.GetComponent<SpriteRenderer>().sortingLayerName = "Default"; 
+            farmer.tag = id; 
+            rbPlayer.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
-        }
 
         protected IEnumerator DelayAttack(int time = 3)
         {
@@ -101,6 +101,33 @@ namespace Monsters
         {
             Health -= damage;
             return Health <= 0;
+        }
+
+        public void SetLevel()
+        {
+            Health *= 15 * lvl / 10;
+            Damage *= 12 * lvl / 10;
+        }
+        
+        private Player GetPlayer(GameObject objPlayer)
+        {
+            if (objPlayer.GetComponent<Farmer>() != null)
+            {
+                return objPlayer.GetComponent<Farmer>();
+            }
+            if (objPlayer.GetComponent<Survivor>() != null)
+            {
+                return objPlayer.GetComponent<Survivor>();
+            }
+            if (objPlayer.GetComponent<Worker>() != null)
+            {
+                return objPlayer.GetComponent<Worker>();
+            }
+            if (objPlayer.GetComponent<Assassin>() != null)
+            {
+                return objPlayer.GetComponent<Assassin>();
+            }
+            throw new Exception("Invalid player type");
         }
     }
 }

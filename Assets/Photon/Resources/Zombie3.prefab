@@ -126,8 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81a3e3638e93ec4d9adc23e4a20a291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 100
+  Damage: 85
   animator: {fileID: 903576355496033076}
   AIsetter: {fileID: 5253124559149462955}
+  lvl: 1
 --- !u!114 &6550330404582793295
 MonoBehaviour:
   m_ObjectHideFlags: 0

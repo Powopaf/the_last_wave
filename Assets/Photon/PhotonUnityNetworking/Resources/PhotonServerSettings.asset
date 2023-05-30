@@ -46,6 +46,11 @@ MonoBehaviour:
   - AddRock
   - AddTree
   - KillGame
+  - SelectAssassin
+  - SelectFarmer
+  - SelectSurvivor
+  - SelectWorker
+  - Destroy
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

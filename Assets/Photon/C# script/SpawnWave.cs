@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Monsters;
 using Photon.Pun;
 using Unity.Mathematics;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Photon.C__script
     {
         public List<Enemy> Enemies = new List<Enemy>();
         private int currentWave;
-        private int waveValue;
+        public int waveValue;
         private int currentValue;
         private int waveValueScale;
         public List<string> enemiesToSpawn = new List<string>();
@@ -23,9 +24,11 @@ namespace Photon.C__script
         private float spawnTimer;
         private int playerCount;
         private int bossNumber;
+        private ZombieLVL zombieLVL;
 
         public void Start()
         {
+            zombieLVL = GameObject.FindWithTag("ZombieLVL").GetComponent<ZombieLVL>();
             currentWave = 1;
             bossNumber = 1;
             playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
@@ -46,7 +49,6 @@ namespace Photon.C__script
             }
             waveValue = waveValueScale;
             currentValue = waveValueScale;
-            ///GenerateWave();
         }
 
         private void FixedUpdate()
@@ -73,8 +75,11 @@ namespace Photon.C__script
 
         public void GenerateWave()
         {
+            if (currentWave % 3 == 1 && currentWave != 1)
+            {
+                zombieLVL.lvl ++;
+            }
             currentValue = waveValue;
-            ///waveValue = curreentWave * 10;
             GenerateEnemies();
             currentWave += 1;
             if (currentWave >= 10)
@@ -116,7 +121,7 @@ namespace Photon.C__script
                 {
                     enemiesToSpawn.Add("Zombie4");
                 }
-                bossNumber += 1;
+                bossNumber ++;
             }
         }
     }

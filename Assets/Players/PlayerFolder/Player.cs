@@ -301,7 +301,6 @@ namespace Players.PlayerFolder
                     { Farming.Farming rock = new Farming.Farming("Rock");
                         nbRock += rock.Number;
                         stoneText.text = nbRock.ToString();
-                        GetComponent<PhotonView>().RPC("AddRock", RpcTarget.All, nbRock);
                         Debug.Log(nbRock);
                     }
                     else if (_farmingElt!.tag! == "Tree")
@@ -309,36 +308,25 @@ namespace Players.PlayerFolder
                         Farming.Farming tree = new Farming.Farming("Tree");
                         nbTree += tree.Number;
                         woodText.text = nbTree.ToString();
-                        GetComponent<PhotonView>().RPC("AddTree", RpcTarget.All, nbTree);
                         Debug.Log(nbTree);
                     }
-                    PhotonNetwork.Destroy(_farmingElt.gameObject);
+
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        PhotonNetwork.Destroy(_farmingElt.gameObject);
+                    }
+                    else
+                    {
+                        GetComponent<PhotonView>().RPC("Destroy", RpcTarget.MasterClient, _farmingElt.gameObject);
+                    }
                 }
             }
         }
-
-        public void SetTree(int nb)
-        {
-            nbTree = nb;
-            woodText.text = nbTree.ToString();
-        }
-        
-        public void SetRock(int nb)
-        {
-            nbRock = nb;
-            stoneText.text = nbRock.ToString();
-            Debug.Log(nbRock);
-        }
-        [PunRPC]
-        public void AddTree(int tree)
-        {
-            SetTree(tree);
-        }
         
         [PunRPC]
-        public void AddRock(int rock)
+        public void Destroy(GameObject gameobject)
         {
-            SetRock(rock);
+            PhotonNetwork.Destroy(gameobject);
         }
         
         private void Attack(InputAction.CallbackContext context)

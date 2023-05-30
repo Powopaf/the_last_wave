@@ -1,4 +1,5 @@
 using System;
+using Photon.C__script;
 using UnityEngine;
 using static World.GetType;
 using Photon.Pun;
@@ -76,7 +77,8 @@ namespace World
         [PunRPC]
         public void Spawn(int x, int y)
         {
-            PhotonNetwork.Instantiate("Farmer", new Vector3(x, y, -1), Quaternion.identity);
+            string Class = GameObject.Find("ClassSelection").GetComponent<ClassSelection>().SelectedClass;
+            PhotonNetwork.Instantiate(Class, new Vector3(x, y, -1), Quaternion.identity);
         }
 
         [PunRPC] public void MapGen(int newseed)

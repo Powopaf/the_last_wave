@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &440249437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 440249438}
+  - component: {fileID: 440249439}
+  m_Layer: 0
+  m_Name: ZombieLVL
+  m_TagString: ZombieLVL
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &440249438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440249437}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 311.02936, y: 183.18962, z: 9.321683}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &440249439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440249437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2232838b0dde455bb2334af4bdf5f8f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lvl: 1
 --- !u!1001 &536239970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282945931275272150, guid: 6d51791d01cc8104f8d9897a9ff523d3, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6282945931275272150, guid: 6d51791d01cc8104f8d9897a9ff523d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -213,15 +258,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5479471330672596016, guid: 909f569a54afcfe4e8f8c0845e17258b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5479471330672596016, guid: 909f569a54afcfe4e8f8c0845e17258b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.937531
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5479471330672596016, guid: 909f569a54afcfe4e8f8c0845e17258b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.574713
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5479471330672596016, guid: 909f569a54afcfe4e8f8c0845e17258b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -258,6 +303,10 @@ PrefabInstance:
     - target: {fileID: 5479471330672596018, guid: 909f569a54afcfe4e8f8c0845e17258b, type: 3}
       propertyPath: m_Name
       value: Astar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479471330672596019, guid: 909f569a54afcfe4e8f8c0845e17258b, type: 3}
+      propertyPath: data.dataString
+      value: UEsDBBQAAAgIAAAIIeyF32AGWQIAABUFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzk3HMCaU3logpAcCE9rJxRdFWmMNsuTRB18Z/ntXso0dOj0h3r5dvbe78gcRylbAnDZLI/hKcyDfByScyZdBF3yGE91ptRUXaDlvgrsikGjkvFInNOLDkGZ1Cc4I9kPtZCAnCHolcm3KBd/BTFtnEc6ptIAho13IVgh9DMgJfx6mIeWMp9EknC54miaDKx4ZKAemo45b5rgl1jyvmKRlBTyI7ujDpOXjKRIVGmo4QTzTUgrbqCHuXEW326oAA8EuFxTNRQWBXoDYFS4I7eeu89yCa5wbep4Lgz2qi5Kfum5cSe2+Fnag0odrHtOoqK65+if8MIzh3Ojyub229uMKwfav9Myodb3G9uH5Z91eHanc03cJbwWoF7002iuOQWd8SPUWRvPu783ZrAC27/Ba6h3oq67fbbfb4QQP12j+NJOifA+hr2kNbKWO3Y7DB4Nz+YWC42rYpgSiQcUfC7/prr9DTeBJGOsw1LhUQd679iZQySL2LLjxbqaNAtOvUIGi0p03WMfdj/Au9v+sJxqeS3N7E2tfwV1KhDt+ktyFNvp4m5Yt9HEFtlh7J4WCrtUh8IKNmmml6g3rW2rTtt7klPXSdl7wz7tFGIfRNJ2yhKd5wlL6MMonj2kyGScT9m2Y5pzE5RMKfVK5qYU27cGxqa64wkVrvyKDpaFV3HZu6HEpLqW2HVOoXG+ZAVDrusJNOBi8BB8lX3CBDdqCc0LFgZOPjEjN9sCzW6EsOl2cnKFZVyUjlThoF5CMzOJnIyMBvi3zxsBBwDFc3ha7kutfUEsDBBQAAAgIAAAIIezkry7zbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSckqqkaWJZbJBikmaQbJJoq5RmrmZiYG5qYF5soWhSVqKUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIeyF32AGWQIAABUFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIezkry7zbQAAAHgAAAAJACQAAAAAAAAAAAAAAKYCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAXgMAAAAA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 909f569a54afcfe4e8f8c0845e17258b, type: 3}
@@ -307,7 +356,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1689978675
 MonoBehaviour:

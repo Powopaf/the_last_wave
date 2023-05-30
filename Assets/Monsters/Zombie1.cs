@@ -16,6 +16,8 @@ namespace Monsters
 
         protected override void Awake()
         {
+            lvl = GameObject.FindWithTag("ZombieLVL").GetComponent<ZombieLVL>().lvl;
+            SetLevel();
             animator = GetComponent<Animator>();
             AI = GetComponent<AIPath>();
             AIsetter.target=GameObject.FindWithTag("Core").transform;
@@ -38,6 +40,30 @@ namespace Monsters
                     if (survivor.ZombieDamageOnPlayer(Damage)) // put Damage here
                     {
                         StartCoroutine(PlayerDeath(col, "Farmer"));
+                    }
+                }
+                else if (col.transform.CompareTag("Survivor"))
+                {
+                    var survivor = col.gameObject.GetComponent<Survivor>();
+                    if (survivor.ZombieDamageOnPlayer(Damage)) // put Damage here
+                    {
+                        StartCoroutine(PlayerDeath(col, "Survivor"));
+                    }
+                }
+                else if (col.transform.CompareTag("Worker"))
+                {
+                    var survivor = col.gameObject.GetComponent<Worker>();
+                    if (survivor.ZombieDamageOnPlayer(Damage)) // put Damage here
+                    {
+                        StartCoroutine(PlayerDeath(col, "Worker"));
+                    }
+                }
+                else if (col.transform.CompareTag("Assassin"))
+                {
+                    var survivor = col.gameObject.GetComponent<Assassin>();
+                    if (survivor.ZombieDamageOnPlayer(Damage)) // put Damage here
+                    {
+                        StartCoroutine(PlayerDeath(col, "Assassin"));
                     }
                 }
                 else

@@ -19,6 +19,13 @@ TagManager:
   - Camera
   - Zombie1
   - Dead
+  - Zombie5
+  - Zombie4
+  - Zombie3
+  - WaveSpawner
+  - ZombieLVL
+  - Worker
+  - Assassin
   layers:
   - Default
   - TransparentFX

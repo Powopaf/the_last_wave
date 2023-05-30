@@ -153,6 +153,9 @@ namespace Players.PlayerFolder
                 case Key.I:
                     PhotonNetwork.Instantiate("PLayerWall", new Vector3(x, y - 1, 0), Quaternion.identity);
                     break;
+                case Key.U:
+                    PhotonNetwork.Instantiate("IA Farmer", new Vector3(x + 1, y + 1, 0), Quaternion.identity);
+                    break;
             }
         }
 

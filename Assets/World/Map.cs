@@ -233,8 +233,7 @@ namespace World
                         }
                     }
 
-                    if (GetComponent<PhotonView>().IsMine)
-                    {
+                    
                         if (PhotonNetwork.IsMasterClient)
                         {
                             if (current.HaveTree && CanPlaceTree(i, j, _mapDefinition))
@@ -261,7 +260,7 @@ namespace World
                                     PhotonNetwork.Instantiate("Rock2", new Vector3(i, j, -0.3f), Quaternion.identity);
                                 }
                             }
-                        }
+                        
                     }
 
                 }

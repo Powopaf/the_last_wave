@@ -334,6 +334,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e5b48e3d-17b0-4472-9839-e09aef755621",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Spawn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "5d0d550f-c598-470e-a27d-8d97c078b6ce",
                     "path": "<Keyboard>/l",
                     "interactions": "",

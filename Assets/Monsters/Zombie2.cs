@@ -1,4 +1,5 @@
 using Pathfinding;
+using Photon.C__script;
 using UnityEngine;
 
 namespace Monsters
@@ -17,6 +18,8 @@ namespace Monsters
 
         protected override void Awake()
         {
+            lvl = GameObject.FindWithTag("ZombieLVL").GetComponent<ZombieLVL>().lvl;
+            SetLevel();
             playerdistance = 10;
             _launchOffsetRigidbody2D = launchOffset.GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();

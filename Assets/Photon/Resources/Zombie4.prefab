@@ -189,8 +189,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4e002233198be49ab82eef07ea43ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 10000
+  Damage: 100
   animator: {fileID: 6621540348749684465}
   AIsetter: {fileID: 479076816907199427}
+  lvl: 1
 --- !u!50 &5366601412599433476
 Rigidbody2D:
   serializedVersion: 4

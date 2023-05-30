@@ -263,6 +263,7 @@ MonoBehaviour:
     cost: 5
   - enemyPrefab: {fileID: 5811875904382534196, guid: 07260d2531c7b824a915071056b27629, type: 3}
     cost: 3
+  waveValue: 0
   enemiesToSpawn: []
   SpawnPossition:
   - {fileID: 4003356138590167413}
@@ -543,7 +544,7 @@ PrefabInstance:
       objectReference: {fileID: 8935318336981254126}
     - target: {fileID: 1445072777746858487, guid: fc7a5e24cc034b1429a00a62d0b04fec, type: 3}
       propertyPath: cycleMaxTime
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5090104135708015505, guid: fc7a5e24cc034b1429a00a62d0b04fec, type: 3}
       propertyPath: m_RootOrder

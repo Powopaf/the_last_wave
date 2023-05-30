@@ -14,10 +14,12 @@ namespace Monsters
         private static readonly int Y = Animator.StringToHash("Y");
 
         public Zombie3() :
-            base(new String[] { "PLayerWall", "Core", "Turret" }, 200, 15, 10) { }
+            base(new string[] { "PLayerWall", "Core", "Turret" }, 200, 15, 10) { }
 
         protected override void Awake()
         {
+            lvl = GameObject.FindWithTag("ZombieLVL").GetComponent<ZombieLVL>().lvl;
+            SetLevel();
             animator = GetComponent<Animator>();
             AI = GetComponent<AIPath>();
             AIsetter.target=GameObject.FindWithTag("Core").transform;

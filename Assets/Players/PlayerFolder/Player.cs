@@ -169,28 +169,28 @@ namespace Players.PlayerFolder
             {
                 case Key.Z:
                     money = _inventory.UpgradeItem(money, ItemEnum.Helmet);
-                    helmetText.text = "LVL" + _inventory.Inv[0].Item2;
+                    helmetText.text = "LVL " + _inventory.Inv[0].Item2;
                     moneyText.text = money.ToString();
                     break;
                 case Key.X:
                     money = _inventory.UpgradeItem(money, ItemEnum.ChestPlate);
-                    chestPlateText.text = "LVL" + _inventory.Inv[1].Item2;
+                    chestPlateText.text = "LVL " + _inventory.Inv[1].Item2;
                     moneyText.text = money.ToString();
                     break;
                 case Key.C:
                     money = _inventory.UpgradeItem(money, ItemEnum.Gloves);
-                    glovesText.text = "LVL" + _inventory.Inv[2].Item2;
+                    glovesText.text = "LVL " + _inventory.Inv[2].Item2;
                     moneyText.text = money.ToString();
                     break;
                 case Key.V:
                     money = _inventory.UpgradeItem(money, ItemEnum.Boots);
-                    bootsText.text = "LVL" + _inventory.Inv[3].Item2;
+                    bootsText.text = "LVL " + _inventory.Inv[3].Item2;
                     moneyText.text = money.ToString();
                     break;
                 case Key.B:
                     money = _inventory.UpgradeItem(money, ItemEnum.Sword);
                     Damage += _inventory.Inv[4].Item1.Damage;
-                    swordText.text = "LVL" + _inventory.Inv[4].Item2;
+                    swordText.text = "LVL " + _inventory.Inv[4].Item2;
                     moneyText.text = money.ToString();
                     break;
             }

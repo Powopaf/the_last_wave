@@ -22,15 +22,17 @@ Membres de l'équipe Steeve diff:
 14/04/23 --> Génération de la carte fini
 14/04/23 --> Zombie 1 fini
 16/04/23 --> Création du lancement de la partie
-23/05/32 --> Spawn des joueurs
-24/05/32 --> Item
-25/05/32 --> Dégats des zombies
-26/05/32 --> Batiments
-26/05/32 --> ATH du joueur
-28/05/32 --> Vagues de Zombies
-28/05/32 --> Attaque du joueur
-29/05/32 --> Cycle jour/nuit
-29//05/32 --> Sélection des rôles
+23/05/23 --> Spawn des joueurs
+24/05/23 --> Item
+24/05/23 --> Création du système de récolte de ressources
+25/05/23 --> Dégats des zombies
+26/05/23 --> Batiments
+26/05/23 --> ATH du joueur
+28/05/23 --> Animations des attaques
+28/05/23 --> Vagues de Zombies
+28/05/23 --> Attaque du joueur
+29/05/23 --> Cycle jour/nuit
+29/05/23 --> Sélection des rôles
 
 ## Problèmes
 - Nous avons eu des problèmes avec GitHub.

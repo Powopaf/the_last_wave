@@ -14,7 +14,7 @@ namespace Monsters
         private static readonly int X = Animator.StringToHash("X");
         private static readonly int Y = Animator.StringToHash("Y");
 
-        public Zombie2() : base(new []{"Assassin","Farmer","Survivor","Worker"}, 50, 15, 100) { }
+        public Zombie2() : base(new []{"Assassin","Farmer","Survivor","Worker"}, 30, 15, 100) { }
 
         protected override void Awake()
         {

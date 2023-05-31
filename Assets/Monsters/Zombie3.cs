@@ -14,7 +14,7 @@ namespace Monsters
         private static readonly int Y = Animator.StringToHash("Y");
 
         public Zombie3() :
-            base(new string[] { "PLayerWall", "Core", "Turret" }, 200, 15, 10) { }
+            base(new string[] { "PLayerWall", "Core", "Turret" }, 200, 50, 10) { }
 
         protected override void Awake()
         {

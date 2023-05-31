@@ -304,32 +304,37 @@ namespace Players.PlayerFolder
                     { Farming.Farming rock = new Farming.Farming("Rock");
                         nbRock += rock.Number;
                         stoneText.text = nbRock.ToString();
-                        Debug.Log(nbRock);
+                        if (PhotonNetwork.IsMasterClient)
+                        {
+                            PhotonNetwork.Destroy(_farmingElt.gameObject);
+                        }
+                        else
+                        {
+                            GetComponent<PhotonView>().RPC("DestroyMe", RpcTarget.MasterClient, _farmingElt);
+                        }
                     }
                     else if (_farmingElt!.tag! == "Tree")
                     {
                         Farming.Farming tree = new Farming.Farming("Tree");
                         nbTree += tree.Number;
                         woodText.text = nbTree.ToString();
-                        Debug.Log(nbTree);
-                    }
-
-                    if (PhotonNetwork.IsMasterClient)
-                    {
-                        PhotonNetwork.Destroy(_farmingElt.gameObject);
-                    }
-                    else
-                    {
-                        GetComponent<PhotonView>().RPC("Destroy", RpcTarget.MasterClient, _farmingElt.gameObject);
+                        if (PhotonNetwork.IsMasterClient)
+                        {
+                            PhotonNetwork.Destroy(_farmingElt.gameObject);
+                        }
+                        else
+                        {
+                            GetComponent<PhotonView>().RPC("DestroyMe", RpcTarget.MasterClient, _farmingElt);
+                        }
                     }
                 }
             }
         }
         
         [PunRPC]
-        public void Destroy(GameObject gameobject)
+        public void DestroyMe(Collider2D collider)
         {
-            PhotonNetwork.Destroy(gameobject);
+            PhotonNetwork.Destroy(collider.gameObject);
         }
         
         private void Attack(InputAction.CallbackContext context)

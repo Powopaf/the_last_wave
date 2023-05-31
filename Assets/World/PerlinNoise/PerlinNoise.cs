@@ -79,19 +79,19 @@ namespace World.PerlinNoise
         
         public static EnumTile GetTileNoise(float noise)
         {
-            if (noise >= -1 && noise < -0.15)
+            if (noise >= -1 && noise < -0.5)
             {
                 return EnumTile.Water1;
             }
-            if (noise >= -0.15 && noise < -0.05)
+            if (noise >= -0.5 && noise < -0.3)
             {
                 return EnumTile.Sand1;
             }
-            if (noise >= -0.05 && noise < 0.3)
+            if (noise >= -0.3 && noise < 0.3)
             {
                 return EnumTile.DefaultGrass1;
             }
-            if (noise >= 0.3 && noise < 0.5)
+            if (noise >= 0.3 && noise < 0.6)
             {
                 return EnumTile.Dirt1;
             }

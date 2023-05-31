@@ -132,6 +132,7 @@ public class DayNightSystem2D : MonoBehaviour
 
         if (dayCycle == DayCycles.Night && WaveReady && PhotonNetwork.IsMasterClient)
         {
+            AstarPath.active.Scan();
             Wave.GenerateWave();
             WaveReady = false;
         }

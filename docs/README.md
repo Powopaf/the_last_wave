@@ -10,29 +10,29 @@ Membres de l'équipe Steeve diff:
 
 ## Avancement
 
-26/01/23 --> Création du repo git
-28/02/23 --> Déplacement du joueur 
-01/03/23 --> Création du premier zombie
-02/03/23 --> Création de la map (via une matrice)
-03/03/23 --> Ajout de la caméra joueur
-05/03/23 --> Création du Zombie2
-18/03/23 --> Mis en place des nouveau input
-10/04/23 --> Création de l'host des parties
-13/04/23 --> Création des paties privée
-14/04/23 --> Génération de la carte fini
-14/04/23 --> Zombie 1 fini
-16/04/23 --> Création du lancement de la partie
-23/05/23 --> Spawn des joueurs
-24/05/23 --> Item
-24/05/23 --> Création du système de récolte de ressources
-25/05/23 --> Dégats des zombies
-26/05/23 --> Batiments
-26/05/23 --> ATH du joueur
-28/05/23 --> Animations des attaques
-28/05/23 --> Vagues de Zombies
-28/05/23 --> Attaque du joueur
-29/05/23 --> Cycle jour/nuit
-29/05/23 --> Sélection des rôles
+- 26/01/23 --> Création du repo git
+- 28/02/23 --> Déplacement du joueur 
+- 01/03/23 --> Création du premier zombie
+- 02/03/23 --> Création de la map (via une matrice)
+- 03/03/23 --> Ajout de la caméra joueur
+- 05/03/23 --> Création du Zombie2
+- 18/03/23 --> Mis en place des nouveau input
+- 10/04/23 --> Création de l'host des parties
+- 13/04/23 --> Création des paties privée
+- 14/04/23 --> Génération de la carte fini
+- 14/04/23 --> Zombie 1 fini
+- 16/04/23 --> Création du lancement de la partie
+- 23/05/23 --> Spawn des joueurs
+- 24/05/23 --> Item
+- 24/05/23 --> Création du système de récolte de ressources
+- 25/05/23 --> Dégats des zombies
+- 26/05/23 --> Batiments
+- 26/05/23 --> ATH du joueur
+- 28/05/23 --> Animations des attaques
+- 28/05/23 --> Vagues de Zombies
+- 28/05/23 --> Attaque du joueur
+- 29/05/23 --> Cycle jour/nuit
+- 29/05/23 --> Sélection des rôles
 
 ## Problèmes
 - Nous avons eu des problèmes avec GitHub.

@@ -53,4 +53,4 @@ Membres de l'équipe Steeve diff:
 
 ## Download
 Le projet est téléchargable avec le lien si dessous. Se lien renvoie vers la release la plus récente du projet. Pour jouer au jeu il faut dowload le .zip, le unzip et lancer le .exe (sous windowns).
-Pour télécherger le Projet: [Link](https://github.com/Powopaf/the_last_wave/releases/tag/Soutenance2)
+Pour télécherger le Projet: [Link](https://github.com/Powopaf/the_last_wave/releases/tag/Rendu)
